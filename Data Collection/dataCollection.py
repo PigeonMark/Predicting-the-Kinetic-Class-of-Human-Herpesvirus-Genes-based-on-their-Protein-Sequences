@@ -2,7 +2,7 @@ import csv
 import ast
 import pickle
 from datetime import datetime
-from paperProcessing import select_papers_in_topic, PUNCTUATION
+from paperProcessing import select_papers_in_topic, PUNCTUATION, open_xml_paper
 from helper import print_index, print_score_dict
 
 
@@ -67,8 +67,8 @@ def build_index(papers_list):
 
     file_cnt = 0
     for filename in papers_list:
-        file = open(filename, 'r')
-        content = file.read().lower().translate(str.maketrans('\n\t', '  ', PUNCTUATION)).split()
+        file = open_xml_paper(filename)
+        content = file.lower().translate(str.maketrans('\n\t', '  ', PUNCTUATION)).split()
 
         kw_dict = {}
         phase_dict = {}
@@ -84,8 +84,6 @@ def build_index(papers_list):
                 else:
                     phase_dict[word] = [i]
 
-        file.close()
-
         if len(kw_dict) > 0 and len(phase_dict) > 0:
             index[filename] = (kw_dict, phase_dict)
 
@@ -95,6 +93,7 @@ def build_index(papers_list):
 
     print_index(index)
     pickle.dump(index, open("index_%s.p" % datetime.now().strftime("%Y%m%d-%H%M%S"), "wb"))
+    return index
 
 
 def calculate_distances_from_index(index):
@@ -119,6 +118,14 @@ def calculate_distances_from_index(index):
     return full_score_dict
 
 
+def test_on_known_papers():
+    papers_list = ["Data/known_herpes_files/paper1.txt", "Data/known_herpes_files/paper2.txt",
+                   "Data/known_herpes_files/paper2.txt"]
+    index = build_index(papers_list)
+    score_dict = calculate_distances_from_index(index)
+    print_score_dict(score_dict)
+
+
 if __name__ == "__main__":
 
     # select_papers_in_topic("Data/comm_use.I-N/", PAPER_KEYWORDS)
@@ -126,5 +133,9 @@ if __name__ == "__main__":
     # all_keys, name_to_headers = build_keywords()
 
     # build_index(pickle.load(open("herpespapers_50000_20191015-172106.p", "rb")))
-    score_dict = calculate_distances_from_index(pickle.load(open("index_20191015-183128.p", "rb")))
-    print_score_dict(score_dict)
+
+    print_index(pickle.load(open("index_20191016-120410.p", "rb")))
+    score_dict = calculate_distances_from_index(pickle.load(open("index_20191016-120410.p", "rb")))
+    # print_score_dict(score_dict)
+
+    # test_on_known_papers()
