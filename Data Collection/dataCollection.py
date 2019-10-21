@@ -2,7 +2,7 @@ import csv
 import ast
 import pickle
 from datetime import datetime
-from paperProcessing import select_papers_in_topic, PUNCTUATION, open_xml_paper
+from paperSelection import select_papers_in_topic, PUNCTUATION, open_xml_paper, PAPER_KEYWORDS
 from helper import print_index, print_score_dict
 
 
@@ -41,7 +41,7 @@ def build_keywords():
         for gene in genes_row[i]:
             if not gene.isdigit() and not len(gene) <= 2:
                 new_genes.append(gene)
-        header_to_all_names[header] = [header] + uniprot_ac_row[i] + new_genes + names_row[i]  # + proteins_row[i]
+        header_to_all_names[header] = set([header] + uniprot_ac_row[i] + new_genes + names_row[i])  # + proteins_row[i]
 
     name_to_headers = {}
     all_keys = set()
@@ -54,6 +54,8 @@ def build_keywords():
             all_keys.add(val)
 
     keywords_csv.close()
+    # print(header_to_all_names)
+    # print(name_to_headers)
     return all_keys, name_to_headers
 
 
@@ -92,7 +94,7 @@ def build_index(papers_list):
             print("%s files done" % file_cnt)
 
     print_index(index)
-    pickle.dump(index, open("index_%s.p" % datetime.now().strftime("%Y%m%d-%H%M%S"), "wb"))
+    pickle.dump(index, open("index_comm_use.I-N_%s.p" % datetime.now().strftime("%Y%m%d-%H%M%S"), "wb"))
     return index
 
 
@@ -130,12 +132,13 @@ if __name__ == "__main__":
 
     # select_papers_in_topic("Data/comm_use.I-N/", PAPER_KEYWORDS)
 
-    # all_keys, name_to_headers = build_keywords()
+    all_keys, name_to_headers = build_keywords()
+    print(name_to_headers)
 
-    # build_index(pickle.load(open("herpespapers_50000_20191015-172106.p", "rb")))
+    # build_index(pickle.load(open("herpespapers_comm_use.I-N_20191016-134537.p", "rb")))
 
-    print_index(pickle.load(open("index_20191016-120410.p", "rb")))
-    score_dict = calculate_distances_from_index(pickle.load(open("index_20191016-120410.p", "rb")))
+    # print_index(pickle.load(open("index_20191016-120410.p", "rb")))
+    # score_dict = calculate_distances_from_index(pickle.load(open("index_20191016-120410.p", "rb")))
     # print_score_dict(score_dict)
 
     # test_on_known_papers()
