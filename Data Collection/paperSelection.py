@@ -3,7 +3,6 @@ import re
 import pickle
 from datetime import datetime
 import time
-import string
 
 PUNCTUATION = "!\"#$%&'()*+,./:;<=>?@[\\]^_`{|}~"  # adapted from string.punctuation (removed '-')
 PAPER_KEYWORDS = [
@@ -72,7 +71,7 @@ def select_papers_in_topic(directory, keywords, output_file, stop_early=False):
                     break
 
     t_end = time.time()
-    pickle.dump(papers_list, open(output_file, "wb"))
+    pickle.dump(papers_list, open("Data/selectedPapers/"+output_file, "wb"))
 
     print(f'Number of papers selected: {len(papers_list)}')
     print(f'Ended in {t_end - t_start} seconds')

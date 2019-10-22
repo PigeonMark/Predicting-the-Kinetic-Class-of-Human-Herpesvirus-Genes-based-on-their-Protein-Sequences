@@ -1,26 +1,36 @@
 import csv
 import ast
 import pickle
-from datetime import datetime
 from paperSelection import PUNCTUATION, open_xml_paper
-from helper import print_index, print_score_dict, print_near_occ_dict, sort_by_highest_total, print_sorted_occ_dict
+from helper import sort_by_highest_total, print_sorted_occ_dict
 
 
 def build_keywords(keywords_file):
-    keywords_csv = open(keywords_file, "r", newline='')
-    csv_reader = csv.reader(keywords_csv)
+    """
+    Reads a csv file containing the keywords of a certain tax-id.
 
+    :param keywords_file: The filename of the csv file containing the keywords
+    :return:    A list of all keywords
+                A dictionary mapping each keyword to its 'header' TODO: map to a better keyword
+    """
+
+    # Open and read the csv file, make it a list of rows
+    keywords_csv = open("Data/keywords/" + keywords_file, "r", newline='')
+    csv_reader = csv.reader(keywords_csv)
     csv_list = list(csv_reader)
 
+    # Extract each row and throw away the first column
     header_row = csv_list[0][1:]
     genes_row = csv_list[1][1:]
     names_row = csv_list[3][1:]
     proteins_row = csv_list[5][1:]
     uniprot_ac_row = csv_list[6][1:]
 
+    # Make lowercase of each keyword in the first row
     for i, head in enumerate(header_row):
         header_row[i] = head.lower()
 
+    # For each other row, unpack the list items and make them lowercase
     for i, gene in enumerate(genes_row):
         genes_row[i] = ast.literal_eval(gene)
         names_row[i] = ast.literal_eval(names_row[i])
@@ -35,6 +45,8 @@ def build_keywords(keywords_file):
         for j, elem in enumerate(uniprot_ac_row[i]):
             uniprot_ac_row[i][j] = elem.lower()
 
+    # Make a dictionary {'header' : ['kw1', 'kw2', ...]}
+    # and remove all keywords that are just digits or keywords with length <= 2
     header_to_all_names = {}
     for i, header in enumerate(header_row):
         new_genes = []
@@ -43,6 +55,8 @@ def build_keywords(keywords_file):
                 new_genes.append(gene)
         header_to_all_names[header] = set([header] + uniprot_ac_row[i] + new_genes + names_row[i])  # + proteins_row[i]
 
+    # Make a dictionary {'keyword': ['header1', 'header2', ...]
+    # and a simple list of ALL KEYWORDS
     name_to_headers = {}
     all_keys = set()
     for key, value in header_to_all_names.items():
@@ -57,55 +71,36 @@ def build_keywords(keywords_file):
     return all_keys, name_to_headers
 
 
-def build_index(papers_list, keywords_file):
-    all_keys, name_to_headers = build_keywords(keywords_file)
-    all_phases = ['immediate-early', 'ie', 'early', 'early-late', 'late-early', 'late']
+def add_to_near_occ_dict(keyword, phase, near_occ_dic):
+    """
+    A helper function that adds a keyword-phase combination to the near-occurrences dictionary in the right way
+    :param keyword: The keyword (protein/gene/...)
+    :param phase:   The phase
+    :param near_occ_dic:    The near-occurrences dictionary
+    :return:        Nothing, it directly changes the dictionary
+    """
 
-    index = {}
-
-    file_cnt = 0
-    for filename in papers_list:
-        file = open_xml_paper(filename)
-        content = file.lower().translate(str.maketrans('\n\t', '  ', PUNCTUATION)).split()
-
-        kw_dict = {}
-        phase_dict = {}
-        for i, word in enumerate(content):
-            if word in all_keys:
-                if word in kw_dict:
-                    kw_dict[word] += [i]
-                else:
-                    kw_dict[word] = [i]
-            if word in all_phases:
-                if word in phase_dict:
-                    phase_dict[word] += [i]
-                else:
-                    phase_dict[word] = [i]
-
-        if len(kw_dict) > 0 and len(phase_dict) > 0:
-            index[filename] = (kw_dict, phase_dict)
-
-        file_cnt += 1
-        if file_cnt % 1000 == 0:
-            print("%s files done" % file_cnt)
-
-    print_index(index)
-    pickle.dump(index, open("index_comm_use.I-N_%s.p" % datetime.now().strftime("%Y%m%d-%H%M%S"), "wb"))
-    return index
-
-
-def add_to_near_occ_dict(prot, phase, dict):
-    if prot in dict:
-        if phase in dict[prot]:
-            dict[prot][phase] += 1
+    if keyword in near_occ_dic:
+        if phase in near_occ_dic[keyword]:
+            near_occ_dic[keyword][phase] += 1
         else:
-            dict[prot][phase] = 1
+            near_occ_dic[keyword][phase] = 1
     else:
-        dict[prot] = {phase: 1}
+        near_occ_dic[keyword] = {phase: 1}
 
 
-def count_near_occurrences(papers_list, keywords_file, distance):
+def count_near_occurrences(papers_list_file, keywords_file, distance):
+    """
+    A function that iterates over a list of papers and counts the distances between the keywords and the phases
+    :param papers_list_file:    The filename of the pickle file with the list of papers
+    :param keywords_file:       The filename of the csv file with the papers
+    :param distance:            The distance between the keywords and the phases to take into account
+    :return:                    A dictionary containing the counts of the near occurrences of all keywords and phases
+                                for each paper
+    """
+
     all_keys, name_to_headers = build_keywords(keywords_file)
+    papers_list = pickle.load(open("Data/selectedPapers/" + papers_list_file, "rb"))
     all_phases = ['immediate-early', 'ie', 'early', 'early-late', 'late-early', 'late']
 
     index = {}
@@ -135,7 +130,7 @@ def count_near_occurrences(papers_list, keywords_file, distance):
                         if w == phase:
 
                             # Special case for immediate early
-                            if phase == 'early' and sublist[j-1] == "immediate":
+                            if phase == 'early' and sublist[j - 1] == "immediate":
                                 add_to_near_occ_dict(word, "immediate early", near_occ_dict)
 
                             # Normal case for all other phases
@@ -145,60 +140,16 @@ def count_near_occurrences(papers_list, keywords_file, distance):
         if not len(near_occ_dict) == 0:
             index[filename] = near_occ_dict
 
-    return index
+    sorted_i = sort_by_highest_total(index)
+    pickle.dump((index, sorted_i), open("Data/countingResults/%s_%s.p" % (papers_list_file, keywords_file), "wb"))
 
-
-def calculate_distances_from_index(index):
-    full_score_dict = {}
-    for filename, dicts in index.items():
-        kw_dict, phase_dict = dicts
-        score_dict = {}
-        for kw, kw_indices in kw_dict.items():
-            for phase, phase_indices in phase_dict.items():
-                kw_phase_score = 0
-                for kw_indice in kw_indices:
-                    for phase_indice in phase_indices:
-                        if phase_indice != kw_indice:
-                            kw_phase_score += 1 / float(abs(phase_indice - kw_indice))
-                kw_phase_score /= (len(kw_indices) * len(phase_indices))
-                if kw in score_dict:
-                    score_dict[kw][phase] = (kw_phase_score, len(kw_indices) * len(phase_indices))
-                else:
-                    score_dict[kw] = {phase: (kw_phase_score, len(kw_indices) * len(phase_indices))}
-        full_score_dict[filename] = score_dict
-    return full_score_dict
-
-
-def test_on_known_papers():
-    papers_list = ["Data/known_herpes_files/paper1.txt", "Data/known_herpes_files/paper2.txt",
-                   "Data/known_herpes_files/paper2.txt"]
-    index = build_index(papers_list)
-    score_dict = calculate_distances_from_index(index)
-    print_score_dict(score_dict)
+    return index, sorted_i
 
 
 if __name__ == "__main__":
-    hsv1_kewords_file = "Data/keywords_10298.csv"
+    hsv1_keywords_file = "keywords_10298.csv"
+    papers_list_f = "hsv-1_comm_use.I-N_20191021-173402.p"
 
-    # all_keys, name_to_headers = build_keywords(hsv1_kewords_file)
-    # print(len(all_keys))
-    #
-    # index = build_index(pickle.load(open("hsv-1_comm_use.I-N_20191021-173402.p", "rb")), hsv1_kewords_file)
+    near_occ_index, sorted_index = count_near_occurrences(papers_list_f, hsv1_keywords_file, 10)
 
-    # print_index(pickle.load(open("index_comm_use.I-N_20191021-182253.p", "rb")), length_only=True)
-
-    papers_list = ["Data/comm_use.I-N/J_Biol_Chem/PMC5602406.nxml"]
-    # index = count_near_occurrences(pickle.load(open("hsv-1_comm_use.I-N_20191021-173402.p", "rb")), hsv1_kewords_file, 20)
-
-    index = count_near_occurrences(papers_list, hsv1_kewords_file, 5)
-    sorted = sort_by_highest_total(index)
-    print_sorted_occ_dict(sorted, index)
-
-
-
-    # print(test_near_occurrences())
-
-    # score_dict = calculate_distances_from_index(pickle.load(open("index_20191016-120410.p", "rb")))
-    # print_score_dict(score_dict)
-
-    # test_on_known_papers()
+    print_sorted_occ_dict(sorted_index, near_occ_index)
