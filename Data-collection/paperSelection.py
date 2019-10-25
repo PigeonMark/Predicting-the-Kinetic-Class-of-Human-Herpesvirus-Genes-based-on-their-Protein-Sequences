@@ -130,21 +130,54 @@ def select_papers_in_topic(directory_list, keywords, output_file, stop_early=Fal
     print(f'Ended in {t_end - t_start} seconds')
 
 
-if __name__ == "__main__":
+def select_hsv1():
     directory_list = ["Data/comm_use.A-B/", "Data/comm_use.C-H/", "Data/comm_use.I-N/", "Data/comm_use.O-Z/",
                       "Data/non_comm_use.A-B/", "Data/non_comm_use.C-H/", "Data/non_comm_use.I-N/",
                       "Data/non_comm_use.O-Z/"]
-    length = 0
-    for directory in directory_list:
-        for subdir in os.listdir(directory):
-            dir = os.path.join(directory, subdir)
-            for file_dir in os.listdir(dir):
-                fpath = os.path.join(dir, file_dir)
-                if os.path.isdir(fpath):
-                    print(fpath)
-            length += len(os.listdir(dir))
 
-    print(length)
+    select_papers_in_topic(directory_list, HSV_1_KEYWORDS,
+                           "hsv1_all_%s.p" % datetime.now().strftime("%Y%m%d-%H%M%S"))
+
+
+def select_hsv2():
+    directory_list = ["Data/comm_use.A-B/", "Data/comm_use.C-H/", "Data/comm_use.I-N/", "Data/comm_use.O-Z/",
+                      "Data/non_comm_use.A-B/", "Data/non_comm_use.C-H/", "Data/non_comm_use.I-N/",
+                      "Data/non_comm_use.O-Z/"]
+
+    select_papers_in_topic(directory_list, HSV_2_KEYWORDS,
+                           "hsv2_all_%s.p" % datetime.now().strftime("%Y%m%d-%H%M%S"))
+
+
+def select_vzv():
+    directory_list = ["Data/comm_use.A-B/", "Data/comm_use.C-H/", "Data/comm_use.I-N/", "Data/comm_use.O-Z/",
+                      "Data/non_comm_use.A-B/", "Data/non_comm_use.C-H/", "Data/non_comm_use.I-N/",
+                      "Data/non_comm_use.O-Z/"]
+
+    select_papers_in_topic(directory_list, VZV_KEYWORDS,
+                           "vzv_all_%s.p" % datetime.now().strftime("%Y%m%d-%H%M%S"))
+
+
+def select_ebv():
+    directory_list = ["Data/comm_use.A-B/", "Data/comm_use.C-H/", "Data/comm_use.I-N/", "Data/comm_use.O-Z/",
+                      "Data/non_comm_use.A-B/", "Data/non_comm_use.C-H/", "Data/non_comm_use.I-N/",
+                      "Data/non_comm_use.O-Z/"]
+
+    select_papers_in_topic(directory_list, EBV_KEYWORDS,
+                           "ebv_all_%s.p" % datetime.now().strftime("%Y%m%d-%H%M%S"))
+
+
+def select_hcmv():
+    directory_list = ["Data/comm_use.A-B/", "Data/comm_use.C-H/", "Data/comm_use.I-N/", "Data/comm_use.O-Z/",
+                      "Data/non_comm_use.A-B/", "Data/non_comm_use.C-H/", "Data/non_comm_use.I-N/",
+                      "Data/non_comm_use.O-Z/"]
 
     select_papers_in_topic(directory_list, HCMV_KEYWORDS,
                            "hcmv_all_%s.p" % datetime.now().strftime("%Y%m%d-%H%M%S"))
+
+
+if __name__ == "__main__":
+    # select_hsv1()
+    # select_hsv2()
+    # select_vzv()
+    # select_ebv()
+    select_hcmv()
