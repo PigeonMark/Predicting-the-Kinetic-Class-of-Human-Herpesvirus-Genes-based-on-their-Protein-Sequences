@@ -51,6 +51,19 @@ VZV_KEYWORDS = [
     "varicella-zoster virus"
 ]
 
+EBV_KEYWORDS = [
+    "human gammaherpesvirus 4",
+    "epv",
+    "ebv",
+    "hhv4",
+    "hhv-4",
+    "hhv 4",
+    "epstein-barr virus"
+    "epstein barr virus",
+    "human herpesvirus 4",
+    "human herpesvirus type 4"
+]
+
 alpha = [
     'alpha',
     '&#x003b1;',
@@ -114,8 +127,8 @@ if __name__ == "__main__":
         for subdir in os.listdir(directory):
             dir = os.path.join(directory, subdir)
             length += len(os.listdir(dir))
-    
+
     print(length)
 
-    select_papers_in_topic(directory_list, VZV_KEYWORDS,
-                           "vzv_all_%s.p" % datetime.now().strftime("%Y%m%d-%H%M%S"))
+    select_papers_in_topic(directory_list, EBV_KEYWORDS,
+                           "ebv_all_%s.p" % datetime.now().strftime("%Y%m%d-%H%M%S"))
