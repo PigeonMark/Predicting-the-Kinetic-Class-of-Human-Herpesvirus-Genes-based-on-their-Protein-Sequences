@@ -178,14 +178,17 @@ def combine_counts(index_file):
 
 
 if __name__ == "__main__":
-    hsv1_keywords_file = "keywords_10298.csv"
-    papers_list_f = "hsv-1_comm_use.I-N_20191021-173402.p"
-    #
-    near_occ_index, sorted_index = count_near_occurrences(papers_list_f, hsv1_keywords_file, 10)
+    # hsv1_keywords_file = "keywords_10298.csv"
+    # papers_list_f = "hsv-1_comm_use.I-N_20191021-173402.p"
+    # #
+    # near_occ_index, sorted_index = count_near_occurrences(papers_list_f, hsv1_keywords_file, 10)
     #
     # print_sorted_occ_dict(sorted_index, near_occ_index)
 
     i_file = "hsv-1_comm_use.I-N_20191021-173402.p_keywords_10298.csv_10.p"
 
     combined_counts = combine_counts(i_file)
-    print_combined_counts(combined_counts)
+
+    sorted_combined_counts = sort_by_highest_value(combined_counts)
+
+    print_combined_counts_tuple_list(sorted_combined_counts)

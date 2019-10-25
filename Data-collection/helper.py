@@ -60,8 +60,20 @@ def sort_by_highest_total(dict):
     return sorted_dict
 
 
+def sort_by_highest_value(dict):
+    return sorted(dict.items(), key=lambda keyword: max(keyword[1].get('late', 0), keyword[1].get('early', 0), keyword[1].get('immediate-early', 0)), reverse=True)
+
+
 def print_combined_counts(combined_index):
     for kw, phases in combined_index.items():
+        print(f'{kw}:')
+        for phase, count in phases.items():
+            print(f'\t{phase}: {count}')
+        print()
+
+
+def print_combined_counts_tuple_list(combined_index):
+    for kw, phases in combined_index:
         print(f'{kw}:')
         for phase, count in phases.items():
             print(f'\t{phase}: {count}')
