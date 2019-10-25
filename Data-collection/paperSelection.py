@@ -64,6 +64,18 @@ EBV_KEYWORDS = [
     "human herpesvirus type 4"
 ]
 
+HCMV_KEYWORDS = [
+    "human betaherpesvirus 5",
+    "hhv5",
+    "hhv-5"
+    "hhv 5",
+    "human herpesvirus 5",
+    "human herpes virus 5",
+    "human herpesvirus type 5",
+    "human cytomegalovirus",
+    "hcmv"
+]
+
 alpha = [
     'alpha',
     '&#x003b1;',
@@ -130,5 +142,5 @@ if __name__ == "__main__":
 
     print(length)
 
-    select_papers_in_topic(directory_list, EBV_KEYWORDS,
-                           "ebv_all_%s.p" % datetime.now().strftime("%Y%m%d-%H%M%S"))
+    select_papers_in_topic(directory_list, HCMV_KEYWORDS,
+                           "hcmv_all_%s.p" % datetime.now().strftime("%Y%m%d-%H%M%S"))
