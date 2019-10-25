@@ -26,6 +26,19 @@ HSV_1_KEYWORDS = [
     "herpes simplex virus type-1 hsv-1"
 ]
 
+HSV_2_KEYWORDS = [
+    "hsv-2",
+    "hsv2",
+    "hsv 2",
+    "human alphaherpesvirus 2",
+    "herpes simplex virus 2",
+    "herpes simplex virus II",
+    "human herpesvirus 2",
+    "human herpesvirus type 2",
+    "herpes simplex virus type 2",
+    "herpes simplex virus (type 2)"
+]
+
 alpha = [
     'alpha',
     '&#x003b1;',
@@ -92,5 +105,5 @@ if __name__ == "__main__":
 
     print(length)
 
-    select_papers_in_topic(directory_list, HSV_1_KEYWORDS,
-                           "hsv-1_all_%s.p" % datetime.now().strftime("%Y%m%d-%H%M%S"))
+    select_papers_in_topic(directory_list, HSV_2_KEYWORDS,
+                           "hsv-2_all_%s.p" % datetime.now().strftime("%Y%m%d-%H%M%S"))
