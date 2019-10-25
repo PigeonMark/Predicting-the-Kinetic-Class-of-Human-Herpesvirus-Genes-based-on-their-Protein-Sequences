@@ -52,7 +52,7 @@ def select_papers_in_topic(directory_list, keywords, output_file, stop_early=Fal
 
                 papers_done += 1
                 if papers_done % 1000 == 0:
-                    print(papers_done)
+                    print(f'{len(papers_list)} of {papers_done} selected in {time.time() - t_start} seconds')
 
                 if stop_early:
                     if papers_done == 50000:
@@ -84,6 +84,13 @@ if __name__ == "__main__":
     directory_list = ["Data/comm_use.A-B/", "Data/comm_use.C-H/", "Data/comm_use.I-N/", "Data/comm_use.O-Z/",
                       "Data/non_comm_use.A-B/", "Data/non_comm_use.C-H/", "Data/non_comm_use.I-N/",
                       "Data/non_comm_use.O-Z/"]
+    length = 0
+    for directory in directory_list:
+        for subdir in os.listdir(directory):
+            dir = os.path.join(directory, subdir)
+            length += len(os.listdir(dir))
+
+    print(length)
 
     select_papers_in_topic(directory_list, HSV_1_KEYWORDS,
                            "hsv-1_all_%s.p" % datetime.now().strftime("%Y%m%d-%H%M%S"))
