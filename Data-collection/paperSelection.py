@@ -39,6 +39,18 @@ HSV_2_KEYWORDS = [
     "herpes simplex virus (type 2)"
 ]
 
+VZV_KEYWORDS = [
+    "human alphaherpesvirus 3",
+    "hhv3",
+    "hhv-3",
+    "hhv 3",
+    "vzv",
+    "human herpesvirus 3",
+    "human herpes virus 3",
+    "varicella zoster virus",
+    "varicella-zoster virus"
+]
+
 alpha = [
     'alpha',
     '&#x003b1;',
@@ -94,16 +106,16 @@ def select_papers_in_topic(directory_list, keywords, output_file, stop_early=Fal
 
 
 if __name__ == "__main__":
-    directory_list = ["Data/comm_use.A-B/", "Data/comm_use.C-H/", "Data/comm_use.I-N/", "Data/comm_use.O-Z/",
+    directory_list = ["Data/comm_use.I-N/", "Data/comm_use.C-H/", "Data/comm_use.I-N/", "Data/comm_use.O-Z/",
                       "Data/non_comm_use.A-B/", "Data/non_comm_use.C-H/", "Data/non_comm_use.I-N/",
                       "Data/non_comm_use.O-Z/"]
-    length = 0
-    for directory in directory_list:
-        for subdir in os.listdir(directory):
-            dir = os.path.join(directory, subdir)
-            length += len(os.listdir(dir))
+    # length = 0
+    # for directory in directory_list:
+    #     for subdir in os.listdir(directory):
+    #         dir = os.path.join(directory, subdir)
+    #         length += len(os.listdir(dir))
+    #
+    # print(length)
 
-    print(length)
-
-    select_papers_in_topic(directory_list, HSV_2_KEYWORDS,
-                           "hsv-2_all_%s.p" % datetime.now().strftime("%Y%m%d-%H%M%S"))
+    select_papers_in_topic(directory_list, VZV_KEYWORDS,
+                           "vzv_all_%s.p" % datetime.now().strftime("%Y%m%d-%H%M%S"))
