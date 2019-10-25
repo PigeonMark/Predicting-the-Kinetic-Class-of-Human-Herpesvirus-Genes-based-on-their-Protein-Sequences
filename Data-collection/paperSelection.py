@@ -81,7 +81,9 @@ def select_papers_in_topic(directory_list, keywords, output_file, stop_early=Fal
 
 
 if __name__ == "__main__":
-    directory_list = ["Data/comm_use.I-N3/"]
+    directory_list = ["Data/comm_use.A-B/", "Data/comm_use.C-H/", "Data/comm_use.I-N/", "Data/comm_use.O-Z/",
+                      "Data/non_comm_use.A-B/", "Data/non_comm_use.C-H/", "Data/non_comm_use.I-N/",
+                      "Data/non_comm_use.O-Z/"]
 
     select_papers_in_topic(directory_list, HSV_1_KEYWORDS,
-                           "hsv-1_list_test_%s.p" % datetime.now().strftime("%Y%m%d-%H%M%S"))
+                           "hsv-1_all_%s.p" % datetime.now().strftime("%Y%m%d-%H%M%S"))
