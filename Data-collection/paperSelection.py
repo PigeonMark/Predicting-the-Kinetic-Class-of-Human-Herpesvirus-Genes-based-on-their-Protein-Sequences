@@ -138,6 +138,10 @@ if __name__ == "__main__":
     for directory in directory_list:
         for subdir in os.listdir(directory):
             dir = os.path.join(directory, subdir)
+            for file_dir in os.listdir(dir):
+                fpath = os.path.join(dir, file_dir)
+                if os.path.isdir(fpath):
+                    print(fpath)
             length += len(os.listdir(dir))
 
     print(length)
