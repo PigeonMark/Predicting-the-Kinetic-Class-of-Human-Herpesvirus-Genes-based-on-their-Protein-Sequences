@@ -1,4 +1,4 @@
-import operator
+
 
 def print_index(index, length_only=False):
     for filename, index_tuple in index.items():
@@ -58,3 +58,11 @@ def sort_by_highest_total(dict):
         tot_dict[fn] = tot
     sorted_dict = sorted(tot_dict.items(), key=lambda kv: kv[1], reverse=True)
     return sorted_dict
+
+
+def print_combined_counts(combined_index):
+    for kw, phases in combined_index.items():
+        print(f'{kw}:')
+        for phase, count in phases.items():
+            print(f'\t{phase}: {count}')
+        print()
