@@ -4,3 +4,6 @@
 Data-collection/Data/
 
 Data-collection/__pycache__/
+
+Data-collection/Output/selectedPapers/
+!Data-collection/Output/selectedPapers/*.p
