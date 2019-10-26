@@ -1,3 +1,6 @@
+from shutil import copy
+import os
+import pickle
 
 
 def print_index(index, length_only=False):
@@ -61,7 +64,8 @@ def sort_by_highest_total(dict):
 
 
 def sort_by_highest_value(dict):
-    return sorted(dict.items(), key=lambda keyword: max(keyword[1].get('late', 0), keyword[1].get('early', 0), keyword[1].get('immediate-early', 0)), reverse=True)
+    return sorted(dict.items(), key=lambda keyword: max(keyword[1].get('late', 0), keyword[1].get('early', 0),
+                                                        keyword[1].get('immediate-early', 0)), reverse=True)
 
 
 def print_combined_counts(combined_index):
@@ -78,3 +82,18 @@ def print_combined_counts_tuple_list(combined_index):
         for phase, count in phases.items():
             print(f'\t{phase}: {count}')
         print()
+
+
+def copy_selected_papers(paper_list_path, directory_name):
+    os.mkdir("Output/selectedPapers/" + directory_name)
+    paper_list = pickle.load(open(paper_list_path, "rb"))
+    for paper in paper_list:
+        copy(paper, "Output/selectedPapers/" + directory_name)
+
+
+if __name__ == "__main__":
+    file_names = ["ebv_all_20191025-173954", "hcmv_all_20191025-173918", "hsv1_all_20191025-174132",
+                  "hsv2_all_20191025-174101", "hsv-1_comm_use.I-N_20191021-173402", "vzv_all_20191025-174034"]
+
+    for file_name in file_names:
+        copy_selected_papers("Output/selectedPapers/" + file_name + ".p", file_name)
