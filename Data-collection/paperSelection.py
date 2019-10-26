@@ -176,8 +176,8 @@ def select_hcmv():
 
 
 if __name__ == "__main__":
-    # select_hsv1()
+    select_hsv1()
     # select_hsv2()
     # select_vzv()
     # select_ebv()
-    select_hcmv()
+    # select_hcmv()
