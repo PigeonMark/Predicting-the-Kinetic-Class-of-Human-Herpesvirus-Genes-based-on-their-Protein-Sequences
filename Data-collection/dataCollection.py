@@ -1,6 +1,5 @@
 import csv
 import ast
-import pickle
 from paperSelection import PUNCTUATION, open_xml_paper
 from helper import *
 
@@ -129,12 +128,12 @@ def count_near_occ_by_distance(word, kw_i, distance, content, near_occ_dict):
 def count_near_occurrences(papers_directory, keywords_file, distance):
     """
     A function that iterates over a list of papers and counts the distances between the keywords and the phases
-    :param lower_d:             The lower bound for the distances to take into account
-    :param upper_d:             The upper bound for the distances to take into account
-    :param papers_list_file:    The filename of the pickle file with the list of papers
-    :param keywords_file:       The filename of the csv file with the papers
+    :param distance:            The upper bound for the distances to take into account
+    :param papers_directory:    The directory containing all the selected papers
+    :param keywords_file:       The filename of the csv file containing the keywords
     :return:                    A dictionary containing the counts of the near occurrences of all keywords and phases
-                                for each paper
+                                for each paper, also a sorted index and the location of the pickle file where the index
+                                is stored
     """
 
     all_keys, name_to_headers = build_keywords(keywords_file)
@@ -163,7 +162,7 @@ def count_near_occurrences(papers_directory, keywords_file, distance):
 
         file_count += 1
         if file_count % 1000 == 0:
-            print(f'{file_count} files done ({100*file_count/float(total_file_count):.2f}%)')
+            print(f'{file_count} files done ({100 * file_count / float(total_file_count):.2f}%)')
 
     sorted_i = sort_by_highest_total(index)
     papers_directory_name = os.path.basename(os.path.normpath(papers_directory))
@@ -218,14 +217,12 @@ if __name__ == "__main__":
     viruses_data = [hsv1_data, hsv2_data, vzv_data, ebv_data, hcmv_data]
 
     for virus in viruses_data:
-
         near_occ_index, sorted_index, i_file = count_near_occurrences(virus["papers_directory"],
                                                                       virus["keywords_file"], 10)
 
         print(virus["papers_directory"], i_file)
 
     for virus in viruses_data:
-
         combined_counts = combine_counts(virus["counted_file"])
         print(virus["papers_directory"])
         print(len(combined_counts))
