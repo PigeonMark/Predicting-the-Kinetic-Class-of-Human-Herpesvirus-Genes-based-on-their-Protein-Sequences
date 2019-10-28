@@ -1,9 +1,9 @@
 import csv
 import ast
-from paperSelection import PUNCTUATION, open_xml_paper
-from helper import *
 
-ALL_PHASES = ['immediate-early', 'ie', 'early', 'early-late', 'late-early', 'late']
+from input_data import get_viruses_data, get_phases_data, PUNCTUATION
+from paperSelection import open_xml_paper
+from helper import *
 
 
 def build_keywords(keywords_file):
@@ -75,6 +75,7 @@ def build_keywords(keywords_file):
 def add_to_near_occ_dict(to_add, keyword, phase, near_occ_dic):
     """
     A helper function that adds a keyword-phase combination to the near-occurrences dictionary in the right way
+    :param to_add:          The number to add
     :param keyword:         The keyword (protein/gene/...)
     :param phase:           The phase
     :param near_occ_dic:    The near-occurrences dictionary
@@ -91,8 +92,10 @@ def add_to_near_occ_dict(to_add, keyword, phase, near_occ_dic):
 
 
 def count_near_occ_by_distance(word, kw_i, distance, content, near_occ_dict):
+    main_phases, alternate_names, all_phases = get_phases_data()
+
     # For each phase
-    for phase in ALL_PHASES:
+    for phase in all_phases:
 
         for dis in range(1, distance + 1):
             i1 = kw_i - dis
@@ -184,47 +187,16 @@ def combine_counts(index_file):
 
 
 if __name__ == "__main__":
-    hsv1_data = {
-        "keywords_file": "keywords_10298.csv",
-        "papers_directory": "Output/selectedPapers/hsv1_all_20191025-174132/",
-        "counted_file": "Output/countingResults/hsv1_all_20191025-174132_keywords_10298.csv_10.p"
-    }
 
-    hsv2_data = {
-        "keywords_file": "keywords_10310.csv",
-        "papers_directory": "Output/selectedPapers/hsv2_all_20191025-174101/",
-        "counted_file": "Output/countingResults/hsv2_all_20191025-174101_keywords_10310.csv_10.p"
-    }
-
-    vzv_data = {
-        "keywords_file": "keywords_10335.csv",
-        "papers_directory": "Output/selectedPapers/vzv_all_20191025-174034/",
-        "counted_file": "Output/countingResults/vzv_all_20191025-174034_keywords_10335.csv_10.p"
-    }
-
-    ebv_data = {
-        "keywords_file": "keywords_10376.csv",
-        "papers_directory": "Output/selectedPapers/ebv_all_20191025-173954/",
-        "counted_file": "Output/countingResults/ebv_all_20191025-173954_keywords_10376.csv_10.p"
-    }
-
-    hcmv_data = {
-        "keywords_file": "keywords_10359.csv",
-        "papers_directory": "Output/selectedPapers/hcmv_all_20191025-173918/",
-        "counted_file": "Output/countingResults/hcmv_all_20191025-173918_keywords_10359.csv_10.p"
-    }
-
-    viruses_data = [hsv1_data, hsv2_data, vzv_data, ebv_data, hcmv_data]
+    viruses_data = get_viruses_data()
 
     for virus in viruses_data:
         near_occ_index, sorted_index, i_file = count_near_occurrences(virus["papers_directory"],
                                                                       virus["keywords_file"], 10)
 
-        print(virus["papers_directory"], i_file)
-
     for virus in viruses_data:
         combined_counts = combine_counts(virus["counted_file"])
-        print(virus["papers_directory"])
+        print(virus["name"])
         print(len(combined_counts))
         sorted_combined_counts = sort_by_highest_value(combined_counts)
         print_combined_counts_tuple_list(sorted_combined_counts)

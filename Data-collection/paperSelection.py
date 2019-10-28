@@ -1,87 +1,10 @@
 import os
 import re
 import pickle
-from datetime import datetime
 import time
 
-PUNCTUATION = "!\"#$%&'()*+,./:;<=>?@[\\]^_`{|}~"  # adapted from string.punctuation (removed '-')
-PAPER_KEYWORDS = [
-    "herpesvirus",
-    "herpesviruses",
-    "herpes",
-    "hsv"
-]
-
-HSV_1_KEYWORDS = [
-    "hsv-1",
-    "hsv1",
-    "human alphaherpesvirus 1",
-    "herpes simplex virus 1",
-    "human herpesvirus 1",
-    "human herpesvirus type 1",
-    "herpes simplex virus 1 hsv-1",
-    "herpes simplex virus hsv-1",
-    "herpes simplex virus type 1 hsv-1",
-    "herpes simplex virus type 1 hsv1",
-    "herpes simplex virus type-1 hsv-1"
-]
-
-HSV_2_KEYWORDS = [
-    "hsv-2",
-    "hsv2",
-    "hsv 2",
-    "human alphaherpesvirus 2",
-    "herpes simplex virus 2",
-    "herpes simplex virus II",
-    "human herpesvirus 2",
-    "human herpesvirus type 2",
-    "herpes simplex virus type 2",
-    "herpes simplex virus (type 2)"
-]
-
-VZV_KEYWORDS = [
-    "human alphaherpesvirus 3",
-    "hhv3",
-    "hhv-3",
-    "hhv 3",
-    "vzv",
-    "human herpesvirus 3",
-    "human herpes virus 3",
-    "varicella zoster virus",
-    "varicella-zoster virus"
-]
-
-EBV_KEYWORDS = [
-    "human gammaherpesvirus 4",
-    "epv",
-    "ebv",
-    "hhv4",
-    "hhv-4",
-    "hhv 4",
-    "epstein-barr virus"
-    "epstein barr virus",
-    "human herpesvirus 4",
-    "human herpesvirus type 4"
-]
-
-HCMV_KEYWORDS = [
-    "human betaherpesvirus 5",
-    "hhv5",
-    "hhv-5"
-    "hhv 5",
-    "human herpesvirus 5",
-    "human herpes virus 5",
-    "human herpesvirus type 5",
-    "human cytomegalovirus",
-    "hcmv"
-]
-
-alpha = [
-    'alpha',
-    '&#x003b1;',
-    '&#945;',
-    '&alpha;'
-]
+from datetime import datetime
+from input_data import HSV_1_KEYWORDS, HSV_2_KEYWORDS, VZV_KEYWORDS, EBV_KEYWORDS, HCMV_KEYWORDS, PUNCTUATION
 
 
 def open_xml_paper(filename):
