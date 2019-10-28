@@ -126,7 +126,7 @@ def count_near_occ_by_distance(word, kw_i, distance, content, near_occ_dict):
                     add_to_near_occ_dict(to_add, word, phase, near_occ_dict)
 
 
-def count_near_occurrences(papers_list_file, keywords_file, distance):
+def count_near_occurrences(papers_directory, keywords_file, distance):
     """
     A function that iterates over a list of papers and counts the distances between the keywords and the phases
     :param lower_d:             The lower bound for the distances to take into account
@@ -138,15 +138,16 @@ def count_near_occurrences(papers_list_file, keywords_file, distance):
     """
 
     all_keys, name_to_headers = build_keywords(keywords_file)
-    papers_list = pickle.load(open("Output/selectedPapers/" + papers_list_file, "rb"))
 
     index = {}
-
+    file_count = 0
+    total_file_count = len([_ for _ in os.listdir(papers_directory)])
+    print(f'Counting near occurrences in {total_file_count} files')
     # For each in file in the papers_list
-    for filename in papers_list:
+    for filename in os.listdir(papers_directory):
 
         # Open file and make a lowercase list without punctuation and whitespace
-        file = open_xml_paper(filename)
+        file = open_xml_paper(os.path.join(papers_directory, filename))
         content = file.lower().translate(str.maketrans('\n\t', '  ', PUNCTUATION)).split()
 
         near_occ_dict = {}
@@ -160,14 +161,20 @@ def count_near_occurrences(papers_list_file, keywords_file, distance):
         if not len(near_occ_dict) == 0:
             index[filename] = near_occ_dict
 
-    sorted_i = sort_by_highest_total(index)
-    pickle.dump((index, sorted_i), open("Output/countingResults/%s_%s_%i.p" % (papers_list_file, keywords_file, distance), "wb"))
+        file_count += 1
+        if file_count % 1000 == 0:
+            print(f'{file_count} files done ({100*file_count/float(total_file_count):.2f}%)')
 
-    return index, sorted_i
+    sorted_i = sort_by_highest_total(index)
+    papers_directory_name = os.path.basename(os.path.normpath(papers_directory))
+    pickle.dump((index, sorted_i),
+                open("Output/countingResults/%s_%s_%i.p" % (papers_directory_name, keywords_file, distance), "wb"))
+
+    return index, sorted_i, "Output/countingResults/%s_%s_%i.p" % (papers_directory_name, keywords_file, distance)
 
 
 def combine_counts(index_file):
-    index, sorted_index = pickle.load(open("Output/countingResults/" + index_file, "rb"))
+    index, sorted_index = pickle.load(open(index_file, "rb"))
 
     combined_counts = {}
     for paper, proteins in index.items():
@@ -178,17 +185,55 @@ def combine_counts(index_file):
 
 
 if __name__ == "__main__":
-    # hsv1_keywords_file = "keywords_10298.csv"
-    # papers_list_f = "hsv-1_comm_use.I-N_20191021-173402.p"
-    # #
-    # near_occ_index, sorted_index = count_near_occurrences(papers_list_f, hsv1_keywords_file, 10)
-    #
-    # print_sorted_occ_dict(sorted_index, near_occ_index)
+    hsv1_data = {
+        "keywords_file": "keywords_10298.csv",
+        "papers_directory": "Output/selectedPapers/hsv1_all_20191025-174132/",
+        "counted_file": "Output/countingResults/hsv1_all_20191025-174132_keywords_10298.csv_10.p"
+    }
 
-    i_file = "hsv-1_comm_use.I-N_20191021-173402.p_keywords_10298.csv_10.p"
+    hsv2_data = {
+        "keywords_file": "keywords_10310.csv",
+        "papers_directory": "Output/selectedPapers/hsv2_all_20191025-174101/",
+        "counted_file": "Output/countingResults/hsv2_all_20191025-174101_keywords_10310.csv_10.p"
+    }
 
-    combined_counts = combine_counts(i_file)
+    vzv_data = {
+        "keywords_file": "keywords_10335.csv",
+        "papers_directory": "Output/selectedPapers/vzv_all_20191025-174034/",
+        "counted_file": "Output/countingResults/vzv_all_20191025-174034_keywords_10335.csv_10.p"
+    }
 
-    sorted_combined_counts = sort_by_highest_value(combined_counts)
+    ebv_data = {
+        "keywords_file": "keywords_10376.csv",
+        "papers_directory": "Output/selectedPapers/ebv_all_20191025-173954/",
+        "counted_file": "Output/countingResults/ebv_all_20191025-173954_keywords_10376.csv_10.p"
+    }
 
-    print_combined_counts_tuple_list(sorted_combined_counts)
+    hcmv_data = {
+        "keywords_file": "keywords_10359.csv",
+        "papers_directory": "Output/selectedPapers/hcmv_all_20191025-173918/",
+        "counted_file": "Output/countingResults/hcmv_all_20191025-173918_keywords_10359.csv_10.p"
+    }
+
+    viruses_data = [hsv1_data, hsv2_data, vzv_data, ebv_data, hcmv_data]
+
+    for virus in viruses_data:
+
+        near_occ_index, sorted_index, i_file = count_near_occurrences(virus["papers_directory"],
+                                                                      virus["keywords_file"], 10)
+
+        print(virus["papers_directory"], i_file)
+
+    for virus in viruses_data:
+
+        combined_counts = combine_counts(virus["counted_file"])
+        print(virus["papers_directory"])
+        print(len(combined_counts))
+        sorted_combined_counts = sort_by_highest_value(combined_counts)
+        print_combined_counts_tuple_list(sorted_combined_counts)
+        print()
+
+    # combined_counts = combine_counts(hsv1_data["counted_file"])
+    # sorted_combined_counts = sort_by_highest_value(combined_counts)
+    # print_combined_counts_tuple_list(sorted_combined_counts)
+    # print_combined_counts_tuple_list(normalize_combined_counts_tuple_list(sorted_combined_counts))

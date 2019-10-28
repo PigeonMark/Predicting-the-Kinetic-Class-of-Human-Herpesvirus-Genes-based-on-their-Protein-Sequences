@@ -65,7 +65,8 @@ def sort_by_highest_total(dict):
 
 def sort_by_highest_value(dict):
     return sorted(dict.items(), key=lambda keyword: max(keyword[1].get('late', 0), keyword[1].get('early', 0),
-                                                        keyword[1].get('immediate-early', 0)), reverse=True)
+                                                        keyword[1].get('immediate-early', 0),
+                                                        keyword[1].get('early-late', 0)), reverse=True)
 
 
 def print_combined_counts(combined_index):
@@ -82,6 +83,18 @@ def print_combined_counts_tuple_list(combined_index):
         for phase, count in phases.items():
             print(f'\t{phase}: {count}')
         print()
+
+
+def normalize_combined_counts_tuple_list(combined_index):
+    normalized_list = []
+    for kw, phases in combined_index:
+        total = sum([phases.get("late", 0), phases.get("early", 0), phases.get("immediate-early", 0),
+                     phases.get("early-late", 0)])
+        normalized_list.append((kw, {"immediate-early": phases.get("immediate-early", 0) / float(total),
+                                     "early": phases.get("early", 0) / float(total),
+                                     "early-late": phases.get("early-late", 0) / float(total),
+                                     "late": phases.get("late", 0) / float(total)}))
+    return normalized_list
 
 
 def copy_selected_papers(paper_list_path, directory_name):
