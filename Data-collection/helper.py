@@ -1,6 +1,7 @@
 from shutil import copy
 import os
 import pickle
+import csv
 
 
 def print_index(index, length_only=False):
@@ -102,6 +103,16 @@ def copy_selected_papers(paper_list_path, directory_name):
     paper_list = pickle.load(open(paper_list_path, "rb"))
     for paper in paper_list:
         copy(paper, "Output/selectedPapers/" + directory_name)
+
+
+def print_combined_counts_to_csv(combined_index, file_n):
+    with open(file_n[:-2] + '.csv', "w") as csv_file:
+        csv_writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        csv_writer.writerow(['Keyword', 'Immediate-early', 'Early', 'Early-late', 'Late'])
+        for kw, phases in combined_index:
+            csv_writer.writerow(
+                [kw, phases.get('immediate-early', 0), phases.get('early', 0), phases.get('early-late', 0),
+                 phases.get('late', 0)])
 
 
 if __name__ == "__main__":

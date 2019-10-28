@@ -190,9 +190,9 @@ if __name__ == "__main__":
 
     viruses_data = get_viruses_data()
 
-    for virus in viruses_data:
-        near_occ_index, sorted_index, i_file = count_near_occurrences(virus["papers_directory"],
-                                                                      virus["keywords_file"], 10)
+    # for virus in viruses_data:
+    #     near_occ_index, sorted_index, i_file = count_near_occurrences(virus["papers_directory"],
+    #                                                                   virus["keywords_file"], 10)
 
     for virus in viruses_data:
         combined_counts = combine_counts(virus["counted_file"])
@@ -201,6 +201,8 @@ if __name__ == "__main__":
         sorted_combined_counts = sort_by_highest_value(combined_counts)
         print_combined_counts_tuple_list(sorted_combined_counts)
         print()
+
+        print_combined_counts_to_csv(sorted_combined_counts, virus["counted_file"])
 
     # combined_counts = combine_counts(hsv1_data["counted_file"])
     # sorted_combined_counts = sort_by_highest_value(combined_counts)
