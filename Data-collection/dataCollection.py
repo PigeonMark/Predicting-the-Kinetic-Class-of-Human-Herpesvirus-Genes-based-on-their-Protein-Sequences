@@ -201,8 +201,8 @@ if __name__ == "__main__":
         sorted_combined_counts = sort_by_highest_value(combined_counts)
         print_combined_counts_tuple_list(sorted_combined_counts)
         print()
-
-        print_combined_counts_to_csv(sorted_combined_counts, virus["counted_file"])
+        normalized_combined_counts = normalize_combined_counts_tuple_list(sorted_combined_counts)
+        print_combined_counts_to_csv(sorted_combined_counts, normalized_combined_counts, virus["counted_file"])
 
     # combined_counts = combine_counts(hsv1_data["counted_file"])
     # sorted_combined_counts = sort_by_highest_value(combined_counts)
