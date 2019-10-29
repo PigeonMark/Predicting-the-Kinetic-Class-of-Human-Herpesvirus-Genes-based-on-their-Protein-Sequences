@@ -8,21 +8,35 @@ from input_data import HSV_1_KEYWORDS, HSV_2_KEYWORDS, VZV_KEYWORDS, EBV_KEYWORD
 
 
 def open_xml_paper(filename):
+    """
+    Open xml file and strip xml tags of the form <tag>...</tag>
+    :param filename:    The xml file to open
+    :return:            The string of the stripped xml file
+    """
     with open(filename, "r") as f:
         no_tags = re.sub('<[^<]+>', " ", f.read())
         return no_tags
 
 
 def select_papers_in_topic(directory_list, keywords, output_file, stop_early=False):
+    """
+    Iterate through all papers in the directory list and select the papers containing one of the keywords
+    :param directory_list:  The list of directories containing papers
+    :param keywords:        The list of keywords (alternate names for a virus) to search for
+    :param output_file:     The name of the pickle file containing a list of the path's to the selected papers
+    :param stop_early:      Stop after 50 000 papers if True, do all papers if False
+    :return:                Returns nothing, writes list of papers to pickle file
+    """
     papers_list = set()
     papers_done = 0
     t_start = time.time()
-
+    # Iterate over all directories, subdirectories and papers
     for directory in directory_list:
         for subdir in os.listdir(directory):
             directory2 = os.path.join(directory, subdir)
             for filename in os.listdir(directory2):
 
+                # Some administrative things
                 papers_done += 1
                 if papers_done % 1000 == 0:
                     print(f'{len(papers_list)} of {papers_done} selected in {time.time() - t_start} seconds')
@@ -37,16 +51,18 @@ def select_papers_in_topic(directory_list, keywords, output_file, stop_early=Fal
 
                         return
 
+                # The real work: open the xml paper, set to lowercase and remove punctuation
                 file = open_xml_paper(os.path.join(directory2, filename))
                 content = " ".join(
                     file.lower().translate(str.maketrans(PUNCTUATION, ' ' * len(PUNCTUATION), '')).split())
-
+                # Check if one of the keywords occurs in the paper text
                 for word in keywords:
                     if word in content:
                         papers_list.add(os.path.join(directory2, filename))
                         break
 
     t_end = time.time()
+    # Write to pickle file
     pickle.dump(papers_list, open("Output/selectedPapers/" + output_file, "wb"))
 
     print(f'Number of papers selected: {len(papers_list)}')

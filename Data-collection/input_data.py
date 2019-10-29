@@ -1,10 +1,11 @@
-
+"""
+Possible punctuation
+"""
 PUNCTUATION = "!\"#$%&'()*+,./:;<=>?@[\\]^_`{|}~"  # adapted from string.punctuation (removed '-')
 
 """
 The input data used to count the near occurrences for each virus
 """
-
 hsv1_data = {
     "name": "HSV 1",
     "keywords_file": "keywords_10298.csv",
@@ -40,9 +41,8 @@ hcmv_data = {
     "counted_file": "Output/countingResults/hcmv_all_20191025-173918_keywords_10359.csv_10.p"
 }
 
-
 """
-The input data
+The different phases
 """
 MAIN_PHASES = ['immediate-early', 'early', 'early-late', 'late-early', 'late']
 
@@ -57,11 +57,9 @@ alpha = [
     '&alpha;'
 ]
 
-
 """
 A list of alternative names for each virus to search in the papers
 """
-
 HSV_1_KEYWORDS = [
     "hsv-1",
     "hsv1",
@@ -139,4 +137,4 @@ def get_phases_data():
 
 
 if __name__ == "__main__":
-    get_phases_data()
+    pass

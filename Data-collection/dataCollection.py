@@ -91,26 +91,41 @@ def add_to_near_occ_dict(to_add, keyword, phase, near_occ_dic):
 
 
 def count_near_occ_by_distance(word, kw_i, distance, content, near_occ_dict):
+    """
+    Searches for phases within distance of a found keyword in a paper, a phase at distance x of a keyword will get 1/x
+    added to its score for that keyword
+    :param word:            The keyword found
+    :param kw_i:            The index of the keyword found
+    :param distance:        The maximum distance to search for phases
+    :param content:         The content text
+    :param near_occ_dict:   The dictionary to add the scores to
+    :return:                Nothing, function changes the near_occ_dict
+    """
+
     main_phases, alternate_names, all_phases = get_phases_data()
 
     # For each phase
     for phase in all_phases:
-
+        # For each distance
         for dis in range(1, distance + 1):
+            # Get the indices of the text of distance 'dis'
             i1 = kw_i - dis
             i2 = kw_i + dis
 
+            # Calculate the possible score to add
             to_add = 1 / float(dis)
 
+            # For the indices 'dis' before and 'dis' after the keyword
             for i in [i1, i2]:
+                # Check that the indices are still in the content
+                # Check if the word on distance 'dis' of the keyword is a phase
                 if 0 <= i < len(content) and content[i] == phase:
                     # Special case for immediate early
                     if phase == 'early' and content[i - 1] == "immediate":
                         add_to_near_occ_dict(to_add, word, "immediate-early", near_occ_dict)
-
+                    # Map 'ie' to 'immediate-early'
                     elif phase == 'ie':
                         add_to_near_occ_dict(to_add, word, "immediate-early", near_occ_dict)
-
                     # Normal case for all other phases
                     else:
                         add_to_near_occ_dict(to_add, word, phase, near_occ_dict)
@@ -146,6 +161,7 @@ def count_near_occurrences(papers_directory, keywords_file, distance):
         for kw_i, word in enumerate(content):
             # If the word is a keyword
             if word in all_keys:
+                # Check for phases within distance
                 count_near_occ_by_distance(word, kw_i, distance, content, near_occ_dict)
 
         if not len(near_occ_dict) == 0:
@@ -164,6 +180,12 @@ def count_near_occurrences(papers_directory, keywords_file, distance):
 
 
 def combine_counts(index_file):
+    """
+    Combine the counts of all the papers
+    :param index_file:  The file containing the counting results per paper
+    :return:            A dictionary containing the combined counts:
+                        {'kw1': {'phase1': score1, 'phase2': score2, ...}, 'kw2': ...}
+    """
     index, sorted_index = pickle.load(open(index_file, "rb"))
 
     combined_counts = {}
