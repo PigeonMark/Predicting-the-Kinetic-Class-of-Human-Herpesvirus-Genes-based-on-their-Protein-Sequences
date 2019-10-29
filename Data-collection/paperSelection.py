@@ -20,8 +20,8 @@ def select_papers_in_topic(directory_list, keywords, output_file, stop_early=Fal
 
     for directory in directory_list:
         for subdir in os.listdir(directory):
-            dir = os.path.join(directory, subdir)
-            for filename in os.listdir(dir):
+            directory2 = os.path.join(directory, subdir)
+            for filename in os.listdir(directory2):
 
                 papers_done += 1
                 if papers_done % 1000 == 0:
@@ -37,13 +37,13 @@ def select_papers_in_topic(directory_list, keywords, output_file, stop_early=Fal
 
                         return
 
-                file = open_xml_paper(os.path.join(dir, filename))
+                file = open_xml_paper(os.path.join(directory2, filename))
                 content = " ".join(
                     file.lower().translate(str.maketrans(PUNCTUATION, ' ' * len(PUNCTUATION), '')).split())
 
                 for word in keywords:
                     if word in content:
-                        papers_list.add(os.path.join(dir, filename))
+                        papers_list.add(os.path.join(directory2, filename))
                         break
 
     t_end = time.time()

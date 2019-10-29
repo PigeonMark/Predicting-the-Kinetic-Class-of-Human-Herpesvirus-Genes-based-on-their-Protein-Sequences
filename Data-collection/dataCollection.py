@@ -1,4 +1,3 @@
-import csv
 import ast
 
 from input_data import get_viruses_data, get_phases_data, PUNCTUATION
@@ -103,29 +102,18 @@ def count_near_occ_by_distance(word, kw_i, distance, content, near_occ_dict):
 
             to_add = 1 / float(dis)
 
-            if 0 <= i1 < len(content) and content[i1] == phase:
-                # Special case for immediate early
-                if phase == 'early' and content[i1 - 1] == "immediate":
-                    add_to_near_occ_dict(to_add, word, "immediate-early", near_occ_dict)
+            for i in [i1, i2]:
+                if 0 <= i < len(content) and content[i] == phase:
+                    # Special case for immediate early
+                    if phase == 'early' and content[i - 1] == "immediate":
+                        add_to_near_occ_dict(to_add, word, "immediate-early", near_occ_dict)
 
-                elif phase == 'ie':
-                    add_to_near_occ_dict(to_add, word, "immediate-early", near_occ_dict)
+                    elif phase == 'ie':
+                        add_to_near_occ_dict(to_add, word, "immediate-early", near_occ_dict)
 
-                # Normal case for all other phases
-                else:
-                    add_to_near_occ_dict(to_add, word, phase, near_occ_dict)
-
-            if 0 <= i2 < len(content) and content[i2] == phase:
-                # Special case for immediate early
-                if phase == 'early' and content[i2 - 1] == "immediate":
-                    add_to_near_occ_dict(to_add, word, "immediate-early", near_occ_dict)
-
-                elif phase == 'ie':
-                    add_to_near_occ_dict(to_add, word, "immediate-early", near_occ_dict)
-
-                # Normal case for all other phases
-                else:
-                    add_to_near_occ_dict(to_add, word, phase, near_occ_dict)
+                    # Normal case for all other phases
+                    else:
+                        add_to_near_occ_dict(to_add, word, phase, near_occ_dict)
 
 
 def count_near_occurrences(papers_directory, keywords_file, distance):
@@ -186,8 +174,7 @@ def combine_counts(index_file):
     return combined_counts
 
 
-if __name__ == "__main__":
-
+def main():
     viruses_data = get_viruses_data()
 
     # for virus in viruses_data:
@@ -204,7 +191,6 @@ if __name__ == "__main__":
         normalized_combined_counts = normalize_combined_counts_tuple_list(sorted_combined_counts)
         print_combined_counts_to_csv(sorted_combined_counts, normalized_combined_counts, virus["counted_file"])
 
-    # combined_counts = combine_counts(hsv1_data["counted_file"])
-    # sorted_combined_counts = sort_by_highest_value(combined_counts)
-    # print_combined_counts_tuple_list(sorted_combined_counts)
-    # print_combined_counts_tuple_list(normalize_combined_counts_tuple_list(sorted_combined_counts))
+
+if __name__ == "__main__":
+    main()

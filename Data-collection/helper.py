@@ -34,8 +34,8 @@ def print_score_dict(score_dict):
         print()
 
 
-def print_near_occ_dict(dict):
-    for k, v in dict.items():
+def print_near_occ_dict(dictionary):
+    for k, v in dictionary.items():
         print(f'{k}')
         for k2, v2 in v.items():
             print(f'\t{k2}: ')
@@ -43,8 +43,8 @@ def print_near_occ_dict(dict):
                 print(f'\t\t{k3}: {v3}')
 
 
-def print_sorted_occ_dict(sorted, index):
-    for fn, tot in sorted:
+def print_sorted_occ_dict(sorted_dictionary, index):
+    for fn, tot in sorted_dictionary:
         print(f'{fn}')
         for k2, v2 in index[fn].items():
             print(f'\t{k2}: ')
@@ -52,11 +52,11 @@ def print_sorted_occ_dict(sorted, index):
                 print(f'\t\t{k3}: {v3}')
 
 
-def sort_by_highest_total(dict):
+def sort_by_highest_total(dictionary):
     tot_dict = {}
-    for fn, prots in dict.items():
+    for fn, keywords in dictionary.items():
         tot = 0
-        for prot, phases in prots.items():
+        for keyword, phases in keywords.items():
             for phase, count in phases.items():
                 tot += count
         tot_dict[fn] = tot
@@ -64,10 +64,10 @@ def sort_by_highest_total(dict):
     return sorted_dict
 
 
-def sort_by_highest_value(dict):
-    return sorted(dict.items(), key=lambda keyword: max(keyword[1].get('late', 0), keyword[1].get('early', 0),
-                                                        keyword[1].get('immediate-early', 0),
-                                                        keyword[1].get('early-late', 0)), reverse=True)
+def sort_by_highest_value(dictionary):
+    return sorted(dictionary.items(), key=lambda keyword: max(keyword[1].get('late', 0), keyword[1].get('early', 0),
+                                                              keyword[1].get('immediate-early', 0),
+                                                              keyword[1].get('early-late', 0)), reverse=True)
 
 
 def print_combined_counts(combined_index):
