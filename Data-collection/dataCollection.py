@@ -1,9 +1,10 @@
 import ast
 import networkx as nx
-
+import nltk
 from input_data import get_viruses_data, get_phases_data, PUNCTUATION
 from paperSelection import open_xml_paper
 from helper import *
+from time import time
 
 
 def build_keywords(keywords_file):
@@ -154,7 +155,10 @@ def count_near_occurrences(papers_directory, keywords_file, distance):
 
         # Open file and make a lowercase list without punctuation and whitespace
         file = open_xml_paper(os.path.join(papers_directory, filename))
-        content = file.lower().translate(str.maketrans('\n\t', '  ', PUNCTUATION)).split()
+
+        stop_words = set(nltk.corpus.stopwords.words('english'))
+        words = file.lower().translate(str.maketrans('\n\t', '  ', PUNCTUATION)).split()
+        content = [word for word in words if word not in stop_words and not word.isdigit()]
 
         near_occ_dict = {}
 
@@ -234,9 +238,9 @@ def combine_counts_alternate_names(index, paper_counts, keywords_file):
 def main():
     viruses_data = get_viruses_data()
 
-    # for virus in viruses_data:
-    #     near_occ_index, sorted_index, i_file = count_near_occurrences(virus["papers_directory"],
-    #                                                                   virus["keywords_file"], 10)
+    for virus in viruses_data:
+        near_occ_index, sorted_index, i_file = count_near_occurrences(virus["papers_directory"],
+                                                                      virus["keywords_file"], 10)
 
     for virus in viruses_data:
         combined_counts, paper_counts = combine_counts_all_papers(virus["counted_file"])
