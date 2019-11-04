@@ -1,4 +1,5 @@
 import ast
+import networkx as nx
 
 from input_data import get_viruses_data, get_phases_data, PUNCTUATION
 from paperSelection import open_xml_paper
@@ -68,7 +69,7 @@ def build_keywords(keywords_file):
             all_keys.add(val)
 
     keywords_csv.close()
-    return all_keys, name_to_headers
+    return all_keys, name_to_headers, header_row
 
 
 def add_to_near_occ_dict(to_add, keyword, phase, near_occ_dic):
@@ -142,7 +143,7 @@ def count_near_occurrences(papers_directory, keywords_file, distance):
                                 is stored
     """
 
-    all_keys, name_to_headers = build_keywords(keywords_file)
+    all_keys, name_to_headers, header_row = build_keywords(keywords_file)
 
     index = {}
     file_count = 0
@@ -179,7 +180,7 @@ def count_near_occurrences(papers_directory, keywords_file, distance):
     return index, sorted_i, "Output/countingResults/%s_%s_%i.p" % (papers_directory_name, keywords_file, distance)
 
 
-def combine_counts(index_file):
+def combine_counts_all_papers(index_file):
     """
     Combine the counts of all the papers
     :param index_file:  The file containing the counting results per paper
@@ -189,11 +190,45 @@ def combine_counts(index_file):
     index, sorted_index = pickle.load(open(index_file, "rb"))
 
     combined_counts = {}
+    paper_counts = {}
     for paper, proteins in index.items():
         for protein, phases in proteins.items():
             for phase, count in phases.items():
                 add_to_near_occ_dict(count, protein, phase, combined_counts)
-    return combined_counts
+                add_to_near_occ_dict(1, protein, phase, paper_counts)
+    return combined_counts, paper_counts
+
+
+def combine_counts_alternate_names(index, paper_counts, keywords_file):
+    all_keys, name_to_headers, header_row = build_keywords(keywords_file)
+    G = nx.DiGraph()
+
+    for kw in index.keys():
+        for hdr in name_to_headers[kw]:
+            if kw != hdr:
+                G.add_edge(kw, hdr)
+
+    connectedComponents = list(nx.connected_component_subgraphs(nx.Graph(G)))
+    cc_dict = {}
+    for i, connectedComponent in enumerate(connectedComponents):
+        component_name = ""
+        for node in connectedComponent.nodes():
+            if len(component_name) == 0:
+                component_name += node
+            else:
+                component_name += "_" + node
+        cc_dict[component_name] = list(connectedComponent.nodes())
+
+    combined_counts = {}
+    combined_paper_counts = {}
+    for group_name, kws in cc_dict.items():
+        for kw in kws:
+            if kw in index:
+                for phase, count in index[kw].items():
+                    add_to_near_occ_dict(count, group_name, phase, combined_counts)
+                    add_to_near_occ_dict(paper_counts[kw][phase], group_name, phase, combined_paper_counts)
+
+    return combined_counts, combined_paper_counts
 
 
 def main():
@@ -204,14 +239,19 @@ def main():
     #                                                                   virus["keywords_file"], 10)
 
     for virus in viruses_data:
-        combined_counts = combine_counts(virus["counted_file"])
+        combined_counts, paper_counts = combine_counts_all_papers(virus["counted_file"])
+        combined_counts_an, paper_counts_an = combine_counts_alternate_names(combined_counts, paper_counts,
+                                                                             virus["keywords_file"])
         print(virus["name"])
         print(len(combined_counts))
-        sorted_combined_counts = sort_by_highest_value(combined_counts)
-        print_combined_counts_tuple_list(sorted_combined_counts)
+        print(len(combined_counts_an))
+
+        sorted_combined_counts_an = sort_by_highest_value(combined_counts_an)
+        # print_combined_counts_tuple_list(sorted_combined_counts)
         print()
-        normalized_combined_counts = normalize_combined_counts_tuple_list(sorted_combined_counts)
-        print_combined_counts_to_csv(sorted_combined_counts, normalized_combined_counts, virus["counted_file"])
+        normalized_combined_counts_an = normalize_combined_counts_tuple_list(sorted_combined_counts_an)
+        print_combined_counts_to_csv(sorted_combined_counts_an, normalized_combined_counts_an, paper_counts_an,
+                                     virus["counted_file"])
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from dataCollection import combine_counts
+from dataCollection import combine_counts_all_papers
 
 
 def plot_combined_counts(combined_counts):
@@ -34,7 +34,7 @@ def plot_combined_counts(combined_counts):
 if __name__ == "__main__":
     i_file = "hsv-1_comm_use.I-N_20191021-173402.p_keywords_10298.csv_10.p"
 
-    combined_counts = combine_counts(i_file)
+    combined_counts = combine_counts_all_papers(i_file)
 
     plot_combined_counts(combined_counts)
 
