@@ -238,11 +238,27 @@ def combine_counts_alternate_names(index, paper_counts, keywords_file):
 def main():
     viruses_data = get_viruses_data()
 
-    for virus in viruses_data:
-        near_occ_index, sorted_index, i_file = count_near_occurrences(virus["papers_directory"],
-                                                                      virus["keywords_file"], 10)
+    # for virus in viruses_data:
+    #     near_occ_index, sorted_index, i_file = count_near_occurrences(virus["papers_directory"],
+    #                                                                   virus["keywords_file"], 10)
+
+    # index, sorted_index = pickle.load(open(viruses_data[4]["counted_file"], "rb"))
+    #
+    # for paper, kws in index.items():
+    #     if 'us11' in kws:
+    #         print(paper)
+    #
+    #         # # Open file and make a lowercase list without punctuation and whitespace
+    #         # file = open_xml_paper(os.path.join(viruses_data[4]["papers_directory"], paper))
+    #         #
+    #         # stop_words = set(nltk.corpus.stopwords.words('english'))
+    #         # words = file.lower().translate(str.maketrans('\n\t' + PUNCTUATION, ' ' * (len(PUNCTUATION) + 2), '')).split()
+    #         # content = [word for word in words if word not in stop_words and not word.isdigit()]
+    #         # print(content)
+    # exit(1)
 
     for virus in viruses_data:
+
         combined_counts, paper_counts = combine_counts_all_papers(virus["counted_file"])
         combined_counts_an, paper_counts_an = combine_counts_alternate_names(combined_counts, paper_counts,
                                                                              virus["keywords_file"])

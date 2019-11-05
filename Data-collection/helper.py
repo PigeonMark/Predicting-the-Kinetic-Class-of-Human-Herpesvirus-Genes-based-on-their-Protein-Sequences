@@ -109,13 +109,13 @@ def print_combined_counts_to_csv(combined_index, ncc, paper_counts, file_n):
     with open(file_n[:-2] + '.csv', "w") as csv_file:
         csv_writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         csv_writer.writerow(
-            ['Keyword', 'Immediate-early', '# papers', 'Early', '# papers', 'Early-late', '# papers', 'Late',
-             '# papers', '', 'Immediate-early (%)', 'Early (%)', 'Early-late (%)', 'Late (%)'])
+            ['Keyword', 'Immediate-early', '#', '    ', 'Early', '#', '    ', 'Early-late', '#', '    ', 'Late',
+             '#', '        ', 'Immediate-early (%)', 'Early (%)', 'Early-late (%)', 'Late (%)'])
         for i, (kw, p) in enumerate(combined_index):
             csv_writer.writerow(
-                [kw, f"{p.get('immediate-early', 0):.2f}", f"{paper_counts[kw].get('immediate-early', 0)}",
-                 f"{p.get('early', 0):.2f}", f"{paper_counts[kw].get('early', 0)}",
-                 f"{p.get('early-late', 0):.2f}", f"{paper_counts[kw].get('early-late', 0)}",
+                [kw, f"{p.get('immediate-early', 0):.2f}", f"{paper_counts[kw].get('immediate-early', 0)}", '',
+                 f"{p.get('early', 0):.2f}", f"{paper_counts[kw].get('early', 0)}", '',
+                 f"{p.get('early-late', 0):.2f}", f"{paper_counts[kw].get('early-late', 0)}", '',
                  f"{p.get('late', 0):.2f}", f"{paper_counts[kw].get('late', 0)}", "",
                  f"{ncc[i][1].get('immediate-early', 0) * 100:.2f}", f"{ncc[i][1].get('early', 0) * 100:.2f}",
                  f"{ncc[i][1].get('early-late', 0) * 100:.2f}", f"{ncc[i][1].get('late', 0) * 100:.2f}"])
