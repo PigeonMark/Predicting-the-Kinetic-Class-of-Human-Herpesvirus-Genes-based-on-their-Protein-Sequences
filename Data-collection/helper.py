@@ -1,7 +1,7 @@
-from shutil import copy
+import csv
 import os
 import pickle
-import csv
+from shutil import copy
 
 
 def print_index(index, length_only=False):

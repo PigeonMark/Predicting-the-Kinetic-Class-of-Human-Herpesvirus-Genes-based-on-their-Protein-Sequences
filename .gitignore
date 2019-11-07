@@ -9,3 +9,5 @@ Data-collection/Output/selectedPapers/
 !Data-collection/Output/selectedPapers/*.p
 
 .~lock*
+
+Data-collection/Output/sequences/

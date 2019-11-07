@@ -1,10 +1,12 @@
 import ast
+
 import networkx as nx
 import nltk
+
+import proteinQuerying
+from helper import *
 from input_data import get_viruses_data, get_phases_data, PUNCTUATION
 from paperSelection import open_xml_paper
-from helper import *
-from time import time
 
 
 def build_keywords(keywords_file):
@@ -216,7 +218,7 @@ def combine_counts_alternate_names(index, paper_counts, keywords_file):
     cc_dict = {}
     for i, connectedComponent in enumerate(connectedComponents):
         component_name = ""
-        for node in connectedComponent.nodes():
+        for node in sorted(connectedComponent.nodes()):
             if len(component_name) == 0:
                 component_name += node
             else:
@@ -263,16 +265,19 @@ def main():
         combined_counts_an, paper_counts_an = combine_counts_alternate_names(combined_counts, paper_counts,
                                                                              virus["keywords_file"])
         print(virus["name"])
-        print(len(combined_counts))
-        print(len(combined_counts_an))
+        # print(len(combined_counts))
+        # print(len(combined_counts_an))
+        #
+        # sorted_combined_counts_an = sort_by_highest_value(combined_counts_an)
+        # # print_combined_counts_tuple_list(sorted_combined_counts)
+        # print()
+        # normalized_combined_counts_an = normalize_combined_counts_tuple_list(sorted_combined_counts_an)
+        # print_combined_counts_to_csv(sorted_combined_counts_an, normalized_combined_counts_an, paper_counts_an,
+        #                              virus["counted_file"])
 
-        sorted_combined_counts_an = sort_by_highest_value(combined_counts_an)
-        # print_combined_counts_tuple_list(sorted_combined_counts)
-        print()
-        normalized_combined_counts_an = normalize_combined_counts_tuple_list(sorted_combined_counts_an)
-        print_combined_counts_to_csv(sorted_combined_counts_an, normalized_combined_counts_an, paper_counts_an,
-                                     virus["counted_file"])
-
+        # proteinQuerying.get_protein_sequences_batch(combined_counts_an, virus["keywords_file"])
+        proteinQuerying.read_protein_sequences_batch(combined_counts_an, virus["keywords_file"])
+        exit(1)
 
 if __name__ == "__main__":
     main()
