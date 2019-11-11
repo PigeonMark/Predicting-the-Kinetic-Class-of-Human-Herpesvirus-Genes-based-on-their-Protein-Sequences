@@ -48,7 +48,7 @@ def compute_features(data):
         A pandas `DataFrame` in which rows contain feature information on a TCR beta sequence.
     """
 
-    features_list = []
+    features_list = [data['protein_group'], data['protein']]
 
     # non-positional features (i.e. over the whole sequence)
 
@@ -76,46 +76,61 @@ def compute_features(data):
     features_list.append(data['sequence'].apply(
         lambda sequence: electrochem.pI(sequence)).to_frame().rename(columns={'sequence': 'pI'}))
 
-    # positional features (i.e. localized at a specific amino acid position)
-    pos_aa, pos_basicity, pos_hydro, pos_helicity, pos_mutation, pos_pI = [[] for _ in range(6)]
-    for sequence in data['sequence']:
-        length = parser.length(sequence)
-        start_pos = -1 * (length // 2)
-        pos_range = list(range(start_pos, start_pos + length)) if length % 2 == 1 else \
-            list(range(start_pos, 0)) + list(range(1, start_pos + length + 1))
+    # # positional features (i.e. localized at a specific amino acid position)
+    # pos_aa, pos_basicity, pos_hydro, pos_helicity, pos_mutation, pos_pI = [[] for _ in range(6)]
+    # for sequence in data['sequence']:
+    #     length = parser.length(sequence)
+    #     start_pos = -1 * (length // 2)
+    #     pos_range = list(range(start_pos, start_pos + length)) if length % 2 == 1 else \
+    #         list(range(start_pos, 0)) + list(range(1, start_pos + length + 1))
+    #
+    #     pos_aa.append({'pos_{}_{}'.format(pos, aa): 1 for pos, aa in zip(pos_range, sequence)})
+    #     pos_basicity.append({'pos_{}_basicity'.format(pos): basicity[aa]
+    #                          for pos, aa in zip(pos_range, sequence)})
+    #     pos_hydro.append({'pos_{}_hydrophobicity'.format(pos): hydrophobicity[aa]
+    #                       for pos, aa in zip(pos_range, sequence)})
+    #     pos_helicity.append({'pos_{}_helicity'.format(pos): helicity[aa]
+    #                          for pos, aa in zip(pos_range, sequence)})
+    #     pos_mutation.append({'pos_{}_mutation_stability'.format(pos): mutation_stability[aa]
+    #                          for pos, aa in zip(pos_range, sequence)})
+    #
+    #     pos_pI.append({'pos_{}_pI'.format(pos): electrochem.pI(aa)
+    #                    for pos, aa in zip(pos_range, sequence)})
+    #
+    # features_list.append(pd.DataFrame.from_records(pos_aa).fillna(0))
+    # features_list.append(pd.DataFrame.from_records(pos_basicity).fillna(0))
+    # features_list.append(pd.DataFrame.from_records(pos_hydro).fillna(0))
+    # features_list.append(pd.DataFrame.from_records(pos_helicity).fillna(0))
+    # features_list.append(pd.DataFrame.from_records(pos_mutation).fillna(0))
+    # features_list.append(pd.DataFrame.from_records(pos_pI).fillna(0))
 
-        pos_aa.append({'pos_{}_{}'.format(pos, aa): 1 for pos, aa in zip(pos_range, sequence)})
-        pos_basicity.append({'pos_{}_basicity'.format(pos): basicity[aa]
-                             for pos, aa in zip(pos_range, sequence)})
-        pos_hydro.append({'pos_{}_hydrophobicity'.format(pos): hydrophobicity[aa]
-                          for pos, aa in zip(pos_range, sequence)})
-        pos_helicity.append({'pos_{}_helicity'.format(pos): helicity[aa]
-                             for pos, aa in zip(pos_range, sequence)})
-        pos_mutation.append({'pos_{}_mutation_stability'.format(pos): mutation_stability[aa]
-                             for pos, aa in zip(pos_range, sequence)})
-
-        pos_pI.append({'pos_{}_pI'.format(pos): electrochem.pI(aa)
-                       for pos, aa in zip(pos_range, sequence)})
-
-    features_list.append(pd.DataFrame.from_records(pos_aa).fillna(0))
-    features_list.append(pd.DataFrame.from_records(pos_basicity).fillna(0))
-    features_list.append(pd.DataFrame.from_records(pos_hydro).fillna(0))
-    features_list.append(pd.DataFrame.from_records(pos_helicity).fillna(0))
-    features_list.append(pd.DataFrame.from_records(pos_mutation).fillna(0))
-    features_list.append(pd.DataFrame.from_records(pos_pI).fillna(0))
+    features_list.append(data['label'])
 
     return pd.concat(features_list, axis=1)
 
 
-if __name__ == "__main__":
+def save_features(features: pd.DataFrame, output_file):
+    features.to_csv(f'Output/features/{output_file}.csv')
+
+
+def main():
     viruses_data = get_viruses_data()
-    hsv1_data = viruses_data[0]
 
-    combined_counts, paper_counts = dataCollection.combine_counts_all_papers(hsv1_data["counted_file"])
-    combined_counts_an, paper_counts_an = dataCollection.combine_counts_alternate_names(combined_counts, paper_counts,
-                                                                                        hsv1_data["keywords_file"])
+    for virus in viruses_data:
+        combined_counts, paper_counts = dataCollection.combine_counts_all_papers(virus["counted_file"])
+        combined_counts_an, paper_counts_an = dataCollection.combine_counts_alternate_names(combined_counts,
+                                                                                            paper_counts,
+                                                                                            virus["keywords_file"])
 
-    df, sequence_dict = proteinQuerying.read_protein_sequences_batch(combined_counts_an, hsv1_data["keywords_file"])
+        df, sequence_dict = proteinQuerying.read_protein_sequences_batch(combined_counts_an, virus["keywords_file"])
 
-    features = compute_features(df)
-    print(len(list(features.columns)))
+        features = compute_features(df)
+        print(len(list(features.columns)))
+        print(list(features.columns))
+        print(features)
+
+        save_features(features, f'{virus["name"]}_features')
+
+
+if __name__ == "__main__":
+    main()
