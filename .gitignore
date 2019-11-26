@@ -1,13 +1,15 @@
 
 \.idea/
 
-Data-collection/Data/
+DataCollection/Data/
 
-Data-collection/__pycache__/
+DataCollection/__pycache__/
 
-Data-collection/Output/selectedPapers/
+DataCollection/Output/selectedPapers/
 !Data-collection/Output/selectedPapers/*.p
 
 .~lock*
 
-Data-collection/Output/sequences/
+Classification/Output/sequences/
+
+__pycache__/
