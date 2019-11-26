@@ -15,11 +15,11 @@ def t_sne(features):
 
 def pca(features):
     X = features[features.columns[2:-1]]
-    pca = PCA(n_components=2)
+    pca = PCA()
 
     pca.fit(X)
     results = pca.transform(X)
-    return results
+    return results, pca
 
 
 def plot(features, pca_results, filename, method):
@@ -35,8 +35,8 @@ def plot(features, pca_results, filename, method):
             l_x.append(pca_results[i][0])
             l_y.append(pca_results[i][1])
 
-    alpha = 0.2
-    size = 50
+    alpha = 0.4
+    size = 30
     fig, ax = plt.subplots()
     ax.scatter(ie_x, ie_y, c='b', s=size, alpha=alpha, label='immediate_early', edgecolors='none')
     ax.scatter(e_x, e_y, c='r', s=size, alpha=alpha, label='early', edgecolors='none')
@@ -56,10 +56,14 @@ def main():
         tsne_results = t_sne(features)
         plot(features, tsne_results, virus["name"], 'TSNE')
 
-        pca_results = pca(features)
+        pca_results, pca_obj = pca(features)
+
+        print(f'Singular values for {virus["name"]}:\n{pca_obj.singular_values_}\n')
+
         plot(features, pca_results, virus['name'], 'PCA')
 
-    pca_results = pca(combined_features)
+    pca_results, pca_obj = pca(combined_features)
+    print(f'Singular values for combination of all herpes viruses:\n{pca_obj.singular_values_}\n')
     tsne_results = t_sne(combined_features)
     plot(combined_features, pca_results, 'all_herpes_viruses', 'PCA')
     plot(combined_features, tsne_results, 'all_herpes_viruses', 'TSNE')
