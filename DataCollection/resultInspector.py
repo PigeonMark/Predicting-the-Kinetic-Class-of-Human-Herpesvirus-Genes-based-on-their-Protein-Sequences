@@ -6,7 +6,7 @@ import nltk
 
 from DataCollection.dataCollection import combine_counts_all_papers, combine_counts_alternate_names
 from DataCollection.input_data import get_viruses_data, PUNCTUATION
-from helper import print_debug_gene, sort_by_highest_value, normalize_combined_counts_tuple_list
+from helper import print_debug_gene
 from DataCollection.paperSelection import open_xml_paper
 
 
@@ -159,41 +159,50 @@ def hcmv_inspection():
         get_info_by_gene(viruses_data[4], gene)
 
 
-def check_by_manual_list(virus_data, sheet_name, time_col, id_col):
+def check_with_manual_xlsx():
     manual_xlsx = openpyxl.load_workbook("DataCollection/Data/herpes_lifecycle.xlsx")
-    hhv1_sheet = manual_xlsx[sheet_name]
+    out_xlsx = openpyxl.Workbook()
 
-    combined_counts, paper_counts = combine_counts_all_papers(virus_data["counted_file"])
-    combined_counts_an, paper_counts_an = combine_counts_alternate_names(combined_counts, paper_counts,
-                                                                         virus_data["keywords_file"])
-    for row in hhv1_sheet.iter_rows(min_row=4, max_row=200, max_col=12):
-        if row[time_col].value is not None:
-            print(row[id_col].value)
-            found = False
-            for kws, phases in combined_counts_an.items():
-                kws_lst = kws.split('_')
-                if row[id_col].value.lower() in kws_lst:
-                    found = True
-                    max_phase = max(phases.items(), key=operator.itemgetter(1))[0]
-                    if max_phase == 'late' and row[time_col].value == 'late':
-                        print('late, correct')
-                    elif max_phase == 'early' and row[time_col].value == 'early':
-                        print('early, correct')
-                    elif max_phase == 'immediate-early' and row[time_col].value == 'IE':
-                        print('immediate-early, correct')
-                    else:
-                        print('text-mining:', max_phase, ', manual check:', row[time_col].value, ', incorrect')
-                        print(kws, phases)
-            if not found:
-                print('Not found in text mining')
-            print()
+    viruses_data = get_viruses_data()
+    viruses = {'HHV-1': (viruses_data[0], 1, 2),
+               'Epstein-barr': (viruses_data[3], 1, 2),
+               'VZV': (viruses_data[2], 11, 1)}
+    for virus, (virus_data, time_col, id_col) in viruses.items():
+        in_sheet = manual_xlsx[virus]
+        out_sheet = out_xlsx.create_sheet(virus)
+        out_sheet.append(
+            ('Protein', 'Calculated time', 'Manual time', 'Correct?', 'IE-score', 'E-score', 'L-score', 'Reason'))
+
+        combined_counts, paper_counts = combine_counts_all_papers(virus_data["counted_file"])
+        combined_counts_an, paper_counts_an = combine_counts_alternate_names(combined_counts, paper_counts,
+                                                                             virus_data["keywords_file"])
+        for row in in_sheet.iter_rows(min_row=4, max_row=200, max_col=12):
+            if row[time_col].value is not None:
+                max_phase = 'NOT FOUND'
+                result = 'incorrect'
+                phases_ = {}
+                for kws, phases in combined_counts_an.items():
+                    kws_lst = kws.split('_')
+                    if row[id_col].value.lower() in kws_lst:
+                        max_phase = max(phases.items(), key=operator.itemgetter(1))[0]
+                        phases_ = phases
+                        if max_phase == 'late' and row[time_col].value == 'late':
+                            result = 'correct'
+                        elif max_phase == 'early' and row[time_col].value == 'early':
+                            result = 'correct'
+                        elif max_phase == 'immediate-early' and row[time_col].value == 'IE':
+                            result = 'correct'
+
+                out_sheet.append(
+                    (row[id_col].value, max_phase, row[time_col].value, result, phases_.get('immediate-early', 0),
+                     phases_.get('early', 0), phases_.get('late', 0)))
+
+    out_xlsx.remove_sheet(out_xlsx['Sheet'])
+    out_xlsx.save('DataCollection/Data/verification.xlsx')
 
 
 def main():
-    viruses_data = get_viruses_data()
-    check_by_manual_list(viruses_data[0], 'HHV-1', 1, 2)
-    check_by_manual_list(viruses_data[3], 'Epstein-barr', 1, 2)
-    check_by_manual_list(viruses_data[2], 'VZV', 11, 1)
+    check_with_manual_xlsx()
 
 
 if __name__ == "__main__":
