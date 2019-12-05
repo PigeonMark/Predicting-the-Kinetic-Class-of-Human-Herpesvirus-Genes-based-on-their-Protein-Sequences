@@ -107,6 +107,8 @@ def vzv_inspection():
         'orf10',
         # (1.69): fout, gebruik van afkorting (L) voor echte phase, en heel vaak in combinatie met IE genes gebruikt
         'orf65',  # (2.2): correct
+        'orf29',
+        'dbp',
     ]
     for gene in gene_lst:
         get_info_by_gene(viruses_data[2], gene)
@@ -202,7 +204,8 @@ def check_with_manual_xlsx():
 
 
 def main():
-    check_with_manual_xlsx()
+    vzv_inspection()
+    # check_with_manual_xlsx()
 
 
 if __name__ == "__main__":
