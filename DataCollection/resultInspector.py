@@ -126,6 +126,7 @@ def ebv_inspection():
         'bkrf2',  # (1.03): early volgens 1 paper, late volgens 2 andere
         'bbrf1',  # (1.12): correct
         'bilf2',  # (1.7): correct
+        'lmp1',
     ]
     for gene in gene_lst:
         get_info_by_gene(viruses_data[3], gene)

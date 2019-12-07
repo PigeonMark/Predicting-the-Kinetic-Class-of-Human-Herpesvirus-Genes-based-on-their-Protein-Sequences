@@ -2,9 +2,101 @@ import os
 import re
 import pickle
 import time
+import json
 
 from datetime import datetime
-from DataCollection.input_data import HSV_1_KEYWORDS, HSV_2_KEYWORDS, VZV_KEYWORDS, EBV_KEYWORDS, HCMV_KEYWORDS, PUNCTUATION
+from shutil import copy
+from DataCollection.input_data import PUNCTUATION
+
+
+def print_status(done, t_start):
+    done += 1
+    if done % 100 == 0:
+        print(f'{done} papers done in {time.time() - t_start} seconds')
+    return done
+
+
+class Selector:
+    def __init__(self, config_filepath, test=False):
+        self.directory_list = None
+        self.viruses = None
+        self.test = test
+        self.selected = {}
+        self.read_config(config_filepath)
+
+    def read_config(self, config_filepath):
+        with open(config_filepath) as config_file:
+            config = json.load(config_file)
+            self.directory_list = config["directory_list"]
+            self.viruses = config["viruses"]
+
+            for virus in self.viruses:
+                self.selected[virus["name"]] = set()
+
+    def check_stop_early(self, stop_early, done, t_start):
+        if stop_early and done == 50000:
+            t_end = time.time()
+            # Write to pickle file
+            pickle.dump(self.selected,
+                        open(f'DataCollection/Output/selected_test.p', "wb"))
+
+            for virus_name, selected_lst in self.selected.items():
+                print(f'{virus_name}: {len(selected_lst)}')
+            print(f'Ended in {t_end - t_start} seconds')
+
+            return True
+        return False
+
+    def search_in_paper(self, filepath):
+        # The real work: open the xml paper, set to lowercase and remove punctuation
+        file = open_xml_paper(filepath)
+        content = " ".join(
+            file.lower().translate(str.maketrans(PUNCTUATION, ' ' * len(PUNCTUATION), '')).split())
+
+        viruses_found = []
+        for virus in self.viruses:
+            for alt_name in virus["alternate_names"]:
+                if alt_name in content:
+                    viruses_found.append(virus["name"])
+                    break
+        return viruses_found
+
+    def select(self, stop_early=False):
+        done = 0
+        t_start = time.time()
+        # Iterate over all directories, subdirectories and papers
+        for directory in self.directory_list:
+            for subdir in os.listdir(directory):
+                subdir_path = os.path.join(directory, subdir)
+                for filename in os.listdir(subdir_path):
+                    done = print_status(done, t_start)
+                    if self.check_stop_early(stop_early, done, t_start):
+                        return
+                    filepath = os.path.join(subdir_path, filename)
+                    viruses_found = self.search_in_paper(filepath)
+                    for virus_name in viruses_found:
+                        self.selected[virus_name].add(filepath)
+
+        t_end = time.time()
+        # Write to pickle file
+        pickle.dump(self.selected,
+                    open(f'DataCollection/Output/selected.p', "wb"))
+
+        print(f'Ended in {t_end - t_start} seconds')
+
+    def select_from_pickle(self):
+        if self.test:
+            self.selected = pickle.load(open("DataCollection/Output/selected_test.p", "rb"))
+        else:
+            self.selected = pickle.load(open("DataCollection/Output/selected_test.p", "rb"))
+
+    def selected_to_folder(self):
+        for virus_name, papers in self.selected.items():
+            for paper in papers:
+                if self.test:
+                    copy(paper, "DataCollection/Output/selected_papers_test/")
+                else:
+                    copy(paper, "DataCollection/Output/selected_papers/")
 
 
 def open_xml_paper(filename):
@@ -23,105 +115,8 @@ def open_xml_paper(filename):
         return no_tags
 
 
-def select_papers_in_topic(directory_list, keywords, output_file, stop_early=False):
-    """
-    Iterate through all papers in the directory list and select the papers containing one of the keywords
-    :param directory_list:  The list of directories containing papers
-    :param keywords:        The list of keywords (alternate names for a virus) to search for
-    :param output_file:     The name of the pickle file containing a list of the path's to the selected papers
-    :param stop_early:      Stop after 50 000 papers if True, do all papers if False
-    :return:                Returns nothing, writes list of papers to pickle file
-    """
-    papers_list = set()
-    papers_done = 0
-    t_start = time.time()
-    # Iterate over all directories, subdirectories and papers
-    for directory in directory_list:
-        for subdir in os.listdir(directory):
-            directory2 = os.path.join(directory, subdir)
-            for filename in os.listdir(directory2):
-
-                # Some administrative things
-                papers_done += 1
-                if papers_done % 1000 == 0:
-                    print(f'{len(papers_list)} of {papers_done} selected in {time.time() - t_start} seconds')
-
-                if stop_early:
-                    if papers_done == 50000:
-                        t_end = time.time()
-                        pickle.dump(papers_list, open(output_file, "wb"))
-
-                        print(f'Number of papers selected: {len(papers_list)}')
-                        print(f'Ended in {t_end - t_start} seconds')
-
-                        return
-
-                # The real work: open the xml paper, set to lowercase and remove punctuation
-                file = open_xml_paper(os.path.join(directory2, filename))
-                content = " ".join(
-                    file.lower().translate(str.maketrans(PUNCTUATION, ' ' * len(PUNCTUATION), '')).split())
-                # Check if one of the keywords occurs in the paper text
-                for word in keywords:
-                    if word in content:
-                        papers_list.add(os.path.join(directory2, filename))
-                        break
-
-    t_end = time.time()
-    # Write to pickle file
-    pickle.dump(papers_list, open("Output/selectedPapers/" + output_file, "wb"))
-
-    print(f'Number of papers selected: {len(papers_list)}')
-    print(f'Ended in {t_end - t_start} seconds')
-
-
-def select_hsv1():
-    directory_list = ["Data/comm_use.A-B/", "Data/comm_use.C-H/", "Data/comm_use.I-N/", "Data/comm_use.O-Z/",
-                      "Data/non_comm_use.A-B/", "Data/non_comm_use.C-H/", "Data/non_comm_use.I-N/",
-                      "Data/non_comm_use.O-Z/"]
-
-    select_papers_in_topic(directory_list, HSV_1_KEYWORDS,
-                           "hsv1_all_%s.p" % datetime.now().strftime("%Y%m%d-%H%M%S"))
-
-
-def select_hsv2():
-    directory_list = ["Data/comm_use.A-B/", "Data/comm_use.C-H/", "Data/comm_use.I-N/", "Data/comm_use.O-Z/",
-                      "Data/non_comm_use.A-B/", "Data/non_comm_use.C-H/", "Data/non_comm_use.I-N/",
-                      "Data/non_comm_use.O-Z/"]
-
-    select_papers_in_topic(directory_list, HSV_2_KEYWORDS,
-                           "hsv2_all_%s.p" % datetime.now().strftime("%Y%m%d-%H%M%S"))
-
-
-def select_vzv():
-    directory_list = ["Data/comm_use.A-B/", "Data/comm_use.C-H/", "Data/comm_use.I-N/", "Data/comm_use.O-Z/",
-                      "Data/non_comm_use.A-B/", "Data/non_comm_use.C-H/", "Data/non_comm_use.I-N/",
-                      "Data/non_comm_use.O-Z/"]
-
-    select_papers_in_topic(directory_list, VZV_KEYWORDS,
-                           "vzv_all_%s.p" % datetime.now().strftime("%Y%m%d-%H%M%S"))
-
-
-def select_ebv():
-    directory_list = ["Data/comm_use.A-B/", "Data/comm_use.C-H/", "Data/comm_use.I-N/", "Data/comm_use.O-Z/",
-                      "Data/non_comm_use.A-B/", "Data/non_comm_use.C-H/", "Data/non_comm_use.I-N/",
-                      "Data/non_comm_use.O-Z/"]
-
-    select_papers_in_topic(directory_list, EBV_KEYWORDS,
-                           "ebv_all_%s.p" % datetime.now().strftime("%Y%m%d-%H%M%S"))
-
-
-def select_hcmv():
-    directory_list = ["Data/comm_use.A-B/", "Data/comm_use.C-H/", "Data/comm_use.I-N/", "Data/comm_use.O-Z/",
-                      "Data/non_comm_use.A-B/", "Data/non_comm_use.C-H/", "Data/non_comm_use.I-N/",
-                      "Data/non_comm_use.O-Z/"]
-
-    select_papers_in_topic(directory_list, HCMV_KEYWORDS,
-                           "hcmv_all_%s.p" % datetime.now().strftime("%Y%m%d-%H%M%S"))
-
-
 if __name__ == "__main__":
-    select_hsv1()
-    # select_hsv2()
-    # select_vzv()
-    # select_ebv()
-    # select_hcmv()
+    test_selector = Selector("DataCollection/config/test_selection_config.json", test=True)
+    # test_selector.select(stop_early=True)
+    test_selector.select_from_pickle()
+    test_selector.selected_to_folder()

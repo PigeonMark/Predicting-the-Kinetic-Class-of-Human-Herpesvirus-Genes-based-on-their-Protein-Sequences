@@ -177,7 +177,6 @@ def count_near_occurrences(papers_directory, keywords_file, distance):
     for filename in os.listdir(papers_directory):
 
         # Open file and make a lowercase list without punctuation and whitespace
-        # TODO: remove references first
         file = open_xml_paper(os.path.join(papers_directory, filename))
 
         stop_words = set(nltk.corpus.stopwords.words('english'))

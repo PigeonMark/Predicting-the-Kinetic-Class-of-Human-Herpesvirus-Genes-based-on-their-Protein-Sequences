@@ -13,3 +13,5 @@ DataCollection/Output/selectedPapers/
 Classification/Output/sequences/
 
 __pycache__/
+
+DataCollection/Output/selected_papers_test/
