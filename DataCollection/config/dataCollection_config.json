@@ -1,0 +1,22 @@
+[
+  {
+    "name": "HSV 1",
+    "keywords_file": "keywords_10298.csv"
+  },
+  {
+    "name": "HSV 2",
+    "keywords_file": "keywords_10310.csv"
+  },
+  {
+    "name": "Varicella zoster virus",
+    "keywords_file": "keywords_10335.csv"
+  },
+  {
+    "name": "Epstein-Barr virus",
+    "keywords_file": "keywords_10376.csv"
+  },
+  {
+    "name": "Human cytomegalovirus",
+    "keywords_file": "keywords_10359.csv"
+  }
+]
