@@ -50,7 +50,7 @@ def hsv1_inspection():
 
     get_info_by_gene(viruses_data[0], 'ul6')  # correct
     get_info_by_gene(viruses_data[0], 'ul46')  # correct
-    get_info_by_gene(viruses_data[0], 'ul26')  # correct
+    get_info_by_gene(viruses_data[0], 'ul26')  # fout! early in HCMV
     get_info_by_gene(viruses_data[0], 'ul13')  # correct
 
     get_info_by_gene(viruses_data[0],
@@ -59,6 +59,13 @@ def hsv1_inspection():
                      'ul15')  # Duidelijke score maar afkomstig uit slechts 1 paper, wel correct resultaat
     get_info_by_gene(viruses_data[0],
                      'ul16')  # Duidelijke score maar afkomstig uit slechts 1 paper, wel correct resultaat
+
+    get_info_by_gene(viruses_data[0], 'ul34')  # fout door paper over bovine herpesvirus 1
+
+    get_info_by_gene(viruses_data[0], 'ul44')  # early in hcmv, early/late volgens bepaalde paper
+
+    get_info_by_gene(viruses_data[0], 'ul33')  # IE in Bovine herpes virus
+    get_info_by_gene(viruses_data[0], 'ul21')  # IE in bovine herpes virus
 
 
 def hsv2_inspection():
@@ -127,6 +134,13 @@ def ebv_inspection():
         'bbrf1',  # (1.12): correct
         'bilf2',  # (1.7): correct
         'lmp1',
+        'bmrf2',
+        'bfrf2',
+        'bnrf1',
+        'bglf4',
+        'bkrf4',
+        'bblf1',
+        'bdlf4'
     ]
     for gene in gene_lst:
         get_info_by_gene(viruses_data[3], gene)
@@ -167,9 +181,10 @@ def check_with_manual_xlsx():
     out_xlsx = openpyxl.Workbook()
 
     viruses_data = get_viruses_data()
-    viruses = {'HHV-1': (viruses_data[0], 1, 2),
-               'Epstein-barr': (viruses_data[3], 1, 2),
-               'VZV': (viruses_data[2], 11, 1)}
+    viruses = {'HHV-1': (viruses_data[0], 28, 2),
+               'Epstein-barr': (viruses_data[3], 30, 2),
+               # 'VZV': (viruses_data[2], 11, 1)
+               }
     for virus, (virus_data, time_col, id_col) in viruses.items():
         in_sheet = manual_xlsx[virus]
         out_sheet = out_xlsx.create_sheet(virus)
@@ -179,7 +194,7 @@ def check_with_manual_xlsx():
         combined_counts, paper_counts = combine_counts_all_papers(virus_data["counted_file"])
         combined_counts_an, paper_counts_an = combine_counts_alternate_names(combined_counts, paper_counts,
                                                                              virus_data["keywords_file"])
-        for row in in_sheet.iter_rows(min_row=4, max_row=200, max_col=12):
+        for row in in_sheet.iter_rows(min_row=4, max_row=200, max_col=50):
             if row[time_col].value is not None:
                 max_phase = 'NOT FOUND'
                 result = 'incorrect'
@@ -193,7 +208,7 @@ def check_with_manual_xlsx():
                             result = 'correct'
                         elif max_phase == 'early' and row[time_col].value == 'early':
                             result = 'correct'
-                        elif max_phase == 'immediate-early' and row[time_col].value == 'IE':
+                        elif max_phase == 'immediate-early' and row[time_col].value == 'ie':
                             result = 'correct'
 
                 out_sheet.append(
@@ -205,7 +220,7 @@ def check_with_manual_xlsx():
 
 
 def main():
-    vzv_inspection()
+    ebv_inspection()
     # check_with_manual_xlsx()
 
 
