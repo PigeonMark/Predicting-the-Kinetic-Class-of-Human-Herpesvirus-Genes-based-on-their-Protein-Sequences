@@ -2,6 +2,8 @@ from numpy import mean, std
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import GaussianNB
+from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier
 import pandas as pd
 from DataCollection.input_data import get_viruses_data
 import helper
@@ -24,15 +26,8 @@ def classification(data, classifier):
 
         classifier.fit(x_train, y_train)
         scores.append(classifier.score(x_test, y_test))
+    print(classifier.feature_importances_)
     return mean(scores), std(scores)
-
-
-def rf_classification(data):
-    return classification(data, RandomForestClassifier())
-
-
-def nb_classification(data):
-    return classification(data, GaussianNB())
 
 
 if __name__ == "__main__":
@@ -43,17 +38,25 @@ if __name__ == "__main__":
         features = helper.read_csv_data(f"Classification/Output/features/{virus['name']}_features.csv")
         combined_features = pd.concat([combined_features, features], ignore_index=True)
 
+    classifiers = {
+        "Random forest": RandomForestClassifier(),
+        "Naive Bayes": GaussianNB(),
+        "SVM": SVC(),
+        "KNN": KNeighborsClassifier()
+    }
+
     for phase in ['immediate-early', 'early', 'late']:
-        selected = select_one_label(combined_features, phase)
-        scores_rf = rf_classification(selected)
-        scores_nb = nb_classification(selected)
         print(f'Classifying only {phase}:')
-        print(f'\tRandom forest:\n\t\tmean score: {scores_rf[0]}\n\t\tSTD: {scores_rf[1]}')
-        print(f'\tNaive Bayes:\n\t\tmean score: {scores_nb[0]}\n\t\tSTD: {scores_nb[1]}')
+
+        selected = select_one_label(combined_features, phase)
+
+        for name, classifier in classifiers.items():
+            scores = classification(selected, classifier)
+            print(f'\t{name}:\n\t\tmean score: {scores[0]}\n\t\tSTD: {scores[1]}')
+
         print()
 
-    scores_rf = rf_classification(combined_features)
-    scores_nb = nb_classification(combined_features)
     print(f'Multilabel classification:')
-    print(f'\tRandom forest:\n\t\tmean score: {scores_rf[0]}\n\t\tSTD: {scores_rf[1]}')
-    print(f'\tNaive Bayes:\n\t\tmean score: {scores_nb[0]}\n\t\tSTD: {scores_nb[1]}')
+    for name, classifier in classifiers.items():
+        scores = classification(combined_features, classifier)
+        print(f'\t{name}:\n\t\tmean score: {scores[0]}\n\t\tSTD: {scores[1]}')
