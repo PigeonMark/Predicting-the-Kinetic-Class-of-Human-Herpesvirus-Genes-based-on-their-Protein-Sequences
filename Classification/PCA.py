@@ -19,19 +19,22 @@ def t_sne(features):
     return results
 
 
-def pca(features):
+def pca(features, n_components):
     X = features[features.columns[2:-1]]
 
     std_scaler = StandardScaler()
-    pca = PCA()
+    pca = PCA(n_components=n_components)
 
     scaled_X = std_scaler.fit_transform(X)
 
     results = pca.fit_transform(scaled_X)
+    results = pd.concat([features[features.columns[0:2]], pd.DataFrame(results), features[features.columns[-1]]], axis=1)
+
     return results, pca
 
 
 def plot(features, pca_results, filename, method):
+    # Wont probably work because of changes in pca()
     ie_x, ie_y, e_x, e_y, l_x, l_y = ([], [], [], [], [], [])
     for i, feat in features.iterrows():
         if feat['label'] == 'immediate-early':
@@ -64,6 +67,9 @@ def plot(features, pca_results, filename, method):
 
 
 def main():
+
+    # Wont probably work because of changes in pca()
+
     combined_features = pd.DataFrame()
 
     for virus in get_viruses_data():
