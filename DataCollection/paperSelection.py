@@ -4,9 +4,8 @@ import pickle
 import time
 import json
 
-from datetime import datetime
 from shutil import copy
-from DataCollection.input_data import PUNCTUATION
+from input_data import PUNCTUATION
 
 
 def print_status(done, t_start):
@@ -38,7 +37,7 @@ class Selector:
             t_end = time.time()
             # Write to pickle file
             pickle.dump(self.selected,
-                        open(f'DataCollection/Output/selected_test.p', "wb"))
+                        open(f'Output/selected_test.p', "wb"))
 
             for virus_name, selected_lst in self.selected.items():
                 print(f'{virus_name}: {len(selected_lst)}')
@@ -81,26 +80,26 @@ class Selector:
         # Write to pickle file
         if self.test:
             pickle.dump(self.selected,
-                        open(f'DataCollection/Output/selected_test.p', "wb"))
+                        open(f'Output/selected_test.p', "wb"))
         else:
             pickle.dump(self.selected,
-                        open(f'DataCollection/Output/selected.p', "wb"))
+                        open(f'Output/selected.p', "wb"))
 
         print(f'Ended in {t_end - t_start} seconds')
 
     def select_from_pickle(self):
         if self.test:
-            self.selected = pickle.load(open("DataCollection/Output/selected_test.p", "rb"))
+            self.selected = pickle.load(open("Output/selected_test.p", "rb"))
         else:
-            self.selected = pickle.load(open("DataCollection/Output/selected.p", "rb"))
+            self.selected = pickle.load(open("Output/selected.p", "rb"))
 
     def selected_to_folder(self):
         for virus_name, papers in self.selected.items():
             for paper in papers:
                 if self.test:
-                    copy(paper, "DataCollection/Output/selected_papers_test/")
+                    copy(paper, "Output/selected_papers_test/")
                 else:
-                    copy(paper, "DataCollection/Output/selected_papers/")
+                    copy(paper, "Output/selected_papers/")
 
 
 def open_xml_paper(filename):
@@ -120,11 +119,11 @@ def open_xml_paper(filename):
 
 
 if __name__ == "__main__":
-    # test_selector = Selector("DataCollection/config/test_selection_config.json", test=True)
+    # test_selector = Selector("config/test_selection_config.json", test=True)
     # # test_selector.select(stop_early=True)
     # test_selector.select_from_pickle()
     # test_selector.selected_to_folder()
 
-    selector = Selector("DataCollection/config/selection_config.json")
+    selector = Selector("config/selection_config.json")
     selector.select()
     selector.selected_to_folder()
