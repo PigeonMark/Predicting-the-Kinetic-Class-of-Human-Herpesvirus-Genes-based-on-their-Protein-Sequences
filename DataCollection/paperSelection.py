@@ -79,8 +79,12 @@ class Selector:
 
         t_end = time.time()
         # Write to pickle file
-        pickle.dump(self.selected,
-                    open(f'DataCollection/Output/selected.p', "wb"))
+        if self.test:
+            pickle.dump(self.selected,
+                        open(f'DataCollection/Output/selected_test.p', "wb"))
+        else:
+            pickle.dump(self.selected,
+                        open(f'DataCollection/Output/selected.p', "wb"))
 
         print(f'Ended in {t_end - t_start} seconds')
 
@@ -88,7 +92,7 @@ class Selector:
         if self.test:
             self.selected = pickle.load(open("DataCollection/Output/selected_test.p", "rb"))
         else:
-            self.selected = pickle.load(open("DataCollection/Output/selected_test.p", "rb"))
+            self.selected = pickle.load(open("DataCollection/Output/selected.p", "rb"))
 
     def selected_to_folder(self):
         for virus_name, papers in self.selected.items():
@@ -116,7 +120,11 @@ def open_xml_paper(filename):
 
 
 if __name__ == "__main__":
-    test_selector = Selector("DataCollection/config/test_selection_config.json", test=True)
-    # test_selector.select(stop_early=True)
-    test_selector.select_from_pickle()
-    test_selector.selected_to_folder()
+    # test_selector = Selector("DataCollection/config/test_selection_config.json", test=True)
+    # # test_selector.select(stop_early=True)
+    # test_selector.select_from_pickle()
+    # test_selector.selected_to_folder()
+
+    selector = Selector("DataCollection/config/selection_config.json")
+    selector.select()
+    selector.selected_to_folder()
