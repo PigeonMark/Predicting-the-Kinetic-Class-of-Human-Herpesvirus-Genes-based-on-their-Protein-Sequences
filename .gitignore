@@ -7,6 +7,7 @@ DataCollection/__pycache__/
 
 DataCollection/Output/selectedPapers/
 !Data-collection/Output/selectedPapers/*.p
+DataCollection/Output/selected_papers/
 
 .~lock*
 

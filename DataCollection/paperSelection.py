@@ -33,7 +33,7 @@ class Selector:
                 self.selected[virus["name"]] = set()
 
     def check_stop_early(self, stop_early, done, t_start):
-        if stop_early and done == 50000:
+        if stop_early and done == 5000:
             t_end = time.time()
             # Write to pickle file
             pickle.dump(self.selected,
@@ -119,11 +119,11 @@ def open_xml_paper(filename):
 
 
 if __name__ == "__main__":
-    test_selector = Selector("config/test_selection_config.json", test=True)
-    test_selector.select(stop_early=True)
+    # test_selector = Selector("config/test_selection_config.json", test=True)
+    # test_selector.select(stop_early=True)
     # test_selector.select_from_pickle()
-    test_selector.selected_to_folder()
+    # test_selector.selected_to_folder()
 
-    # selector = Selector("config/selection_config.json")
-    # selector.select()
-    # selector.selected_to_folder()
+    selector = Selector("config/selection_config.json")
+    selector.select()
+    selector.selected_to_folder()
