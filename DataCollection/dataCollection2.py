@@ -5,6 +5,9 @@ import os
 import nltk
 import pickle
 
+from util import open_xml_paper
+from input_data import PUNCTUATION
+
 
 def build_keywords(keywords_file):
     """
@@ -75,6 +78,8 @@ def build_keywords(keywords_file):
 
 class DataCollector:
     def __init__(self, config_filepath):
+        self.viruses = []
+        self.selected_papers = {}
         self.keywords = {}
         self.index = {}
         self.debug_index = {}
@@ -84,6 +89,7 @@ class DataCollector:
         with open(config_filepath) as config_file:
             config = json.load(config_file)
             for virus in config:
+                self.viruses.append(virus["name"])
                 self.keywords[virus["name"]] = build_keywords(virus["keywords_file"])
 
     def add_to_near_occ_dict(self, to_add, keyword, phase, near_occ_dic):
