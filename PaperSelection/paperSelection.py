@@ -61,9 +61,12 @@ class Selector:
             file.lower().translate(str.maketrans(self.punctuation, ' ' * len(self.punctuation), '')).split())
 
         viruses_found = []
+
         for virus in self.viruses:
             for alt_name in self.alternate_names[virus]:
                 if alt_name in content:
+                    if content.count('bovine') > content.count('human'):
+                        print(filepath)
                     viruses_found.append(virus)
                     break
         return viruses_found
