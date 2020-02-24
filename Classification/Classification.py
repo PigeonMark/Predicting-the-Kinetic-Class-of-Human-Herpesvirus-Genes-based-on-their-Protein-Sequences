@@ -1,7 +1,5 @@
 from sklearn.metrics import plot_precision_recall_curve, balanced_accuracy_score
 
-import helper
-
 import numpy as np
 import pandas as pd
 
@@ -197,11 +195,16 @@ def balanced_acc(combined_features, adjusted):
         plt.savefig(f'Output/Balanced_accuracy/BAcc.png', dpi=900)
 
 
+def read_csv_data(filename):
+    data = pd.read_csv(filename, index_col=0)
+    return data
+
+
 def main():
     combined_features = pd.DataFrame()
 
     for virus in get_viruses_data():
-        features = helper.read_csv_data(f"Output/features/{virus['name']}_features.csv")
+        features = read_csv_data(f"Output/features/{virus['name']}_features.csv")
         combined_features = pd.concat([combined_features, features], ignore_index=True)
 
     # plot_ROC_PR(combined_features)
