@@ -15,7 +15,6 @@ def main():
     parser.add_argument('-e', '--extract', action='store_true')
 
     args = parser.parse_args()
-    print(args)
 
     if args.select:
         if args.test:

@@ -9,8 +9,8 @@ from Util import open_xml_paper
 
 def print_status(done, t_start):
     done += 1
-    if done % 100 == 0:
-        print(f'{done} papers done in {time.time() - t_start} seconds')
+    if done % 1000 == 0:
+        print(f'{done} done (in {time.time() - t_start:.2f} seconds)')
     return done
 
 
@@ -73,6 +73,8 @@ class Selector:
         t_start = time.time()
         # Iterate over all directories, subdirectories and papers
         for directory in self.input_directory_list:
+            total = sum([len(os.listdir(os.path.join(directory, subdir))) for subdir in os.listdir(directory)])
+            print(f"Selecting papers from {directory} ({total} in total)")
             for subdir in os.listdir(directory):
                 subdir_path = os.path.join(directory, subdir)
                 for filename in os.listdir(subdir_path):
@@ -83,12 +85,13 @@ class Selector:
                     viruses_found = self.search_in_paper(filepath)
                     for virus_name in viruses_found:
                         self.selected[virus_name].add(filepath)
+            print(f"Selecting from {directory} done (in {time.time() - t_start:.2f} seconds)")
 
         t_end = time.time()
         # Write to pickle file
         pickle.dump(self.selected, open(self.output_file, "wb"))
 
-        print(f'Ended in {t_end - t_start} seconds')
+        print(f'All done (in {t_end - t_start:.2f} seconds)')
 
     def select_from_pickle(self):
         self.selected = pickle.load(open(self.output_file, "rb"))
