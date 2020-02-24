@@ -5,7 +5,7 @@ import json
 
 from shutil import copy
 from input_data import PUNCTUATION
-from util import open_xml_paper
+from Util.util import open_xml_paper
 
 
 def print_status(done, t_start):
@@ -103,7 +103,7 @@ class Selector:
 
 
 if __name__ == "__main__":
-    # test_selector = Selector("config/test_selection_config.json", test=True)
+    # test_selector = Selector("config/selection_config.json", test=True)
     # test_selector.select(stop_early=True)
     # test_selector.select_from_pickle()
     # test_selector.selected_to_folder()

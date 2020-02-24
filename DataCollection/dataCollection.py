@@ -5,10 +5,11 @@ import nltk
 from helper import *
 from DataCollection.input_data import get_viruses_data, get_phases_data, PUNCTUATION
 from DataCollection.paperSelection import open_xml_paper
-from Classification import proteinQuerying
+# from Classification import proteinQuerying
+from Util.util import filename_from_path
 
 
-def build_keywords(keywords_file):
+def build_keywords(keywords_file, from_classification=False):
     """
     Reads a csv file containing the keywords of a certain tax-id.
 
@@ -18,7 +19,10 @@ def build_keywords(keywords_file):
     """
 
     # Open and read the csv file, make it a list of rows
-    keywords_csv = open("DataCollection/Data/keywords/" + keywords_file, "r", newline='')
+    if from_classification:
+        keywords_csv = open("../DataCollection/Data/keywords/" + keywords_file, "r", newline='')
+    else:
+        keywords_csv = open("Data/keywords/" + keywords_file, "r", newline='')
     csv_reader = csv.reader(keywords_csv)
     csv_list = list(csv_reader)
 
@@ -155,7 +159,7 @@ def count_near_occ_by_distance(word, kw_i, distance, content, near_occ_dict, deb
                                           debug_info_dict)
 
 
-def count_near_occurrences(papers_directory, keywords_file, distance):
+def count_near_occurrences(papers_directory, file_list, keywords_file, distance, virus_name):
     """
     A function that iterates over a list of papers and counts the distances between the keywords and the phases
     :param distance:            The upper bound for the distances to take into account
@@ -171,10 +175,10 @@ def count_near_occurrences(papers_directory, keywords_file, distance):
     index = {}
     debug_index = {}
     file_count = 0
-    total_file_count = len([_ for _ in os.listdir(papers_directory)])
+    total_file_count = len(file_list)
     print(f'Counting near occurrences in {total_file_count} files')
     # For each in file in the papers_list
-    for filename in os.listdir(papers_directory):
+    for filename in file_list:
 
         # Open file and make a lowercase list without punctuation and whitespace
         file = open_xml_paper(os.path.join(papers_directory, filename))
@@ -201,13 +205,13 @@ def count_near_occurrences(papers_directory, keywords_file, distance):
             print(f'{file_count} files done ({100 * file_count / float(total_file_count):.2f}%)')
 
     sorted_i = sort_by_highest_total(index)
-    papers_directory_name = os.path.basename(os.path.normpath(papers_directory))
+    # papers_directory_name = os.path.basename(os.path.normpath(papers_directory))
     pickle.dump((index, sorted_i),
-                open("DataCollection/Output/countingResults/%s_%s_%i.p" % (papers_directory_name, keywords_file, distance), "wb"))
+                open("Output/countingResults/%s_%i.p" % (virus_name, distance), "wb"))
     pickle.dump(debug_index,
-                open("DataCollection/Output/debug_info/%s_%s_%i.p" % (papers_directory_name, keywords_file, distance), "wb"))
+                open("Output/debug_info/%s_%i.p" % (virus_name, distance), "wb"))
 
-    return index, sorted_i, "DataCollection/Output/countingResults/%s_%s_%i.p" % (papers_directory_name, keywords_file, distance)
+    return index, sorted_i, "Output/countingResults/%s_%i.p" % (virus_name, distance)
 
 
 def combine_counts_all_papers(index_file):
@@ -229,8 +233,8 @@ def combine_counts_all_papers(index_file):
     return combined_counts, paper_counts
 
 
-def combine_counts_alternate_names(index, paper_counts, keywords_file):
-    all_keys, name_to_headers, header_row = build_keywords(keywords_file)
+def combine_counts_alternate_names(index, paper_counts, keywords_file, from_classification=False):
+    all_keys, name_to_headers, header_row = build_keywords(keywords_file, from_classification)
     G = nx.DiGraph()
 
     for kw in index.keys():
@@ -264,12 +268,19 @@ def combine_counts_alternate_names(index, paper_counts, keywords_file):
 def main():
     viruses_data = get_viruses_data()
 
+    papers_list = filename_from_path(pickle.load(open("Output/selected.p", "rb")))
+    virus_name_converter = {'HSV 1': 'HSV_1', 'HSV 2': 'HSV_2', 'Varicella zoster virus': 'VZV',
+                            'Epstein-Barr virus': 'EBV', 'Human cytomegalovirus': 'HCMV'}
+
     # for virus in viruses_data:
-    #     near_occ_index, sorted_index, i_file = count_near_occurrences(virus["papers_directory"],
-    #                                                                   virus["keywords_file"], 10)
+    #     near_occ_index, sorted_index, i_file = __count_near_occurrences("Output/selected_papers",
+    #                                                                   papers_list[virus_name_converter[virus['name']]],
+    #                                                                   virus["keywords_file"], 10,
+    #                                                                   virus_name_converter[virus['name']])
 
     for virus in viruses_data:
-        combined_counts, paper_counts = combine_counts_all_papers(virus["counted_file"])
+        counted_file = f"Output/countingResults/{virus_name_converter[virus['name']]}_10.p"
+        combined_counts, paper_counts = combine_counts_all_papers(counted_file)
         combined_counts_an, paper_counts_an = combine_counts_alternate_names(combined_counts, paper_counts,
                                                                              virus["keywords_file"])
         print(virus["name"])
@@ -281,9 +292,9 @@ def main():
         print()
         normalized_combined_counts_an = normalize_combined_counts_tuple_list(sorted_combined_counts_an)
         print_combined_counts_to_csv(sorted_combined_counts_an, normalized_combined_counts_an, paper_counts_an,
-                                     virus["counted_file"])
+                                     counted_file)
 
-        proteinQuerying.get_protein_sequences_batch(combined_counts_an, virus["keywords_file"])
+        # proteinQuerying.get_protein_sequences_batch(combined_counts_an, virus["keywords_file"])
 
 
 if __name__ == "__main__":

@@ -1,0 +1,11 @@
+{
+  "general_config": "config/general.json",
+  "output_directory": "Keywords/Output/",
+  "keyword_files": {
+    "HSV_1": "Keywords/Input/keywords_10298.csv",
+    "HSV_2": "Keywords/Input/keywords_10310.csv",
+    "VZV": "Keywords/Input/keywords_10335.csv",
+    "EBV": "Keywords/Input/keywords_10376.csv",
+    "HCMV": "Keywords/Input/keywords_10359.csv"
+  }
+}

@@ -5,7 +5,7 @@ import os
 import nltk
 import pickle
 
-from util import open_xml_paper
+from Util.util import open_xml_paper
 from input_data import PUNCTUATION
 
 

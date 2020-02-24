@@ -1,0 +1,26 @@
+{
+  "general_config": "config/general.json",
+  "keywords_config": "config/keywords_config.json",
+  "min_score": 0,
+  "input_files": {
+    "HSV_1": "Counting/Output/Test/count_index/HSV_1_10.p",
+    "HSV_2": "Counting/Output/Test/count_index/HSV_2_10.p",
+    "EBV": "Counting/Output/Test/count_index/EBV_10.p",
+    "VZV": "Counting/Output/Test/count_index/VZV_10.p",
+    "HCMV": "Counting/Output/Test/count_index/HCMV_10.p"
+  },
+  "output_csv_files": {
+    "HSV_1": "Combine/Output/Test/csv/HSV_1_10.csv",
+    "HSV_2": "Combine/Output/Test/csv/HSV_2_10.csv",
+    "EBV": "Combine/Output/Test/csv/EBV_10.csv",
+    "VZV": "Combine/Output/Test/csv/VZV_10.csv",
+    "HCMV": "Combine/Output/Test/csv/HCMV_10.csv"
+  },
+  "output_raw_files": {
+    "HSV_1": "Combine/Output/Test/raw/HSV_1_10.p",
+    "HSV_2": "Combine/Output/Test/raw/HSV_2_10.p",
+    "EBV": "Combine/Output/Test/raw/EBV_10.p",
+    "VZV": "Combine/Output/Test/raw/VZV_10.p",
+    "HCMV": "Combine/Output/Test/raw/HCMV_10.p"
+  }
+}

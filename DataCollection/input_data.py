@@ -4,7 +4,7 @@ Possible punctuation
 PUNCTUATION = "!\"#$%&'()*+,./:;<=>?@[\\]^_`{|}~"  # adapted from string.punctuation (removed '-')
 
 """
-The input data used to count the near occurrences for each virus
+The input data used to count_all_viruses the near occurrences for each virus
 """
 hsv1_data = {
     "name": "HSV 1",

@@ -43,7 +43,7 @@ def plot_finish(title, filename):
     plt.ylabel('True Positive Rate')
     plt.title(title)
     plt.legend(loc="lower right")
-    plt.savefig(f"Classification/Output/{filename}", dpi=900)
+    plt.savefig(f"Output/{filename}", dpi=900)
     print(f"{filename} done")
 
 
@@ -53,7 +53,7 @@ def plot_finish_pr(title, filename):
     plt.ylabel('Precision')
     plt.title(title)
     plt.legend(loc="lower left")
-    plt.savefig(f"Classification/Output/{filename}", dpi=900)
+    plt.savefig(f"Output/{filename}", dpi=900)
     print(f"{filename} done")
 
 
@@ -141,13 +141,13 @@ class Classification:
 
 
 def plot_ROC_PR(combined_features):
-    for n_components in range(3, 15):
-        pca_results, pca_obj = pca(combined_features, n_components)
-
-        classifier = Classification(f"Random forest with PCA ({n_components} components)",
-                                    RandomForestClassifier(), pca_results)
-        classifier.plot_curve(f"ROC/RandomForest_PCA_{n_components}_components.png", "ROC")
-        classifier.plot_curve(f"PR/RandomForest_PCA_{n_components}_components.png", "PR")
+    # for n_components in range(3, 15):
+    #     pca_results, pca_obj = pca(combined_features, n_components)
+    #
+    #     classifier = Classification(f"Random forest with PCA ({n_components} components)",
+    #                                 RandomForestClassifier(), pca_results)
+    #     classifier.plot_curve(f"ROC/RandomForest_PCA_{n_components}_components.png", "ROC")
+    #     classifier.plot_curve(f"PR/RandomForest_PCA_{n_components}_components.png", "PR")
 
     classifier = Classification("Random forest", RandomForestClassifier(), combined_features)
     classifier.plot_curve("ROC/RandomForest.png", "ROC")
@@ -169,7 +169,6 @@ def balanced_acc(combined_features, adjusted):
 
     print(res)
 
-
     plt.figure()
     x_s = []
     ie = []
@@ -183,27 +182,26 @@ def balanced_acc(combined_features, adjusted):
         l.append(ress['late'][0])
         ml.append(ress['multilabel'][0])
     plt.plot(ie, '.-', label="IE")
-    plt.plot(e, '.-',label="Early")
-    plt.plot(l, '.-',label="Late")
-    plt.plot(ml, '.-',label="Multilabel")
+    plt.plot(e, '.-', label="Early")
+    plt.plot(l, '.-', label="Late")
+    plt.plot(ml, '.-', label="Multilabel")
 
     plt.xticks(np.arange(13), x_s, rotation=20)
     plt.legend()
     if adjusted:
         plt.title(f'Balanced Adjusted Accuracy with different input data')
-        plt.savefig(f'Classification/Output/Balanced_accuracy/BAcc_adjusted.png', dpi=900)
+        plt.savefig(f'Output/Balanced_accuracy/BAcc_adjusted.png', dpi=900)
 
     else:
         plt.title(f'Balanced Accuracy with different input data')
-        plt.savefig(f'Classification/Output/Balanced_accuracy/BAcc.png', dpi=900)
-
+        plt.savefig(f'Output/Balanced_accuracy/BAcc.png', dpi=900)
 
 
 def main():
     combined_features = pd.DataFrame()
 
     for virus in get_viruses_data():
-        features = helper.read_csv_data(f"Classification/Output/features/{virus['name']}_features.csv")
+        features = helper.read_csv_data(f"Output/features/{virus['name']}_features.csv")
         combined_features = pd.concat([combined_features, features], ignore_index=True)
 
     # plot_ROC_PR(combined_features)

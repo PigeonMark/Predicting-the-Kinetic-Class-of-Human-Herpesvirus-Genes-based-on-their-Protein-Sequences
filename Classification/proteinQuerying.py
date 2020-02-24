@@ -4,13 +4,14 @@ import pandas as pd
 import requests
 from Bio import SeqIO, SeqRecord
 
-from DataCollection import dataCollection
+from DataCollection.dataCollection import build_keywords
 
 
 def get_protein_sequence(uniprot_id):
-    filename = f"Classification/Output/sequences/{uniprot_id}.fasta"
+    filename = f"../Classification/Output/sequences/{uniprot_id}.fasta"
     if os.path.isfile(filename):
-        print(f'{uniprot_id}.fasta already existed')
+        # print(f'{uniprot_id}.fasta already existed')
+        pass
     else:
         r = requests.get(f"https://www.uniprot.org/uniprot/{uniprot_id}.fasta")
         f = open(filename, "w")
@@ -20,7 +21,7 @@ def get_protein_sequence(uniprot_id):
 
 
 def get_protein_sequences_batch(index, keywords_file):
-    all_keys, name_to_headers, header_row = dataCollection.build_keywords(keywords_file)
+    all_keys, name_to_headers, header_row = build_keywords(keywords_file)
 
     for kws, _ in index.items():
         kw_lst = kws.split('_')
@@ -30,7 +31,7 @@ def get_protein_sequences_batch(index, keywords_file):
 
 
 def read_protein_sequence(uniprot_id):
-    record = SeqIO.read(f"Classification/Output/sequences/{uniprot_id}.fasta", "fasta")  # type: SeqRecord
+    record = SeqIO.read(f"Output/sequences/{uniprot_id}.fasta", "fasta")  # type: SeqRecord
     evidence_level = 0
     for el in record.description.split():
         if el.startswith('PE='):
@@ -40,8 +41,8 @@ def read_protein_sequence(uniprot_id):
     return record.seq, evidence_level
 
 
-def read_protein_sequences_batch(index, keywords_file):
-    all_keys, name_to_headers, header_row = dataCollection.build_keywords(keywords_file)
+def read_protein_sequences_batch(index, keywords_file, from_classification=False):
+    all_keys, name_to_headers, header_row = build_keywords(keywords_file, from_classification)
 
     sequence_dict = {}
     df = pd.DataFrame(columns=['protein_group', 'protein', 'sequence', 'label'])
@@ -66,5 +67,5 @@ def read_protein_sequences_batch(index, keywords_file):
 
 
 if __name__ == "__main__":
-    # get_protein_sequence('P10220')
+    # save_protein_sequence('P10220')
     read_protein_sequence('P10220')

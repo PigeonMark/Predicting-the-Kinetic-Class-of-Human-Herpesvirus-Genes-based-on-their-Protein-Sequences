@@ -1,4 +1,5 @@
 import re
+import os
 
 
 def open_xml_paper(filename):
@@ -15,3 +16,13 @@ def open_xml_paper(filename):
 
         no_tags = re.sub('<[^<]+>', " ", paper)
         return no_tags
+
+
+def filename_from_path(file_list_dict):
+    new = {}
+    for virus, file_list in file_list_dict.items():
+        new_list = []
+        for file in file_list:
+            new_list.append(os.path.basename(file))
+        new[virus] = new_list
+    return new

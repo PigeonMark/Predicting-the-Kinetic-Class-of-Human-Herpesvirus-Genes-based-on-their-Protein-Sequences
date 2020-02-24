@@ -1,0 +1,16 @@
+{
+  "viruses": [
+    "HSV_1",
+    "HSV_2",
+    "VZV",
+    "EBV",
+    "HCMV"
+  ],
+  "punctuation": "!\"#$%&'()*+,./:;<=>?@[\\]^_`{|}~",
+  "phases": [
+    "immediate-early",
+    "early",
+    "late",
+    "latent"
+  ]
+}

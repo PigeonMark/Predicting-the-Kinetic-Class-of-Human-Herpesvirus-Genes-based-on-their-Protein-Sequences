@@ -1,0 +1,1 @@
+from ProteinCollecting.protein_collecting import ProteinCollector

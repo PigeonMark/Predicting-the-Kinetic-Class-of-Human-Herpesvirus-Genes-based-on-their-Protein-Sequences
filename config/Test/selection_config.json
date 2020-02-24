@@ -1,0 +1,69 @@
+{
+  "general_config": "config/general.json",
+  "output_file": "PaperSelection/Output/Test/selected.p",
+  "output_directory": "PaperSelection/Output/Test/selected_papers/",
+  "input_directory_list": [
+    "Data/comm_use.A-B/"
+  ],
+  "alternate_names": {
+    "HSV_1": [
+      "hsv-1",
+      "hsv1",
+      "human alphaherpesvirus 1",
+      "herpes simplex virus 1",
+      "human herpesvirus 1",
+      "human herpesvirus type 1",
+      "herpes simplex virus 1 hsv-1",
+      "herpes simplex virus hsv-1",
+      "herpes simplex virus type 1 hsv-1",
+      "herpes simplex virus type 1 hsv1",
+      "herpes simplex virus type-1 hsv-1"
+    ],
+    "HSV_2": [
+      "hsv-2",
+      "hsv2",
+      "hsv 2",
+      "human alphaherpesvirus 2",
+      "herpes simplex virus 2",
+      "herpes simplex virus II",
+      "human herpesvirus 2",
+      "human herpesvirus type 2",
+      "herpes simplex virus type 2",
+      "herpes simplex virus (type 2)"
+    ],
+    "VZV": [
+      "human alphaherpesvirus 3",
+      "hhv3",
+      "hhv-3",
+      "hhv 3",
+      "vzv",
+      "human herpesvirus 3",
+      "human herpes virus 3",
+      "varicella zoster virus",
+      "varicella-zoster virus"
+    ],
+    "EBV": [
+      "human gammaherpesvirus 4",
+      "epv",
+      "ebv",
+      "hhv4",
+      "hhv-4",
+      "hhv 4",
+      "epstein-barr virus",
+      "epstein barr virus",
+      "human herpesvirus 4",
+      "human herpesvirus type 4"
+    ],
+    "HCMV": [
+      "human betaherpesvirus 5",
+      "hhv5",
+      "hhv-5",
+      "hhv 5",
+      "human herpesvirus 5",
+      "human herpes virus 5",
+      "human herpesvirus type 5",
+      "human cytomegalovirus",
+      "hcmv"
+    ]
+  }
+}

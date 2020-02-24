@@ -16,3 +16,8 @@ Classification/Output/sequences/
 __pycache__/
 
 DataCollection/Output/selected_papers_test/
+/selected_papers_2020_02_17_14u_55.tar.gz
+
+Data/
+
+PaperSelection/Output/Test/selected_papers/

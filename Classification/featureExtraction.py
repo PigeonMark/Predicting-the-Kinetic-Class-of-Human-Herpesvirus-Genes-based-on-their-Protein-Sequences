@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 from pyteomics import electrochem, mass, parser
 
-from Classification import proteinQuerying
+import proteinQuerying
 from DataCollection.dataCollection import combine_counts_all_papers, combine_counts_alternate_names
 from helper import sort_by_highest_value, normalize_combined_counts_tuple_list, cut_score_data
 from DataCollection.input_data import get_viruses_data
@@ -60,7 +60,7 @@ def compute_features(data):
     # number of occurences of each amino acid
     aa_counts = pd.DataFrame.from_records(
         [parser.amino_acid_composition(sequence) for sequence in data['sequence']]).fillna(0)
-    aa_counts.columns = ['{} count'.format(column) for column in aa_counts.columns]
+    aa_counts.columns = ['{} count_all_viruses'.format(column) for column in aa_counts.columns]
     features_list.append(aa_counts)
 
     # average physico-chemical properties
@@ -111,23 +111,25 @@ def compute_features(data):
 
 
 def save_features(features: pd.DataFrame, output_file):
-    features.to_csv(f'Classification/Output/features/{output_file}.csv')
+    features.to_csv(f'Output/features/{output_file}.csv')
 
 
 def main():
     viruses_data = get_viruses_data()
+    virus_name_converter = {'HSV 1': 'HSV_1', 'HSV 2': 'HSV_2', 'Varicella zoster virus': 'VZV',
+                            'Epstein-Barr virus': 'EBV', 'Human cytomegalovirus': 'HCMV'}
 
     for virus in viruses_data:
-        combined_counts, paper_counts = combine_counts_all_papers(virus["counted_file"])
-        combined_counts_an, paper_counts_an = combine_counts_alternate_names(combined_counts,
-                                                                                            paper_counts,
-                                                                                            virus["keywords_file"])
+        counted_file = f"../DataCollection/Output/countingResults/{virus_name_converter[virus['name']]}_10.p"
+        combined_counts, paper_counts = combine_counts_all_papers(counted_file)
+        combined_counts_an, paper_counts_an = combine_counts_alternate_names(combined_counts, paper_counts,
+                                                                             virus['keywords_file'], True)
         sorted_combined_counts_an = sort_by_highest_value(combined_counts_an)
         normalized_combined_counts_an = normalize_combined_counts_tuple_list(sorted_combined_counts_an)
 
         cutted_index = cut_score_data(sorted_combined_counts_an, normalized_combined_counts_an)
 
-        df, sequence_dict = proteinQuerying.read_protein_sequences_batch(cutted_index, virus["keywords_file"])
+        df, sequence_dict = proteinQuerying.read_protein_sequences_batch(cutted_index, virus['keywords_file'], True)
 
         features = compute_features(df)
         save_features(features, f'{virus["name"]}_features')

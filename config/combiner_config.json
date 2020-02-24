@@ -1,0 +1,25 @@
+{
+  "general_config": "config/general.json",
+  "keywords_config": "config/keywords_config.json",
+  "input_files": {
+    "HSV_1": "Counting/Output/count_index/HSV_1_10.p",
+    "HSV_2": "Counting/Output/count_index/HSV_2_10.p",
+    "EBV": "Counting/Output/count_index/EBV_10.p",
+    "VZV": "Counting/Output/count_index/VZV_10.p",
+    "HCMV": "Counting/Output/count_index/HCMV_10.p"
+  },
+  "output_csv_files": {
+    "HSV_1": "Combine/Output/csv/HSV_10.csv",
+    "HSV_2": "Combine/Output/csv/HSV_10.csv",
+    "EBV": "Combine/Output/csv/EBV_10.csv",
+    "VZV": "Combine/Output/csv/VZV_10.csv",
+    "HCMV": "Combine/Output/csv/HCMV_10.csv"
+  },
+  "output_raw_files": {
+    "HSV_1": "Combine/Output/raw/HSV_10.p",
+    "HSV_2": "Combine/Output/raw/HSV_10.p",
+    "EBV": "Combine/Output/raw/EBV_10.p",
+    "VZV": "Combine/Output/raw/VZV_10.p",
+    "HCMV": "Combine/Output/raw/HCMV_10.p"
+  }
+}
