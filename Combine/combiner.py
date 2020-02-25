@@ -66,7 +66,7 @@ class Combiner:
                 if kw != hdr:
                     g.add_edge(kw, hdr)
 
-        connectedComponents = list(nx.connected_component_subgraphs(nx.Graph(g)))
+        connectedComponents = list(g.subgraph(c) for c in nx.connected_components(nx.Graph(g)))
         cc_dict = {}
         for i, connectedComponent in enumerate(connectedComponents):
             component_name = ""
