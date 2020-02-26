@@ -4,13 +4,17 @@
     "HSV_2",
     "VZV",
     "EBV",
-    "HCMV"
+    "HCMV",
+    "HHV_7"
   ],
   "punctuation": "!\"#$%&'()*+,./:;<=>?@[\\]^_`{|}~",
-  "phases": [
-    "immediate-early",
-    "early",
-    "late",
-    "latent"
-  ]
+  "phases": {
+    "immediate-early": [
+      "ie"
+    ],
+    "early": [],
+    "late": [],
+    "latent": []
+  },
+  "distance": 10
 }

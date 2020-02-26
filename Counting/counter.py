@@ -22,12 +22,12 @@ class Counter:
         with open(config_filepath) as config_file:
             config = json.load(config_file)
             self.config = config
-            self.distance = config["distance"]
             with open(config['general_config']) as general_config_file:
                 general_config = json.load(general_config_file)
                 self.viruses = general_config["viruses"]
                 self.punctuation = general_config["punctuation"]
                 self.phases = general_config["phases"]
+                self.distance = general_config["distance"]
 
             for virus in self.viruses:
                 self.keywords[virus] = KeywordBuilder(self.config['keywords_config']).get_keywords(virus)
@@ -43,9 +43,10 @@ class Counter:
         :param debug_info_dict: The dictionary to
         :return:                Nothing, function changes the near_occ_dict
         """
-
+        main_phases = list(self.phases.keys())
+        all_phases = main_phases + [phase for k, val in self.phases.items() for phase in val]
         # For each phase
-        for phase in self.phases:
+        for phase in all_phases:
             # For each distance
             for dis in range(1, self.distance + 1):
                 # Get the indices of the text of distance 'dis'
@@ -69,16 +70,15 @@ class Counter:
                             add_to_debug_dict(content[debug_range_min: debug_range_max], word, "immediate-early",
                                               debug_info_dict)
 
-                        # Map 'ie' to 'immediate-early'
-                        elif phase == 'ie':
-                            add_to_near_occ_dict(to_add, word, "immediate-early", near_occ_dict)
-                            add_to_debug_dict(content[debug_range_min: debug_range_max], word, "immediate-early",
-                                              debug_info_dict)
-
-                        # Normal case for all other phases
                         else:
-                            add_to_near_occ_dict(to_add, word, phase, near_occ_dict)
-                            add_to_debug_dict(content[debug_range_min: debug_range_max], word, phase,
+                            phase_to_add = phase
+                            if phase not in main_phases:
+                                for p in main_phases:
+                                    if phase in self.phases[p]:
+                                        phase_to_add = p
+                                        break
+                            add_to_near_occ_dict(to_add, word, phase_to_add, near_occ_dict)
+                            add_to_debug_dict(content[debug_range_min: debug_range_max], word, phase_to_add,
                                               debug_info_dict)
 
     def __count_near_occurrences(self, virus_name):

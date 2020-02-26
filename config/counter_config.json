@@ -1,7 +1,6 @@
 {
   "general_config": "config/general.json",
   "keywords_config": "config/keywords_config.json",
-  "distance": 10,
   "selected_papers_file": "PaperSelection/Output/selected.p",
   "selected_papers_directory": "PaperSelection/Output/selected_papers/",
   "output_count_directory": "Counting/Output/count_index/",

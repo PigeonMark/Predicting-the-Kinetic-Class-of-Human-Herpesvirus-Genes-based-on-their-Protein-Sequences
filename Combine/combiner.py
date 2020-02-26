@@ -22,23 +22,26 @@ class Combiner:
         self.min_score = 2.5
         self.min_diff = 0.05
         self.config = None
+        self.general_config = None
         self.__read_config(config_filepath)
 
     def __read_config(self, config_filepath):
         with open(config_filepath) as config_file:
             self.config = json.load(config_file)
-            with open(self.config['general_config']) as general_config_file:
-                general_config = json.load(general_config_file)
-                self.viruses = general_config["viruses"]
-                self.phases = general_config["phases"]
+        with open(self.config['general_config']) as general_config_file:
+            self.general_config = json.load(general_config_file)
 
-            for virus in self.viruses:
-                self.index[virus] = pickle.load(open(self.config['input_files'][virus], 'rb'))
-                self.keywords[virus] = KeywordBuilder(self.config['keywords_config']).get_keywords(virus)
-            if 'min_score' in self.config:
-                self.min_score = self.config['min_score']
-            if 'min_diff' in self.config:
-                self.min_diff = self.config['min_diff']
+        self.viruses = self.general_config["viruses"]
+        self.phases = self.general_config["phases"]
+
+        for virus in self.viruses:
+            self.index[virus] = pickle.load(
+                open(f"{self.config['input_directory']}{virus}_{self.general_config['distance']}.p", 'rb'))
+            self.keywords[virus] = KeywordBuilder(self.config['keywords_config']).get_keywords(virus)
+        if 'min_score' in self.config:
+            self.min_score = self.config['min_score']
+        if 'min_diff' in self.config:
+            self.min_diff = self.config['min_diff']
 
     def combine_counts_all_papers(self, virus_name):
         """
@@ -103,7 +106,8 @@ class Combiner:
             self.normalized[virus_name].append((kw, {phase: ph.get(phase, 0) / float(total) for phase in self.phases}))
 
     def to_csv(self, virus_name):
-        with open(self.config['output_csv_files'][virus_name], "w") as csv_file:
+        with open(f"{self.config['output_csv_directory']}{virus_name}_{self.general_config['distance']}.csv",
+                  "w") as csv_file:
             csv_writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
             csv_writer.writerow(
                 ['Keyword'] + [out for phase in self.phases for out in [phase, '#', '    ']] + [phase + " (%)" for phase
@@ -125,7 +129,8 @@ class Combiner:
     def save(self, virus_name):
         pickle.dump((self.combined_counts[virus_name], self.sorted_combined_counts[virus_name],
                      self.normalized[virus_name], self.paper_counts[virus_name], self.cutted_index[virus_name]),
-                    open(self.config["output_raw_files"][virus_name], 'wb'))
+                    open(f"{self.config['output_raw_directory']}{virus_name}_{self.general_config['distance']}.p",
+                         'wb'))
 
     def combine_all_viruses(self):
         for virus in self.viruses:
