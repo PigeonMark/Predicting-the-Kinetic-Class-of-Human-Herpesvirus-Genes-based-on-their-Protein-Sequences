@@ -2,20 +2,8 @@
   "keywords_config": "config/keywords_config.json",
   "general_config": "config/general.json",
   "protein_collector_config": "config/protein_collector_config.json",
-  "output_csv_files": {
-    "HSV_1": "FeatureExtraction/Output/csv/HSV_1_10.csv",
-    "HSV_2": "FeatureExtraction/Output/csv/HSV_2_10.csv",
-    "EBV": "FeatureExtraction/Output/csv/EBV_10.csv",
-    "VZV": "FeatureExtraction/Output/csv/VZV_10.csv",
-    "HCMV": "FeatureExtraction/Output/csv/HCMV_10.csv"
-  },
-  "input_files": {
-    "HSV_1": "Combine/Output/raw/HSV_1_10.p",
-    "HSV_2": "Combine/Output/raw/HSV_2_10.p",
-    "EBV": "Combine/Output/raw/EBV_10.p",
-    "VZV": "Combine/Output/raw/VZV_10.p",
-    "HCMV": "Combine/Output/raw/HCMV_10.p"
-  },
+  "output_csv_directory": "FeatureExtraction/Output/csv/",
+  "input_directory": "Combine/Output/raw/",
   "basicity": {
     "A": 206.4,
     "B": 210.7,

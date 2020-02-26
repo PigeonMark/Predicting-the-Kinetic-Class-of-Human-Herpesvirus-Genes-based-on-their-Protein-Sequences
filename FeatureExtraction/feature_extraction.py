@@ -22,25 +22,27 @@ class FeatureExtraction:
         self.cutted_index = {}
         self.protein_collector = None
         self.features = {}
-        self.output_csv_file = {}
+        self.output_csv_directory = None
+        self.general_config = None
         self.__read_config(config_filepath)
 
     def __read_config(self, config_filepath):
         with open(config_filepath) as config_file:
             config = json.load(config_file)
             self.protein_collector = ProteinCollector(config['protein_collector_config'])
+            self.output_csv_directory = config['output_csv_directory']
             self.physchem_properties = {'basicity': config['basicity'],
                                         'hydrophobicity': config['hydrophobicity'],
                                         'helicity': config['helicity'],
                                         'mutation stability': config['mutation_stability']}
             with open(config['general_config']) as general_config_file:
-                general_config = json.load(general_config_file)
-                self.viruses = general_config["viruses"]
+                self.general_config = json.load(general_config_file)
+                self.viruses = self.general_config["viruses"]
 
             for virus in self.viruses:
                 self.keywords[virus] = KeywordBuilder(config['keywords_config']).get_keywords(virus)
-                self.cutted_index[virus] = pickle.load(open(config['input_files'][virus], 'rb'))[4]
-                self.output_csv_file[virus] = config['output_csv_files'][virus]
+                self.cutted_index[virus] = \
+                pickle.load(open(f"{config['input_directory']}{virus}_{self.general_config['distance']}.p", 'rb'))[4]
 
     def create_dataframe(self, virus_name):
         all_keys, name_to_headers, header_row = self.keywords[virus_name]
@@ -82,8 +84,9 @@ class FeatureExtraction:
         # non-positional features (i.e. over the whole sequence)
 
         # sequence length
-        features_list.append(self.dataframe[virus_name]['sequence'].apply(lambda sequence: parser.length(sequence)).to_frame()
-                             .rename(columns={'sequence': 'length'}))
+        features_list.append(
+            self.dataframe[virus_name]['sequence'].apply(lambda sequence: parser.length(sequence)).to_frame()
+                .rename(columns={'sequence': 'length'}))
 
         # number of occurences of each amino acid
         aa_counts = pd.DataFrame.from_records(
@@ -110,7 +113,8 @@ class FeatureExtraction:
         self.features[virus_name] = pd.concat(features_list, axis=1)
 
     def save_features(self, virus_name):
-        self.features[virus_name].to_csv(self.output_csv_file[virus_name])
+        self.features[virus_name].to_csv(
+            f"{self.output_csv_directory}{virus_name}_{self.general_config['distance']}.csv")
 
     def extract(self):
         for virus in self.viruses:

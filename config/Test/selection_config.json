@@ -95,6 +95,29 @@
       "human herpes virus type 7",
       "herpes simplex virus type 7",
       "herpes simplex virus (type 7)"
+    ],
+    "KSHV": [
+      "hhv8",
+      "hhv-8",
+      "hhv 8",
+      "human gammaherpesvirus 8",
+      "human herpesvirus 8",
+      "human herpes virus 8",
+      "human herpesvirus type 8",
+      "human herpes virus type 8",
+      "kshv",
+      "kaposi's sarcoma herpesvirus",
+      "kaposis sarcoma herpesvirus",
+      "kaposi s sarcoma herpesvirus",
+      "kaposi sarcoma herpesvirus",
+      "kaposi's sarcoma-associated herpesvirus",
+      "kaposis sarcoma-associated herpesvirus",
+      "kaposi s sarcoma-associated herpesvirus",
+      "kaposi sarcoma-associated herpesvirus",
+      "kaposi's sarcoma-associated herpes-like virus",
+      "kaposis sarcoma-associated herpes-like virus",
+      "kaposi s sarcoma-associated herpes-like virus",
+      "kaposi sarcoma-associated herpes-like virus"
     ]
   }
 }

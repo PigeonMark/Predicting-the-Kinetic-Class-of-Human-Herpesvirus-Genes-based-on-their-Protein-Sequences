@@ -1,30 +1,16 @@
 
 \.idea/
+__pycache__/
+.~lock*
+Data/
 
 DataCollection/Data/
-
 DataCollection/__pycache__/
-
-DataCollection/Output/selectedPapers/
-!Data-collection/Output/selectedPapers/*.p
-DataCollection/Output/selected_papers/
-
-.~lock*
 
 Classification/Output/sequences/
 
-__pycache__/
-
-DataCollection/Output/selected_papers_test/
-/selected_papers_2020_02_17_14u_55.tar.gz
-
-Data/
-
-PaperSelection/Output/Test/selected_papers/
 PaperSelection/Output/selected_papers/
-
 Counting/Output/Test/
-
 Combine/Output/Test/
-
 PaperSelection/Output/Test/
+FeatureExtraction/Output/Test/
