@@ -99,6 +99,9 @@ class Selector:
         self.selected = pickle.load(open(self.output_file, "rb"))
 
     def selected_to_folder(self):
+        for file in os.listdir(self.output_directory):
+            os.remove(os.path.join(self.output_directory, file))
+
         for virus_name, papers in self.selected.items():
             for paper in papers:
                 copy(paper, self.output_directory)
