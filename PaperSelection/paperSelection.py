@@ -65,10 +65,9 @@ class Selector:
         for virus in self.viruses:
             for alt_name in self.alternate_names[virus]:
                 if alt_name in content:
-                    if content.count('bovine') > content.count('human'):
-                        print(filepath)
-                    viruses_found.append(virus)
-                    break
+                    if content.count('bovine') <= content.count('human'):
+                        viruses_found.append(virus)
+                        break
         return viruses_found
 
     def select(self, stop_early=False):
