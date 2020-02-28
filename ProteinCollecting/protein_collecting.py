@@ -19,10 +19,19 @@ class ProteinCollector:
     def save_protein_sequence(self, uniprot_id):
         filename = os.path.join(self.output_directory, uniprot_id) + ".fasta"
         if not os.path.isfile(filename):
-            r = requests.get(f"{self.request_url}{uniprot_id}.fasta")
-            f = open(filename, "w")
-            f.write(r.text)
-            f.close()
+            done = False
+            while not done:
+                try:
+                    r = requests.get(f"{self.request_url}{uniprot_id}.fasta")
+                    f = open(filename, "w")
+                    f.write(r.text)
+                    f.close()
+                    print(f"saved {uniprot_id}.fasta")
+                    done = True
+                except Exception as e:
+                    print(f"Exception in save_protein_sequence with {uniprot_id}.fasta")
+                    print(e)
+                    print("trying again...")
 
     def read_protein_sequence(self, uniprot_id):
         self.save_protein_sequence(uniprot_id)
