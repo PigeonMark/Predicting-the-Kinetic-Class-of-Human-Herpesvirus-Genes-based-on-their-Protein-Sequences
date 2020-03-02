@@ -132,6 +132,10 @@ class Combiner:
                     open(f"{self.config['output_raw_directory']}{virus_name}_{self.general_config['distance']}.p",
                          'wb'))
 
+    def read_index(self, virus_name):
+        return pickle.load(
+            open(f"{self.config['output_raw_directory']}{virus_name}_{self.general_config['distance']}.p", 'rb'))
+
     def combine_all_viruses(self):
         for virus in self.viruses:
             self.combine_counts_all_papers(virus)

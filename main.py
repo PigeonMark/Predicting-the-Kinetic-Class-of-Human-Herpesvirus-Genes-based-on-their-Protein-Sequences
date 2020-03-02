@@ -4,7 +4,7 @@ from PaperSelection import Selector
 from Counting import Counter
 from Combine import Combiner
 from FeatureExtraction import FeatureExtraction
-
+import Review
 
 def main():
     parser = argparse.ArgumentParser()
@@ -13,6 +13,7 @@ def main():
     parser.add_argument('-c', '--count', action='store_true')
     parser.add_argument('-m', '--merge', '--combine', action='store_true')
     parser.add_argument('-e', '--extract', action='store_true')
+    parser.add_argument('-r', '--review', action='store_true')
 
     args = parser.parse_args()
 
@@ -44,6 +45,9 @@ def main():
         else:
             feature_extractor = FeatureExtraction("config/feature_extraction_config.json")
         feature_extractor.extract()
+
+    if args.review:
+        Review.run()
 
 
 if __name__ == "__main__":

@@ -134,3 +134,6 @@ class Counter:
     def count_all_viruses(self):
         for virus in self.viruses:
             self.__count_near_occurrences(virus)
+
+    def read_debug_index(self, virus_name):
+        return pickle.load(open(self.config['output_debug_directory'] + "%s_%i.p" % (virus_name, self.distance), "rb"))

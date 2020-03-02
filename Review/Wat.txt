@@ -1,0 +1,6 @@
+Alle namen
+Score per phase (absoluut en percentage) -> automatisch berekende phase
+uniprot functie
+Voor elke phase:
+    lijst met papers, voor elke paper:
+        lijst met stukjes uit de paper
