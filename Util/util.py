@@ -27,6 +27,7 @@ def filename_from_path(file_list_dict):
         new[virus] = new_list
     return new
 
+
 def add_to_debug_dict(to_add, keyword, phase, debug_info_dict):
     if keyword in debug_info_dict:
         if phase in debug_info_dict[keyword]:

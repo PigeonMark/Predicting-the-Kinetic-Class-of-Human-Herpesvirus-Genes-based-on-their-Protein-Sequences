@@ -4,7 +4,9 @@ from PaperSelection import Selector
 from Counting import Counter
 from Combine import Combiner
 from FeatureExtraction import FeatureExtraction
+from DebugInfoCollector import DebugInfoCollector
 import Review
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -13,6 +15,7 @@ def main():
     parser.add_argument('-c', '--count', action='store_true')
     parser.add_argument('-m', '--merge', '--combine', action='store_true')
     parser.add_argument('-e', '--extract', action='store_true')
+    parser.add_argument('-d', '--debuginput', action='store_true')
     parser.add_argument('-r', '--review', action='store_true')
 
     args = parser.parse_args()
@@ -38,6 +41,10 @@ def main():
         else:
             combiner = Combiner("config/combiner_config.json")
         combiner.combine_all_viruses()
+
+    if args.debuginput:
+        debug_input_collector = DebugInfoCollector("config/debug_info_collector_config.json")
+        debug_input_collector.collect()
 
     if args.extract:
         if args.test:

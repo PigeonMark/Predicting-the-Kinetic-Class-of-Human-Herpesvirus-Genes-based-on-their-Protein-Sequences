@@ -32,7 +32,7 @@
                             <div class="row">
                                 <div class="col-3"><strong>Gene</strong></div>
                                 <div class="col-9">
-                                    {% for name in debug_info.gene_name %}
+                                    {% for name in debug_info.gene_names %}
                                         {{ name }}<br>
                                     {% endfor %}
                                 </div>
@@ -46,7 +46,7 @@
                             <div class="row">
                                 <div class="col-3"><strong>Host</strong></div>
                                 <div class="col-9">
-                                    {% for name in debug_info.host_organism %}
+                                    {% for name in debug_info.host_organisms %}
                                         {{ name }}<br>
                                     {% endfor %}
                                 </div>
@@ -118,12 +118,12 @@
                                                 <h5 class="mb-0">
                                                     <a href="{{ paper_url(paper) }}"
                                                        target="_blank">{{ paper[:-5] }}</a><br>
-                                                    {{ paper_title(paper) }}
+                                                    {{ paper_titles[paper] }}
                                                 </h5>
                                                 <div class="list-group list-group-flush">
                                                     {% for context in contexts %}
                                                         <div class="list-group-item">
-                                                            {{ debug_info.context_text(context, paper) }}
+                                                            {{ context }}
                                                         </div>
                                                     {% endfor %}
                                                 </div>
