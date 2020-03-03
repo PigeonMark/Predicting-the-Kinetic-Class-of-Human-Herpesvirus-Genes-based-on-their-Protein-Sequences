@@ -4,3 +4,8 @@ uniprot functie
 Voor elke phase:
     lijst met papers, voor elke paper:
         lijst met stukjes uit de paper
+
+
+Protein name
+Gene name
+organism

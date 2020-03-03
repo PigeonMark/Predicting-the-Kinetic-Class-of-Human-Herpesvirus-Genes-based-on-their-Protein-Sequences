@@ -1,5 +1,141 @@
 {% extends "base.html" %}
 
 {% block app_content %}
-
+    <div class="container-fluid px-5">
+        <!-- main row-->
+        <div class="row my-4">
+            <!-- main left column -->
+            <div class="col">
+                <table class="table">
+                    <tbody>
+                    <tr class="row">
+                        <th class="col-3" style="border: none">UniProt Info</th>
+                        <td class="col-9" style="border: none">
+                            <div class="row">
+                                <div class="col-3"><strong>Accession</strong></div>
+                                <div class="col-9">
+                                    {{ debug_info.uniprot_accession }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3"><strong>ID</strong></div>
+                                <div class="col-9">
+                                    {{ debug_info.uniprot_id }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3"><strong>Protein</strong></div>
+                                <div class="col-9">
+                                    {{ debug_info.protein_name }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3"><strong>Gene</strong></div>
+                                <div class="col-9">
+                                    {% for name in debug_info.gene_name %}
+                                        {{ name }}<br>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3"><strong>Organism</strong></div>
+                                <div class="col-9">
+                                    {{ debug_info.organism }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3"><strong>Host</strong></div>
+                                <div class="col-9">
+                                    {% for name in debug_info.host_organism %}
+                                        {{ name }}<br>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <th class="col-3">Scores</th>
+                        <td class="col-9">
+                            {% for phase in debug_info.phases %}
+                                {% if phase == debug_info.winning_phase() %}
+                                    <div class="row bg-success text-white">
+                                {% else %}
+                                    <div class="row">
+                                {% endif %}
+                            <div class="col-3">
+                                <strong>{{ phase }}:</strong>
+                            </div>
+                            <div class="col-3">
+                                {{ round(debug_info.scores.get(phase, 0), 2) }}
+                            </div>
+                            <div class="col-3">
+                                ({{ round(100*debug_info.percentages.get(phase, 0), 2) }}%)
+                            </div>
+                            <div class="col-3"></div>
+                            </div>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <tr class="row">
+                        <th class="col-3">UniProt Extra</th>
+                        <td class="col-9">
+                            {% for key, value in debug_info.uniprot_info.items() %}
+                                <div class="row">
+                                    <div class="col">
+                                        {{ key }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="offset-1 col-11">
+                                        {% for v in value %}
+                                            {{ v["value"] }}<br>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <br>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                {% for k, v in debug_info.context.items() %}
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header bg-dark text-white">
+                                <div style="cursor: pointer" data-toggle="collapse" href="#collapse{{ k }}">
+                                    <h3 class="mb-0">
+                                        {{ str.capitalize(k) }}
+                                    </h3>
+                                </div>
+                            </div>
+                            <div id="collapse{{ k }}" class="collapse show" data-parent="#accordion">
+                                <div class="card-body">
+                                    <div class="list-group list-group-flush">
+                                        {% for paper, contexts in v.items() %}
+                                            <div class="list-group-item">
+                                                <h5 class="mb-0">
+                                                    <a href="{{ paper_url(paper) }}"
+                                                       target="_blank">{{ paper[:-5] }}</a><br>
+                                                    {{ paper_title(paper) }}
+                                                </h5>
+                                                <div class="list-group list-group-flush">
+                                                    {% for context in contexts %}
+                                                        <div class="list-group-item">
+                                                            {{ debug_info.context_text(context, paper) }}
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

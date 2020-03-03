@@ -53,14 +53,13 @@ class Counter:
                 i1 = kw_i - dis
                 i2 = kw_i + dis
 
-                debug_range_min = max(0, i1 - 3)
-                debug_range_max = min(len(content) - 1, i2 + 3)
-
                 # Calculate the possible score to add
                 to_add = 1 / float(dis)
 
                 # For the indices 'dis' before and 'dis' after the keyword
                 for i in [i1, i2]:
+                    debug_range_min = max(0, min(i, kw_i) - self.config['debug_distance'])
+                    debug_range_max = min(len(content) - 1, max(i, kw_i) + self.config['debug_distance'] + 1)
                     # Check that the indices are still in the content
                     # Check if the word on distance 'dis' of the keyword is a phase
                     if 0 <= i < len(content) and content[i] == phase:

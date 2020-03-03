@@ -9,6 +9,9 @@ class Config(object):
     SECRET_KEY = b'9\x93qa\xdd\xc8\xd1\x1a\xb1r\x83_\x9e\xb9\x02\xbe'
     COUNTER_CONFIG = "config/counter_config.json"
     COMBINER_CONFIG = "config/combiner_config.json"
+    GENERAL_CONFIG = "config/general.json"
+    KEYWORDS_CONFIG = "config/keywords_config.json"
+    PROTEIN_COLLECTOR_CONFIG = "config/protein_collector_config.json"
 
 
 class TestConfig(object):
