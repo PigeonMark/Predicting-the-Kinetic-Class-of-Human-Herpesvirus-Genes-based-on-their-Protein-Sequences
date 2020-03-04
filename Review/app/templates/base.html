@@ -21,18 +21,20 @@
             <a class="navbar-brand" href={{ url_for('review.index') }}>
                 Review Life Cycle Data
             </a>
-{#            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"#}
-{#                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">#}
-{#                <span class="navbar-toggler-icon"></span>#}
-{#            </button>#}
-
-{#            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">#}
-{#                <div class="navbar-nav ml-auto">#}
-{#                    <a class="nav-item nav-link" href={{ url_for('review.index') }}>#}
-{#                        <i class="fa fa-coffee" aria-hidden="true"></i> Products and Tables#}
-{#                    </a>#}
-{#                </div>#}
-{#            </div>#}
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-item nav-link" href={{ url_for('review.index') }}>
+                        <i class="fa fa-clipboard-check" aria-hidden="true"></i> Review
+                    </a>
+                    <a class="nav-item nav-link" href={{ url_for('review.overview') }}>
+                        <i class="fa fa-list-ul" aria-hidden="true"></i> Overview
+                    </a>
+                </div>
+            </div>
         </div>
     </nav>
 {% endblock %}

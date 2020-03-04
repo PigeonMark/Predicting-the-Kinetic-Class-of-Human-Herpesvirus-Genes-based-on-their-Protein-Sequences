@@ -1,0 +1,38 @@
+<div class="col">
+    {% for k in sorted_keys_phases(debug_info.context, debug_info.scores) %}
+        <div id="accordion{{ k }}">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <div style="cursor: pointer" data-toggle="collapse" href="#collapse{{ k }}">
+                        <h3 class="mb-0">
+                            {{ str.capitalize(k) }}
+                            ({{ round(debug_info.scores[k], 2) }}; {{ round(100*debug_info.percentages[k], 2) }}%)
+                        </h3>
+                    </div>
+                </div>
+                <div id="collapse{{ k }}" class="collapse show" data-parent="#accordion{{ k }}">
+                    <div class="card-body">
+                        <div class="list-group list-group-flush">
+                            {% for paper, contexts in debug_info.context[k].items() %}
+                                <div class="list-group-item">
+                                    <h5 class="mb-0">
+                                        <a href="{{ paper_url(paper) }}"
+                                           target="_blank">{{ paper[:-5] }}</a><br>
+                                        {{ paper_titles[paper] }}
+                                    </h5>
+                                    <div class="list-group list-group-flush">
+                                        {% for context in contexts %}
+                                            <div class="list-group-item">
+                                                {{ context }}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

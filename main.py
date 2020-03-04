@@ -5,7 +5,6 @@ from Counting import Counter
 from Combine import Combiner
 from FeatureExtraction import FeatureExtraction
 from DebugInfoCollector import DebugInfoCollector
-import Review
 
 
 def main():
@@ -17,6 +16,7 @@ def main():
     parser.add_argument('-e', '--extract', action='store_true')
     parser.add_argument('-d', '--debuginput', action='store_true')
     parser.add_argument('-r', '--review', action='store_true')
+    parser.add_argument('--replace-debug', action='store_true')
 
     args = parser.parse_args()
 
@@ -44,7 +44,10 @@ def main():
 
     if args.debuginput:
         debug_input_collector = DebugInfoCollector("config/debug_info_collector_config.json")
-        debug_input_collector.collect()
+        if args.replace_debug:
+            debug_input_collector.collect(True)
+        else:
+            debug_input_collector.collect()
 
     if args.extract:
         if args.test:
@@ -54,6 +57,8 @@ def main():
         feature_extractor.extract()
 
     if args.review:
+        import Review
+
         Review.run()
 
 

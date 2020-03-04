@@ -1,0 +1,50 @@
+<div id="deleteReviewModal{{ gene.names }}" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Delete this gene</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <strong>Do you really want to delete this gene?</strong>
+                <div class="container">
+                    <div class="row my-2">
+                        <div class="col-3"><strong>Virus</strong></div>
+                        <div class="col-9">{{ gene.virus }}</div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-3"><strong>Gene</strong></div>
+                        <div class="col-9 line-break">{{ gene.names }}</div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-3"><strong>Calculated Phase</strong></div>
+                        <div class="col-9">{{ gene.old_phase }}</div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-3"><strong>Reviewed Phase</strong></div>
+                        <div class="col-9">{{ gene.reviewed_phase }}</div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-3"><strong>Status</strong></div>
+                        <div class="col-9">{{ gene.review_status }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="col-xs-offset-4 col-xs-4">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+                <div class="col-xs-4">
+                    <form class="form form-default" method="post" role="form">
+                        {{ delete_review_form.csrf_token(id='delete_review_token'+gene.names) }}
+                        {{ delete_review_form.names(value=gene.names, id='review_names_'+gene.names) }}
+                        {{ delete_review_form.submit_delete_review(id='submit_delete_review'+gene.names, class="btn btn-danger") }}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

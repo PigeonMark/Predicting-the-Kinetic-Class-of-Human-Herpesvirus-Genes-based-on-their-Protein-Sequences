@@ -1,5 +1,13 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, DecimalField, HiddenField, IntegerField, SelectField, FieldList, \
-    FormField, BooleanField
-from wtforms.validators import DataRequired, ValidationError, Length, NumberRange, Optional
+from wtforms import SubmitField, HiddenField, StringField
 
+
+class DeleteReviewForm(FlaskForm):
+    names = HiddenField()
+    submit_delete_review = SubmitField('Delete')
+
+
+class AddReviewForm(FlaskForm):
+    status = HiddenField()
+    phase = HiddenField()
+    submit_add_review = SubmitField()

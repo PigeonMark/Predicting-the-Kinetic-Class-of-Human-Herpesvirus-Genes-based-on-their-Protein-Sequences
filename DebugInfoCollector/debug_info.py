@@ -88,14 +88,14 @@ def context_text(gene, phases, context_list, paper, paper_directory):
               [subphase for phase, subphases in phases.items() for subphase in subphases]
 
     for name in to_bold:
-        sub_text = re.compile('(' + re.escape(name) + ')', re.IGNORECASE)
-        text = re.sub(sub_text, r'<strong>\1</strong>', text)
+        sub_text = re.compile('([^a-zA-Z])(' + re.escape(name) + ')([^a-zA-Z])', re.IGNORECASE)
+        text = re.sub(sub_text, r'\1<strong>\2</strong>\3', text)
 
     return '"...' + Markup(text) + '..."'
 
 
 class DebugInfo:
-    def __init__(self):
+    def __init__(self, gene, virus):
         self.uniprot_accession = None
         self.uniprot_id = None
         self.protein_name = None
@@ -108,6 +108,9 @@ class DebugInfo:
         self.percentages = None
         self.uniprot_info = {}
         self.context = {}
+
+        self.gene = gene
+        self.virus = virus
 
     def __repr__(self):
         ret = ""
@@ -152,12 +155,13 @@ class DebugInfo:
         self.uniprot_accession = return_data["accession"]
         self.uniprot_id = return_data["id"]
 
-        for comment in return_data["comments"]:
-            if comment["type"] in ["FUNCTION"]:
-                if comment["type"] in self.uniprot_info:
-                    self.uniprot_info[comment["type"]].append(comment["text"])
-                else:
-                    self.uniprot_info[comment["type"]] = comment["text"]
+        if 'comments' in return_data:
+            for comment in return_data["comments"]:
+                if comment["type"] in ["FUNCTION"]:
+                    if comment["type"] in self.uniprot_info:
+                        self.uniprot_info[comment["type"]].append(comment["text"])
+                    else:
+                        self.uniprot_info[comment["type"]] = comment["text"]
 
     def collect(self, virus, gene, combined_counts, normalized_counts, keywords, protein_collector, counter, phases,
                 paper_directory):
@@ -191,7 +195,7 @@ def paper_title(paper_directory, paper_name):
     tree = ET.parse(f"{paper_directory}{paper_name}")
     root = tree.getroot()
     for title_group in root.iter('title-group'):
-        return title_group.find('article-title').text
+        return Markup(str(ET.tostring(title_group.find('article-title'))[15:-16], 'utf-8'))
 
 
 class DebugInfoCollector:
@@ -205,7 +209,6 @@ class DebugInfoCollector:
         self.protein_collector = None
         self.__read_config(config_filepath)
 
-        self.debug_info = {}
         self.title_dict = {}
 
     def __read_config(self, config_filepath):
@@ -224,35 +227,48 @@ class DebugInfoCollector:
             for virus in self.viruses:
                 self.keywords[virus] = KeywordBuilder(self.config['keywords_config']).get_keywords(virus)
 
-    def save_debug_info(self):
-        pickle.dump(self.debug_info, open(self.config['debug_info_output_file'], 'wb'))
+    def save_debug_info(self, debug_info, gene):
+        output_file = f"{self.config['debug_info_output_directory']}{gene}.p"
+        pickle.dump(debug_info, open(output_file, 'wb'))
 
     def save_paper_titles(self):
         pickle.dump(self.title_dict, open(self.config['title_output_file'], 'wb'))
 
     def load_debug_info(self):
-        return pickle.load(open(self.config['debug_info_output_file'], 'rb'))
+        debug_info = {}
+        for file in os.listdir(self.config['debug_info_output_directory']):
+            info = pickle.load(open(f"{self.config['debug_info_output_directory']}{file}", 'rb'))
+            if info.virus in debug_info:
+                debug_info[info.virus][info.gene] = info
+            else:
+                debug_info[info.virus] = {info.gene: info}
+        return debug_info
 
     def load_paper_titles(self):
         return pickle.load(open(self.config['title_output_file'], 'rb'))
 
-    def collect(self):
+    def collect(self, replace=False):
         self.title_dict = self.load_paper_titles()
+        tot_genes = 0
+        for virus in self.viruses:
+            combined_counts, sorted_combined_counts, normalized, paper_counts, cutted_index = self.combiner.read_index(
+                virus)
+            tot_genes += len(combined_counts.keys())
+        done = 0
         for virus in self.viruses:
             combined_counts, sorted_combined_counts, normalized, paper_counts, cutted_index = self.combiner.read_index(
                 virus)
             for gene, values in combined_counts.items():
-                debug_i = DebugInfo()
-                debug_i.collect(virus, gene, combined_counts, normalized, self.keywords[virus], self.protein_collector,
-                                self.counter, self.phases, self.config['paper_selection_directory'])
+                output_file = f"{self.config['debug_info_output_directory']}{gene}.p"
+                if replace or not os.path.isfile(output_file):
+                    debug_i = DebugInfo(gene, virus)
+                    debug_i.collect(virus, gene, combined_counts, normalized, self.keywords[virus],
+                                    self.protein_collector,
+                                    self.counter, self.phases, self.config['paper_selection_directory'])
+                    self.save_debug_info(debug_i, gene)
 
-                if virus in self.debug_info:
-                    self.debug_info[virus][gene] = debug_i
-                else:
-                    self.debug_info[virus] = {gene: debug_i}
-
-                break
-            break
+                done += 1
+                print(f"Done {done}/{tot_genes} ({100 * done / float(tot_genes):.2f}%)")
 
         num_papers = len(os.listdir(self.config['paper_selection_directory']))
         done = 0
@@ -261,7 +277,6 @@ class DebugInfoCollector:
                 self.title_dict[paper] = paper_title(self.config['paper_selection_directory'], paper)
             done += 1
             if done % 1000 == 0:
-                print(f"Done {done}/{num_papers} ({100*done/float(num_papers):.2f}%)")
+                print(f"Done {done}/{num_papers} ({100 * done / float(num_papers):.2f}%)")
 
-        self.save_debug_info()
         self.save_paper_titles()

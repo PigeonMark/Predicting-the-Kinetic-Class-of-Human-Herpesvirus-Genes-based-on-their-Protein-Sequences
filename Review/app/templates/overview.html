@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <div class="container-fluid" style="padding-left: 5%; padding-right: 5%">
+        <table class="table mt-5">
+            <thead class="thead-dark">
+            <tr class="row">
+                <th class="col-1"><h4 class="mb-0">Virus</h4></th>
+                <th class="col-1"><h4 class="mb-0">Gene</h4></th>
+                <th class="col-2"><h4 class="mb-0">Keywords</h4></th>
+                <th class="col-2"><h4 class="mb-0">Calculated Phase</h4></th>
+                <th class="col-2"><h4 class="mb-0">Reviewed Phase</h4></th>
+                <th class="col-2"><h4 class="mb-0">Status</h4></th>
+                <th class="col-2"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for gene in genes %}
+                <tr class="row">
+                    <td class="col-1">{{ gene.virus }}</td>
+                    <td class="col-1">
+                        {% for name in debug_info[gene.virus][gene.names].gene_names %}
+                            {{ name }}<br>
+                        {% endfor %}
+                    </td>
+                    <td class="col-2 line-break">{{ gene.names }}</td>
+                    <td class="col-2">{{ gene.old_phase }}</td>
+                    {% if gene.reviewed_phase is none %}
+                        <td class="col-2"></td>
+                    {% else %}
+                        <td class="col-2">{{ gene.reviewed_phase }}</td>
+                    {% endif %}
+                    {% if gene.review_status == "MODIFIED" %}
+                        <td class="col-2"><i
+                                class="fa fa-times-circle fa-lg align-middle text-danger"></i>&nbsp;{{ gene.review_status }}
+                        </td>
+                    {% elif gene.review_status == "CORRECT" %}
+                        <td class="col-2"><i
+                                class="fa fa-check-circle fa-lg align-middle text-success"></i>&nbsp;{{ gene.review_status }}
+                        </td>
+                    {% elif gene.review_status == "UNCERTAIN" %}
+                        <td class="col-2"><i
+                                class="fa fa-question-circle fa-lg align-middle text-warning"></i>&nbsp;{{ gene.review_status }}
+                        </td>
+                    {% elif gene.review_status == "REVIEW_LATER" %}
+                        <td class="col-2"><i
+                                class="fa fa-clock fa-lg align-middle text-info"></i>&nbsp;{{ gene.review_status }}</td>
+                    {% else %}
+                        <td class="col-2">{{ gene.review_status }}</td>
+                    {% endif %}
+                    <td class="col-2">
+                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
+                                data-target="#deleteReviewModal{{ gene.names }}">
+                            &nbsp;<i class="fa fa-trash" aria-hidden="true"></i>&nbsp;
+                        </button>
+                        <button onclick="window.location.href = '{{ url_for('review.index') }}/{{ gene.virus }}/{{ gene.names }}'"
+                                type="button"
+                                class="btn btn-sm btn-info">
+                            &nbsp;<i class="fa fa-edit" aria-hidden="true"></i>&nbsp;
+                        </button>
+                    </td>
+                </tr>
+                {% include 'delete_review_modal.html' %}
+            {% endfor %}
+            </tbody>
+        </table>
+        <h3>Reviewed genes per virus:</h3>
+        {{ totals[0] }}
+        <h3 class="mt-2">Total genes to review:</h3>
+        {{ totals[1] }}
+        <div class="my-5"></div>
+    </div>
+{% endblock app_content %}

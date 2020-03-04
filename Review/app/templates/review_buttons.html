@@ -1,0 +1,47 @@
+<div class="row my-3 justify-content-end">
+    <div class="col-4">
+{#        {{ add_review_form.submit_add_review(id='submit_delete_review', class="btn btn-primary") }}#}
+        <form class="form form-default" method="post" role="form">
+            {{ add_review_form.csrf_token(id='add_review_token'+debug_info.gene) }}
+            {{ add_review_form.status(value='CORRECT') }}
+            <button type="submit" name="submit_add_review" value="True" class="btn btn-block btn-success">
+                <strong><i class="fa fa-check-circle fa-lg align-middle"></i>&nbsp;&nbsp;Correct</strong>
+            </button>
+        </form>
+    </div>
+    <div class="col-4">
+        <form class="form form-default" method="post" role="form">
+            {{ add_review_form.csrf_token(id='add_review_token'+debug_info.gene) }}
+            {{ add_review_form.status(value='UNCERTAIN') }}
+            <button type="submit" name="submit_add_review" value="True" class="btn btn-block btn-warning">
+                <strong><i class="fa fa-question-circle fa-lg align-middle pull-left"></i>&nbsp;&nbsp;Uncertain</strong>
+            </button>
+        </form>
+    </div>
+    <div class="col-4">
+        <form class="form form-default" method="post" role="form">
+            {{ add_review_form.csrf_token(id='add_review_token'+debug_info.gene) }}
+            {{ add_review_form.status(value='REVIEW_LATER') }}
+            <button type="submit" name="submit_add_review" value="True" class="btn btn-block btn-info">
+                <strong><i class="fa fa-clock fa-lg align-middle"></i>&nbsp;&nbsp;Review later</strong>
+            </button>
+        </form>
+    </div>
+</div>
+<div class="row my-3 justify-content-end">
+    {% for phase in debug_info.phases %}
+        {% if phase != debug_info.winning_phase() %}
+            <div class="col-4">
+                <form class="form form-default" method="post" role="form">
+                    {{ add_review_form.csrf_token(id='add_review_token'+debug_info.gene) }}
+                    {{ add_review_form.status(value='MODIFIED') }}
+                    {{ add_review_form.phase(value=phase) }}
+                    <button name="submit_add_review" type="submit" value="True" class="btn btn-block btn-danger">
+                        <strong><i class="fa fa-times-circle fa-lg align-middle"></i>&nbsp;&nbsp;{{ str.capitalize(phase) }}</strong>
+                    </button>
+                </form>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+

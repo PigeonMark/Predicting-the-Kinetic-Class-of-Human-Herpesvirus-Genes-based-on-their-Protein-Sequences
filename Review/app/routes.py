@@ -1,18 +1,89 @@
 from flask import Blueprint, render_template, redirect, url_for
-from Review.app.src import paper_url
-from DebugInfoCollector import DebugInfoCollector
+from Review.app.src import paper_url, GeneRotator, sorted_keys_phases
+from Review.app.models import Gene
+from Review.app.forms import DeleteReviewForm, AddReviewForm
 
 blueprint = Blueprint('review', __name__)
 
-debug_info_collector = DebugInfoCollector('config/debug_info_collector_config.json')
-debug_info = debug_info_collector.load_debug_info()
-paper_titles = debug_info_collector.load_paper_titles()
 
-
-@blueprint.route('/')
-@blueprint.route('/index')
+@blueprint.route('/', methods=['GET', 'POST'])
+@blueprint.route('/index', methods=['GET', 'POST'])
 def index():
-    gene_debug_info = debug_info['HSV_1']['p04487_p56958_us11']
+    # Setup gene rotator first time
+    if GeneRotator.current is None:
+        GeneRotator.next()
+
+    (virus, gene, gene_debug_info), paper_titles = GeneRotator.get()
+    if virus is not None:
+        add_review_form = AddReviewForm()
+
+        if add_review_form.validate_on_submit() and add_review_form.submit_add_review.data is True:
+            old_phase = gene_debug_info.winning_phase()
+
+            if add_review_form.status.data == 'CORRECT':
+                Gene.add(virus, gene, old_phase, add_review_form.status.data, old_phase)
+                GeneRotator.next()
+                return redirect(url_for('review.index'))
+            elif add_review_form.status.data == 'UNCERTAIN' or add_review_form.status.data == 'REVIEW_LATER':
+                Gene.add(virus, gene, old_phase, add_review_form.status.data)
+                GeneRotator.next()
+                return redirect(url_for('review.index'))
+
+            elif add_review_form.status.data == 'MODIFIED':
+                Gene.add(virus, gene, old_phase, add_review_form.status.data, add_review_form.phase.data)
+                GeneRotator.next()
+                return redirect(url_for('review.index'))
+
+        return render_template('index.html', debug_info=gene_debug_info, paper_titles=paper_titles, round=round,
+                               paper_url=paper_url, str=str, add_review_form=add_review_form,
+                               sorted_keys_phases=sorted_keys_phases)
+
+    else:
+        return render_template('all_done.html')
+
+
+@blueprint.route('/overview', methods=['GET', 'POST'])
+def overview():
+    delete_review_form = DeleteReviewForm()
+    if delete_review_form.validate_on_submit() and delete_review_form.submit_delete_review.data is True:
+        Gene.delete(delete_review_form.names.data)
+        return redirect(url_for('review.overview'))
+
+    # print(GeneRotator.debug_info['HS'])
+
+    return render_template('overview.html', genes=Gene.get_all(), delete_review_form=delete_review_form, none=None,
+                           debug_info=GeneRotator.debug_info, totals=Gene.get_totals())
+
+
+@blueprint.route('/index/<virus>/<gene>', methods=['GET', 'POST'])
+def single_gene(virus, gene):
+    # Setup gene rotator first time
+    if GeneRotator.current is None:
+        GeneRotator.next()
+
+    gene_debug_info = GeneRotator.debug_info[virus][gene]
+    paper_titles = GeneRotator.paper_titles
+
+    add_review_form = AddReviewForm()
+
+    if add_review_form.validate_on_submit() and add_review_form.submit_add_review.data is True:
+
+        old_phase = gene_debug_info.winning_phase()
+
+        if add_review_form.status.data == 'CORRECT':
+            Gene.update(gene, add_review_form.status.data, old_phase)
+            GeneRotator.next()
+            return redirect(url_for('review.overview'))
+        elif add_review_form.status.data == 'UNCERTAIN' or add_review_form.status.data == 'REVIEW_LATER':
+            Gene.update(gene, add_review_form.status.data, '')
+            GeneRotator.next()
+            return redirect(url_for('review.overview'))
+
+        elif add_review_form.status.data == 'MODIFIED':
+            Gene.update(gene, add_review_form.status.data, add_review_form.phase.data)
+            GeneRotator.next()
+            return redirect(url_for('review.overview'))
 
     return render_template('index.html', debug_info=gene_debug_info, paper_titles=paper_titles, round=round,
-                           paper_url=paper_url, str=str)
+                           paper_url=paper_url, str=str, add_review_form=add_review_form,
+                           sorted_keys_phases=sorted_keys_phases)

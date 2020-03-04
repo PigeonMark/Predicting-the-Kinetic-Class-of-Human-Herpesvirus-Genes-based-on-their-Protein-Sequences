@@ -5,6 +5,6 @@
   "counter_config": "config/counter_config.json",
   "protein_collector_config": "config/protein_collector_config.json",
   "paper_selection_directory": "PaperSelection/Output/selected_papers/",
-  "debug_info_output_file": "DebugInfoCollector/Output/debug_info.p",
+  "debug_info_output_directory": "DebugInfoCollector/Output/debug_info/",
   "title_output_file": "DebugInfoCollector/Output/paper_titles.p"
 }
