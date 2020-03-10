@@ -2,7 +2,7 @@
 
 {% block app_content %}
     <div class="container-fluid" style="padding-left: 5%; padding-right: 5%">
-        <table class="table mt-5">
+        <table id="overviewTable" class="table mt-5">
             <thead class="thead-dark">
             <tr class="row">
                 <th class="col-1"><h4 class="mb-0">Virus</h4></th>
@@ -11,7 +11,15 @@
                 <th class="col-2"><h4 class="mb-0">Calculated Phase</h4></th>
                 <th class="col-2"><h4 class="mb-0">Reviewed Phase</h4></th>
                 <th class="col-2"><h4 class="mb-0">Status</h4></th>
-                <th class="col-2"></th>
+                {% if request.url[-10:] == '?sort=True' %}
+                    <th class="col-2"><a href="{{ url_for('review.overview') }}">
+                        <button class="btn btn-secondary">Sorted</button>
+                    </a></th>
+                {% else %}
+                    <th class="col-2"><a href="{{ url_for('review.overview', sort=True) }}">
+                        <button class="btn btn-light">Sort</button>
+                    </a></th>
+                {% endif %}
             </tr>
             </thead>
             <tbody>
@@ -53,11 +61,19 @@
                                 data-target="#deleteReviewModal{{ gene.names }}">
                             &nbsp;<i class="fa fa-trash" aria-hidden="true"></i>&nbsp;
                         </button>
-                        <button onclick="window.location.href = '{{ url_for('review.index') }}/{{ gene.virus }}/{{ gene.names }}'"
-                                type="button"
-                                class="btn btn-sm btn-info">
-                            &nbsp;<i class="fa fa-edit" aria-hidden="true"></i>&nbsp;
-                        </button>
+                        {% if request.url[-10:] == '?sort=True' %}
+                            <button onclick="window.location.href = '{{ url_for('review.index') }}/{{ gene.virus }}/{{ gene.names }}?overview_sorted=True'"
+                                    type="button"
+                                    class="btn btn-sm btn-info">
+                                &nbsp;<i class="fa fa-edit" aria-hidden="true"></i>&nbsp;
+                            </button>
+                        {% else %}
+                            <button onclick="window.location.href = '{{ url_for('review.index') }}/{{ gene.virus }}/{{ gene.names }}'"
+                                    type="button"
+                                    class="btn btn-sm btn-info">
+                                &nbsp;<i class="fa fa-edit" aria-hidden="true"></i>&nbsp;
+                            </button>
+                        {% endif %}
                     </td>
                 </tr>
                 {% include 'delete_review_modal.html' %}

@@ -96,8 +96,14 @@ class Gene(db.Model):
             return False
 
     @staticmethod
-    def get_all():
-        return Gene.query.all()
+    def get_all(sort=False):
+        all_genes = Gene.query.all()
+        if sort:
+            SORT_ORDER = {"CORRECT": 3, "MODIFIED": 2, "UNCERTAIN": 1, "REVIEW_LATER": 0}
+            sorted_genes = sorted(all_genes, key=lambda gene: SORT_ORDER[gene.review_status])
+            return sorted_genes
+        else:
+            return reversed(all_genes)
 
     @staticmethod
     def get_totals():

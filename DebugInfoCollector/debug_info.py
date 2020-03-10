@@ -91,6 +91,8 @@ def context_text(gene, phases, context_list, paper, paper_directory):
         sub_text = re.compile('([^a-zA-Z])(' + re.escape(name) + ')([^a-zA-Z])', re.IGNORECASE)
         text = re.sub(sub_text, r'\1<strong>\2</strong>\3', text)
 
+    text = text.replace('<!--', '')
+
     return '"...' + Markup(text) + '..."'
 
 
