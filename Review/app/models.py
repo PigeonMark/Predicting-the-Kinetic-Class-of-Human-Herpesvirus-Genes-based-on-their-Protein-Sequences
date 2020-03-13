@@ -110,14 +110,20 @@ class Gene(db.Model):
         from Review.app.src import GeneRotator
 
         totals = {}
+        statuses = {}
         for gene in Gene.get_all():
             if gene.virus not in totals:
                 totals[gene.virus] = 1
             else:
                 totals[gene.virus] += 1
 
+            if gene.review_status not in statuses:
+                statuses[gene.review_status] = 1
+            else:
+                statuses[gene.review_status] += 1
+
         to_review_totals = {}
         for virus, genes in GeneRotator.debug_info.items():
             to_review_totals[virus] = len(genes)
 
-        return totals, to_review_totals
+        return totals, to_review_totals, sum([t for v, t in totals.items()]), sum([t for v, t in to_review_totals.items()]), statuses

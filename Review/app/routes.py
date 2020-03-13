@@ -39,7 +39,7 @@ def index():
                                sorted_keys_phases=sorted_keys_phases)
 
     else:
-        return render_template('all_done.html')
+        return render_template('all_done.html', totals=Gene.get_totals())
 
 
 @blueprint.route('/overview', methods=['GET', 'POST'])

@@ -80,10 +80,26 @@
             {% endfor %}
             </tbody>
         </table>
-        <h3>Reviewed genes per virus:</h3>
-        {{ totals[0] }}
-        <h3 class="mt-2">Total genes to review:</h3>
-        {{ totals[1] }}
+        <div class="row mt-5">
+            <div class="col">
+                <h3>Reviewed genes per virus (total: {{ totals[2] }}):</h3>
+                {% for g, c in totals[0].items() %}
+                    {{ g }}: {{ c }}<br>
+                {% endfor %}
+            </div>
+            <div class="col">
+                <h3>Total genes to review (total: {{ totals[3] }}):</h3>
+                {% for g, c in totals[1].items() %}
+                    {{ g }}: {{ c }}<br>
+                {% endfor %}
+            </div>
+            <div class="col">
+                <h3>Number of genes per status:</h3>
+                {% for g, c in totals[4].items() %}
+                    {{ g }}: {{ c }}<br>
+                {% endfor %}
+            </div>
+        </div>
         <div class="my-5"></div>
     </div>
 {% endblock app_content %}
