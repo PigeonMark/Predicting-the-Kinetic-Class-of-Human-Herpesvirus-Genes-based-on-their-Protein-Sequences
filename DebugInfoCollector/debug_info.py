@@ -10,7 +10,7 @@ from Combine import Combiner
 from Counting import Counter
 from Keywords import KeywordBuilder
 from ProteinCollecting import ProteinCollector
-from Util import open_xml_paper
+from Util import open_xml_paper, get_uniprot_id, get_separate_keywords
 import xml.etree.ElementTree as ET
 
 
@@ -59,23 +59,6 @@ def find_list_in_paper(full_string, sub_list):
     min_str_positions = (min_p[0], min_p[-1] + len(sub_list[-1]))
 
     return min_str_positions
-
-
-def get_separate_keywords(gene):
-    return gene.split('_')
-
-
-def get_uniprot_id(gene, protein_collector, keywords):
-    all_keys, name_to_headers, header_row = keywords
-    max_evidence = 6
-    max_uniprot_id = ''
-    for kw in get_separate_keywords(gene):
-        if kw in header_row:
-            sequence, evidence_level = protein_collector.read_protein_sequence(kw)
-            if evidence_level < max_evidence:
-                max_evidence = evidence_level
-                max_uniprot_id = kw
-    return max_uniprot_id
 
 
 def context_text(gene, phases, context_list, paper, paper_directory):

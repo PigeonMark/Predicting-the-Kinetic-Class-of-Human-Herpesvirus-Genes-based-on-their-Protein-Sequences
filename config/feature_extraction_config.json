@@ -2,8 +2,8 @@
   "keywords_config": "config/keywords_config.json",
   "general_config": "config/general.json",
   "protein_collector_config": "config/protein_collector_config.json",
+  "review_db_reader_config": "config/review_db_reader_config.json",
   "output_csv_directory": "FeatureExtraction/Output/csv/",
-  "input_directory": "Combine/Output/raw/",
   "basicity": {
     "A": 206.4,
     "B": 210.7,

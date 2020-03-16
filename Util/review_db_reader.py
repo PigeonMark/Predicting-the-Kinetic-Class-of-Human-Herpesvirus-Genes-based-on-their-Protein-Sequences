@@ -34,6 +34,7 @@ class ReviewDBReader:
         ret_list = []
         for row in rows:
             ret_list.append(Review(row[0], row[1], row[2], row[3], row[4]))
+        return ret_list
 
     def get_by(self, what, value):
         if what in ['virus', 'names', 'reviewed_phase', 'review_status']:

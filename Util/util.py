@@ -55,3 +55,20 @@ def add_to_near_occ_dict(to_add, keyword, phase, near_occ_dic):
             near_occ_dic[keyword][phase] = to_add
     else:
         near_occ_dic[keyword] = {phase: to_add}
+
+
+def get_separate_keywords(gene):
+    return gene.split('_')
+
+
+def get_uniprot_id(gene, protein_collector, keywords):
+    all_keys, name_to_headers, header_row = keywords
+    max_evidence = 6
+    max_uniprot_id = ''
+    for kw in get_separate_keywords(gene):
+        if kw in header_row:
+            sequence, evidence_level = protein_collector.read_protein_sequence(kw)
+            if evidence_level < max_evidence:
+                max_evidence = evidence_level
+                max_uniprot_id = kw
+    return max_uniprot_id

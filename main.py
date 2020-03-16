@@ -7,6 +7,7 @@ from FeatureExtraction import FeatureExtraction
 from DebugInfoCollector import DebugInfoCollector
 from DataPlotter import DataPlotter
 
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-s', '--select', action='store_true')
@@ -18,7 +19,6 @@ def main():
     parser.add_argument('-r', '--review', action='store_true')
     parser.add_argument('--replace-debug', action='store_true')
     parser.add_argument('-p', '--plot-data', action='store_true')
-
 
     args = parser.parse_args()
 
@@ -65,7 +65,6 @@ def main():
     if args.plot_data:
         data_plotter = DataPlotter("config/data_plotter_config.json")
         data_plotter.plot()
-
 
 
 if __name__ == "__main__":
