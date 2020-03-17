@@ -1,0 +1,5 @@
+{
+  "input_csv_file": "FeatureExtraction/Output/csv/features_10.csv",
+  "output_identity_file": "HomologyFilter/Output/raw/identities.p",
+  "output_plot_directory": "HomologyFilter/Output/plots/"
+}

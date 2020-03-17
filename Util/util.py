@@ -72,3 +72,27 @@ def get_uniprot_id(gene, protein_collector, keywords):
                 max_evidence = evidence_level
                 max_uniprot_id = kw
     return max_uniprot_id
+
+
+def data_from_protein(data, protein):
+    for i, row in data.iterrows():
+        if row['protein'] == protein:
+            return row
+
+
+def print_data_row(row):
+    to_print = ""
+    to_print += row['virus']
+    to_print += (6 - len(to_print)) * ' '
+    to_print += '  ' + row['protein_group']
+    to_print += (53 - len(to_print)) * ' '
+    to_print += '  ' + row['protein']
+    to_print += (59 - len(to_print)) * ' '
+    to_print += '  ' + row['label']
+    to_print += (78 - len(to_print)) * ' '
+    if len(row['sequence']) > 100:
+        to_print += '  ' + row['sequence'][:100] + '...'
+    else:
+        to_print += '  ' + row['sequence']
+
+    print(to_print)

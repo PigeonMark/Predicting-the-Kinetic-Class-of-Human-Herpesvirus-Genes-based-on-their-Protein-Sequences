@@ -6,6 +6,7 @@ from Combine import Combiner
 from FeatureExtraction import FeatureExtraction
 from DebugInfoCollector import DebugInfoCollector
 from DataPlotter import DataPlotter
+from HomologyFilter import HomologyFilter
 
 
 def main():
@@ -19,6 +20,7 @@ def main():
     parser.add_argument('-r', '--review', action='store_true')
     parser.add_argument('--replace-debug', action='store_true')
     parser.add_argument('-p', '--plot-data', action='store_true')
+    parser.add_argument('-f', '--homology-filter', action='store_true')
 
     args = parser.parse_args()
 
@@ -65,6 +67,10 @@ def main():
     if args.plot_data:
         data_plotter = DataPlotter("config/data_plotter_config.json")
         data_plotter.plot()
+
+    if args.homology_filter:
+        homology_filter = HomologyFilter('config/homology_filter.json')
+        homology_filter.filter()
 
 
 if __name__ == "__main__":

@@ -69,7 +69,8 @@ class FeatureExtraction:
             A pandas `DataFrame` in which rows contain feature information on a TCR beta sequence.
         """
 
-        features_list = [self.dataframe['virus'], self.dataframe['protein_group'], self.dataframe['protein']]
+        features_list = [self.dataframe['virus'], self.dataframe['protein_group'], self.dataframe['protein'],
+                         self.dataframe['sequence']]
 
         # non-positional features (i.e. over the whole sequence)
 
@@ -81,7 +82,7 @@ class FeatureExtraction:
         # number of occurences of each amino acid
         aa_counts = pd.DataFrame.from_records(
             [parser.amino_acid_composition(sequence) for sequence in self.dataframe['sequence']]).fillna(0)
-        aa_counts.columns = ['{} count_all_viruses'.format(column) for column in aa_counts.columns]
+        aa_counts.columns = ['{} count'.format(column) for column in aa_counts.columns]
         features_list.append(aa_counts)
 
         def physchem_properties_function(sequence):
