@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import SubmitField, HiddenField, StringField
+from wtforms import SubmitField, HiddenField
 
 
 class DeleteReviewForm(FlaskForm):

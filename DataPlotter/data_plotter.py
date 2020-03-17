@@ -59,7 +59,8 @@ class DataPlotter:
 
         bars = [len(result_dict[s]) for s in REVIEW_STATUSES]
 
-        plt.bar(range(len(result_dict)), bars, tick_label=[s for s in REVIEW_STATUSES], color=[color_status_dict[s] for s in REVIEW_STATUSES])
+        plt.bar(range(len(result_dict)), bars, tick_label=[s for s in REVIEW_STATUSES],
+                color=[color_status_dict[s] for s in REVIEW_STATUSES])
         plt.title('Number of genes per review status (total over all viruses)')
         plt.ylabel('Number of genes')
 

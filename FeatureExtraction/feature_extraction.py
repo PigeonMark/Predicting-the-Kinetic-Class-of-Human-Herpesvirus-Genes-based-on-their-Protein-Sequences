@@ -2,8 +2,6 @@
 Adapted from https://github.com/bittremieux/TCR-Classifier/blob/master/tcr_classifier_v2.ipynb
 """
 import json
-import operator
-import pickle
 
 import numpy as np
 import pandas as pd
@@ -54,6 +52,7 @@ class FeatureExtraction:
                 self.dataframe.loc[i] = [review.virus, review.names, uniprot_id, str(seq), review.reviewed_phase]
                 i += 1
 
+    # noinspection PyListCreation
     def compute_features(self):
         """
         Creates feature vector representations for each TCR beta sequence in a pandas `DataFrame`.

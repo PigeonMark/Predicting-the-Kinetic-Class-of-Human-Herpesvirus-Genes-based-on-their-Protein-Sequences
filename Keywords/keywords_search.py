@@ -44,9 +44,6 @@ def fetch_search_queries(taxid):
         response = requests.get("http://www.uniprot.org/uniprot/", params=payload)
         response.raise_for_status()
     except requests.exceptions.RequestException as err:
-        logger.error("Encountered error while accessing UniProt", exc_info=True)
-        sys.exit(1)
-    except requests.exceptions.HTTPError as err:
         print(err)
         logger.error("Encountered error while accessing UniProt", exc_info=True)
         sys.exit(1)

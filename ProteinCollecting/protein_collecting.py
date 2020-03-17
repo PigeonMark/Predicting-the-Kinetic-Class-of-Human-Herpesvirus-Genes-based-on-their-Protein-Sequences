@@ -36,7 +36,8 @@ class ProteinCollector:
     def read_protein_sequence(self, uniprot_id):
         self.save_protein_sequence(uniprot_id)
 
-        record = SeqIO.read(os.path.join(self.output_directory, uniprot_id) + ".fasta", "fasta")  # type: SeqRecord
+        record = SeqIO.read(os.path.join(self.output_directory, uniprot_id) + ".fasta",
+                            "fasta")  # type: SeqIO.SeqRecord
         evidence_level = 0
         for el in record.description.split():
             if el.startswith('PE='):

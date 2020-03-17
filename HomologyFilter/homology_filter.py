@@ -1,11 +1,13 @@
 import json
 import pickle
+from time import time
+
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 from Bio import pairwise2
 from Bio.SubsMat import MatrixInfo
-from time import time
-import numpy as np
+
 from Util import data_from_protein, print_data_row
 
 
@@ -49,14 +51,25 @@ class HomologyFilter:
     def load_identity(self):
         self.identities = pickle.load(open(self.identity_file, 'rb'))
 
-    def identity_histogram(self):
-        inp = [v2 for v in self.identities.values() for v2 in v.values()]
-        bins = np.arange(0, 1.1, 0.1)
+    def __i_hist(self, inp, bins, title, filename):
         y, x, patch = plt.hist(inp, bins)
         for i, v in enumerate(y):
             plt.text((x[i] + x[i + 1]) / 2., v, str(int(v)), color='black', ha='center', va='bottom')
-        plt.xticks(np.arange(0, 1.1, 0.1))
-        plt.savefig(f'{self.plot_directory}identities_histogram.png', dpi=300)
+        plt.xticks(bins)
+        plt.ylabel('Number of pairs')
+        plt.xlabel('Identity Score')
+        plt.title(title)
+        plt.savefig(f'{self.plot_directory}{filename}.png', dpi=300)
+        plt.clf()
+
+    def identity_histogram(self):
+        inp = [v2 for v in self.identities.values() for v2 in v.values()]
+        bins = np.arange(0, 1.1, 0.1)
+        self.__i_hist(inp, bins, 'Identity Scores for gene pairs', 'identities_histogram')
+
+        inp2 = [v for v in inp if v >= 0.3]
+        bins2 = bins[3:]
+        self.__i_hist(inp2, bins2, 'Identity Scores (>30%) for gene pairs', 'identities_30_histogram')
 
     def calculate_identities(self):
         done = 0
@@ -91,7 +104,7 @@ class HomologyFilter:
         for hom in homologs:
             print_data_row(data_from_protein(self.data, hom[0]))
             print_data_row(data_from_protein(self.data, hom[1]))
-            print(f"Identity Score: {100*hom[2]:.2f}%")
+            print(f"Identity Score: {100 * hom[2]:.2f}%")
             print()
 
     def filter(self):
@@ -99,4 +112,3 @@ class HomologyFilter:
         self.load_identity()
         self.identity_histogram()
         self.print_homologs_overview()
-

@@ -66,9 +66,9 @@ def context_text(gene, phases, context_list, paper, paper_directory):
     min_str_positions = find_list_in_paper(full_text, context_list)
     text = full_text[min_str_positions[0]:min_str_positions[1]]
 
-    to_bold = get_separate_keywords(gene) + \
-              ['immediate early'] + list(phases.keys()) + \
-              [subphase for phase, subphases in phases.items() for subphase in subphases]
+    to_bold = get_separate_keywords(gene) + ['immediate early'] + list(phases.keys()) + [subphase for phase, subphases
+                                                                                         in phases.items() for subphase
+                                                                                         in subphases]
 
     for name in to_bold:
         sub_text = re.compile('([^a-zA-Z])(' + re.escape(name) + ')([^a-zA-Z])', re.IGNORECASE)

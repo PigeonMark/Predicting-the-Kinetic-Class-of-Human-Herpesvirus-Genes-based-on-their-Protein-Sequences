@@ -1,7 +1,7 @@
 import json
 
 from sqlalchemy.sql import exists
-from sqlalchemy import exc, desc
+from sqlalchemy import exc
 from Review.app import db
 
 REVIEW_STATUSES = {"CORRECT", "MODIFIED", "UNCERTAIN", "REVIEW_LATER"}
@@ -126,4 +126,5 @@ class Gene(db.Model):
         for virus, genes in GeneRotator.debug_info.items():
             to_review_totals[virus] = len(genes)
 
-        return totals, to_review_totals, sum([t for v, t in totals.items()]), sum([t for v, t in to_review_totals.items()]), statuses
+        return totals, to_review_totals, sum([t for v, t in totals.items()]), sum(
+            [t for v, t in to_review_totals.items()]), statuses

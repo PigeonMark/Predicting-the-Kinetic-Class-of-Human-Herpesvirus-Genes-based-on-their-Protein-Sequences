@@ -10,8 +10,8 @@ def paper_url(paper_name):
     return f"https://www.ncbi.nlm.nih.gov/pmc/articles/{paper_name[:-5]}"
 
 
-def sorted_keys_phases(dict, score_dict):
-    return sorted(dict.keys(), key=lambda phase: score_dict[phase], reverse=True)
+def sorted_keys_phases(dic, score_dict):
+    return sorted(dic.keys(), key=lambda phase: score_dict[phase], reverse=True)
 
 
 class GeneRotator:
