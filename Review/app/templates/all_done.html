@@ -5,7 +5,7 @@
         <h2 class="mt-5">
             Congratulations! All genes are reviewed! &nbsp;&nbsp;<i class="fa fa-2x fa-thumbs-up"></i>
         </h2>
-        {% if totals[4]['REVIEW_LATER'] > 0 %}
+        {% if totals[4].get('REVIEW_LATER', 0) > 0 %}
             Still {{ totals[4]['REVIEW_LATER'] }} genes are marked as 'REVIEW_LATER', go to <a
                 href="{{ url_for('review.overview', sort=True) }}">Overview</a> to review them.
         {% endif %}
