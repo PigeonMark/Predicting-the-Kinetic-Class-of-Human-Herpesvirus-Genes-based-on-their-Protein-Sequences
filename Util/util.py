@@ -91,8 +91,10 @@ def print_data_row(row):
     to_print += '  ' + row['label']
     to_print += (78 - len(to_print)) * ' '
     if len(row['sequence']) > 100:
-        to_print += '  ' + row['sequence'][:100] + '...'
+        to_print += '  ' + row['sequence'][:50] + '...'
     else:
         to_print += '  ' + row['sequence']
+    to_print += (133 - len(to_print)) * ' '
+    to_print += '  ' + f"http://localhost:5000/index/{row['virus']}/{row['protein_group']}"
 
     print(to_print)

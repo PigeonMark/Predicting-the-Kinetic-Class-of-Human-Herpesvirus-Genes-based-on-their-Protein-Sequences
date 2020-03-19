@@ -1,5 +1,9 @@
 {
+  "review_db_reader_config": "config/review_db_reader_config.json",
   "input_csv_file": "FeatureExtraction/Output/csv/features_10.csv",
   "output_identity_file": "HomologyFilter/Output/raw/identities.p",
-  "output_plot_directory": "HomologyFilter/Output/plots/"
+  "output_plot_directory": "HomologyFilter/Output/plots/",
+  "output_csv_directory": "HomologyFilter/Output/csv/",
+  "threshold": 0.8,
+  "inspection_threshold": 0.4
 }

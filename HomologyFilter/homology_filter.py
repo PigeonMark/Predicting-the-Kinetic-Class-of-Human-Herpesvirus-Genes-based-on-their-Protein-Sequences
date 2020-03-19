@@ -1,12 +1,14 @@
 import json
 import pickle
-from time import time
+import random
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+
 from Bio import pairwise2
 from Bio.SubsMat import MatrixInfo
+from time import time
 
 from Util import data_from_protein, print_data_row
 
@@ -14,9 +16,13 @@ from Util import data_from_protein, print_data_row
 class HomologyFilter:
     def __init__(self, config_filepath):
         self.data = None  # type: pd.DataFrame
+        self.filtered_data = None  # type: pd.DataFrame
         self.identities = {}
         self.identity_file = None
         self.plot_directory = None
+        self.csv_directory = None
+        self.threshold = None
+        self.inspection_threshold = None
         self.matrix = MatrixInfo.blosum62
         self.__read_config(config_filepath)
 
@@ -26,6 +32,9 @@ class HomologyFilter:
             self.data = pd.read_csv(config['input_csv_file'])
             self.identity_file = config['output_identity_file']
             self.plot_directory = config['output_plot_directory']
+            self.csv_directory = config['output_csv_directory']
+            self.threshold = config['threshold']
+            self.inspection_threshold = config['inspection_threshold']
 
     def pairwise_align(self, req1, req2):
         alignment = pairwise2.align.globalds(req1['sequence'], req2['sequence'], self.matrix, -11, -1,
@@ -90,7 +99,10 @@ class HomologyFilter:
 
         self.save_identity()
 
-    def get_pairs_identity_above(self, threshold):
+    def get_homology_pairs(self, threshold=None):
+        if threshold is None:
+            threshold = self.threshold
+
         ret_list = []
         for geneA, genes in self.identities.items():
             for geneB, identity in genes.items():
@@ -99,16 +111,77 @@ class HomologyFilter:
         sorted_ret_list = sorted(ret_list, key=lambda value: value[2], reverse=True)
         return sorted_ret_list
 
-    def print_homologs_overview(self):
-        homologs = self.get_pairs_identity_above(0.4)
-        for hom in homologs:
-            print_data_row(data_from_protein(self.data, hom[0]))
-            print_data_row(data_from_protein(self.data, hom[1]))
-            print(f"Identity Score: {100 * hom[2]:.2f}%")
-            print()
+    def print_homology(self, homology):
+        print_data_row(data_from_protein(self.data, homology[0]))
+        print_data_row(data_from_protein(self.data, homology[1]))
+        print(f"Identity Score: {100 * homology[2]:.2f}%")
+        print()
+
+    def print_homologies_overview(self, threshold=None):
+        homologies = self.get_homology_pairs(threshold)
+        for hom in homologies:
+            self.print_homology(hom)
+
+    def inspect_homologies(self, threshold=None):
+        if threshold is None:
+            threshold = self.inspection_threshold
+
+        identity_pairs = self.get_homology_pairs(threshold)
+        for hom in identity_pairs:
+            data_a = data_from_protein(self.data, hom[0])
+            data_b = data_from_protein(self.data, hom[1])
+            if data_a['label'] != data_b['label']:
+                self.print_homology(hom)
+                json_homology = {"proteins": [
+                    {"virus": data_a['virus'], "name": data_a['protein'], "gene": "", "phase": data_a['label']},
+                    {"virus": data_b['virus'], "name": data_b['protein'], "gene": "", "phase": data_b['label']}
+                ], "reason": ""}
+                print(json.dumps(json_homology))
+                print()
+
+    def next_index(self):
+        return 0 if pd.isnull(self.filtered_data.index.max()) else self.filtered_data.index.max() + 1
+
+    def filter_data(self):
+        homology_pairs = self.get_homology_pairs()
+        homologue_proteins = []
+        for (geneA, geneB, identity) in homology_pairs:
+            homologue_proteins.append(geneA)
+            homologue_proteins.append(geneB)
+
+        self.filtered_data = pd.DataFrame(columns=self.data.columns[1:])
+
+        # Add all proteins not occurring in a homology pair
+        for index, row in self.data.iterrows():
+            if row['protein'] not in homologue_proteins:
+                self.filtered_data.loc[self.next_index()] = row
+
+        if len(homologue_proteins) != len(set(homologue_proteins)):
+            print("ATTENTION: a protein occurred in 2 homologue pairs, filtered data might contain a duplicate or "
+                  "homologue!")
+
+        # Selectively add proteins occurring in homology pairs
+        random.seed(0)
+        for (geneA, geneB, identity) in homology_pairs:
+            data_a = data_from_protein(self.data, geneA)
+            data_b = data_from_protein(self.data, geneB)
+            # add a random protein if label is the same
+            if data_a['label'] == data_b['label']:
+                choice = [data_a, data_b][random.randrange(2)]
+                self.filtered_data.loc[self.next_index()] = choice
+            # add both if label is different
+            else:
+                self.filtered_data.loc[self.next_index()] = data_a
+                self.filtered_data.loc[self.next_index()] = data_b
+
+    def save_filtered_data(self):
+        self.filtered_data.to_csv(f'{self.csv_directory}filtered_features_{str(int(self.threshold * 100))}.csv')
 
     def filter(self):
         # self.calculate_identities()
         self.load_identity()
-        self.identity_histogram()
-        self.print_homologs_overview()
+        # self.identity_histogram()
+        # self.print_homologies_overview(self.inspection_threshold)
+        # self.inspect_homologies()
+        self.filter_data()
+        self.save_filtered_data()

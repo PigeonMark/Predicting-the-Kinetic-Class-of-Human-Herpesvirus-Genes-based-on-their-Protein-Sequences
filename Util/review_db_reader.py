@@ -11,6 +11,13 @@ class Review:
         self.reviewed_phase = reviewed_phase
         self.review_status = review_status
 
+    def __repr__(self):
+        return "Virus: " + str(self.virus) + \
+               "\nNames: " + str(self.names) + \
+               "\nOld phase: " + str(self.old_phase) + \
+               "\nReviewed phase: " + str(self.reviewed_phase) + \
+               "\nReview status: " + str(self.review_status)
+
 
 class ReviewDBReader:
 

@@ -1,0 +1,55 @@
+{
+  "homologies": [
+    {
+      "proteins": [
+        {
+          "virus": "HSV_1",
+          "name": "p04486",
+          "gene": "UL48",
+          "phase": "late"
+        },
+        {
+          "virus": "HSV_2",
+          "name": "p68336",
+          "gene": "UL48",
+          "phase": "immediate-early"
+        }
+      ],
+      "reason": "UL48 of HSV 1 is clearly LATE, (although confusion is possible, because it promotes IE genes). UL48 of HSV 2 is not so clear, it's IE according to one paper"
+    },
+    {
+      "proteins": [
+        {
+          "virus": "HCMV",
+          "name": "p09695",
+          "gene": "TRS1",
+          "phase": "immediate-early"
+        },
+        {
+          "virus": "HCMV",
+          "name": "p09715",
+          "gene": "IRS1",
+          "phase": "early"
+        }
+      ],
+      "reason": "2 different genes of the same virus with a similar function, but have a different phase according to the literature"
+    },
+    {
+      "proteins": [
+        {
+          "virus": "HSV_1",
+          "name": "p08353",
+          "gene": "RL1",
+          "phase": "late"
+        },
+        {
+          "virus": "HSV_2",
+          "name": "p28283",
+          "gene": "RL1",
+          "phase": "immediate-early"
+        }
+      ],
+      "reason": "Different function in the different viruses, only 45% identity"
+    }
+  ]
+}
