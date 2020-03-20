@@ -1,3 +1,4 @@
+progressbar2==3.50.1
 nltk==3.4
 Flask==1.0.2
 pyteomics==4.2
@@ -19,3 +20,4 @@ Flask_SQLAlchemy==2.4.1
 helper==2.4.2
 scikit_learn==0.22.2.post1
 biopython==1.76
+xgboost==1.0.2

@@ -1,0 +1,50 @@
+{
+  "k-fold-splits": 200,
+  "k-fold-train-size": 0.67,
+  "input_data_file": "HomologyFilter/Output/csv/filtered_features_80.csv",
+  "output_result_directory": "Classification/Output/raw/ba/",
+  "output_ba_plot_directory": "Classification/Output/plots/ba/",
+  "ML-method-options": [
+    "1vsA",
+    "ML",
+    "RR"
+  ],
+  "Classifier-options": [
+    "KNN",
+    "RF",
+    "XGBoost"
+  ],
+  "KNN-options": {
+    "n_neighbors": 10
+  },
+  "features": [
+    "length",
+    "A count",
+    "C count",
+    "D count",
+    "E count",
+    "F count",
+    "G count",
+    "H count",
+    "I count",
+    "K count",
+    "L count",
+    "M count",
+    "N count",
+    "P count",
+    "Q count",
+    "R count",
+    "S count",
+    "T count",
+    "V count",
+    "W count",
+    "X count",
+    "Y count",
+    "average basicity",
+    "average hydrophobicity",
+    "average helicity",
+    "average mutation stability",
+    "mass",
+    "pI"
+  ]
+}

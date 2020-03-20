@@ -7,6 +7,7 @@ from FeatureExtraction import FeatureExtraction
 from DebugInfoCollector import DebugInfoCollector
 from DataPlotter import DataPlotter
 from HomologyFilter import HomologyFilter
+from Classification import Classification, ClassificationPlotter
 
 
 def main():
@@ -21,6 +22,8 @@ def main():
     parser.add_argument('--replace-debug', action='store_true')
     parser.add_argument('-p', '--plot-data', action='store_true')
     parser.add_argument('-f', '--homology-filter', action='store_true')
+
+    parser.add_argument('-y', '--classify', action='store_true')
 
     args = parser.parse_args()
 
@@ -71,6 +74,16 @@ def main():
     if args.homology_filter:
         homology_filter = HomologyFilter('config/homology_filter.json')
         homology_filter.filter()
+
+    if args.classify:
+        classification = Classification('config/classification_config.json')
+        classification.classify_all()
+        classification.save()
+
+        cp = ClassificationPlotter('config/classification_config.json')
+        cp.load_results()
+        cp.plot_ba()
+        cp.plot_adjusted_ba()
 
 
 if __name__ == "__main__":
