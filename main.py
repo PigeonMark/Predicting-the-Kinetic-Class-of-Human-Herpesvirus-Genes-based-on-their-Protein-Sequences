@@ -76,9 +76,9 @@ def main():
         homology_filter.filter()
 
     if args.classify:
-        classification = Classification('config/classification_config.json')
-        classification.classify_all()
-        classification.save()
+        # classification = Classification('config/classification_config.json')
+        # classification.classify_all()
+        # classification.save()
 
         cp = ClassificationPlotter('config/classification_config.json')
         cp.load_results()
