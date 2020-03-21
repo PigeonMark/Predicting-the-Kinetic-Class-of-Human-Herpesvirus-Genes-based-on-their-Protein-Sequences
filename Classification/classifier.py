@@ -16,6 +16,14 @@ class ClassificationResult:
         self.adjusted_ba = adjusted_ba
 
 
+def filter_original_viruses(all_data):
+    return all_data[all_data.virus.isin(["HSV_1", "HSV_2", "VZV", "EBV", "HCMV"])]
+
+
+def filter_original_phases(all_data):
+    return all_data[all_data.label.isin(["immediate-early", "early", "late"])]
+
+
 class Classifier:
     def __init__(self, config_filepath, ml_method, classifier):
         self.ml_method = ml_method
@@ -85,9 +93,15 @@ class Classifier:
         bar.finish()
         return k_fold_results
 
-    def run(self):
+    def run(self, filter_virus=False, filter_phase=False):
 
         all_data = pd.read_csv(self.config['input_data_file'], index_col=0)
+
+        if filter_virus:
+            all_data = filter_original_viruses(all_data)
+
+        if filter_phase:
+            all_data = filter_original_phases(all_data)
 
         k_fold_results = self.__k_fold(all_data)
         return k_fold_results
