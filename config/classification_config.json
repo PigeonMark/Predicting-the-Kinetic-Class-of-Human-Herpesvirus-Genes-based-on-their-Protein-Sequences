@@ -1,9 +1,10 @@
 {
   "k-fold-splits": 200,
   "k-fold-train-size": 0.67,
-  "input_data_file": "HomologyFilter/Output/csv/filtered_features_80.csv",
+  "input_data_folder": "FeatureExtraction/Output/csv/",
   "output_result_directory": "Classification/Output/raw/ba/",
   "output_ba_plot_directory": "Classification/Output/plots/ba/",
+  "output_fi_plot_directory": "Classification/Output/plots/fi/",
   "ML-method-options": [
     "1vsA",
     "ML",
@@ -14,37 +15,31 @@
     "RF",
     "XGBoost"
   ],
-  "KNN-options": {
-    "n_neighbors": 10
+  "XGBoost-options": {
+    "ML": {
+      "booster": "gblinear",
+      "feature_selector": "shuffle",
+      "updater": "shotgun",
+      "lambda": 0.1
+    },
+    "1vsA": {
+      "booster": "gblinear",
+      "feature_selector": "shuffle",
+      "updater": "coord_descent",
+      "lambda": 0.1
+    },
+    "RR": {
+      "booster": "gblinear",
+      "feature_selector": "shuffle",
+      "updater": "coord_descent",
+      "lambda": 0.1
+    }
   },
-  "features": [
-    "length",
-    "A count",
-    "C count",
-    "D count",
-    "E count",
-    "F count",
-    "G count",
-    "H count",
-    "I count",
-    "K count",
-    "L count",
-    "M count",
-    "N count",
-    "P count",
-    "Q count",
-    "R count",
-    "S count",
-    "T count",
-    "V count",
-    "W count",
-    "X count",
-    "Y count",
-    "average basicity",
-    "average hydrophobicity",
-    "average helicity",
-    "average mutation stability",
-    "mass",
-    "pI"
+  "skip-features": [
+    "virus",
+    "protein",
+    "protein_group",
+    "sequence",
+    "label"
   ]
 }

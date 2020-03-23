@@ -1,9 +1,76 @@
 {
-  "keywords_config": "config/keywords_config.json",
-  "general_config": "config/general.json",
-  "protein_collector_config": "config/protein_collector_config.json",
-  "review_db_reader_config": "config/review_db_reader_config.json",
+  "input_csv_file": "HomologyFilter/Output/csv/filtered_features_80.csv",
   "output_csv_directory": "FeatureExtraction/Output/csv/",
+  "feature_possibilities": {
+    "original": [
+      "length",
+      "counts",
+      "physchem",
+      "mass",
+      "pI"
+    ],
+    "3-windowed": [
+      "3-windowed"
+    ],
+    "original_2-windowed": [
+      "length",
+      "counts",
+      "physchem",
+      "mass",
+      "pI",
+      "2-windowed"
+    ],
+    "original_3-windowed": [
+      "length",
+      "counts",
+      "physchem",
+      "mass",
+      "pI",
+      "3-windowed"
+    ],
+    "original_4-windowed": [
+      "length",
+      "counts",
+      "physchem",
+      "mass",
+      "pI",
+      "4-windowed"
+    ]
+  },
+  "aa_categories": {
+    "a": [
+      "I",
+      "V",
+      "L",
+      "M"
+    ],
+    "b": [
+      "F",
+      "Y",
+      "W"
+    ],
+    "c": [
+      "H",
+      "K",
+      "R"
+    ],
+    "d": [
+      "D",
+      "E"
+    ],
+    "e": [
+      "Q",
+      "N",
+      "T",
+      "P"
+    ],
+    "f": [
+      "A",
+      "C",
+      "G",
+      "S"
+    ]
+  },
   "basicity": {
     "A": 206.4,
     "B": 210.7,

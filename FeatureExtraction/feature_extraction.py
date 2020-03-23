@@ -2,88 +2,49 @@
 Adapted from https://github.com/bittremieux/TCR-Classifier/blob/master/tcr_classifier_v2.ipynb
 """
 import json
-
+import itertools
 import numpy as np
 import pandas as pd
 from pyteomics import electrochem, mass, parser
-from Util import ReviewDBReader, get_uniprot_id
-from Keywords import KeywordBuilder
-from ProteinCollecting import ProteinCollector
 
 
 class FeatureExtraction:
     def __init__(self, config_filepath):
         self.physchem_properties = {}
-        self.dataframe = None
-        self.keywords = {}
-        self.viruses = None
-        self.review_db_reader = None  # type: ReviewDBReader
-        self.protein_collector = None  # type: ProteinCollector
-        self.features = None
+        self.data_frame = None  # type: pd.DataFrame
         self.output_csv_directory = None
-        self.general_config = None
+        self.feature_possibilities = None
+        self.aa_categories = {}
+        self.aa_to_category = {}
         self.__read_config(config_filepath)
 
     def __read_config(self, config_filepath):
         with open(config_filepath) as config_file:
             config = json.load(config_file)
-            self.protein_collector = ProteinCollector(config['protein_collector_config'])
             self.output_csv_directory = config['output_csv_directory']
             self.physchem_properties = {'basicity': config['basicity'],
                                         'hydrophobicity': config['hydrophobicity'],
                                         'helicity': config['helicity'],
                                         'mutation stability': config['mutation_stability']}
-            with open(config['general_config']) as general_config_file:
-                self.general_config = json.load(general_config_file)
-                self.viruses = self.general_config["viruses"]
 
-            self.review_db_reader = ReviewDBReader(config['review_db_reader_config'])
+            self.data_frame = pd.read_csv(config['input_csv_file'], index_col=0)
+            self.feature_possibilities = config['feature_possibilities']
+            self.aa_categories = config['aa_categories']
+            for cat, aas in self.aa_categories.items():
+                for aa in aas:
+                    self.aa_to_category[aa] = cat
 
-            for virus in self.viruses:
-                self.keywords[virus] = KeywordBuilder(config['keywords_config']).get_keywords(virus)
+    def add_length(self):
+        self.data_frame['length'] = self.data_frame['sequence'].apply(lambda sequence: parser.length(sequence))
 
-    def create_df(self):
-        self.dataframe = pd.DataFrame(columns=['virus', 'protein_group', 'protein', 'sequence', 'label'])
-        i = 0
-        for review in self.review_db_reader.get_all():
-            if review.review_status in ['CORRECT', 'MODIFIED']:
-                uniprot_id = get_uniprot_id(review.names, self.protein_collector, self.keywords[review.virus])
-                seq, evidence = self.protein_collector.read_protein_sequence(uniprot_id)
-                self.dataframe.loc[i] = [review.virus, review.names, uniprot_id, str(seq), review.reviewed_phase]
-                i += 1
-
-    # noinspection PyListCreation
-    def compute_features(self):
-        """
-        Creates feature vector representations for each TCR beta sequence in a pandas `DataFrame`.
-        Each row/TCR beta is expected to be made up of a V-gene, J-gene and CDR3 sequence.
-
-        Sequences are turned into feature vectors based on the present V- and J gene as well
-        as physicochemical properties of the CDR3 sequence.
-
-        Args:
-            - data: The pandas `DataFrame` containing TCR beta sequences.
-
-        Returns:
-            A pandas `DataFrame` in which rows contain feature information on a TCR beta sequence.
-        """
-
-        features_list = [self.dataframe['virus'], self.dataframe['protein_group'], self.dataframe['protein'],
-                         self.dataframe['sequence']]
-
-        # non-positional features (i.e. over the whole sequence)
-
-        # sequence length
-        features_list.append(
-            self.dataframe['sequence'].apply(lambda sequence: parser.length(sequence)).to_frame()
-                .rename(columns={'sequence': 'length'}))
-
-        # number of occurences of each amino acid
+    def add_aa_counts(self):
         aa_counts = pd.DataFrame.from_records(
-            [parser.amino_acid_composition(sequence) for sequence in self.dataframe['sequence']]).fillna(0)
+            [parser.amino_acid_composition(sequence) for sequence in self.data_frame['sequence']]) \
+            .fillna(0, downcast='infer')
         aa_counts.columns = ['{} count'.format(column) for column in aa_counts.columns]
-        features_list.append(aa_counts)
+        self.data_frame = pd.concat([self.data_frame, aa_counts], axis=1)
 
+    def add_physchem_properties(self):
         def physchem_properties_function(sequence):
             if prop_name == 'mutation stability':
                 return np.mean(list(prop_lookup[aa] for aa in sequence.replace('X', '')))
@@ -92,27 +53,51 @@ class FeatureExtraction:
 
         # average physico-chemical properties
         for prop_name, prop_lookup in self.physchem_properties.items():
-            features_list.append(self.dataframe['sequence'].apply(physchem_properties_function)
-                                 .to_frame().rename(columns={'sequence': 'average {}'.format(prop_name)}))
+            self.data_frame[f'average {prop_name}'] = self.data_frame['sequence'].apply(physchem_properties_function)
 
-        # peptide mass
-        features_list.append(self.dataframe['sequence'].apply(
-            lambda sequence: mass.fast_mass(sequence.replace('X', ''))).to_frame().rename(columns={'sequence': 'mass'}))
+    def add_mass(self):
+        self.data_frame['mass'] = self.data_frame['sequence'].apply(
+            lambda sequence: mass.fast_mass(sequence.replace('X', '')))
 
-        # pI
-        features_list.append(self.dataframe['sequence'].apply(
-            lambda sequence: electrochem.pI(sequence)).to_frame().rename(columns={'sequence': 'pI'}))
+    def add_p_i(self):
+        self.data_frame['pI'] = self.data_frame['sequence'].apply(lambda sequence: electrochem.pI(sequence))
 
-        features_list.append(self.dataframe['label'])
+    def add_windowed(self, size):
+        categories_string_data = self.data_frame['sequence'].apply(
+            lambda sequence: ''.join([self.aa_to_category[aa] for aa in sequence.replace('X', '')]))
 
-        self.features = pd.concat(features_list, axis=1)
+        category_n_tuples = [''.join(prod) for prod in itertools.product(self.aa_categories.keys(), repeat=size)]
+        records = []
+        for cat_string in categories_string_data:
+            record_dict = {}
+            for comb in category_n_tuples:
+                record_dict[comb] = comb in cat_string
 
-    def save_features(self):
-        self.features.to_csv(
-            f"{self.output_csv_directory}features_{self.general_config['distance']}.csv")
+            records.append(record_dict)
+        self.data_frame = pd.concat([self.data_frame, pd.DataFrame.from_records(records)], axis=1)
 
-    def extract(self):
-        self.create_df()
-        # print(self.dataframe)
-        self.compute_features()
-        self.save_features()
+    def save(self, name):
+        self.data_frame.to_csv(
+            f"{self.output_csv_directory}features_{name}.csv")
+
+    def extract(self, name):
+        features = self.feature_possibilities[name]
+        if 'length' in features:
+            self.add_length()
+        if 'counts' in features:
+            self.add_aa_counts()
+        if 'physchem' in features:
+            self.add_physchem_properties()
+        if 'mass' in features:
+            self.add_mass()
+        if 'pI' in features:
+            self.add_p_i()
+
+        for feature in features:
+            if feature[2:] == 'windowed':
+                self.add_windowed(int(feature[0]))
+
+        # Move label to last position in dataframe
+        self.data_frame = self.data_frame[[c for c in self.data_frame.columns if c != 'label'] + ['label']]
+
+        self.save(name)

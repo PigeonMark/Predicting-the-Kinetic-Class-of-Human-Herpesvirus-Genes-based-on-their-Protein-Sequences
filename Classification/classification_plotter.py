@@ -5,10 +5,36 @@ import numpy as np
 
 
 class ClassificationPlotter:
-    def __init__(self, config_filepath):
+    def __init__(self, config_filepath, name):
         self.config = None
         self.results = {}
+        self.name = name
         self.read_config(config_filepath)
+
+        self.TITLE = {
+            "ba": f'Balanced Accuracy of {self.name} features',
+            "a_ba": f'Adjusted Balanced Accuracy of {self.name} features',
+            "roc_auc_ovo": f'ROC AUC (ovo) of {self.name} features',
+            "roc_auc_ovr": f'ROC AUC (ovr) of {self.name} features'
+        }
+        self.SCORE_NAME = {
+            "ba": 'test_balanced_accuracy',
+            "a_ba": 'test_adjusted_balanced_accuracy',
+            "roc_auc_ovo": 'test_roc_auc_ovo_score',
+            "roc_auc_ovr": 'test_roc_auc_ovr_score'
+        }
+        self.SAVE_TITLE = {
+            "ba": f"BalancedAccuracy_{self.name}",
+            "a_ba": f"AdjustedBalancedAccuracy_{self.name}",
+            "roc_auc_ovo": f"ROC_AUC_ovo_{self.name}",
+            "roc_auc_ovr": f"ROC_AUC_ovr_{self.name}"
+        }
+        self.YLABEL = {
+            "ba": 'Accuracy',
+            "a_ba": 'Accuracy',
+            "roc_auc_ovo": 'AUC',
+            "roc_auc_ovr": 'AUC'
+        }
 
     def read_config(self, config_filepath):
         with open(config_filepath) as config_file:
@@ -16,33 +42,59 @@ class ClassificationPlotter:
 
     def load_results(self):
         self.results = pickle.load(
-            open(f"{self.config['output_result_directory']}classification_results_{self.config['k-fold-splits']}.p",
+            open(f"{self.config['output_result_directory']}classification_results_{self.name}.p",
                  'rb'))
 
-    def plot_ba(self):
+    def plot(self, score_metric):
         plt.figure()
+        title = self.TITLE[score_metric]
+        print(f"Plotting {title}")
         for ml_method, classifier in self.results.items():
-            method_data = [np.mean([result.ba for result in results]) for classifier_name, results in
-                           classifier.items()]
-            plt.plot(classifier.keys(), method_data, 'o-', label=ml_method)
+            classifier_tuples = list(classifier.items())
+            score_name = self.SCORE_NAME[score_metric]
+            x = []
+            y = []
+            for cl, res in classifier_tuples:
+                if score_name in res:
+                    x.append(cl)
+                    y.append(np.mean(res.get(score_name, None)))
 
-        plt.title('Balanced Accuracy')
+            if len(x) > 1:
+                plt.plot(x, y, 'o-', label=ml_method)
+
+                print(f"\t{ml_method}")
+                for i, mean in enumerate(y):
+                    print(f"\t\t{x[i]}: {100 * mean:.2f}%")
+
+        plt.title(title)
         plt.xlabel('Classifier')
-        plt.ylabel('Accuracy')
+        plt.ylabel(self.YLABEL[score_metric])
         plt.legend(title='Multi-label Method')
-        plt.savefig(f"{self.config['output_ba_plot_directory']}BalancedAccuracy_{self.config['k-fold-splits']}")
+        plt.savefig(
+            f"{self.config['output_ba_plot_directory']}{self.SAVE_TITLE[score_metric]}")
         plt.clf()
+        print()
 
-    def plot_adjusted_ba(self):
-        plt.figure()
-        for ml_method, classifier in self.results.items():
-            method_data = [np.mean([result.adjusted_ba for result in results]) for classifier_name, results in
-                           classifier.items()]
-            plt.plot(classifier.keys(), method_data, 'o-', label=ml_method)
+    def plot_all(self):
+        self.plot('ba')
+        self.plot('a_ba')
+        self.plot('roc_auc_ovo')
+        self.plot('roc_auc_ovr')
 
-        plt.title('Adjusted Balanced Accuracy')
-        plt.xlabel('Classifier')
-        plt.ylabel('Accuracy')
-        plt.legend(title='Multi-label Method')
-        plt.savefig(f"{self.config['output_ba_plot_directory']}AdjustedBalancedAccuracy_{self.config['k-fold-splits']}")
+    def plot_feature_importance(self, ml_method, classifier_name):
+        features = self.results[ml_method][classifier_name]['features']
+        f_imps = self.results[ml_method][classifier_name]['feature_importance']
+
+        feature_importances = {f: np.mean([f_imp[i] for f_imp in f_imps]) for i, f in enumerate(features)}
+        feature_importances = {k: v for k, v in
+                               sorted(feature_importances.items(), key=lambda item: item[1], reverse=True)}
+
+        plt.figure(figsize=(11, 8))
+        plt.bar(feature_importances.keys(), feature_importances.values(), width=1)
+        plt.xticks(rotation=45, rotation_mode='anchor', ha='right')
+        plt.ylabel('Feature Importance')
+        plt.xlabel('Feature')
+        plt.tight_layout()
+        plt.savefig(
+            f"{self.config['output_fi_plot_directory']}FeatureImportance_{ml_method}_{classifier_name}_{self.name}")
         plt.clf()

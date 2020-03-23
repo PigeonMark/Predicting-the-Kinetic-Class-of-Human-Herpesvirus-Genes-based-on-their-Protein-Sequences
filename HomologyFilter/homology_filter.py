@@ -180,8 +180,7 @@ class HomologyFilter:
     def filter(self):
         # self.calculate_identities()
         self.load_identity()
-        # self.identity_histogram()
-        # self.print_homologies_overview(self.inspection_threshold)
-        # self.inspect_homologies()
+        self.identity_histogram()
+        self.inspect_homologies()
         self.filter_data()
         self.save_filtered_data()
