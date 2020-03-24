@@ -44,6 +44,15 @@ class FeatureExtraction:
         aa_counts.columns = ['{} count'.format(column) for column in aa_counts.columns]
         self.data_frame = pd.concat([self.data_frame, aa_counts], axis=1)
 
+    def add_relative_counts(self):
+        record_list = []
+        for sequence in self.data_frame['sequence']:
+            record_list.append(
+                {k: v / float(parser.length(sequence)) for k, v in parser.amino_acid_composition(sequence).items()})
+        aa_counts = pd.DataFrame.from_records(record_list).fillna(0, downcast='infer')
+        aa_counts.columns = ['{} relative_count'.format(column) for column in aa_counts.columns]
+        self.data_frame = pd.concat([self.data_frame, aa_counts], axis=1)
+
     def add_physchem_properties(self):
         def physchem_properties_function(sequence):
             if prop_name == 'mutation stability':
@@ -86,6 +95,8 @@ class FeatureExtraction:
             self.add_length()
         if 'counts' in features:
             self.add_aa_counts()
+        if 'relative-counts' in features:
+            self.add_relative_counts()
         if 'physchem' in features:
             self.add_physchem_properties()
         if 'mass' in features:
@@ -99,5 +110,7 @@ class FeatureExtraction:
 
         # Move label to last position in dataframe
         self.data_frame = self.data_frame[[c for c in self.data_frame.columns if c != 'label'] + ['label']]
+
+        print(self.data_frame)
 
         self.save(name)

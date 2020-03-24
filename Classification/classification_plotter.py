@@ -49,29 +49,37 @@ class ClassificationPlotter:
         plt.figure()
         title = self.TITLE[score_metric]
         print(f"Plotting {title}")
-        for ml_method, classifier in self.results.items():
+
+        bar_width = 0.25
+        n_groups = len(self.results)
+        index = np.arange(n_groups)
+
+        for i, (ml_method, classifier) in enumerate(self.results.items()):
             classifier_tuples = list(classifier.items())
             score_name = self.SCORE_NAME[score_metric]
             x = []
             y = []
+            error = []
             for cl, res in classifier_tuples:
                 if score_name in res:
                     x.append(cl)
                     y.append(np.mean(res.get(score_name, None)))
+                    error.append(np.std(res.get(score_name), None))
 
             if len(x) > 1:
-                plt.plot(x, y, 'o-', label=ml_method)
+                plt.bar(index + (i * bar_width), y, yerr=error, width=bar_width, label=ml_method, capsize=5)
 
                 print(f"\t{ml_method}")
-                for i, mean in enumerate(y):
-                    print(f"\t\t{x[i]}: {100 * mean:.2f}%")
+                for j, mean in enumerate(y):
+                    print(f"\t\t{x[j]}: {100 * mean:.2f}%")
 
         plt.title(title)
+        plt.xticks(index + bar_width, list(self.results.values())[0].keys())
         plt.xlabel('Classifier')
         plt.ylabel(self.YLABEL[score_metric])
         plt.legend(title='Multi-label Method')
         plt.savefig(
-            f"{self.config['output_ba_plot_directory']}{self.SAVE_TITLE[score_metric]}")
+            f"{self.config['output_bar_plot_directory']}{self.SAVE_TITLE[score_metric]}")
         plt.clf()
         print()
 
@@ -87,9 +95,11 @@ class ClassificationPlotter:
 
         feature_importances = {f: np.mean([f_imp[i] for f_imp in f_imps]) for i, f in enumerate(features)}
         feature_importances = {k: v for k, v in
-                               sorted(feature_importances.items(), key=lambda item: item[1], reverse=True)}
+                               sorted(feature_importances.items(), key=lambda item: item[1], reverse=True)[:30]}
 
-        plt.figure(figsize=(11, 8))
+        x_size = len(feature_importances) / 2.5
+        y_size = x_size / 1.375
+        plt.figure(figsize=(x_size, y_size))
         plt.bar(feature_importances.keys(), feature_importances.values(), width=1)
         plt.xticks(rotation=45, rotation_mode='anchor', ha='right')
         plt.ylabel('Feature Importance')

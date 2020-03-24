@@ -3,7 +3,7 @@
   "k-fold-train-size": 0.67,
   "input_data_folder": "FeatureExtraction/Output/csv/",
   "output_result_directory": "Classification/Output/raw/ba/",
-  "output_ba_plot_directory": "Classification/Output/plots/ba/",
+  "output_bar_plot_directory": "Classification/Output/plots/bar/",
   "output_fi_plot_directory": "Classification/Output/plots/fi/",
   "ML-method-options": [
     "1vsA",

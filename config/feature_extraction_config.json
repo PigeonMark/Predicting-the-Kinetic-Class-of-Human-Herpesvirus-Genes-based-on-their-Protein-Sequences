@@ -35,6 +35,13 @@
       "mass",
       "pI",
       "4-windowed"
+    ],
+    "original_relative_counts": [
+      "length",
+      "relative-counts",
+      "physchem",
+      "mass",
+      "pI"
     ]
   },
   "aa_categories": {
