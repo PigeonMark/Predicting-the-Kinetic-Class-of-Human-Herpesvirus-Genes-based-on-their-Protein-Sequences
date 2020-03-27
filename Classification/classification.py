@@ -2,6 +2,7 @@ import json
 import pickle
 
 from Classification import Classifier
+from Util import compose_configuration, compose_filename
 
 
 class Classification:
@@ -17,15 +18,17 @@ class Classification:
             self.config = json.load(config_file)
 
     def save_scores(self):
-        pickle.dump(self.results, open(
-            f"{self.config['output_result_directory']}classification_results_{self.name}.p", 'wb'))
+        filename = compose_filename(self.config['output_result_directory'], self.config['filter_latent'],
+                                    self.config['standardization'], 'classification_results', self.name, 'p')
+        pickle.dump(self.results, open(filename, 'wb'))
 
     def grid_search(self, ml_method, classifier_name, grid, splits):
         classifier = Classifier(self.config_filepath, ml_method, classifier_name)
         classifier.grid_search(self.name, grid, splits)
 
     def fit_all(self):
-        print(f"Fitting {self.name} features")
+        print(compose_configuration('Fitting features', self.config['filter_latent'], self.config['standardization'],
+                                    self.name))
         for ml_method in self.config['ML-method-options']:
             for classifier_name in self.config['Classifier-options']:
                 classifier = Classifier(self.config_filepath, ml_method, classifier_name)

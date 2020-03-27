@@ -98,3 +98,24 @@ def print_data_row(row):
     to_print += '  ' + f"http://localhost:5000/index/{row['virus']}/{row['protein_group']}"
 
     print(to_print)
+
+
+def compose_filename(base_dir, filter_latent, standardization, module, name, extension):
+    if filter_latent:
+        base_dir += 'filter_latent/'
+    if standardization:
+        base_dir += 'standardization/'
+    base_dir += (module + '_' + name + '.' + extension)
+    return base_dir
+
+
+def compose_configuration(what, filter_latent, standardization, name):
+    what += (' for ' + name + ' configuration')
+    if filter_latent:
+        what += ', with latent filter'
+        if standardization:
+            what += ' and standardization'
+    elif standardization:
+        what += ', with standardization'
+
+    return what

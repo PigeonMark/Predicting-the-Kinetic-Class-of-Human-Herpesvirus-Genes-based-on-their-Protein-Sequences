@@ -3,6 +3,8 @@ import pickle
 import matplotlib.pyplot as plt
 import numpy as np
 
+from Util import compose_filename, compose_configuration
+
 
 class ClassificationPlotter:
     def __init__(self, config_filepath, name):
@@ -12,10 +14,10 @@ class ClassificationPlotter:
         self.read_config(config_filepath)
 
         self.TITLE = {
-            "ba": f'Balanced Accuracy of {self.name} features',
-            "a_ba": f'Adjusted Balanced Accuracy of {self.name} features',
-            "roc_auc_ovo": f'ROC AUC (ovo) of {self.name} features',
-            "roc_auc_ovr": f'ROC AUC (ovr) of {self.name} features'
+            "ba": f'Balanced Accuracy',
+            "a_ba": f'Adjusted Balanced',
+            "roc_auc_ovo": f'ROC AUC (ovo)',
+            "roc_auc_ovr": f'ROC AUC (ovr)'
         }
         self.SCORE_NAME = {
             "ba": 'test_balanced_accuracy',
@@ -24,10 +26,10 @@ class ClassificationPlotter:
             "roc_auc_ovr": 'test_roc_auc_ovr_score'
         }
         self.SAVE_TITLE = {
-            "ba": f"BalancedAccuracy_{self.name}",
-            "a_ba": f"AdjustedBalancedAccuracy_{self.name}",
-            "roc_auc_ovo": f"ROC_AUC_ovo_{self.name}",
-            "roc_auc_ovr": f"ROC_AUC_ovr_{self.name}"
+            "ba": f"BalancedAccuracy",
+            "a_ba": f"AdjustedBalancedAccuracy",
+            "roc_auc_ovo": f"ROC_AUC_ovo",
+            "roc_auc_ovr": f"ROC_AUC_ovr"
         }
         self.YLABEL = {
             "ba": 'Accuracy',
@@ -41,13 +43,14 @@ class ClassificationPlotter:
             self.config = json.load(config_file)
 
     def load_results(self):
-        self.results = pickle.load(
-            open(f"{self.config['output_result_directory']}classification_results_{self.name}.p",
-                 'rb'))
+        filename = compose_filename(self.config['output_result_directory'], self.config['filter_latent'],
+                                    self.config['standardization'], 'classification_results', self.name, 'p')
+        self.results = pickle.load(open(filename, 'rb'))
 
     def plot(self, score_metric):
         plt.figure()
-        title = self.TITLE[score_metric]
+        title = compose_configuration(self.TITLE[score_metric], self.config['filter_latent'],
+                                      self.config['standardization'], self.name)
         print(f"Plotting {title}")
 
         bar_width = 0.25
@@ -78,8 +81,9 @@ class ClassificationPlotter:
         plt.xlabel('Classifier')
         plt.ylabel(self.YLABEL[score_metric])
         plt.legend(title='Multi-label Method')
-        plt.savefig(
-            f"{self.config['output_bar_plot_directory']}{self.SAVE_TITLE[score_metric]}")
+        filename = compose_filename(self.config['output_bar_plot_directory'], self.config['filter_latent'],
+                                    self.config['standardization'], self.SAVE_TITLE[score_metric], self.name, '')
+        plt.savefig(filename)
         plt.clf()
         print()
 

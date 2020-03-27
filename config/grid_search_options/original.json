@@ -1,0 +1,20 @@
+"XGBoost-options": {
+"ML": {
+"booster": "gblinear",
+"feature_selector": "shuffle",
+"updater": "shotgun",
+"lambda": 0.1
+},
+"1vsA": {
+"booster": "gblinear",
+"feature_selector": "shuffle",
+"updater": "coord_descent",
+"lambda": 0.1
+},
+"RR": {
+"booster": "gblinear",
+"feature_selector": "shuffle",
+"updater": "coord_descent",
+"lambda": 0.1
+}
+}

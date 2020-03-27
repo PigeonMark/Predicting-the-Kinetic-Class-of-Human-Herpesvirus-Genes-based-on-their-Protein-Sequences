@@ -6,6 +6,8 @@ import itertools
 import numpy as np
 import pandas as pd
 from pyteomics import electrochem, mass, parser
+from sklearn.preprocessing import scale
+from Util import compose_filename, compose_configuration
 
 
 class FeatureExtraction:
@@ -14,8 +16,11 @@ class FeatureExtraction:
         self.data_frame = None  # type: pd.DataFrame
         self.output_csv_directory = None
         self.feature_possibilities = None
+        self.filter_phase = False
+        self.standardization = False
         self.aa_categories = {}
         self.aa_to_category = {}
+        self.skip_features = None
         self.__read_config(config_filepath)
 
     def __read_config(self, config_filepath):
@@ -33,6 +38,18 @@ class FeatureExtraction:
             for cat, aas in self.aa_categories.items():
                 for aa in aas:
                     self.aa_to_category[aa] = cat
+
+            self.filter_phase = config['filter_latent']
+            self.standardization = config['standardization']
+            self.skip_features = config['skip-features']
+
+    def filter_original_viruses(self):
+        self.data_frame = self.data_frame[
+            self.data_frame.virus.isin(["HSV_1", "HSV_2", "VZV", "EBV", "HCMV"])].reset_index(drop=True)
+
+    def filter_original_phases(self):
+        self.data_frame = self.data_frame[
+            self.data_frame.label.isin(["immediate-early", "early", "late"])].reset_index(drop=True)
 
     def add_length(self):
         self.data_frame['length'] = self.data_frame['sequence'].apply(lambda sequence: parser.length(sequence))
@@ -85,11 +102,21 @@ class FeatureExtraction:
             records.append(record_dict)
         self.data_frame = pd.concat([self.data_frame, pd.DataFrame.from_records(records)], axis=1)
 
+    def standardize(self):
+        columns = [col for col in self.data_frame.columns if col not in self.skip_features]
+        self.data_frame[columns] = scale(self.data_frame[columns])
+
     def save(self, name):
-        self.data_frame.to_csv(
-            f"{self.output_csv_directory}features_{name}.csv")
+        filename = compose_filename(self.output_csv_directory, self.filter_phase, self.standardization, 'features',
+                                    name, 'csv')
+        self.data_frame.to_csv(filename)
 
     def extract(self, name):
+        print(compose_configuration('Extracting features', self.filter_phase, self.standardization, name))
+
+        if self.filter_phase:
+            self.filter_original_phases()
+
         features = self.feature_possibilities[name]
         if 'length' in features:
             self.add_length()
@@ -108,9 +135,10 @@ class FeatureExtraction:
             if feature[2:] == 'windowed':
                 self.add_windowed(int(feature[0]))
 
+        if self.standardization:
+            self.standardize()
+
         # Move label to last position in dataframe
         self.data_frame = self.data_frame[[c for c in self.data_frame.columns if c != 'label'] + ['label']]
-
-        print(self.data_frame)
 
         self.save(name)

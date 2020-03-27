@@ -8,13 +8,7 @@ from sklearn.metrics import balanced_accuracy_score, make_scorer, roc_auc_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.multiclass import OneVsRestClassifier, OneVsOneClassifier
 
-
-def filter_original_viruses(all_data):
-    return all_data[all_data.virus.isin(["HSV_1", "HSV_2", "VZV", "EBV", "HCMV"])]
-
-
-def filter_original_phases(all_data):
-    return all_data[all_data.label.isin(["immediate-early", "early", "late"])]
+from Util import compose_filename
 
 
 def create_scorers(RR=False):
@@ -80,7 +74,9 @@ class Classifier:
         return classifier
 
     def grid_search(self, name, grid, splits):
-        all_data = pd.read_csv(f"{self.config['input_data_folder']}features_{name}.csv", index_col=0)
+        filename = compose_filename(self.config['input_data_folder'], self.config['filter_latent'],
+                                    self.config['standardization'], 'features', name, 'csv')
+        all_data = pd.read_csv(filename, index_col=0)
         x = all_data[[col_name for col_name in all_data.columns if col_name not in self.config['skip-features']]]
         y = all_data['label']
         classifier = self.__create_classifier(grid_search=True)
@@ -95,8 +91,9 @@ class Classifier:
             print()
 
     def fit(self, name):
-
-        all_data = pd.read_csv(f"{self.config['input_data_folder']}features_{name}.csv", index_col=0)
+        filename = compose_filename(self.config['input_data_folder'], self.config['filter_latent'],
+                                    self.config['standardization'], 'features', name, 'csv')
+        all_data = pd.read_csv(filename, index_col=0)
         features = [col_name for col_name in all_data.columns if col_name not in self.config['skip-features']]
         x = all_data[features]
         y = all_data['label']

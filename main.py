@@ -86,15 +86,18 @@ def main():
             MLgrid = [
                 {
                     "booster": ["gblinear"],
-                    "lambda": [0, 0.1, 0.5, 1],
-                    "updater": ["shotgun"],
+                    # "lambda": [0, 0.0001, 0.001],
+                    "lambda": [0],
+                    # "updater": ["shotgun", "coord_descent"],
+                    "updater": ["coord_descent"],
+                    # "feature_selector": ["cyclic", "shuffle", "random", "greedy", "thrifty"]
                     "feature_selector": ["shuffle"]
-                },
-                {
-                    "booster": ["gbtree"],
-                    # "max_depth": range(3, 10, 2),
-                    # "min_child_weight": range(1, 6, 2)
                 }
+                # {
+                #     "booster": ["gbtree"],
+                #     # "max_depth": range(3, 10, 2),
+                #     # "min_child_weight": range(1, 6, 2)
+                # }
             ]
             _1vsAgrid = [
                 {
@@ -125,7 +128,7 @@ def main():
 
             ]
             classification = Classification('config/classification_config.json', args.features)
-            classification.grid_search('RR', 'XGBoost', RRgrid, splits=50)
+            classification.grid_search('ML', 'XGBoost', MLgrid, splits=200)
         else:
             if args.fit:
                 classification = Classification('config/classification_config.json', args.features)

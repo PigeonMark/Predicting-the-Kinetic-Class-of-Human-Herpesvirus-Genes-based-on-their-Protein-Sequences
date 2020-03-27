@@ -1,6 +1,8 @@
 {
   "input_csv_file": "HomologyFilter/Output/csv/filtered_features_80.csv",
   "output_csv_directory": "FeatureExtraction/Output/csv/",
+  "filter_latent": true,
+  "standardization": true,
   "feature_possibilities": {
     "original": [
       "length",
@@ -44,6 +46,13 @@
       "pI"
     ]
   },
+  "skip-features": [
+    "virus",
+    "protein",
+    "protein_group",
+    "sequence",
+    "label"
+  ],
   "aa_categories": {
     "a": [
       "I",
