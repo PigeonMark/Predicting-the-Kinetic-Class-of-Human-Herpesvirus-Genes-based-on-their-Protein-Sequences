@@ -5,8 +5,10 @@
   "output_result_directory": "Classification/Output/raw/",
   "output_bar_plot_directory": "Classification/Output/plots/bar/",
   "output_fi_plot_directory": "Classification/Output/plots/fi/",
-  "filter_latent": true,
-  "standardization": true,
+  "filter_latent": false,
+  "standardization": false,
+  "pca_features": false,
+  "n-pca": [null],
   "ML-method-options": [
     "1vsA",
     "ML",
@@ -21,7 +23,7 @@
     "ML": {
       "booster": "gblinear",
       "feature_selector": "shuffle",
-      "updater": "shotgun"
+      "updater": "coord_descent"
     },
     "1vsA": {
       "booster": "gblinear",

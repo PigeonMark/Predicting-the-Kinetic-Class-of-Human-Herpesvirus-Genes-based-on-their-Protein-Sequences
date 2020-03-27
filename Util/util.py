@@ -100,22 +100,37 @@ def print_data_row(row):
     print(to_print)
 
 
-def compose_filename(base_dir, filter_latent, standardization, module, name, extension):
+def compose_filename(base_dir, filter_latent, standardization, n_pca, module, name, extension):
     if filter_latent:
         base_dir += 'filter_latent/'
     if standardization:
         base_dir += 'standardization/'
-    base_dir += (module + '_' + name + '.' + extension)
+
+    if n_pca != 'no-pca':
+        base_dir += 'pca/'
+        base_dir += (module + '_' + name + '_' + str(n_pca) + '-pca' + '.' + extension)
+    else:
+        base_dir += (module + '_' + name + '.' + extension)
     return base_dir
 
 
-def compose_configuration(what, filter_latent, standardization, name):
+def compose_configuration(what, filter_latent, standardization, n_pca, name):
     what += (' for ' + name + ' configuration')
     if filter_latent:
         what += ', with latent filter'
         if standardization:
             what += ' and standardization'
+            if n_pca != 'no-pca':
+                what += f' and {n_pca}-pca'
+        elif n_pca != 'no-pca':
+            what += f' and {n_pca}-pca'
+
     elif standardization:
         what += ', with standardization'
+        if n_pca != 'no-pca':
+            what += f' and {n_pca}-pca'
+
+    elif n_pca != 'no-pca':
+        what += f', with {n_pca}-pca'
 
     return what

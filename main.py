@@ -89,7 +89,7 @@ def main():
                     # "lambda": [0, 0.0001, 0.001],
                     "lambda": [0],
                     # "updater": ["shotgun", "coord_descent"],
-                    "updater": ["coord_descent"],
+                    "updater": ["coord_descent", "shotgun"],
                     # "feature_selector": ["cyclic", "shuffle", "random", "greedy", "thrifty"]
                     "feature_selector": ["shuffle"]
                 }
@@ -128,16 +128,14 @@ def main():
 
             ]
             classification = Classification('config/classification_config.json', args.features)
-            classification.grid_search('ML', 'XGBoost', MLgrid, splits=200)
+            classification.grid_search('ML', 'XGBoost', MLgrid, 200, 'no-pca')
         else:
             if args.fit:
                 classification = Classification('config/classification_config.json', args.features)
                 classification.fit_all()
-                classification.save_scores()
 
             if args.plot:
                 cp = ClassificationPlotter('config/classification_config.json', args.features)
-                cp.load_results()
                 cp.plot_all()
                 cp.plot_feature_importance('ML', 'RF')
 

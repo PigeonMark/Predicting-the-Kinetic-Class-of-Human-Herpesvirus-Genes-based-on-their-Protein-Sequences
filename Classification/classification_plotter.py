@@ -42,16 +42,18 @@ class ClassificationPlotter:
         with open(config_filepath) as config_file:
             self.config = json.load(config_file)
 
-    def load_results(self):
+    def load_results(self, n_pca):
         filename = compose_filename(self.config['output_result_directory'], self.config['filter_latent'],
-                                    self.config['standardization'], 'classification_results', self.name, 'p')
+                                    self.config['standardization'], n_pca, 'classification_results', self.name, 'p')
         self.results = pickle.load(open(filename, 'rb'))
 
-    def plot(self, score_metric):
+    def plot(self, score_metric, n_pca):
         plt.figure()
         title = compose_configuration(self.TITLE[score_metric], self.config['filter_latent'],
-                                      self.config['standardization'], self.name)
+                                      self.config['standardization'], n_pca, self.name)
         print(f"Plotting {title}")
+        max_score = 0
+        max_configuration = None
 
         bar_width = 0.25
         n_groups = len(self.results)
@@ -66,32 +68,46 @@ class ClassificationPlotter:
             for cl, res in classifier_tuples:
                 if score_name in res:
                     x.append(cl)
-                    y.append(np.mean(res.get(score_name, None)))
+                    score = np.mean(res.get(score_name, None))
+                    y.append(score)
                     error.append(np.std(res.get(score_name), None))
+                    if score >= max_score:
+                        max_score = score
+                        max_configuration = (ml_method, cl)
 
             if len(x) > 1:
                 plt.bar(index + (i * bar_width), y, yerr=error, width=bar_width, label=ml_method, capsize=5)
 
-                print(f"\t{ml_method}")
-                for j, mean in enumerate(y):
-                    print(f"\t\t{x[j]}: {100 * mean:.2f}%")
+                # print(f"\t{ml_method}")
+                # for j, mean in enumerate(y):
+                #     print(f"\t\t{x[j]}: {100 * mean:.2f}%")
+        print(f"Maximum score: {max_configuration[0]}, {max_configuration[1]}: {100 * max_score:.2f}%")
 
-        plt.title(title)
+        plt.title(title, wrap=True)
         plt.xticks(index + bar_width, list(self.results.values())[0].keys())
         plt.xlabel('Classifier')
         plt.ylabel(self.YLABEL[score_metric])
         plt.legend(title='Multi-label Method')
         filename = compose_filename(self.config['output_bar_plot_directory'], self.config['filter_latent'],
-                                    self.config['standardization'], self.SAVE_TITLE[score_metric], self.name, '')
+                                    self.config['standardization'], n_pca, self.SAVE_TITLE[score_metric], self.name, '')
         plt.savefig(filename)
         plt.clf()
         print()
 
+    def _plot_all(self, n_pca):
+        self.plot('ba', n_pca)
+        self.plot('a_ba', n_pca)
+        self.plot('roc_auc_ovo', n_pca)
+        self.plot('roc_auc_ovr', n_pca)
+
     def plot_all(self):
-        self.plot('ba')
-        self.plot('a_ba')
-        self.plot('roc_auc_ovo')
-        self.plot('roc_auc_ovr')
+        if self.config['pca_features'] is True:
+            for n in self.config['n-pca']:
+                self.load_results(n)
+                self._plot_all(n)
+        else:
+            self.load_results('no-pca')
+            self._plot_all('no-pca')
 
     def plot_feature_importance(self, ml_method, classifier_name):
         features = self.results[ml_method][classifier_name]['features']

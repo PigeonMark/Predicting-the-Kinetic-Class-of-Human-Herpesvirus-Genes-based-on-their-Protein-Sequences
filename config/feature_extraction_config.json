@@ -3,6 +3,8 @@
   "output_csv_directory": "FeatureExtraction/Output/csv/",
   "filter_latent": true,
   "standardization": true,
+  "pca_features": true,
+  "n-pca": [null],
   "feature_possibilities": {
     "original": [
       "length",

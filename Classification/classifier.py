@@ -73,9 +73,9 @@ class Classifier:
 
         return classifier
 
-    def grid_search(self, name, grid, splits):
+    def grid_search(self, name, grid, splits, n_pca=None):
         filename = compose_filename(self.config['input_data_folder'], self.config['filter_latent'],
-                                    self.config['standardization'], 'features', name, 'csv')
+                                    self.config['standardization'], n_pca, 'features', name, 'csv')
         all_data = pd.read_csv(filename, index_col=0)
         x = all_data[[col_name for col_name in all_data.columns if col_name not in self.config['skip-features']]]
         y = all_data['label']
@@ -90,9 +90,10 @@ class Classifier:
             print(param, gs_cv.cv_results_['mean_test_score'][i], 'time:', gs_cv.cv_results_['mean_fit_time'][i])
             print()
 
-    def fit(self, name):
+    def fit(self, name, n_pca=None):
         filename = compose_filename(self.config['input_data_folder'], self.config['filter_latent'],
-                                    self.config['standardization'], 'features', name, 'csv')
+                                    self.config['standardization'], n_pca, 'features', name, 'csv')
+
         all_data = pd.read_csv(filename, index_col=0)
         features = [col_name for col_name in all_data.columns if col_name not in self.config['skip-features']]
         x = all_data[features]

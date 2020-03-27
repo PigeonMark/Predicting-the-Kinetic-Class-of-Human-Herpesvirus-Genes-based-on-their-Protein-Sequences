@@ -7,6 +7,7 @@ import numpy as np
 import pandas as pd
 from pyteomics import electrochem, mass, parser
 from sklearn.preprocessing import scale
+from sklearn.decomposition import PCA
 from Util import compose_filename, compose_configuration
 
 
@@ -21,6 +22,8 @@ class FeatureExtraction:
         self.aa_categories = {}
         self.aa_to_category = {}
         self.skip_features = None
+        self.pca_features = False
+        self.n_pca = None
         self.__read_config(config_filepath)
 
     def __read_config(self, config_filepath):
@@ -42,6 +45,9 @@ class FeatureExtraction:
             self.filter_phase = config['filter_latent']
             self.standardization = config['standardization']
             self.skip_features = config['skip-features']
+
+            self.pca_features = config['pca_features']
+            self.n_pca = config.get('n-pca', None)
 
     def filter_original_viruses(self):
         self.data_frame = self.data_frame[
@@ -106,13 +112,22 @@ class FeatureExtraction:
         columns = [col for col in self.data_frame.columns if col not in self.skip_features]
         self.data_frame[columns] = scale(self.data_frame[columns])
 
-    def save(self, name):
-        filename = compose_filename(self.output_csv_directory, self.filter_phase, self.standardization, 'features',
-                                    name, 'csv')
+    def apply_pca(self, n):
+        columns_to_pca = [col for col in self.data_frame.columns if col not in self.skip_features]
+        columns_to_keep = [col for col in self.data_frame.columns if col in self.skip_features]
+
+        new_features = PCA(n_components=n).fit_transform(self.data_frame[columns_to_pca])
+        nf_df = pd.DataFrame(new_features, columns=[f'comp_{i}' for i in range(new_features.shape[1])])
+
+        self.data_frame = pd.concat([self.data_frame[columns_to_keep], nf_df], axis=1)
+
+    def save(self, name, n_pca):
+        filename = compose_filename(self.output_csv_directory, self.filter_phase, self.standardization, n_pca,
+                                    'features', name, 'csv')
         self.data_frame.to_csv(filename)
 
-    def extract(self, name):
-        print(compose_configuration('Extracting features', self.filter_phase, self.standardization, name))
+    def _extract(self, name, n_pca):
+        print(compose_configuration('Extracting features', self.filter_phase, self.standardization, n_pca, name))
 
         if self.filter_phase:
             self.filter_original_phases()
@@ -138,7 +153,17 @@ class FeatureExtraction:
         if self.standardization:
             self.standardize()
 
+    def finish(self, name, n_pca):
         # Move label to last position in dataframe
         self.data_frame = self.data_frame[[c for c in self.data_frame.columns if c != 'label'] + ['label']]
+        self.save(name, n_pca)
 
-        self.save(name)
+    def extract(self, name):
+        if self.pca_features:
+            for n in self.n_pca:
+                self._extract(name, n)
+                self.apply_pca(n)
+                self.finish(name, n)
+        else:
+            self._extract(name, 'no-pca')
+            self.finish(name, 'no-pca')
