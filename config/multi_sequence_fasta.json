@@ -1,0 +1,5 @@
+{
+  "review_db_reader_config": "config/review_db_reader_config.json",
+  "input_csv_file": "HomologyFilter/Output/csv/filtered_features_80.csv",
+  "output_directory": "Util/multi_sequence_fasta/"
+}

@@ -1,12 +1,16 @@
 import json
 import pandas as pd
+import numpy as np
+import progressbar
 import xgboost as xgb
 
-from sklearn.model_selection import ShuffleSplit, GridSearchCV, cross_validate
+from sklearn.model_selection import ShuffleSplit, GridSearchCV
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import balanced_accuracy_score, make_scorer, roc_auc_score
+from sklearn.metrics import balanced_accuracy_score, make_scorer, roc_auc_score, roc_curve, auc
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.multiclass import OneVsRestClassifier, OneVsOneClassifier
+from sklearn.preprocessing import label_binarize
+from sklearn.inspection import permutation_importance
 
 from Util import compose_filename
 
@@ -26,6 +30,88 @@ def create_scorers(RR=False):
         scoring_dict.update({"roc_auc_ovo_score": roc_auc_ovo_scorer,
                              "roc_auc_ovr_score": roc_auc_ovr_scorer})
     return scoring_dict
+
+
+def add_class_roc_scores(cv_results, estimator, y_test_bin, y_score):
+    for i, class_ in enumerate(estimator.classes_):
+        fpr, tpr, _ = roc_curve(y_test_bin[:, i], y_score[:, i])
+        cv_results['fpr'][class_].append(fpr)
+        cv_results['tpr'][class_].append(tpr)
+        cv_results['roc_auc'][class_].append(auc(fpr, tpr))
+
+
+def add_micro_roc_scores(cv_results, y_test_bin, y_score):
+    fpr, tpr, _ = roc_curve(y_test_bin.ravel(), y_score.ravel())
+    cv_results['fpr']['micro'].append(fpr)
+    cv_results['tpr']['micro'].append(tpr)
+    cv_results['roc_auc']['micro'].append(auc(fpr, tpr))
+
+
+def add_macro_roc_scores(cv_results, estimator):
+    # First aggregate all false positive rates
+    all_fpr = np.unique(np.concatenate([cv_results['fpr'][class_][-1] for class_ in estimator.classes_]))
+
+    # Then interpolate all ROC curves at this points
+    mean_tpr = np.zeros_like(all_fpr)
+    for class_ in estimator.classes_:
+        mean_tpr += np.interp(all_fpr, cv_results['fpr'][class_][-1], cv_results['tpr'][class_][-1])
+
+    # Finally average it and compute AUC
+    mean_tpr /= len(estimator.classes_)
+    cv_results['fpr']['macro'].append(all_fpr)
+    cv_results['tpr']['macro'].append(mean_tpr)
+    cv_results['roc_auc']['macro'].append(auc(all_fpr, mean_tpr))
+
+
+def add_roc_scores(cv_results, estimator, x_test, y_test):
+    if hasattr(estimator, 'predict_proba'):
+        y_score = estimator.predict_proba(x_test)
+        y_test_bin = label_binarize(y_test, classes=estimator.classes_)
+
+        add_class_roc_scores(cv_results, estimator, y_test_bin, y_score)
+        add_micro_roc_scores(cv_results, y_test_bin, y_score)
+        add_macro_roc_scores(cv_results, estimator)
+
+
+def add_scorer_scores(cv_results, estimator, scoring, x_test, y_test):
+    for name, scorer in scoring.items():
+        score = scorer(estimator, x_test, y_test)
+        cv_results[name].append(score)
+
+
+def add_feature_permutation_importance(cv_results, estimator, x_train, y_train):
+    result = permutation_importance(estimator, x_train, y_train, 'balanced_accuracy', 5, 42)
+    cv_results['permutation_importance'].append(result['importances_mean'])
+
+
+def cross_validate(estimator, x, y, scoring, cv: ShuffleSplit):
+    cv_results = {name: [] for name, _ in scoring.items()}
+    cv_results['permutation_importance'] = []
+    cv_results['fpr'] = {class_: [] for class_ in ['early', 'immediate-early', 'late', 'micro', 'macro']}
+    cv_results['tpr'] = {class_: [] for class_ in ['early', 'immediate-early', 'late', 'micro', 'macro']}
+    cv_results['roc_auc'] = {class_: [] for class_ in ['early', 'immediate-early', 'late', 'micro', 'macro']}
+
+    widgets = [progressbar.Percentage(), ' done']
+    bar = progressbar.ProgressBar(widgets=widgets, max_value=cv.n_splits).start()
+    bar.update(0)
+    i = 0
+    for train, test in cv.split(x, y):
+        x_train = x[train]
+        y_train = y[train]
+        x_test = x[test]
+        y_test = y[test]
+
+        estimator.fit(x_train, y_train)
+
+        add_roc_scores(cv_results, estimator, x_test, y_test)
+        add_scorer_scores(cv_results, estimator, scoring, x_test, y_test)
+        add_feature_permutation_importance(cv_results, estimator, x_train, y_train)
+
+        i += 1
+        bar.update(i)
+    bar.finish()
+
+    return cv_results
 
 
 class Classifier:
@@ -102,16 +188,11 @@ class Classifier:
 
         print(f"Classifying with {self.ml_method} and {self.classifier}")
 
-        if self.ml_method != 'RR':
-            cv_results = cross_validate(self.__create_classifier(), x.values, y.values, scoring=create_scorers(),
-                                        cv=k_fold, return_estimator=True)
+        if self.ml_method == 'RR':
+            cv_results = cross_validate(self.__create_classifier(), x.values, y.values, create_scorers(True),
+                                        k_fold)
         else:
-            cv_results = cross_validate(self.__create_classifier(), x.values, y.values, scoring=create_scorers(True),
-                                        cv=k_fold, return_estimator=True)
+            cv_results = cross_validate(self.__create_classifier(), x.values, y.values, create_scorers(), k_fold)
 
-        if hasattr(cv_results['estimator'][0], 'feature_importances_'):
-            cv_results['feature_importance'] = [estimator.feature_importances_ for estimator in cv_results['estimator']]
-        del cv_results['estimator']
         cv_results['features'] = features
-
         return cv_results

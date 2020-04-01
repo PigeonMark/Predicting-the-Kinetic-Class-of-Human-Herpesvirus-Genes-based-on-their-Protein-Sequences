@@ -1,0 +1,1427 @@
+GLAM2: Gapped Local Alignment of Motifs
+Version 1056
+
+glam2 -O Util/gapped_motifs/early p Util/multi_sequence_fasta/early.fasta
+Sequences: 93
+Greatest sequence length: 1242
+Residue counts: A=4605 C=1239 D=2692 E=2737 F=2221 G=3532 H=1461 I=1949 K=1722 L=5260 M=1009 N=1602 P=3345 Q=1829 R=3726 S=3667 T=3025 V=3738 W=595 Y=1603 x=0
+
+Score: 805.074  Columns: 20  Sequences: 92
+
+                  ***..**............***********....****
+HHV_6B_p5244  438 KRLF.AL............ANEACR.LNPL....RYPF  457 + 8.47
+HHV_6B_p5253  412 QQR..VISGQN........RGRA.RGRGRG....RVPR  434 + 7.86
+HHV_6B_q9wt4  165 RHT..PI............SLTG.V.L.PR....RFQK  181 + 17.0
+EBV_bkrf3_p1   46 RKL..AA............VIAC.V.R.RL....RTQA   62 + 10.2
+EBV_bmrf1_p0  329 RHTV.SP............SPSP.P.P.PP....RTPT  346 + 12.9
+EBV_borf2_p0  652 SCL..PE............ALRQ.R.Y.LR.....FQT  667 + 9.51
+EBV_bxlf1_p0  101 RHT..SCPFT.........LPRG.A.Q.PP.....APA  119 + 12.9
+EBV_bblf2_p3  184 QRH..SES...........PGQL.D.V.YI....RTPR  201 + 12.1
+EBV_bnlf2b_p   31 KER..VP............VEDR.P.PTPMP....TSQ   48 + 12.0
+EBV_bslf1_p0  522 CRT..VRRE..........VLRL.M.R.RL.....GPV  539 + 18.5
+EBV_bkrf4_p0  172 RPT..RP............VLRG.P.A.PR....RPPP  188 + 21.7
+EBV_ebna6_p0  883 RAPI.RP............IPTRFPPP.PM.....PLQ  901 + 19.8
+EBV_bvrf1_p0  399 LHLS.SL............LPQA.M.Q.RR.....KPA  415 + 11.0
+EBV_bglf4_p0  400 CRP..RFE...........HPHL.P.G.LVAE...LLA  418 + 7.63
+EBV_bblf4_p0   26 RRI..VRR...........IGTL.A.R.RR.....VQQ   42 + 11.2
+EBV_balf5_p0  828 RKT..ACKF..........VQTRCR.RVLDL....VLA  848 + 11.6
+EBV_bflf2_p0   12 RQQ..RPA...........DPAL.R.R.LM.....HPH   28 + 17.6
+EBV_btrf1_p0  245 LRL..VP............NPDL.L.P.LQ.....HLY  260 + 6.23
+EBV_bhlf1_p0  292 RGH..PP............PGAG.Q.R.PS.....GPT  307 + 14.0
+EBV_brrf1_p0   41 CDL..PPSHP.........LLTA.Q.RGLFLA..RVLQ   63 + 14.4
+EBV_bllf3_p0   97 LRP..SELKI.........HLAA.F.R.YA.....TPQ  115 + 14.6
+EBV_balf2_db  459 RAPA.VC............LNTLFF.R.LRD...RFPP  478 + 18.0
+EBV_bmrf2_p0  126 ICP..AI............HQRF.F.E.LGL....LLA  142 + 4.99
+EBV_bglf5_p0   23 LRS..PE............TEAF.V.RNLD....RPPQ   40 + 13.8
+EBV_bllf2_p0   44 RRP..RP............PVAK.R.R.RFP...RSPQ   61 + 17.5
+EBV_bmlf1_bs  157 PRA..PR............VPRA.P.RSPR.....APR  173 + 22.3
+EBV_bnlf2a_p   28 PSH..PC............PEDP.D.VSRL....RLLL   45 + 11.7
+EBV_bglf3_p0   89 PRL..PEEWQF........GGQG.W.SSRME....PSQ  110 + 6.44
+EBV_balf1_p0  182 LALY.RRLWFA........RLGG.MPRSLRRQ...FPV  206 + 6.33
+EBV_bhrf1_p0   25 LHP..VL............ELAA.R.ETPL....RLSP   42 + 14.4
+KSHV_f5h982_   17 RSG..PR............DIRRCL.SSRLRS...VPP   36 + 4.07
+KSHV_orf49_q  119 KGL..PR............VLTL.Q.Y.PHT....APL  135 + 11.6
+KSHV_f5hid2_  323 RRQ..PELE..........SPDS.PPLTPV.....GPF  342 + 12.9
+KSHV_k14_p0c   14 IWL..ALLGAV........GGAR.V.QGPM....RGSA   35 + 9.04
+KSHV_orf57_q  115 TRP..PPEK..........RPRR.R.P.RD....RLQY  133 + 17.4
+KSHV_orf61_q    6 FCQ..VH............LGAV.PPE.RR.....GSQ   22 + 7.93
+KSHV_f5hin0_  658 CHP..AP............NGKA.Q.YVRRAF...TLR  676 + 12.0
+KSHV_orf34_q  226 CRP..PF............ATSR.I.Q.RV.....VSQ  241 + 12.8
+KSHV_dbp_orf  463 CPA..VC............INTL.F.Y.RMKD..RFPP  481 + 15.1
+KSHV_orf37_q  428 DPH..VE............IPTLLI.VTPVY....FPR  446 + 10.6
+KSHV_f5haw0_  268 FGT..PP............PEAC.P.LSYT.....GSF  284 + 8.59
+KSHV_f5hf68_  159 RGR..RR............MLAA.L.R.RT....RGLQ  175 + 15.8
+KSHV_orf18_q    7 CETE.PL............SPGL.R.R.LMW...RFLQ   25 + 13.8
+KSHV_orf9_q2    9 DPT..RGGP..........RNTV.R.Q.PT.....PSQ   26 + 8.36
+KSHV_f5hfa1_  193 DRT..PLINAQKHL.....VLTA.QHPSPL.....ASL  217 + 11.5
+KSHV_orf74_q  171 IAL..VL............SGDACRHRSRVV....DPV  190 + 12.5
+HCMV_b9vxm8_   68 LQL..SR............YLAA.R.Q.PIP....LSA   84 + 10.7
+HCMV_p09727_   27 DEP..PPL...........VETE.P.L.PP.....LSD   43 + 6.22
+HCMV_f5he05_  129 IWL..RC............VPEL.R.VDYT.....SSA  145 + 8.87
+HCMV_f5hb40_   37 RRQ..RR............ALSA.P.P.LT.....FLA   52 + 16.8
+HCMV_p16730_  848 CRH..VE............AHKI.P.RTRLK....VLV  865 + 13.7
+HCMV_f5hfa5_   66 LAP..PRD...........DERR.PTP.PL....RPPL   84 + 16.7
+HCMV_b9vxq2_  420 DRL..RE............VLQA.V.RGRFSGRE.VPA  440 + 14.2
+HCMV_f5hgg3_   52 RRQ..RGR...........HLDL.P.Y.PRGY...TLF   70 + 13.9
+HCMV_f5hdc7_  444 DGQ..RCFR..........MPKFFP.P.PMC...RAPY  464 + 16.6
+HCMV_f5haz3_  404 RRR..PRSLGDGEEEDEGNDGRA.MPVVRR....RPPP  434 + 13.8
+HCMV_f5hg98_  250 PSH..APAQR.........VLSA.P.PSLP.....SPV  269 + 10.7
+HCMV_f5hig1_   47 RAE..PR............LHTF.V.V.RGD...RLPP   64 + 11.5
+HCMV_p16771_   89 ISP..SLSA..........INTT.I.A.RHE....FSR  107 + 2.86
+HCMV_f5h8s6_  331 FRH..RRFE..........RERQ.R.QTRMEH..RHLC  352 + 10.9
+HCMV_dbp_f5h  479 CCH..TC............YQTAFV.RVRT....RLPV  497 + 22.1
+HCMV_f5hg68_  203 LAL..RI............PQRLCQ.R.LRI...RLPH  221 + 18.7
+HCMV_f5het1_  318 CQQ..SC............HGHF.V.R.RL.....VQA  333 + 15.5
+HCMV_p16763_  526 LWH..SLR...........HGDA.P.QDRT....RLPQ  544 + 21.3
+HCMV_p16786_    6 LRH..APHTATDEF.....HQAL.R.R.LF.....APL   28 + 12.7
+HCMV_p08546_  165 DRL..REVIAS........VGEL.VPE.PR.....TPY  185 + 15.5
+HCMV_irs1_p0  778 PRQ..SE............HHKR.QTR.PP....RPPP  795 + 21.6
+HCMV_c0h677_   22 SRL..PPL...........PGHA.R.R.PRRK..RCLV   41 + 13.8
+HCMV_f5hen8_  820 DRH..RI............HPEV.V.Q.RG.....LSR  835 + 14.8
+HCMV_p16849_  119 FAT..VA............LIAA.D.R.YR.....VLH  134 + 5.34
+HCMV_f5hc97_    5 TRL..SE............PPTL.A.L.RL.....KPY   20 + 10.7
+HSV_1_p03176  162 DRH..PIAALLC.......YPAA.R.Y.LMGSM..TPQ  185 + 15.1
+HSV_1_p10192  237 LRP..RG............HPQR.VTA.RVL....LPR  254 + 14.4
+HSV_1_p10193  264 LRP..PG............PPSG.P.S.PD.....ASP  279 + 11.3
+HSV_1_p10234  132 LAT..PP............ALTE.P.ISLRQ....FPQ  149 + 14.9
+HSV_1_p10226  120 LRR..VEL...........AITG.Q.A.PF....RTLV  137 + 13.2
+HSV_1_p10236  646 LGHF.RRG...........ALAA.V.Q.LL.....FPA  663 + 13.8
+HSV_1_p10186    5 CSR..SP............SPRR.RPSSPR....RTPP   23 + 23.6
+HSV_1_p04294   35 KRP..RPNSLP........LTTTFRPL.PP.....PPQ   56 + 14.0
+HSV_1_p06474  269 DSHILSPA...........ALAA.I.ENYV....RFSA  289 + 8.27
+HSV_2_p89469  132 RAT..PP............TLTE.P.SSLH....RFPQ  149 + 20.0
+HSV_2_p89446  163 DRH..PIASLLC.......YPAA.R.Y.LMGSM..TPQ  186 + 15.1
+VZV_orf18_p0  237 PKT..RLV...........NVDA.ITQ.YVK....FSA  255 + 2.75
+VZV_orf2_p09  192 DRP..TLP...........TLTA.QGR.PT.....VSN  209 + 5.69
+VZV_dbp_orf2  504 TRP..VC............AHTT.VHR.LRQ...RMPR  522 + 17.3
+HHV_6B_p5253  471 CCQ..SC............IGTA.M.V.RVGT..RLPA  489 + 19.6
+HSV_1_dbp_ic  506 TRH..ACV...........HTTL.M.R.LRA...RHPK  524 + 19.2
+HSV_2_p07918   86 DAP..AEQRTG........VHDG.R.L.RR.....APK  105 + 9.61
+HHV_6A_p2741   33 RDH..RE............HRET.R.E.PP.....TLA   48 + 9.15
+HSV_2_p28277   15 PGP..PPQQ..........PGAR.P.AVRF....RDEA   34 + 7.37
+HHV_6B_q9qj4  563 SRQ..SRA...........LQNG.Q.R.RR.....APT  579 + 9.51
+HSV_2_p89462  139 PRT..PEPQ..........GPQA.VPP.PP.....PPP  157 + 17.0
+
+                  RRP  PP             PTACRPRSRR    R PQ
+                       R              LA FPT  P         
+                                              L         
+
+ A  C  D  E  F  G  H  I  K  L  M  N  P  Q  R  S  T  V  W  Y Del Ins Score
+ 0 12 13  0  4  0  0  5  4 16  0  0  8  2 21  3  4  0  0  0   0      66.1
+                                                                  0 -0.147
+11  5  2  3  0  7  6  0  3  0  0  0  4  4 38  6  0  0  3  0   0      92.3
+                                                                  0 -0.147
+ 2  0  0  1  0  1 17  1  0 18  0  0 20 10  6  1 15  0  0  0   0      95.6
+                                                                 10 -53.3
+10  0  0  0  0  0  0  0  0  0  0  0 28  0 22 15  2 15  0  0   0      130.
+                                                                  0 -0.147
+ 2 12  0 16  2  4  1  7  0 11  0  0 22  0 15  0  0  0  0  0   0      84.1
+                                                                112 -211.
+10  0  4  1  0  3 12  6  0  9  2  3 10  0  5  6  3 14  0  4   0      19.3
+                                                                  0 -0.147
+ 0  0  0  7  0 16  5  4  0 21  0  5 22  6  1  0  3  2  0  0   0      58.4
+                                                                  0 -0.147
+19  0  9  5  0  2  3  0  4  0  0  1  0  6 14  5 24  0  0  0   0      72.7
+                                                                  0 -0.147
+28  2  0  3  5 10  0  1  1 18  0  0  2  2 12  1  4  3  0  0   0      42.8
+                                                                  0 -0.147
+ 0  5  0  0  5  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  81     -33.6
+                                                                  0 -0.147
+ 3  0  3  0  4  0  0  5  0  3  6  0 21 10 22  0  0 14  1  0   0      82.1
+                                                                  0 -0.147
+ 0  0  0  0  0  2  3  0  0  0  0  0  9  0  0  0  4  0  0  0  74     -47.3
+                                                                  0 -0.147
+ 5  0  0  6  0  1  0  1  0  8  0  0 11 11 30  5  0  7  0  7   0      70.9
+                                                                  0 -0.147
+ 0  0  2  0  0  4  0  0  0  0  0  3  0  0  0 12  6  5  0  0  60     -63.3
+                                                                  0 -0.147
+ 0  0  0  0  0  0  0  0  0 22  0  0 31  0 32  0  0  0  0  7   0      181.
+                                                                  0 -0.147
+ 1  0  4  0  6  4  3  2  0 12 11  0  8  1 22  1  8  9  0  0   0      51.0
+                                                                 51 -142.
+ 0  0  0  0  0  0  0  0  0  0  0  0  0  0 36  0  0  0  0  0  56      50.5
+                                                                  0 -0.147
+ 9  1  2  0 14  7  4  0  2 14  1  0 10  0  0  3 13 11  0  1   0      31.1
+                                                                  0 -0.147
+ 0  0  0  1  0  0  0  0  0 18  0  0 49  6  0 18  0  0  0  0   0      186.
+                                                                  0 -0.147
+18  1  1  0  4  0  3  0  3  5  0  1 11 19  9  0  4  8  0  5   0      44.7
+
+Score: 799.647  Columns: 20  Sequences: 93
+
+                  ****.*********................................*******
+HHV_6B_p5244    5 VETPQGQ.KT..QP................................INLPPDR   22 + 7.85
+HHV_6B_p5253  395 VRQR.TR.TT.V.GSTDGAIGQQRVISGQNRGRARGRGRG......RVPRRRN  437 + 10.8
+HHV_6B_q9wt4  162 TRMR.HTPIS.LTG................................VLPRRFQ  180 + 11.6
+EBV_barf1_p0  136 FPDF.SV.LT.VTCTVN.............................AFPHPHV  156 + 6.56
+EBV_bkrf3_p1   56 RRLR.TQ.AT.VYPEEDMCMAWA.......................RFCDPSD   82 + 20.5
+EBV_bmrf1_p0  324 LQQR.PR.HT.VSPSP..............................SPPPPPR  343 + 21.3
+EBV_borf2_p0  435 LALP.RLSVT.L.PGEGAVGDGFSL.....................ARLRDAT  463 + 10.7
+EBV_bxlf1_p0   38 DFAP.SV.LT...PTGSDSGAGEEDDDGLYQ...............VPTHWPP   70 + 10.3
+EBV_bblf2_p3  437 LSAR.GAPVG..TPDGGGQARDAQTWL...................RALHRYG  467 + 15.6
+EBV_bnlf2b_p    2 RPGR.PL.AGF.YATLR.............................RSFRRMS   22 + 9.45
+EBV_bslf1_p0  527 REVL.RLMRR.LGPVSRAHPVYFFK.....................SACPPAD  556 + 14.9
+EBV_bkrf4_p0  172 RPTR.PV.LR..GPAP..............................RRPPPPS  190 + 22.1
+EBV_ebna6_p0  879 SPQP.RAPIR...PIP..............................TRFPPPP  897 + 20.4
+EBV_bvrf1_p0   26 PSLR.NS.LR.VSPEALELAEREAER....................ARSERWD   55 + 13.8
+EBV_bglf4_p0  136 VDYL.SA.CT..SCHA..............................LFMPQFR  154 + 8.02
+EBV_bblf4_p0   35 LARR.RV.QQ.L.PDME.............................TFSPEFD   54 + 7.22
+EBV_balf5_p0  722 VEAL.SP.AN.LQAL...............................APSPDAW  740 + 9.57
+EBV_bflf2_p0  115 VFLPLSL.CT.LSPG...............................RCLRLSP  134 + 12.3
+EBV_btrf1_p0  175 VTVL.SS.LQ.LSPTKSILK..........................KAPEPPP  198 + 14.4
+EBV_bhlf1_p0   19 CPPP.CL.PG...APDQQT...........................RRLPPGW   39 + 14.8
+EBV_brrf1_p0   31 VHLL.NT.IG.VDC................................DLPPSHP   48 + 10.6
+EBV_bllf3_p0  156 VPPP.SIPHH..RPTIFGRSGLAMQGILV.................KPCRWRR  188 + 17.3
+EBV_balf2_db   51 VPLL.CG.IT.VEPGFSINV..........................KALHRRP   74 + 20.6
+EBV_bmrf2_p0  145 IFAL.SV.VS..RALEVSAVFMSPFFIFLALGSGSLAGARRNQIYTSGLERRR  193 + 1.60
+EBV_bglf5_p0   21 RFLR.SP.ET..EAFV..............................RNLDRPP   39 + 11.9
+EBV_bllf2_p0   36 KARP.PKMQR..RPRPPVAKR.........................RRFPRSP   60 + 12.9
+EBV_bmlf1_bs  154 PRAP.RA.PR.V.P................................RAPRSPR  170 + 22.8
+EBV_bnlf2a_p    7 RALL.EQ.QS..SACGLPGSSTET......................RPSHPCP   33 + 11.1
+EBV_bglf3_p0   82 LELL.PLNPR.L.PEEWQFGGQGWS.....................SRMEPSQ  110 + 7.29
+EBV_balf1_p0   48 VFVR.TP.VE...AWV..............................APSPPDD   65 + 11.1
+EBV_bhrf1_p0   31 LAAR.ETPLR.LSPEDTVVLRYHVLLEEIIE...............RNSETFT   66 + 10.7
+KSHV_f5h982_   29 SRLR.SVPPG...ARSASVSSKHRNGLRKFISDKVFFS........ILSHRHE   69 + 11.3
+KSHV_orf49_q  122 PRVL.TL.QY...PHT..............................APLESEP  139 + 3.81
+KSHV_f5hid2_  333 SPPL.TP.VG...PFGPLEDASEDAASV..................TSCPPAA  362 + 9.07
+KSHV_k14_p0c   55 RQLP.GP.VN.V.A................................TYSHSYG   71 + 8.11
+KSHV_orf57_q   87 CSPL.SR.PR..SPSPVNRYGKKIKFGTAGQNTRPPPE........KRPRRRP  127 + 15.9
+KSHV_orf61_q    3 VRTF.CQ.VH.LGA................................VPPERRG   20 + 11.2
+KSHV_f5hin0_  531 IQLL.GP.VD...PRTHPVYFFK.......................SACPPDE  555 + 10.3
+KSHV_orf34_q   61 CSGL.PA.LR...PDF..............................SNLHLPR   78 + 11.3
+KSHV_dbp_orf  911 GRLR.PI.IT.V.PLVVNKYTGSNGNTNVFHCANLGYFSGRGVD..RNLRPES  957 + 14.3
+KSHV_orf37_q  173 VAGP.LA.FG.LRCEEVVKTLLA.......................TLLHPDE  199 + 8.82
+KSHV_f5haw0_  171 CRVR.GIMPG.V.CLANDYISRD.......................ELLHTKA  197 + 8.36
+KSHV_f5hf68_  270 HELL.TTSQS..GCRIS.............................SALRRDP  290 + 9.65
+KSHV_orf18_q  157 CRLL.LA.AG..YCLAFWGSDEHERWVRFFAQKLFICYLIVSG...RLMPQRS  202 + 9.60
+KSHV_orf9_q2   21 QPTP.SQSPT.V.PSET.............................RVCRLIP   41 + 14.1
+KSHV_f5hfa1_   53 RELR.LT.TT.VYPPQDKLMWWS.......................HCCDPED   79 + 9.31
+KSHV_orf74_q  243 LQAR.RK.VR...GVIVAVVLLFFVFCFPYHVLNLLD.........TLLRRRW  281 + 7.98
+HCMV_b9vxm8_  727 DAYR.EHPLGFVRAQLDLRNLLHHHPPHDLPAL.............PLSPPPR  765 + 13.4
+HCMV_p09727_   52 SEAR.CV.LR..SGGRLEALWTLRGNLS..................VPTPTPR   82 + 7.98
+HCMV_f5he05_   19 IRLP.DG.IT..KAGE..............................DALRPWK   37 + 5.36
+HCMV_f5hb40_  232 LFAL.RI.IT...PLL..............................KRLPLRR  249 + 13.9
+HCMV_p16730_   24 RRVL.HVPVH.VRACNLTQELSTGEDA...................RFCRPRP   55 + 24.4
+HCMV_f5hfa5_   78 PPLR.PP.LT.VYPYGT.............................SLIRRSA   98 + 18.2
+HCMV_b9vxq2_  206 RRRR.RAPKN..DAATP.............................SFLRRHD  226 + 16.5
+HCMV_f5hgg3_   52 RRQRGRH.LD.L.PYPRGYTLFVCDVEET.................ILTPRDV   84 + 5.90
+HCMV_f5hdc7_  223 IRTP.GR.TE.VEPLLMLGSIEGL......................RACRPFD  250 + 17.5
+HCMV_f5haz3_  404 RRRP.RS.LG..DGEEEDEGNDGRAMPVVR................RRPPPMP  436 + 15.8
+HCMV_f5hg98_  256 QRVL.SAPPS.L.PSPVSEEDPAA......................AATPPSS  283 + 16.2
+HCMV_f5hig1_    4 QPPL.HH.RH..HPYTLFG...........................TSCHLSW   25 + 8.75
+HCMV_p16771_   23 LRYL.RH.TE..SPKSPKSS..........................IAIPRKR   45 + 11.3
+HCMV_f5h8s6_   98 REPL.TP.LG..YAVI..............................LLPEPRR  116 + 14.6
+HCMV_dbp_f5h 1037 QRYL.LA.TR.L.ADVLI............................KRSRREN 1057 + 9.57
+HCMV_f5hg68_  202 LLAL.RIPQR.L.CQRLRI...........................RLPHRYQ  224 + 13.1
+HCMV_f5het1_   53 VNLL.TI.IG...CLWVL............................RVTRPPV   72 + 8.31
+HCMV_p16763_  574 VAAP.GPSVRY.RAHIQKFERLHV......................RRFRPHE  602 + 15.4
+HCMV_p16786_  242 QRQP.RS.PQ.LRGLI..............................AALRRYA  261 + 13.8
+HCMV_p08546_   20 RRQR.SQ.PG..SAQGSG............................KRPPQKQ   40 + 15.6
+HCMV_irs1_p0  760 PPLP.PK.QR..HGSTDGKVSAPRQSEHHKRQT.............RPPRPPP  795 + 16.1
+HCMV_c0h677_   22 SRLP.PL.PG..HA................................RRPRRKR   38 + 20.2
+HCMV_f5hen8_  388 VRPP.SS.IR..NPSYAAEMTRLFLSHVEVQAYFKRLHEQI.....RLSERHR  431 + 12.8
+HCMV_p16849_  281 LTLR.RT.IGTL.AR...............................VVPHLHC  299 + 4.72
+HCMV_f5hc97_   25 QQLR.SV.IR...ALKENTTV.........................TFLPTPS   47 + 12.0
+HSV_1_p03176    2 ASYP.CH.QH...ASAFDQAARSRGHNNRR................TALRPRR   33 + 9.36
+HSV_1_p10192  237 LRPR.GHPQR.VTARV..............................LLPRDYD  257 + 18.7
+HSV_1_p10193  629 VALP.PT.LN.VTPVWELLCLCSTMA....................ARLHWDS  658 + 16.8
+HSV_1_p10234  132 LATP.PA.LT..EPISLRQFPQ........................LAPPPPT  156 + 15.3
+HSV_1_p10226  380 CPMPSST.TR.VTPTTKRGRSGGEDARADTALKKPKTGSP......TAPPPAD  424 + 12.7
+HSV_1_p10236  657 VQLLFPA.AR.VDPDAYPCYFFK.......................SACRPGP  684 + 13.5
+HSV_1_p10186    9 PSPR.RR.PS..SP................................RRTPPRD   25 + 17.8
+HSV_1_p04294   49 RPLP.PPPQTT.SAVDPSSHSP........................VNPPRDQ   75 + 18.4
+HSV_1_p06474  290 DRLL.GL.IHM.KPLF..............................SAPPPDA  309 + 13.8
+HSV_2_p89469  132 RATP.PT.LT..EP................................SSLHRFP  148 + 16.9
+HSV_2_p89446  230 LAML.SA.IR..RVYDLLANTVRYLQRGGRWREDWGRLTGVA....AATPRPD  274 + 5.90
+VZV_orf18_p0  256 DRLL.SA.IN.V.PKLFN............................TPPPDSD  276 + 16.7
+VZV_orf2_p09  196 LPTL.TA.QG..RPTVSNIRGILKGSPRQQ................PVCHRVR  228 + 11.2
+VZV_dbp_orf2    8 VTVP.TGPLGYVYACRVEDLDLEEISFLAARSTDSDL.........ALLPLMR   50 + 11.9
+HHV_6B_p5253  963 DRNL.NP.TS..SALQDF............................RFMRQKT  983 + 3.79
+HSV_1_dbp_ic   11 IKVP.PGPLGYVYA................................RACPSEG   30 + 13.8
+HSV_2_p07918   98 GRLR.RA.PK.VYCGGDERDVLRVGPEGFWP...............RRLRLWG  132 + 13.5
+HHV_6A_p2741   39 RETR.EP.PT.L.AFHMKSWKTINKSLKAFAKLLKENATV......TFTPQPS   81 + 10.0
+HSV_2_p28277   12 VRAP.GPPPQ..QPGARPA...........................VRFRDEA   34 + 12.9
+HHV_6B_q9qj4  572 GQRR.RA.PTMV.PSSQTRRQNN.......................ARPRRVA  598 + 12.1
+HSV_2_p89462  139 PRTP.EP.QG...PQA..............................VPPPPPP  156 + 18.7
+
+                  VRLL S P RYVSP                                RALPP P
+                     P     TFL A                                 RPRR  
+                     R     GM                                          
+                            T                                          
+
+ A  C  D  E  F  G  H  I  K  L  M  N  P  Q  R  S  T  V  W  Y Del Ins Score
+ 1  6  5  0  1  3  1  5  1 15  0  0  7  6 17  5  1 19  0  0   0      37.7
+                                                                  0 -0.147
+12  0  1  9  6  0  1  0  1  1  0  1 15  7 30  6  3  0  0  0   0      77.0
+                                                                  0 -0.147
+12  0  1  0  0  3  0  0  0 29  3  1  9  6  5  0 10  9  0  5   0      45.3
+                                                                  0 -0.147
+ 0  0  0  0  2  0  0  0  0 31  0  0 30  0 30  0  0  0  0  0   0      185.
+                                                                  5 -34.1
+ 0  5  1  5  0 10  3  0  0  4  0  3 16  0 17 19 10  0  0  0   0      63.2
+                                                                  0 -0.147
+17  0  0  0  0  4  6  6  3  9  0  0 14  6  5  5  9  9  0  0   0      25.2
+                                                                  0 -0.147
+ 0  0  0  0  0  0  0  0  0  0  3  1 16  0  0  4  0  0  0  0  69     -34.2
+                                                                  0 -0.147
+ 5  2  0  1  1  0  2 14  2 18  0  0 16 12  2  0  7 11  0  0   0      50.8
+                                                                  0 -0.147
+ 0  0  2  3  0 20  6  0  1  0  0  5  0  4 22  7 22  0  0  1   0      92.6
+                                                                  0 -0.147
+ 0  0  0  0  2  0  0  0  0  0  2  0  0  0  0  0  2  0  0  3  84     -43.5
+                                                                  0 -0.147
+ 0  0  0  0  0  0  0  0  0 18  0  0  0  0  0  0  0 26  0  0  49      8.01
+                                                                  0 -0.147
+ 0  0  4  5  0  4  3  0  2  0  0  1  0  3 10 14  6  0  0  9  32     -52.1
+                                                                  0 -0.147
+28 10  0  0  0  7  0  0  0  0  0  0 47  0  0  0  0  1  0  0   0      205.
+                                                                841 -448.
+12  0  2  1  0  0  1  4  7  4  0  0  2  0 28 12 12  8  0  0   0      59.2
+                                                                  0 -0.147
+19  2  0  0  9  1  0  0  0 15  0  6 12  0 19  4  0  5  0  1   0      58.6
+                                                                  0 -0.147
+ 0 13  0  0  5  0  0  2  0 25  4  0 25  0  0 11  8  0  0  0   0      112.
+                                                                  0 -0.147
+ 0  0  3  9  0  0 16  0  0  0  0  0 35  0 30  0  0  0  0  0   0      198.
+                                                                  0 -0.147
+ 0  0  5  1  0  0  0  0  0  8  0  0 34  5 28  5  4  0  3  0   0      124.
+                                                                  0 -0.147
+ 5  1  9  6  6  2  7  1  5  0  3  0 17  0 13  8  0  2  3  5   0      26.3
+                                                                  0 -0.147
+ 7  1 13  4  0  5  0  0  1  0  0  2 19  5 17  8  4  3  4  0   0      44.6
+
+Score: 794.361  Columns: 19  Sequences: 92
+
+                  ********.............................................********........***
+HHV_6B_p5244   22 R.KRLRKHDGLGKGVK.....................................RKLFAEDS........SPL   47 + 10.9
+HHV_6B_p5253  421 R.GRARGRG............................................RGRVPRRRNSNLN...NLR  444 + 9.04
+EBV_barf1_p0  163 GVEPAPTAANGGVMKEKDGSLSVAVD............................LSLPKPW........HLP  198 + 5.03
+EBV_bkrf3_p1  108 GFPVPPSLRNIYA.........................................ELHRSLPEF......SPP  132 + 6.69
+EBV_bmrf1_p0  323 GLQQRPRHTVS...........................................PSPSPPP........PPR  343 + 16.5
+EBV_borf2_p0  634 R.HVRLDDREALNLVGGRVSCL................................PEALRQR........YLR  664 + 11.8
+EBV_bxlf1_p0   79 G.ERVPCRTQAAVTSNTGNSPGSRHTSCPFTL......................PRGAQPP........APA  119 + 13.6
+EBV_bblf2_p3  160 R.DQQPPPVDGFGSEMEGEQTCPHA.............................QRHSESPGQLDVYIRTPR  201 + 11.4
+EBV_bnlf2b_p   15 R.RSFRRMSKRSKNKAKKE...................................RVPVEDRPP......TPM   44 + 8.64
+EBV_bslf1_p0  527 R.EVLRLM.............................................RRLGPVSRA.......HPV  545 + 17.8
+EBV_bkrf4_p0  137 A.PPRPPAPAPV.........................................RGRASAPP........RPP  158 + 24.5
+EBV_ebna6_p0  884 A.PIRPIP..............................................TRFPPPP........MPL  900 + 19.4
+EBV_bvrf1_p0  395 A.TRRLHLSSLL..........................................PQAMQRR........KPA  415 + 9.44
+EBV_bglf4_p0    7 A.ELSPTNSSSS..........................................GELSVSP........EPP   27 + 5.19
+EBV_bblf4_p0   39 RVQQLPDMETFSPEFD......................................PELSEPP........FLP   64 + 17.4
+EBV_balf5_p0  254 R.RAIPRLQHRDSYAELEYDCEV...............................GDLSVRRED......SSW  287 + 7.97
+EBV_bflf2_p0    2 A.PVTPDAVNA..........................................RQQRPADP........ALR   22 + 14.5
+EBV_btrf1_p0   41 G.ENVPIPALFRAS........................................GLNVRES........LPM   63 + 8.22
+EBV_bhlf1_p0  618 A.AAQRCPAGPPPTRSGAAAQ.................................RTHRRPPG.......CPR  648 + 20.2
+EBV_brrf1_p0  116 GLDDRLWALI............................................RKLRQDR........HHA  135 + 10.5
+EBV_bllf3_p0  133 GLDVSLPKDLALFPHQTVSVT.................................LTVPPPSIP......HHR  165 + 8.14
+EBV_balf2_db   69 ALHRRPDPNC............................................GLLRATS........YHR   88 + 15.6
+EBV_bmrf2_p0  188 GLERRRSIFCA..........................................RGDHSVASLKETLHK.CPW  216 + 11.6
+EBV_bglf5_p0   20 A.RFLRSPETEAF.........................................VRNLDRPPQ......MPA   43 + 9.94
+EBV_bllf2_p0   44 R.RPRPPVAK...........................................RRRFPRSPQQ......VER   65 + 19.3
+EBV_bmlf1_bs  153 A.PRAPRAPRV...........................................PRAPRSPR.......APR  173 + 19.6
+EBV_bnlf2a_p   27 R.PSHPCPED............................................PDVSRLR........LLL   45 + 14.9
+EBV_bglf3_p0  142 A.LQILAHSQTWT.........................................SLVPEDP........LPW  163 + 9.50
+EBV_balf1_p0  148 RLRVVLCYTVVFAVRNYLDDHKSAAFVLGAIAHYLALYRRLWFARLGGMPRSLRRQFPVTW........ALA  211 + 10.1
+EBV_bhrf1_p0    6 R.EILLALCIRDSRVHGNGTLHPVLELAA........................RETPLRLSPEDTV...VLR   49 + 7.14
+KSHV_f5h982_   21 R.DIRRCLSS............................................RLRSVPPGA......RSA   41 + 14.2
+KSHV_orf49_q  120 GLPRVLTLQYPHTA........................................PLESEPPTADC....TEW  147 + 10.5
+KSHV_f5hid2_  330 S.PDSPPLTPVGPFGPL.....................................EDASEDAASVTS...CPP  360 + 7.21
+KSHV_k14_p0c  185 R.TVRLPR..............................................GDNTTPSEGI.....CLI  204 + 7.54
+KSHV_orf57_q   92 R.PRSPSPVNRYGKKIKFGTA.................................GQNTRPPPEK.....RPR  124 + 17.0
+KSHV_orf61_q  768 G.AWLPGPKNPEE.........................................ESCAADPE.......CLV  790 + 11.1
+KSHV_f5hin0_  524 R.EAILDIIQ............................................LLGPVDPRT......HPV  544 + 12.2
+KSHV_orf34_q  135 R.EAVDGLCDPGTWK.......................................GLLPDDP........LPL  158 + 10.5
+KSHV_dbp_orf  141 C.PQLPCANEIFMAVIVTEGFKERLYGG..........................KLVPVPSQT......TPV  179 + 9.34
+KSHV_orf37_q  424 G.DALDPHVEIP..........................................TLLIVTPVY......FPR  446 + 9.16
+KSHV_f5haw0_  255 A.DRILRDIFVPPIF.......................................GTPPPEA........CPL  278 + 14.0
+KSHV_f5hf68_  115 R.TRFRIP..............................................VTPLADPC.......FEW  132 + 13.8
+KSHV_orf18_q  152 G.SVLPCRLLLAAGYCLAFWGSDEHERWVRFFAQKLFICYLIVS..........GRLMPQR........SLL  204 + 7.13
+KSHV_orf9_q2  237 R.RFVLDHGFSTFGWYECSNPAP..............................RTQARDSW........TEL  269 + 8.27
+KSHV_f5hfa1_   23 R.DLLLAPKWISFLSLSSFLKQKLLSLL..........................RQIRELRLTTTV...YPP   64 + 6.44
+KSHV_orf74_q  205 A.DWRLHV..............................................RTVSVTAG.......FLL  222 + 12.5
+HCMV_b9vxm8_  243 R.ERARLPDTVCVHYVYLAY..................................RTALARA........RLL  271 + 11.7
+HCMV_p09727_   92 A.DRVPTPVEDVSESLVAKRYWLRDYRVPQRTKLVLFYFSPCHQCQTYYVECE.PRCLVPW........VPL  153 + 14.8
+HCMV_f5he05_   16 G.PLIRLPDGITKAG.......................................EDALRPWKSTAK...HPW   44 + 11.1
+HCMV_f5hb40_   11 R.ARRPRARRGGGGGVGSNSSRHSGKC..........................RRQRRALS........APP   47 + 16.1
+HCMV_p16730_    5 A.PRRLGCDALIVVG.......................................GSAMPRRVLH.....VPV   31 + 10.7
+HCMV_f5hfa5_   41 GFLRIPPDGQDVNHVKIVPTTTSSSLAPPRDD......................ERRPTPPL.......RPP   83 + 13.3
+HCMV_b9vxq2_  206 R.RRRRAPK.............................................NDAATPS........FLR  223 + 16.3
+HCMV_f5hgg3_   34 AMTSRRAPDGGLNLDDFMRRQ................................RGRHLDLP........YPR   65 + 16.0
+HCMV_f5hdc7_  357 R.DVLRWHGALGTIT.......................................RSQLESALDW.....FLR  383 + 11.2
+HCMV_f5haz3_  402 A.ERRRPRSLGDGEEEDEGNDGRAMPV...........................VRRRPPP........MPR  437 + 19.4
+HCMV_f5hg98_  236 R.ANSLAHIQATGAQPSHAPAQ................................RVLSAPP........SLP  266 + 11.4
+HCMV_f5hig1_   59 G.DRLPPAEVRAVHRASYAALASAVTTDADE......................RRRGLEQRSA......VLA  101 + 15.4
+HCMV_p16771_   13 A.SYRLSPISKLRY........................................LRHTESPK.......SPK   36 + 5.44
+HCMV_f5h8s6_   13 A.AVVPPELPAL..........................................PVAAEDPMALYRQ..VLR   39 + 7.66
+HCMV_dbp_f5h  790 RVKNRPIYRAGKGNAGSVFF.................................RRDHVPRR........NPA  820 + 12.9
+HCMV_f5hg68_  206 RIPQRLCQ..............................................RLRIRLPHRYQ....RLR  227 + 8.47
+HCMV_f5het1_  252 CFRVLRGVLQPASAAGTGFGIMDYVELAT.........................RTLLTMRLGI.....LPL  293 + 5.56
+HCMV_p16763_  521 RVQRLLWHSLRH..........................................GDAPQDRT.......RLP  543 + 18.2
+HCMV_p16786_  470 AFDVILPCAARTCDSTVVV...................................RDVTVPR........LLR  498 + 14.0
+HCMV_p08546_ 1196 AVTNVLSPVFPGGETARKDKFLHMVLP..........................RRLHLEPA........FLP 1233 + 16.1
+HCMV_irs1_p0  789 R.PPRPPPPKFGDRTAAHLSQNMRDMYLDMCTSSGH.................RPRPPAPP........RPK  834 + 21.5
+HCMV_c0h677_   23 RLPPLPGHA.............................................RRPRRKR........CLV   41 + 17.9
+HCMV_f5hen8_  819 S.DRHRIHPEVVQRGLS.....................................RLVLRDALG......FLF  846 + 11.0
+HCMV_p16849_  291 A.RVVPHLHCLINPILYALLGHDFLQRMRQCF.....................RGQLLDRRA.......FLR  333 + 15.0
+HCMV_f5hc97_   28 R.SVIRALKENTT.........................................VTFLPTP........SLI   49 + 7.71
+HSV_1_p03176   16 A.ARSRGHNN...........................................RRTALRPRRQQEA...TEV   40 + 14.4
+HSV_1_p10192  353 A.RVVLPPRAWPGVASAAAGCLLPAV............................REAVARW........HPA  387 + 14.8
+HSV_1_p10193  521 ALRAQRDL.............................................RELRCRDPEA......SLP  541 + 14.2
+HSV_1_p10234  311 ALPWIPPDNFHGTKALRNY...................................PRGVPDSTA......EPR  341 + 17.0
+HSV_1_p10226  400 G.EDARADTALKKPKTGS....................................PTAPPPADP......VPL  428 + 9.13
+HSV_1_p10236  573 A.AAHPDHGAL...........................................GRRLTDRIRAQGPV.MPP  599 + 13.1
+HSV_1_p10186    5 C.SRSPSP.............................................RRRPSSPRR.......TPP   23 + 17.5
+HSV_1_p04294   18 R.PWALAEDT............................................PRGPDSPPK......RPR   38 + 14.9
+HSV_1_p06474  289 A.DRLLGLIHMK..........................................PLFSAPPPDAS....FPL  313 + 16.8
+HSV_2_p89469  309 ALPWIPPDNIHEDGAFRAY...................................PRGVPDATA......TPR  339 + 18.5
+HSV_2_p89446  317 A.DRLLPMHLFVLDYDQS....................................PVGCRDA........LLR  343 + 12.3
+VZV_orf18_p0  255 A.DRLLSAINVPKLF.......................................NTPPPDSD.......FPL  279 + 15.2
+VZV_orf2_p09  193 R.PTLPTLTAQGRPTVSNIRGILK..............................GSPRQQPV.......CHR  226 + 8.59
+VZV_dbp_orf2  186 G.DVIRIPLFPVQLFMPDV...................................NRLVPDPFNT.....HHR  216 + 14.2
+HHV_6B_p5253  484 G.TRLPAIPKNVK.........................................KEPLVMSM.......FSR  506 + 5.91
+HSV_1_dbp_ic  951 AVDAHPGAWTSMFASCN.....................................LLRPVMAA.......RPM  978 + 10.0
+HSV_2_p07918 1094 RLAALRELDAAAP.........................................GDEPAPPA.......ALP 1117 + 9.07
+HHV_6A_p2741   26 R.DHHRDHRDH...........................................REHRETR........EPP   45 + 14.8
+HSV_2_p28277   66 RLQWFRDVAALEV.........................................PTGLPLRE.......FPF   89 + 12.2
+HHV_6B_q9qj4  572 G.QRRRAPTMVPSSQTRRQNNA...............................RPRRVARRL.......TEM  604 + 15.1
+HSV_2_p89462  358 S.KRVPPRTFGSAPRLTEDDFGLLNYALAEM......................RRLCLDLPP.......VPP  399 + 11.9
+
+                  RLDRRP P                                             RRR P PP         PR
+                  AVP LL                                                GL L DR         L 
+                  G    R                                                P                 
+
+ A  C  D  E  F  G  H  I  K  L  M  N  P  Q  R  S  T  V  W  Y Del Ins Score
+31  3  0  0  0 19  0  0  0  0  0  0  0  0 36  3  0  0  0  0   0      173.
+                                                                  0 -0.147
+ 0  0  0  0  4  0  0  1  0 13  1  0  0  0  0  0  0  6  0  0  67     -44.6
+                                                                  0 -0.147
+ 8  0 19 12  0  1  2  0  3  2  0  0 19  5 11  4  6  0  0  0   0      60.0
+                                                                  0 -0.147
+ 9  0  3  0  2  0  1  3  0  3  0  4  5  6 29  3  1 16  6  1   0      60.8
+                                                                  0 -0.147
+ 6  0  0  0  3  0  5 11  0 21  0  0  1  3 22  7  1 12  0  0   0      66.0
+                                                                  0 -0.147
+ 0  0  2  0  0  0  0  0  0 26  0  0 38  0 26  0  0  0  0  0   0      191.
+                                                                  0 -0.147
+11  8 10  1  0  9  3  6  1  3  0  0 18  0  6  8  5  0  3  0   0      30.0
+                                                                  0 -0.147
+10  2  6  2  0  0 13  3  1 14  4  1 23  1  6  0  0  4  0  2   0      53.9
+                                                                911 -454.
+ 0  0  0  0  0  0  0  0  0  0  0  0  0  0 22  0  0  0  0  0  70      5.25
+                                                                  0 -0.147
+ 0  0  0  7  0 19  0  0  3  5  0  3 19  2 26  1  3  4  0  0   0      77.4
+                                                                  0 -0.147
+ 0  0 11  6  0  0  0  0  1 19  0  0  0  8 24  6 13  4  0  0   0      77.9
+                                                                  0 -0.147
+15  3  0  2  6  9  9  1  0 13  0  4 11  1 10  0  0  8  0  0   0      32.9
+                                                                  0 -0.147
+ 5  2  0  0  0  0  0  2  0 20  3  0 22  0 11 15  4  8  0  0   0      65.7
+                                                                  0 -0.147
+13  0  7 14  0  0  0  0  1  0  0  0 15  5 16  2  5 14  0  0   0      66.6
+                                                                  0 -0.147
+ 1  0 20  2  0  0  0  0  1  9  3  0 27  4 10  9  6  0  0  0   0      79.9
+                                                                  0 -0.147
+11  0  0  0  0  0  0  0  0  0  0  0 38  0 24 13  0  0  6  0   0      172.
+                                                                141 -234.
+ 6  8  0  3 13  0  8  0  1  7  4  2  1  0 10  8  9  8  0  4   0      34.5
+                                                                  0 -0.147
+ 0  0  0  6  0  0  5  0  0 29  0  0 49  0  0  3  0  0  0  0   0      192.
+                                                                  0 -0.147
+ 9  0  0  0  2  0  0  2  2 14  4  0 18  0 28  0  0  7  6  0   0      91.8
+
+Score: 773.404  Columns: 20  Sequences: 93
+
+                  **..********.............................*******...***
+HHV_6B_p5244   22 RK..RLRKHDGLGKGVK........................RKLF.AE...DSS   45 + 9.54
+HHV_6B_p5253  392 AR..RVRQRTRTTVGSTDGAIGQQRVISGQNRGRARG....RGRGRVP...RRR  436 + 15.1
+HHV_6B_q9wt4  158 QKY.FTRMRHTPIS...........................LTGVLPR...RFQ  180 + 3.10
+EBV_barf1_p0  118 HL..SVVKPLTLSVHSE........................RSQF.PD...FSV  141 + 5.03
+EBV_bkrf3_p1  112 PP..SLR.NIYAE............................LHRSLPE...FSP  131 + 6.90
+EBV_bmrf1_p0  325 QQ..RPRHTVSPS............................PSPP.PP...PRT  344 + 21.6
+EBV_borf2_p0  745 AL..SVP.REEQNERS.........................PAEQ.MP...PRP  766 + 14.0
+EBV_bxlf1_p0  101 RHT.SCP.FTLP.............................RGAQ.PPA..PAH  120 + 11.5
+EBV_bblf2_p3  143 PL..FPAQVVCQSCSGDDG......................RDQQ.PP...PVD  168 + 13.0
+EBV_bnlf2b_p   15 RR..SFR.RMSKRSKNKAKKERVPVEDR.............PPTP.MP...TSQ   48 + 12.9
+EBV_bslf1_p0  522 CR..TVR.REVLRLM..........................RRLG.PV...SRA  542 + 13.3
+EBV_bkrf4_p0  132 RP..RTRAPPRPPAPAPV.......................RGRASAP...PRP  157 + 22.8
+EBV_ebna6_p0  881 QP..RAPIRPIPT............................RFPP.PPM..PLQ  901 + 19.2
+EBV_bvrf1_p0   75 RD..HLA.RAEEIRQDLDAVVAFSDGLESMQVRSPSTGG..RSAP.AP...PSP  119 + 12.0
+EBV_bglf4_p0  385 CR..SLKKRFKESYFFNC.......................RPRFEHP...HLP  410 + 8.22
+EBV_bblf4_p0   37 RR..RVQ.QLPDMETFSPEFD....................PELSEPP...FLP   64 + 15.3
+EBV_balf5_p0   27 RL..IPKCFQTPGAAGVVDV.....................RGPQ.PPL..CFY   54 + 14.3
+EBV_bflf2_p0   69 CS..RHT.RHGVD............................RSHFSLR...DFF   88 + 10.1
+EBV_btrf1_p0  168 RD..ILEIPVTVLSSLQLSPTKSILKKA.............PEPP.PPE..PQA  203 + 15.1
+EBV_bhlf1_p0    8 AR..GPR.TTPL.............................PHCP.PP...CLP   25 + 18.8
+EBV_brrf1_p0   41 CD..LPPSHPLLTAQ..........................RGLFLAR...VLQ   63 + 14.3
+EBV_bllf3_p0  143 AL..FPHQTVSVTLTV.........................PPPS.IPH..HRP  166 + 15.1
+EBV_balf2_db  453 CS..LCEGRAPAVCLNTLFFRL...................RDRF.PP...VMS  481 + 13.4
+EBV_bmrf2_p0  104 CL..FLA.NLPLLCLW.........................PRLA.IE...IVY  125 + 4.81
+EBV_bglf5_p0   20 AR..FLRSPETEAFVRNLD......................RPPQ.MPAM.RFV   47 + 15.5
+EBV_bllf2_p0   43 QR..RPR.PPVAK............................RRRF.PRS..PQQ   62 + 19.4
+EBV_bmlf1_bs  144 RR..HLPPGARA.............................PRAPRAP...RVP  163 + 18.2
+EBV_bnlf2a_p   27 RP..SHPCPEDPDVSR.........................LRLLLVVL..CVL   51 + 9.95
+EBV_bglf3_p0  172 RS..HCEERHCVYAAARGK......................RGPILLP...TAV  198 + 16.4
+EBV_balf1_p0  187 RLW.FARLGGMPRSL..........................RRQF.PVT..WAL  210 + 8.84
+EBV_bhrf1_p0   15 RDS.RVHGNGTLHPVLELAA.....................RETP.LR...LSP   42 + 7.52
+KSHV_f5h982_  121 CP..STE.NPTVAQGS.........................RPQT.MVG..DAL  143 + 9.11
+KSHV_orf49_q  122 PRVLTLQYPHTA.............................PLESEPP...TAD  143 + 6.29
+KSHV_f5hid2_  331 PD..SPPLTPVG.............................PFGP.LE...DAS  349 + 10.5
+KSHV_k14_p0c   36 AL..TCAITPRADIVSVTW......................QKRQ.LPG..PVN   62 + 8.38
+KSHV_orf57_q   89 PLS.RPR.SPSPVNRYGKKIKFGTAGQNTRPPPEK......RPRRRPR...DRL  131 + 17.3
+KSHV_orf61_q  667 PK..HHRERYRVFLTAFDYCPFKLLD...............RARARAP...FVD  700 + 12.0
+KSHV_f5hin0_  198 RLF.SPQQGQTLVSVTSHEELGQLYGTS.............PFRRRVP...AFV  234 + 10.5
+KSHV_orf34_q  167 AS..FCRADCCLYKQHCGY......................PGPVLLPG..HMY  194 + 6.74
+KSHV_dbp_orf  912 RL..RPIITVPLVVNKYTGSNGNTNVFHCANLGYFSGRGVDRNLR.PE...SVP  959 + 11.1
+KSHV_orf37_q  426 ALDPHVEIPTLLIVT..........................PVYF.PRGAKHRL  452 + 3.85
+KSHV_f5haw0_  248 RR..FLEATADRIL...........................RDIF.VP...PIF  268 + 8.80
+KSHV_f5hf68_  115 RT..RFRIPVTPLADPCFEWRRDGELGVVYI..........RERGNMPV..DAS  154 + 13.4
+KSHV_orf18_q  196 RL..MPQRSLLVWASETGY......................PGPVEAV...CRD  222 + 8.93
+KSHV_orf9_q2   15 PRN.TVR.QPTPSQSPTVPSET...................RVCRLIPA..CFQ   45 + 15.0
+KSHV_f5hfa1_   87 QDP.YHKGQATGLAFSVD.......................PQCQ.VP...PSL  112 + 7.16
+KSHV_orf74_q  208 RL..HVR.TVSV.............................TAGFLLP...LAL  226 + 10.9
+HCMV_b9vxm8_  748 HH..HPPHDLPA.............................LPLS.PP...PRV  766 + 17.8
+HCMV_p09727_  114 RDY.RVPQRTKLVLFYFSPCHQCQTYYVECE..........PRCL.VP...WVP  152 + 13.3
+HCMV_f5he05_  119 AL..RLVLQGDVIW...........................LRCV.PE...LRV  139 + 4.60
+HCMV_f5hb40_  391 RL..RLR.RETVRRPFFSDAP....................LPYF.VP...PRS  417 + 18.5
+HCMV_p16730_   24 RRVLHVPVHVRACNLTQELSTGEDA................RFCR.PR...PVN   57 + 13.5
+HCMV_f5hfa5_   39 RRG.FLRIPPDGQDVNHVKIVPTTTSSSLAPPRDDE.....RRPT.PP...LRP   82 + 18.3
+HCMV_b9vxq2_  219 PS..FLR.RHDVLE...........................RFAAAAE...PLP  239 + 13.5
+HCMV_f5hgg3_  192 RA..LLRHRVTPGKQEITDAM....................FEAGNVP...SAL  220 + 9.97
+HCMV_f5hdc7_  418 PSH.SVE.TLPALQGGLWEDNDETTQTVDG...........QRCFRMPK..FFP  456 + 13.2
+HCMV_f5haz3_  404 RR..RPR.SLGDGEEEDEGNDGRAMPVV.............RRRP.PPM..PRD  438 + 19.7
+HCMV_f5hg98_  232 RD..SLRANSLAHIQATGAQPSHAPAQ..............RVLS.AP...PSL  265 + 12.0
+HCMV_f5hig1_    6 PL..HHRHHPYTLFGTSCHLSWYGLLEASVPIVQCLFLD..LGGGRAE...PRL   52 + 12.6
+HCMV_p16771_   23 LR..YLRHTESPKSPKSSIAIPRKRYKRY............RQISRMPKN.HFW   61 + 2.64
+HCMV_f5h8s6_  333 HR..RFE.RERQ.............................RQTR.ME...HRH  350 + 13.5
+HCMV_dbp_f5h  811 RD..HVPRRNPAKGCLGFLLYRHHERLF.............PECG.LP...CLQ  845 + 14.6
+HCMV_f5hg68_  204 AL..RIPQRLCQ.............................RLRIRLP...HRY  223 + 15.4
+HCMV_f5het1_   35 AD..RAA.SDLLIGMFGSVSLVNLLTIIGCLWVL.......RVTR.PP...VSV   74 + 2.64
+HCMV_p16763_  508 RR..GCRAPPTPEAVRVQRLLWHS.................LRHGDAPQ..DRT  540 + 14.9
+HCMV_p16786_    5 RL..RHA.PHTATDEFHQAL.....................RRLF.APL..CVH   31 + 20.3
+HCMV_p08546_  761 HR..FVRASVRVSVLSELLNKWVSQRRAVRECM........RECQDPV...RRM  801 + 13.1
+HCMV_irs1_p0  786 RQT.RPPRPPPPKFGDRTAAHLSQNMRDMYLDMCTSSGHR.PRPP.AP...PRP  833 + 20.9
+HCMV_c0h677_   21 PS..RLP.PLPGHA...........................RRPRRKR...CLV   41 + 10.9
+HCMV_f5hen8_  818 PSD.RHRIHPEVVQ...........................RGLSRLV...LRD  840 + 16.3
+HCMV_p16849_  311 HD..FLQ.RMRQCFRGQLLD.....................RRAF.LR...SQQ  336 + 10.8
+HCMV_f5hc97_   10 PP..TLALRLKPYKTAIQQLRSVIRALKENT..........TVTF.LPT..PSL   48 + 5.36
+HSV_1_p03176   28 AL..RPRRQQEATEV..........................RPEQKMP...TLL   50 + 12.5
+HSV_1_p10192  239 PR..GHPQRVTA.............................RVLL.PR...DYD  257 + 14.8
+HSV_1_p10193  249 CL..FLP.RLGTELLQAAL......................RPPG.PPSG.PSP  275 + 16.4
+HSV_1_p10234  115 RE..FAPGTLRVDVTFLDILATPPALTEPISLR........QFPQLAP...PPP  155 + 10.1
+HSV_1_p10226  383 PS..STT.RVTPTTKRGRSGGEDARADTALKKPKTGSPTA.PPPADPV...PLD  429 + 8.39
+HSV_1_p10236  854 PA..FVAAHADPR............................RFHFHAP...PTY  874 + 10.7
+HSV_1_p10186   15 PS..SPR.RTPP.............................RDGT.PPQKADAD   35 + 12.5
+HSV_1_p04294   30 PD..SPPKRPRPNSLPLTTTF....................RPLP.PP...PQT   57 + 23.5
+HSV_1_p06474  291 RLL.GLI.HMKPL............................FSAP.PP...DAS  310 + 6.68
+HSV_2_p89469  132 RA..TPP.TLTEPSSLH........................RFPQLAPS..PLA  156 + 14.8
+HSV_2_p89446   30 RP..SHRQGASGA............................RGDPELP...TLL   50 + 11.5
+VZV_orf18_p0  257 RLL.SAI.NVPKL............................FNTP.PP...DSD  276 + 5.34
+VZV_orf2_p09  193 RP..TLP.TLTAQGRPTVSNIRGILKGS.............PRQQ.PVC..HRV  227 + 14.1
+VZV_dbp_orf2  497 CS..LCEKHTRPVCAHTTVH.....................RLRQRMP...RFG  524 + 13.2
+HHV_6B_p5253  472 CQ..SCIGTAMV.............................RVGTRLP...AIP  491 + 6.96
+HSV_1_dbp_ic  189 AE..VHRIPVYP.............................LQLF.MP...DFS  207 + 12.8
+HSV_2_p07918  418 CD..LPESHLSDLAS..........................RGLP.AP...VVL  439 + 13.1
+HHV_6A_p2741   26 RD..HHR.DHRDHREH.........................RETREPP...TLA   48 + 16.9
+HSV_2_p28277   10 RDV.RAP.GPPP.............................QQPG.AR...PAV   28 + 11.8
+HHV_6B_q9qj4  574 RR..RAP.TMVPSSQT.........................RRQNNAR...PRR  596 + 12.6
+HSV_2_p89462  139 PR..TPE.PQGPQAV..........................PPPP.PP...PFP  159 + 21.9
+
+                  RL  RLR R TP                             R   RPP   PRP
+                  PR   PP                                  P   LA       
+
+ A  C  D  E  F  G  H  I  K  L  M  N  P  Q  R  S  T  V  W  Y Del Ins Score
+13 11  0  0  0  0  5  0  0  1  0  0 19  5 39  0  0  0  0  0   0      161.
+                                                                  0 -0.147
+ 3  0 15  2  0  0  2  0  3 23  0  0  8  3 22 11  1  0  0  0   0      70.8
+                                                                 22 -87.7
+ 0  0  0  0 15  4 11  2  0  5  1  0  0  0 26 18  8  1  0  2   0      96.7
+                                                                  0 -0.147
+ 7  8  0  0  3  0 11  1  0 23  0  0 21  0  0  0  4 15  0  0   0      100.
+                                                                  0 -0.147
+ 8  0  0 11  0  0  2  4  3  0  0  0 22  5 34  0  2  2  0  0   0      112.
+                                                                  0 -0.147
+ 7  2  0  2  0  5  5  9  5  4  1  0  1  8  4  3  0  1  0  1  35     -88.3
+                                                                  0 -0.147
+ 0  0  3  0  2  5  9  0  0  0  0  6 16  5 26  5 15  1  0  0   0      87.5
+                                                                  0 -0.147
+ 8  1  2  7  1  3  7  1  0 15  4  1 16  4  0  1  7 14  0  1   0      22.6
+                                                                  0 -0.147
+ 0  4  6  4  0  5  0  1  4  6  2  0 13  0 13  8 20  4  0  3   0      27.3
+                                                                  0 -0.147
+15  0  4  4  0  5  0  0  2 13  0  0 26  5  1  0  3 15  0  0   0      56.9
+                                                                765 -435.
+ 0  0  0  0  3  0  0  0  0  9  0  0 22  4 53  0  2  0  0  0   0      194.
+                                                                  0 -0.147
+ 3  0  4  8  8 12  2  0  2  3  0  2 13  5 18  5  1  7  0  0   0      22.7
+                                                                  0 -0.147
+ 7  9  1  3  0  6  3  2  0 15  0  0 18  6 14  0  7  0  0  2   0      43.2
+                                                                  0 -0.147
+ 5  0  0  0 18  9  0  2  0  3  0  1 17 13  9  8  4  4  0  0   0      53.3
+                                                                  0 -0.147
+ 1  0  3  6  0  0  1  0  1 10  0  3  0  0 13  2  0  0  0  0  53     -68.1
+                                                                  0 -0.147
+19  0  0  0  0  0  1  3  1 14 11  0 36  0  0  0  0  8  0  0   0      129.
+                                                                  0 -0.147
+ 0  0  1  9  0  0  0  0  0  0  0  0 61  0 13  0  0  9  0  0   0      224.
+                                                                 32 -110.
+ 2  8 12  0  5  0  8  1  0  5  0  0 30  0  6  4  6  4  2  0   0      74.3
+                                                                  0 -0.147
+12  0  0  0 11  0  0  2  0 13  2  0  1  4 23 12  1 11  0  1   0      62.5
+                                                                  0 -0.147
+ 4  0 10  0  2  1  3  0  0 14  1  2 20  8  2  7  3 10  1  5   0      26.1
+
+Score: 769.711  Columns: 21  Sequences: 93
+
+                  **......*****........**********............................****
+HHV_6B_p5244    7 TPQGQK..TQPIN........LP.PDRKRLRKHDGLGKGVKRKLFAEDS..........SPLK   48 + 8.67
+HHV_6B_p5253  381 MRV.....FETETTQN.....AR.RVRQRTRTTVG........................STDG  408 + 11.8
+HHV_6B_q9wt4  164 MR......HTPIS........LTGVLPRRFQKVESGA......................CVEE  190 + 12.2
+EBV_barf1_p0  145 TCTVNA..FPHPH........VQWLMPEGVEPA..........................PTAA  171 + 14.3
+EBV_bkrf3_p1  107 YGF.....PVPPS........LRNIYAELHRSLPEFS......................PPDH  134 + 13.5
+EBV_bmrf1_p0  315 PR......VQPLGTG......LQ.QRPRHTVSPSPSPPP....................PPRT  344 + 16.0
+EBV_borf2_p0  402 TCN.....LANIC........LP.RCLVNAPL...........................AVRA  423 + 8.40
+EBV_bxlf1_p0  100 SRH.....TSCPFT.......LP.R.GAQPP............................APAH  120 + 10.8
+EBV_bblf2_p3  184 QRH.....SESPGQ.......LD.VYIRTPRGDVFTYSTETPDDPS.............PVPF  220 + 9.15
+EBV_bnlf2b_p    1 MRPG....RPLAGFY......AT.LRRSFRRMSKRSKNKAKKERV..............PVED   38 + 10.3
+EBV_bslf1_p0  521 LCRT....VRREV........LR.LMRRLGPVSRAHPVYFFKSA...............CPPA  555 + 17.7
+EBV_bkrf4_p0  171 HR......PTRPV........LRGPAPRRPP............................PPSS  191 + 23.9
+EBV_ebna6_p0  472 MP......MVILHQ.......PP.PVPKPVPVKPT........................PPPS  496 + 16.7
+EBV_bvrf1_p0   10 DP......ARLPRDTGPELMWAPSLRNSLRV............................SPEA   38 + 9.08
+EBV_bglf4_p0  402 PR......FEHPH........LPGLVAELLADDFF........................GPDG  426 + 14.0
+EBV_bblf4_p0   25 VRRI....VRRIGT.......LARRRVQQLPDMETF.......................SPEF   53 + 16.5
+EBV_balf5_p0  716 ERAKAF..VEALS........PANL.QALAP............................SPDA  739 + 7.65
+EBV_bflf2_p0   14 QR......PADPA........LRRLMHPHHRNYTASKASAH..................SVKS   44 + 18.9
+EBV_btrf1_p0   66 MR......APIIS........LARLILAPNPYILEGQLTVGMTQDNGI...........PVLF  103 + 12.4
+EBV_bhlf1_p0  397 PRS.....ARNPGCP......RTWRRRSGAQRGH.........................PPPG  423 + 17.1
+EBV_brrf1_p0    5 NRGN....ARPLKSF......LHELYLKHYPEVGDVVHLLNTIGVDCDL..........PPSH   47 + 8.16
+EBV_bllf3_p0  128 YPGDVGLDVSLPKD.......LA.LFPHQTVSVTLTV......................PPPS  160 + 13.1
+EBV_balf2_db  100 PPI.....FEGPG........LEALCGETREVFGYDAYSAL..................PRES  131 + 7.51
+EBV_bmrf2_p0   48 YRLG....FPTAC........LMAVLWTLVPAKH.........................AVRA   73 + 9.47
+EBV_bglf5_p0  382 SP......RVNIV........TA.FFRKRSPLDPAT.......................CTLG  406 + 9.71
+EBV_bllf2_p0   43 QRR.....PRPPV........AKRRRFPRSPQQVERPILP...................PVES   73 + 18.7
+EBV_bmlf1_bs  148 PPG.....ARAPRA.......PRAPRVPRAPR...........................SPRA  171 + 22.1
+EBV_bnlf2a_p   26 TR......PSHPC........PEDPDVSRLRLLLVVL......................CVLF   52 + 15.6
+EBV_bglf3_p0  194 LPTAVY..TPCAN........IEAFLAHLTRCVYALYLDVRDWKGEDI...........APPF  235 + 5.99
+EBV_balf1_p0   34 WPDET...MRPAKS.......TDSVFVRTPVEAWVAP......................SPPD   64 + 13.7
+EBV_bhrf1_p0   17 SRVHGNG.TLHPV........LE.LAARETPLRL.........................SPED   44 + 7.74
+KSHV_f5h982_   20 PRDI....RRCLSSR......LRSV.PPGARSA..........................SVSS   45 + 16.1
+KSHV_orf49_q  122 PRVLT...LQYPH........TA.PLESEPPTAD.........................CTEW  147 + 6.10
+KSHV_f5hid2_  322 SRRQ....PELESPDSPP...LT.PVGPFGPLEDASEDAASVTS...............CPPA  361 + 8.77
+KSHV_k14_p0c  120 SC......TACLE........VTSP.PTGHVQVN.........................STED  142 + 6.86
+KSHV_orf57_q  115 TR......PPPEK........RP.RRRPRDRLQYGRTTRGGQ.................CRAA  145 + 16.2
+KSHV_orf61_q  712 DR......VRNASY.......LRDLLLHGYRLGLKTLMYYCRVQKQSSLTALQCLADPGSPPH  761 + 17.4
+KSHV_f5hin0_   62 LP......ARRPGN.......GT.RCSPVLVLRTDA.......................SVAS   87 + 6.43
+KSHV_orf34_q   54 MPE.....VQPICSG......LPALRPDFSNLHL.........................PRLE   80 + 8.62
+KSHV_dbp_orf  462 QCP.....AVCINT.......LFYRMKDRFP............................PVLS  484 + 8.42
+KSHV_orf37_q  428 DPH.....VEIPTLLI.....VTPVYFPRGAKHRLLHQAANFW................SRSA  464 + 4.57
+KSHV_f5haw0_  256 DRI.....LRDIF........VPPIFGTPPPEA..........................CPLS  279 + 15.0
+KSHV_f5hf68_  116 TR......FRIPVTP......LADPCFEWRRDGELGVVYIRERGNM.............PVDA  153 + 12.5
+KSHV_orf18_q    6 VCE.....TEPLSPG......LRRLMWRFLQNKNLNT......................FHAQ   35 + 7.40
+KSHV_orf9_q2  716 ERSQAF..VEAISPER.....LAGL.LRRPVDV..........................SPDA  744 + 9.97
+KSHV_f5hfa1_  105 QC......QVPPS........LRSIFRELEASVPNF.......................STPS  130 + 12.4
+KSHV_orf74_q  195 MC......YENAGNMT.....ADWRLHVRTV............................SVTA  218 + 10.3
+HCMV_b9vxm8_  732 HPLG....FVRAQLD......LRNLLHHHPPHDLPALPLSPPPRVIL............SVRD  772 + 18.0
+HCMV_p09727_   12 APVAGS..MPELS........LT.LFDEPPPLVETEPL.....................PPLS   42 + 9.92
+HCMV_f5he05_  112 MPI.....FETLA........LR.LVLQGDVIWLR........................CVPE  136 + 11.1
+HCMV_f5hb40_    1 MP......RVDPN........LRNR.ARRPR............................ARRG   20 + 18.0
+HCMV_p16730_   50 FC......RPRPVNVER....VRAVFAALYRA...........................CPIH   75 + 10.1
+HCMV_f5hfa5_   69 PRDD....ERRPT........PP.LRPPLTVYPYGTSLIRRS.................ARDA  101 + 16.6
+HCMV_b9vxq2_  207 RR......RRAPKNDAA....TPSFLRRHDVLERFAAAAEPLPSL..............CVRD  245 + 9.69
+HCMV_f5hgg3_    8 TRS.....EVTPHEA......AAARYKHRGVIDRRGAAMT...................SRRA   40 + 11.6
+HCMV_f5hdc7_  370 TR......SQLESA.......LDWF.LRPTR............................GTDK  390 + 8.85
+HCMV_f5haz3_  320 VR......RRYEHG.......LR.RAARLERNGGCVHMGEA..................ARLH  350 + 11.2
+HCMV_f5hg98_  256 QRVL....SAPPS........LPSPVSEEDPAAAAT.......................PPSS  283 + 13.4
+HCMV_f5hig1_  380 FR......ERPAGGD......RRWLLPPLPRDDGDGENNVVEVSSSTGGAH........PPSD  422 + 17.1
+HCMV_p16771_   15 YR......LSPISK.......LRYLRHTESPK...........................SPKS   37 + 19.0
+HCMV_f5h8s6_  341 QRQ.....TRMEH........RH.LCPHHHER...........................AVDH  362 + 15.8
+HCMV_dbp_f5h  165 PCVEEAT.TVRLHG.......GEAVRVPLYP............................PTLF  191 + 14.1
+HCMV_f5hg68_  139 DC......LRCENG.......TTKIIERLYVRLGSLYPRPPGSGLAKHP..........SVSA  178 + 8.79
+HCMV_f5het1_  133 DR......LSAISY.......GRDLWHHETRENAGVALY....................AVAF  162 + 14.2
+HCMV_p16763_  514 PP......TPEAVR.......VQRLLWHSLRHGD.........................APQD  538 + 9.77
+HCMV_p16786_  175 YP......PERLHALLDGV..TASLLGDLHRFLFGVDLRL...................PVLH  210 + 13.3
+HCMV_p08546_ 1033 WRI.....LRRLVQA......RDDLYLHRVRVEDLVLS.....................SVLS 1063 + 16.0
+HCMV_irs1_p0  778 PRQ.....SEHHK........RQ.TRPPRPP............................PPKF  798 + 15.8
+HCMV_c0h677_   20 PP......SRLPPLP......GHARRPRRKRCLVPEVF.....................CTRD   49 + 13.8
+HCMV_f5hen8_  303 SP......TQTEA........LESRYDHYTQNK..........................SVRK  325 + 7.69
+HCMV_p16849_  274 WP......MQCEHLT......LRRTIGTLARVV..........................PHLH  298 + 15.3
+HCMV_f5hc97_    5 TRL.....SEPPT........LA.LRLKPYKTAIQQLRSVIRALKENTTVTFL......PTPS   47 + 7.20
+HSV_1_p03176  164 HPI.....AALLCYPA.....ARYLMGSMTPQ...........................AVLA  189 + 13.4
+HSV_1_p10192   87 SPL.....EPLEN........PT.LWRALYA............................CVLA  107 + 11.5
+HSV_1_p10193  253 PRLG....TELLQ........AA.LRPPGPPSGP.........................SPDA  277 + 19.8
+HSV_1_p10234  135 PPAL....TEPIS........LR.QFPQLAP............................PPPT  156 + 20.3
+HSV_1_p10226  274 MRAV....LRRLQVGGGT...LK.FFLTTPVPSL.........................CVTA  303 + 6.44
+HSV_1_p10236  853 VPA.....FVAAH........ADPRRFHFHAPPTYLA......................SPRE  880 + 13.2
+HSV_1_p10186    4 AC......SRSPS........PR.RRPSSPRRT..........................PPRD   25 + 16.6
+HSV_1_p04294   33 PPK.....RPRPNSLP.....LTTTFRPLPPPPQTTSAVDPSSHSPVN...........PPRD   74 + 16.0
+HSV_1_p06474  156 HP......AIRAK........VDWL.EARVRECA.........................SVPE  178 + 5.98
+HSV_2_p89469  135 PPT.....LTEPSS.......LH.RFPQLAP............................SPLA  156 + 19.5
+HSV_2_p89446  165 HPI.....ASLLCYPA.....ARYLMGSMTPQ...........................AVLA  190 + 13.9
+VZV_orf18_p0  256 DRL.....LSAIN........VPKLFNTPPPDSD.........................FPLA  280 + 11.9
+VZV_orf2_p09  192 DR......PTLPT........LTAQ.GRPTVSNIRGILKG...................SPRQ  220 + 11.5
+VZV_dbp_orf2  504 TR......PVCAHTT......VHRLRQRMPRFGQ.........................ATRQ  529 + 17.1
+HHV_6B_p5253  602 PR......EQIENC.......LQSFNVDTTPY...........................ATAF  624 + 7.94
+HSV_1_dbp_ic  104 DPS.....TQAPN........LTRLCERARRHFGFSDYT....................PRPG  133 + 14.2
+HSV_2_p07918 1112 PP......AALPS........PAKR.PRETP............................SHAD 1131 + 14.3
+HHV_6A_p2741   22 ERG.....SRDHH........RDHRDHREHRETREP.......................PTLA   48 + 9.83
+HSV_2_p28277    9 SRD.....VRAPG........PPPQ.QPGARP...........................AVRF   30 + 11.4
+HHV_6B_q9qj4  479 VP......YSPPQSDRST...PTSILRQRVPMRSNSRSS....................SVSF  512 + 9.50
+HSV_2_p89462  139 PR......TPEPQ........GP.QAVPPPP............................PPPF  158 + 17.6
+
+                  PR       R PS        LR LRPRLPP                            PPLA
+                   P                      R   R R                            SV  
+
+ A  C  D  E  F  G  H  I  K  L  M  N  P  Q  R  S  T  V  W  Y Del Ins Score
+ 2  0  9  3  2  0  5  0  0  3 10  1 19  7  1  8 10  5  3  5   0      37.3
+                                                                  0 -0.147
+ 0 12  0  0  0  1  0  0  0  0  0  0 32  0 48  0  0  0  0  0   0      246.
+                                                                102 -203.
+11  0  0  5  9  0  1  0  0 10  4  0 10  1  8  8 14 10  0  2   0      28.0
+                                                                  0 -0.147
+ 6  0  0 16  0  0  0  1  0  1  0  0 12  9 25  8  4 11  0  0   0      77.5
+                                                                  0 -0.147
+ 9  8  4  4  0  1  5  5  0 12  1  5 17  0 13  2  5  0  0  2   0      28.7
+                                                                  0 -0.147
+12  0  0 12  0  0  2 14  0 16  0  0 37  0  0  0  0  0  0  0   0      134.
+                                                                  0 -0.147
+ 3  6  0  1  2 10 13  0  7  0  0 10  1  5  2 19  5  9  0  0   0      48.0
+                                                                107 -208.
+10  0  0  0  0  5  0  1  0 45  0  0 10  0  7  0  6  9  0  0   0      94.9
+                                                                  0 -0.147
+13  0  8  6  1  0  5  0  2  0  1  0 15  5 23  0 14  0  0  0   0      75.2
+                                                                  0 -0.147
+10  0  5  1  0  4  1  0  3  0  0  4  4  0  9 11  1  0  6  4  30     -61.8
+                                                                  0 -0.147
+ 0  0  0  0  6  0  0  5  0 36  0  0 10  5 20  0  3  8  0  0   0      97.7
+                                                                  0 -0.147
+ 4  6  3  0 12  0  0  3  0 12  7  1  0  0 19  0  0  6  2  7  11      10.7
+                                                                  0 -0.147
+ 7  0  2  4  4  9  6  1  2 10  0  2 19  3 12  2  0  7  3  0   0      16.8
+                                                                  0 -0.147
+ 6  0  4  8  0  0 11  0  5  0  0  0 16  6 20  8  7  2  0  0   0      67.8
+                                                                  0 -0.147
+ 1  0  0  7  5  8  6  0  0 20  3  1  9  3 20  2  5  1  1  1   0      35.9
+                                                                  0 -0.147
+ 9  0  4  2  2  4  7  0  1  7  0  1 19  0  5  4 15  6  0  7   0      26.3
+                                                                  0 -0.147
+ 5  0  0  3  0  0  0  0  1  0  0  1 35  4 29  0  0 15  0  0   0      151.
+                                                                575 -399.
+15 14  0  0  2  2  0  0  0  0  0  0 30  0  0 30  0  0  0  0   0      167.
+                                                                  0 -0.147
+ 0  0  0  0  0  0  3  0  0  0  0  0 38  0  9  0 13 30  0  0   0      177.
+                                                                  0 -0.147
+ 8  0 10  9  0  0  0  1  3 19  0  0 16  1 16  8  2  0  0  0   0      53.7
+                                                                  0 -0.147
+24  0 12  5 12  6  9  0  3  0  0  0  0  3  0 16  2  0  1  0   0      69.8
+
+Score: 755.760  Columns: 20  Sequences: 93
+
+                  **........***...............*******..................******.........**
+HHV_6B_p5244  429 CREAQLYYEKRLFALA............NEAC.RLNPL...............RYPFAY.........RD  461 + 4.96
+HHV_6B_p5253  379 IDM.......RVFETETTQN........ARRV.RQ..................RTRTTV.........GS  405 + 3.23
+HHV_6B_q9wt4  165 RHT.......PISLT.............GVLPRRFQ.................K.VESG.........AC  187 + 12.7
+EBV_barf1_p0  124 PL........TLSVHSE...........RSQF.PD..................FSVLTV.........TC  146 + 7.08
+EBV_bkrf3_p1  105 VAYGF.....PVPPSLRNIYAEL.....HRSL.PE..................FSPPDH.........GC  136 + 12.0
+EBV_bmrf1_p0  329 RH........TVSP..............SPSP.PP..................P.PRTPTWESP....AR  352 + 19.7
+EBV_borf2_p0  438 PRLSV.....TLPG..............EGAV.GDG.................FSLARL.........RD  461 + 10.5
+EBV_bxlf1_p0  101 RHTSCPF...TLPRGAQ...........PPAP.AHQK................PTAPTPKP.......RS  132 + 17.6
+EBV_bblf2_p3  197 IRT.......PRGDVFTY..........STET.PDD.................PSPVPF.........RD  222 + 15.8
+EBV_bnlf2b_p   19 RRMS......KRSKNKAKK.........ERVP.VED.................R.PPTPMP.......TS   47 + 9.52
+EBV_bslf1_p0  405 PK........EQFLP.............PTVLRRVQRLPV.............F.LCHF.........AD  430 + 17.8
+EBV_bkrf4_p0  133 PRT.......RAP...............PRPP.AP..................A.PVRGR........AS  152 + 19.9
+EBV_ebna6_p0  484 PK........PVPVK.............PTPP.PS..................R.RRRG.........AC  503 + 21.4
+EBV_bvrf1_p0  432 RHG.......ELFRFIW...........AHYVRPT..................V.AADPQ........AS  456 + 14.2
+EBV_bglf4_p0  400 CR........PRFEH.............PHLP.GLVAELLADDF.........F.GPDGR........RG  429 + 8.82
+EBV_bblf4_p0   38 RRVQ......QLPDMETFSPEFDPELSEPPFL.PFS.................AYVITGT........AG   75 + 11.6
+EBV_balf5_p0  827 VRK.......TACKFV............QTRCRRVLDL...............V.LADARVKEA....AS  857 + 12.3
+EBV_bflf2_p0   12 RQ........QRPA..............DPALRRLMHPHHRNYTASKASA...HSVKSVS........RC   48 + 12.9
+EBV_btrf1_p0  189 ILK.......KAP...............EPPP.PEPQAT..............F.DATPY........AR  212 + 10.4
+EBV_bhlf1_p0  474 PAAA......RLPPERQ...........EPRL.PQDLAAAQ............RCPAGPPPT......RS  507 + 16.3
+EBV_brrf1_p0   31 VHLLN.....TIGVDC............DLPP.SH..................P.LLTAQ........RG   55 + 7.32
+EBV_bllf3_p0  146 PHQ.......TVSVT.............LTVP.PPSIPH..............H.RPTIFG.......RS  172 + 11.9
+EBV_balf2_db  464 CLN.......TLFFRLR...........DRFP.PVMSTQRRD...........PYVISG.........AS  494 + 13.7
+EBV_bmrf2_p0  237 VHA.......EVFFGL............SRYL.PL..................F.LCGAM........AS  259 + 15.1
+EBV_bglf5_p0  379 RDCS......PRV...............NIVT.AFFRK...............RSPLDPA........TC  403 + 8.65
+EBV_bllf2_p0   35 PK........ARPPKM............QRRPRPPVA................K.RRRFP........RS   59 + 13.8
+EBV_bmlf1_bs  145 RHLPPGA...RAPRA.............PRAPRVPRAP...............RSPRAP.........RS  174 + 25.6
+EBV_bnlf2a_p    7 RALLE.....QQSSACGLPGS.......STETRPSH.................PCPEDPDVS......RL   41 + 8.46
+EBV_bglf3_p0  178 RHCVYAAARGKRG...............PILL.PTAVYTPCANIEA.......F.LAHLT........RC  215 + 8.10
+EBV_balf1_p0  186 RRLWFA....RLGGM.............PRSLRRQ..................F.PVTWAL.......AS  212 + 21.0
+EBV_bhrf1_p0  112 CR........TLCC..............NQST.PYYV................V.DLSV.........RG  132 + 8.79
+KSHV_f5h982_   20 PRDI......RRCL..............SSRL.RS..................V.PPGA.........RS   40 + 13.1
+KSHV_orf49_q  130 PH........TAPLES............EPPT.ADCTE...............WCLSHFVG.......AS  156 + 10.3
+KSHV_f5hid2_  320 PDSR......RQPELESPDS........PPLT.PVGPFG..............P.LEDASEDA.....AS  354 + 9.29
+KSHV_k14_p0c  187 VRL.......PRGD..............NTTP.SEG.................ICLITWGNESISIP.AS  216 + 4.63
+KSHV_orf57_q  106 IKFG......TAGQ..............NTRP.PPEKR...............P.RRRP.........RD  129 + 16.4
+KSHV_orf61_q  693 RA........RAPFVDQ...........SQSM.SFFLKED.............R.VRNASYL......RD  722 + 6.56
+KSHV_f5hin0_   65 RRPGNG....TRC...............SPVL.VL..................RTDASV.........AS   87 + 15.2
+KSHV_orf34_q   57 VQ........PICSG.............LPALRPD..................FSNLHLP........RL   79 + 16.0
+KSHV_dbp_orf  464 PAVCIN....TLFYRMK...........DRFP.PVLSNVKRD...........PYVITGT........AG  498 + 11.4
+KSHV_orf37_q  429 PHV.......EIPTL.............LIVT.PVY.................F.PRGAKH.......RL  452 + 10.6
+KSHV_f5haw0_  264 VP........PIF...............GTPP.PE..................ACPLSYT........GS  283 + 13.4
+KSHV_f5hf68_  388 PL........PAPS..............HVTC.PLVKLWLGKPVAVGKLEPHAPSPRDFAA.......RC  427 + 14.4
+KSHV_orf18_q  179 VRFFAQ....KLFICYLIVS........GRLM.PQ..................RSLLVW.........AS  208 + 7.59
+KSHV_orf9_q2   15 PRNTV.....RQPTPSQ...........SPTV.PSET................R.VCRLIP.......AC   43 + 14.6
+KSHV_f5hfa1_  102 VD........PQCQV.............PPSL.RSIFRELE............ASVPNFSTPSH....GC  133 + 6.54
+KSHV_orf74_q  211 VR........TVSVTA............GFLL.PLALLIL.............FYALTWCVV......RR  240 + 8.71
+HCMV_b9vxm8_  501 RH........EVFN..............ERLP.VFN.................F.VADFDLRL.....RD  524 + 17.7
+HCMV_p09727_   29 PP........PLVET.............EPLP.PLSDVS..............EYRVEYSEA......RC   56 + 8.64
+HCMV_f5he05_   17 PLI.......RLPDGITKAG........EDALRPWKS................T.AKHPWFQIEDN..RC   52 + 4.36
+HCMV_f5hb40_  395 RRETV.....RRPFFS............DAPL.PYFV................P.PRSGA........AD  421 + 16.6
+HCMV_p16730_    6 PR........RLGCDALIVVGG......SAMPRRVLH................V.PVHVR........AC   36 + 15.5
+HCMV_f5hfa5_   69 PRDDE.....RRP...............TPPLRPPLTVYPYGTSLIR......RSARDAKL.......RS  105 + 20.2
+HCMV_b9vxq2_  208 RR........RAPKNDAAT.........PSFLRRHDVLERFAAAAE.......P.LPSLCV.......RD  245 + 15.4
+HCMV_f5hgg3_   52 RR........QRGRHLD...........LPYPRGYTL................F.VCDVEETILTP..RD   83 + 11.3
+HCMV_f5hdc7_  233 PLL.......MLGSIEG...........LRACRPFDHM...............P.AADF.........RD  259 + 11.3
+HCMV_f5haz3_  405 RR........PRSLGDGEEEDEGND...GRAM.PVVRRR..............P.PPMP.........RD  438 + 14.8
+HCMV_f5hg98_  294 PASVES....ELSS..............SPPL.PPV.................V.VKDVMYT......AG  320 + 10.2
+HCMV_f5hig1_   57 VRGD......RLP...............PAEVRAV..................H.RASYAAL......AS   80 + 12.9
+HCMV_p16771_   16 RLS.......PISK..............LRYL.RHT.................ESPKSPK........SS   38 + 8.04
+HCMV_f5h8s6_  332 RH........RRFERERQRQTRMEH...RHLC.PHHHE...............R.AVDHK........RD  365 + 15.1
+HCMV_dbp_f5h  794 RPIY......RAGKGNAG..........SVFFRRDHV................P.RRNPAK.......GC  823 + 9.72
+HCMV_f5hg68_  153 RLYV......RLG...............SLYPRPPGSG...............L.AKHPSVS......AD  179 + 13.7
+HCMV_f5het1_  327 VR........RLVQALKRAMY.......SVEL.AVCYFS..............TSVRDVAEAVKKSSSRC  366 + 4.20
+HCMV_p16763_  508 RRGC......RAPPT.............PEAVRVQRLLW..............HSLRHGDAPQDRT..RL  542 + 13.4
+HCMV_p16786_  240 CHQ.......RQPR..............SPQLRGLIA................A.LRRY.........AG  262 + 14.2
+HCMV_p08546_  728 AH........NLCY..............STLL.VPGG................EYPVDP.........AD  749 + 9.66
+HCMV_irs1_p0  786 RQ........TRP...............PRPP.PPKFGD..............RTAAHLSQNM.....RD  812 + 20.7
+HCMV_c0h677_    4 RRKGCSAA..TASSSSSSPP........SRLP.PLPG................H.ARRPRRK......RC   39 + 15.8
+HCMV_f5hen8_  429 RH........RLFDL.............PVYC.VVNNRAYQELC.........E.LADPL........GD  458 + 13.4
+HCMV_p16849_  284 RR........TIGTL.............ARVV.PHL.................HCLINPILY......AL  308 + 13.5
+HCMV_f5hc97_    3 RKT.......RLSE..............PPTL.AL..................R.LKPYKTAIQQL..RS   29 + 7.37
+HSV_1_p03176  141 PHIGG.....EAGS..............SHAP.PPALTLI.............F.DRHPIA.......AL  169 + 15.8
+HSV_1_p10192  302 VRGG......PVPYFAVLGFPGW.....PTFT.VPATA...............ESARDLV........RG  336 + 12.5
+HSV_1_p10193  247 RRCLFLP...RLGTELL...........QAALRPPGP................PSGPSPD........AS  278 + 15.5
+HSV_1_p10234  226 RRPV......TVPAN.............GTTV.VQ..................PSLRMLH........AD  249 + 14.1
+HSV_1_p10226   68 IHN.......TIFGE.............QVFL.PLEHSQ..............FSRYRW.........RG   93 + 14.1
+HSV_1_p10236  832 PDG.......PAC...............GRLL.PV..................F.VIPP.........AC  850 + 18.1
+HSV_1_p10186   11 PR........RRPSS.............PRRT.PP..................R.DGTPPQK......AD   33 + 16.8
+HSV_1_p04294   34 PKR.......PRPNSLPLTTTFR.....PLPP.PPQTTSAVDPSS........HSPVNPP........RD   74 + 16.6
+HSV_1_p06474  296 IHMK......PLF...............SAPP.PDAS................F.PLSLMS.......TD  319 + 14.7
+HSV_2_p89469  225 RAV.......TVPANGATVI........QPSLRVL..................R.AADGPE.......AC  253 + 14.3
+HSV_2_p89446  142 PHIGG.....EAVG..............PQAP.PPALTLV.............F.DRHPI........AS  169 + 16.1
+VZV_orf18_p0  264 VP........KLF...............NTPP.PDSD................F.PLAFMI.......AD  285 + 13.5
+VZV_orf2_p09   11 GHV.......PAFIMG............STLVRPSLNATAEENPASET.....RCLLRVL........AG   48 + 7.29
+VZV_dbp_orf2  189 IRI.......PLFPVQLFMPDV......NRLV.PDP.................F.NTHH.........RS  217 + 12.6
+HHV_6B_p5253  215 PALSE.....TLFYYVFTSW........GTTL.RFSNTK..............E.LIDA.........GL  246 + 1.91
+HSV_1_dbp_ic  191 VH........RIPVYPL...........QLFM.PDFSRVIAEP..........F.NANH.........RS  220 + 11.6
+HSV_2_p07918   26 PHN.......PRGATQTA..........PPPCRRQN.................FYNPHLAQ.......TG   54 + 19.2
+HHV_6A_p2741  149 VLV.......TASDTCTQA.........SVPC.VHGQE...............V.VRDTG........RS  177 + 6.55
+HSV_2_p28277   10 RDV.......RAP...............GPPP.QQPGAR..............P.AVRF.........RD   32 + 10.7
+HHV_6B_q9qj4  574 RR........RAPTMVP...........SSQTRRQNNA...............R.PRRVA........RR  600 + 16.7
+HSV_2_p89462  139 PRTPE.....PQGPQAVP..........PPPP.PPFPWGHECC..........A.RRDA.........RG  172 + 15.3
+
+                  RR        RLP               PP PRP                   FSPRDP         RS
+                  PH        PAF               SR L                     RYL            AD
+                            TR                                                          
+
+ A  C  D  E  F  G  H  I  K  L  M  N  P  Q  R  S  T  V  W  Y Del Ins Score
+ 1  5  0  0  0  1  0  7  0  0  0  0 29  0 34  0  0 16  0  0   0      163.
+                                                                  0 -0.147
+ 8  0  6  0  0  0 23  0  6  9  0  0  4  3 34  0  0  0  0  0   0      144.
+                                                                144 -238.
+ 1  0  0  8  0  0  0  0  5  0  1  1 22  4 29  0 22  0  0  0   0      131.
+                                                                  0 -0.147
+19  0  0  0  0  0  0  9  0 28  0  0  0  7 19  0  0 11  0  0   0      106.
+                                                                  0 -0.147
+ 0  8  0  0 19 16  0  0  0  0  0  0 33  0  0 13  0  4  0  0   0      148.
+                                                                319 -327.
+ 3  0  5  8  0  9  2  0  0  6  0  7 23  6  2 21  1  0  0  0   0      58.7
+                                                                  0 -0.147
+ 5  0  1  2  1  1  4  3  0  4  0  0 22  3 21  4 15  7  0  0   0      58.4
+                                                                  0 -0.147
+13  0  0  4  8  0  0  0  0 14  1  0 17  3  7  7  6  7  0  6   0      33.1
+                                                                  0 -0.147
+ 0  8  0  0  2  0  0  0  0 28  4  0 31  0  0  0 10 10  0  0   0      133.
+                                                                  0 -0.147
+ 0  0  0  0  0  0  0  0  0  0  0  0  0  0 26  0  0  0  0  0  67      16.2
+                                                                  0 -0.147
+ 7  0  0  0  0  4  0  0  0  0  0  0 51  1 16  3  0 11  0  0   0      172.
+                                                                  0 -0.147
+ 0  0 10  5  7  0  7  0  0 13  0  0 18  9  0  6  2 12  1  3   0      46.2
+                                                                299 -319.
+ 6  0  0  6 23  0  7  1  2  1  0  0 18  0 19  0  2  7  1  0   0      92.8
+                                                                  0 -0.147
+ 0  7  0  0  0  0  0  0  0  0  0  0  0  0  0 20  4  0  0  8  54     -18.2
+                                                                  0 -0.147
+13  0  6  0  0  2  0  0  0 19  0  4 24  0 10  0  0 15  0  0   0      78.9
+                                                                  0 -0.147
+14  4  0  3  1  1  0  7  6 11  0  0 11  0 22  1  2  9  0  1   0      42.3
+                                                                  0 -0.147
+ 3  0 22  1  0  4 13  0  0  0  2  6  3  0 12 12 14  1  0  0   0      79.7
+                                                                  0 -0.147
+10  0  0  0 10 10  4  1  0 10  0  0 25  0  0  0  1 11  5  6   0      70.6
+                                                                164 -251.
+36  0  0  0  0  7  0  0  0  0  0  0  0  0 44  1  5  0  0  0   0      196.
+                                                                  0 -0.147
+ 0 18 23  0  0 12  0  0  0  7  0  0  0  0  4 29  0  0  0  0   0      142.
+
+Score: 754.488  Columns: 20  Sequences: 93
+
+                  **....*****.........................*****.......********
+HHV_6B_p5244   15 PIN...LP.PDRKRLRKHDGLGKGV...........K.RKLF......AEDSSP.L   47 + 4.08
+HHV_6B_p5253  366 CV....RSVPVCEIKPFIDMRVFETETTQN......A.RRV.......RQ.RTR.T  401 + 8.44
+HHV_6B_q9wt4   47 CIK...VRICDN........................S.DILSD.....RQLRCL.L   68 + 5.15
+EBV_barf1_p0  146 CTVNAFPH.PHVQWLM....................P.EGVE......PA.PTA.A  171 + 5.34
+EBV_bkrf3_p1  110 PV....PPSLRNIYAEL...................H.RSL.......PE.FSP.P  132 + 19.4
+EBV_bmrf1_p0  340 PP....PRTPT.........................W.ESP.......ARPETPSP  358 + 20.2
+EBV_borf2_p0  744 AA....LSVPREEQN.....................E.RSP.......AEQMPP.R  765 + 17.4
+EBV_bxlf1_p0  113 AQ....PPAPAHQK......................P.TAP.......TP.KPRSR  133 + 14.8
+EBV_bblf2_p3  456 AQTW..LRALHRYGTSDT..................R.RALGGLY...TA.VTRVL  486 + 10.5
+EBV_bnlf2b_p   12 ATL...RRSFRRMSKRSKNKAKK.............E.RVPVED....RP.PTPMP   45 + 8.68
+EBV_bslf1_p0  381 PTY...PPTLQGFLCLAGQATCRGQWNPKEQFL...P.PTVL......RR.VQR.L  421 + 15.1
+EBV_bkrf4_p0  173 PT....RPVLR.........................G.PAP.......RR.PPP.P  189 + 21.8
+EBV_ebna6_p0  874 APS...WSSPQ.........................P.RAPI......RPIPTRFP  894 + 24.0
+EBV_bvrf1_p0  107 STGG..RSAPA.........................P.PSPSP.....AQPFTR.L  128 + 15.7
+EBV_bglf4_p0    7 AE....LS.PTNSSSSGELSVS..............P.EPP.......RE.TQAFL   34 + 12.2
+EBV_bblf4_p0    2 AEE...PRAPEALSSTFMLNMTSDASV.........R.RIV.......RRIGTL.A   36 + 13.3
+EBV_balf5_p0  767 SE....SETLRF........................A.DAL.......AAHTTRSL  786 + 11.5
+EBV_bflf2_p0   11 ARQ...QR.PA.........................D.PAL.......RRLMHPHH   29 + 7.19
+EBV_btrf1_p0  174 PVTV..LSSLQLSPTKSILKKAP.............E.PPP.......PE.PQA.T  204 + 7.11
+EBV_bhlf1_p0  477 AR....LP.PERQE......................P.RLPQDLA...AAQRCP.A  500 + 18.0
+EBV_brrf1_p0   41 CD....LP.PS.........................H.PLL.......TAQRGLFL   58 + 14.5
+EBV_bllf3_p0  157 PP....PSIPHH........................R.PTIF......GR.SGL.A  175 + 6.52
+EBV_balf2_db  456 CE....GRAPAVCL......................N.TLFFR.....LRDRFP.P  478 + 9.05
+EBV_bmrf2_p0   59 AVL...WT.LVPA.......................K.HAV.......RA.VTP.A   77 + 10.5
+EBV_bglf5_p0   20 ARF...LRSPETEAFVR...................NLDRP.......PQ.MPAMR   45 + 15.0
+EBV_bllf2_p0   37 AR....PPKMQRR.......................P.RPPVAK....RR.RFP.R   58 + 13.9
+EBV_bmlf1_bs  151 ARA...PRAPRA........................P.RVP.......RAPRSP.R  170 + 26.6
+EBV_bnlf2a_p   23 STE...TR.PS.........................H.PCPED.....PD.VSR.L   41 + 8.20
+EBV_bglf3_p0  149 SQT...WTSLV.........................P.EDP.......LPWMWA.L  167 + 9.18
+EBV_balf1_p0  191 ARLGGMPRSLR.........................R.QFPVTWA...LASLTDFL  217 + 10.8
+EBV_bhrf1_p0   33 ARE...TP.LRLSP......................E.DTVV......LRYHVL.L   54 + 12.8
+KSHV_f5h982_   14 STG...RSGPRDI.......................R.RCLSSR....LR.SVP.P   36 + 7.62
+KSHV_orf49_q  122 PRV...LT.LQYP.......................H.TAP.......LESEPP.T  141 + 13.0
+KSHV_f5hid2_  326 PE....LESPDSP.......................PLTPV.......GP.FGP.L  345 + 12.2
+KSHV_k14_p0c  212 SI....PASIQGPLA.....................H.DLP.......AAQGTL.A  233 + 10.5
+KSHV_orf57_q   91 SR....PRSPSPVNRYGKKIKFGTAGQ.........N.TRPP......PEKRPR.R  125 + 16.7
+KSHV_orf61_q  739 CRVQK.QSSLT.........................ALQCL.......ADPGSP.P  760 + 8.55
+KSHV_f5hin0_  197 SRL...FS.PQQGQTLVSVTSHEELGQLY.......G.TSPF......RR.RVP.A  232 + 10.8
+KSHV_orf34_q   59 PICSG.LPALRPDFS.....................NLHLPR......LEKLQRVL   86 + 10.9
+KSHV_dbp_orf  319 AR....LRALEVWHA.....................E.QALHI.....GAQLFA.A  342 + 10.6
+KSHV_orf37_q  163 SP....WP.ITN........................N.HFVAGP....LA.FGL.R  182 + 8.65
+KSHV_f5haw0_  253 ATA...DRILRDIFVPPIF.................G.TPP.......PE.ACP.L  278 + 10.1
+KSHV_f5hf68_  387 SP....LPAPSHVTCPLVKLWLGKPVAVGKLE....P.HAPS......PRDFAA.R  426 + 14.5
+KSHV_orf18_q    7 CE....TE.PL.........................S.PGL.......RRLMWRFL   24 + 8.08
+KSHV_orf9_q2   15 PRNTVRQPTPSQS.......................P.TVPSE.....TR.VCR.L   39 + 10.8
+KSHV_f5hfa1_  191 AI....DRTPLINAQ.....................K.HLVLT.....AQHPSP.L  214 + 10.9
+KSHV_orf74_q  205 AD....WR.LH.........................V.RTVSV.....TA.GFL.L  222 + 3.68
+HCMV_b9vxm8_  651 AVH...PSVLRAVAQVL...................N.HAVCLD....AELHTL.L  678 + 13.4
+HCMV_p09727_   19 PE....LS.LTLFDEP....................P.PLVE......TEPLPP.L   41 + 13.6
+HCMV_f5he05_  113 PI....FETLALRLVLQGDVI...............WLRCV.......PELRVDYT  142 + 5.13
+HCMV_f5hb40_  387 PVAFR.LR.LRRETVRRPFF................S.DAP.......LPYFVP.P  415 + 9.53
+HCMV_p16730_  915 SV....PSVPTSVSVDGSSE................P.TSP.......RA.RFASR  941 + 17.7
+HCMV_f5hfa5_   59 PTTT..SSSLAPPRDD....................E.RRPT......PPLRPP.L   84 + 14.6
+HCMV_b9vxq2_  217 AT....PSFLR.........................R.HDV.......LE.RFA.A  233 + 9.56
+HCMV_f5hgg3_   37 SR....RA.PDGGLNL....................D.DFM.......RRQRGRHL   59 + 11.7
+HCMV_f5hdc7_  343 CRLEE.LPVCHHTL......................K.RDV.......LRWHGA.L  366 + 14.8
+HCMV_f5haz3_  402 AER...RR.PRSLGDGEEEDEGND............G.RAMPVV....RR.RPP.P  434 + 12.3
+HCMV_f5hg98_  262 PPS...LPSPVS........................E.EDPA......AA.ATP.P  281 + 10.9
+HCMV_f5hig1_   48 AE....PR.LHTFVVRG...................D.RLP.......PA.EVR.A   69 + 13.4
+HCMV_p16771_   88 PI....SPSLSAI.......................N.TTI.......ARHEFS.R  107 + 8.31
+HCMV_f5h8s6_  163 SR....SE.IAYRDVI....................H.TTL.......RRMTVPVP  185 + 10.2
+HCMV_dbp_f5h  779 SR....LSVPTLIMVRVKNRPIYRAGKGN.......A.GSVFF.....RRDHVP.R  816 + 10.8
+HCMV_f5hg68_  187 ARDIVLVSAITLFFFLLALRI...............P.QRLCQR....LRIRLPHR  222 + 7.18
+HCMV_f5het1_  318 CQ....QS.CH.........................G.HFV.......RRLVQA.L  334 + 12.0
+HCMV_p16763_  511 CRA...PPTPEAVRVQRLL.................W.HSLRHGDA..PQDRTR.L  542 + 15.0
+HCMV_p16786_    3 SRRL..RHAPHTATDEF...................H.QAL.......RRLFAP.L   28 + 17.4
+HCMV_p08546_ 1016 SR....LS.LDEVKKYGVPRGF..............W.RIL.......RRLVQA.R 1043 + 12.5
+HCMV_irs1_p0  770 STDGK.VSAPRQSEHHKR..................Q.TRP.......PR.PPP.P  796 + 13.2
+HCMV_c0h677_   22 SR....LP.PLPGH......................A.RRP.......RRKRCLVP   42 + 16.2
+HCMV_f5hen8_    8 ST....PR.PTPKYDDALILNLSSAAKI........E.RIVDKVKSLSRE.RFA.P   47 + 7.07
+HCMV_p16849_  270 ATTA..WP.MQCEHLTL...................R.RTIGTL....AR.VVPHL  297 + 11.5
+HCMV_f5hc97_    8 SE....PPTLALRLKPY...................K.TAIQQ.....LRSVIR.A   33 + 10.8
+HSV_1_p03176  152 AP....PPALTLIFDRHPIAALLCYPAARYLMGSMTP.QAV.......LA.FVA.L  193 + 15.5
+HSV_1_p10192  233 CEVG..LR.PRGH.......................P.QRV.......TA.RVL.L  252 + 16.3
+HSV_1_p10193   43 AE....WV.PRVHP......................K.TTIE......RQQHGPVT   64 + 8.89
+HSV_1_p10234  133 AT....PPALTEPISL....................R.QFPQ......LA.PPP.P  155 + 20.7
+HSV_1_p10226  403 ARA...DTALKKPKTGS...................P.TAPP......PADPVP.L  428 + 15.3
+HSV_1_p10236  276 AI....PHAPR.........................P.DTVS......AASLTSFA  295 + 14.6
+HSV_1_p10186    6 SR....SPSPRRRPSSP...................R.RTP.......PRDGTP.P   29 + 24.0
+HSV_1_p04294   23 AE....DT.PRG........................P.DSP.......PK.RPR.P   39 + 14.0
+HSV_1_p06474  240 AK....PP.PDRVYGLFRQAVEIEIGFIR.......S.QAP.......TDSHILSP  275 + 4.11
+HSV_2_p89469  133 AT....PPTLTEPSSL....................H.RFPQ......LA.PSP.L  155 + 21.1
+HSV_2_p89446  153 AP....PPALTLVFDRHPIASLLCYPAARYLMGSMTP.QAV.......LA.FVA.L  194 + 15.5
+VZV_orf18_p0  190 SR....DEAIHTSASCCIYNNYVPE...........K.PAI.......TRIHQLFS  222 + 5.16
+VZV_orf2_p09  194 PT....LPTLTAQG......................R.PTVSNIRGI.LK.GSP.R  219 + 8.97
+VZV_dbp_orf2  500 CEKHT.RPVCA.........................H.TTVHR.....LRQRMP.R  522 + 13.7
+HHV_6B_p5253  592 CI....VE.MRRTQTPREQIENCLQSFNV.......D.TTPYA.....TA.FSPFL  628 + 8.31
+HSV_1_dbp_ic  584 AE....LETLQYV.......................D.QAVP......TA.MGR.L  603 + 14.0
+HSV_2_p07918 1093 AR....LAALRELDAAAPGD................E.PAPP......AALPSP.A 1120 + 16.0
+HHV_6A_p2741  177 SP....LR.IDLD.......................H.STVSDV....LKWLSPVT  199 + 2.66
+HSV_2_p28277    9 SRD...VRAPGPP.......................P.QQPG......ARPAVRFR   31 + 9.20
+HHV_6B_q9qj4  477 STVPY.SP.PQSDRST....................P.TSI.......LRQRVPMR  502 + 16.2
+HSV_2_p89462  139 PRT...PE.PQG........................P.QAVP......PPPPPPFP  159 + 21.2
+
+                  AR    PPAPR                         PLRAP       RR R PFL
+                  S     LRSL                              V       LA   RVP
+                  P      S                                                
+
+ A  C  D  E  F  G  H  I  K  L  M  N  P  Q  R  S  T  V  W  Y Del Ins Score
+36 13  0  0  0  0  0  0  0  0  0  0 19  0  0 25  0  0  0  0   0      181.
+                                                                  0 -0.147
+ 1  0  2 15  0  0  0  9  1  0  0  0  9  4 28  0 17  7  0  0   0      95.3
+                                                                 75 -174.
+ 0  0  5  0  2  1  0  0  0 25  0  0 26  4  9  6  3  5  7  0   0      75.9
+                                                                  0 -0.147
+ 3  0  0  9  0  0  3  0  0  0  0  0 29  0 23 20  5  1  0  0   0      124.
+                                                                  0 -0.147
+20  0  0  0  1  1  0  3  1  0  0  0  0  0  0 15 11  8  0  0  33     -31.3
+                                                                  0 -0.147
+ 0  4  0  0  1  0  0  6  0 34  3  0 45  0  0  0  0  0  0  0   0      191.
+                                                                  0 -0.147
+ 9  0  7  5  0  1  9  0  1  3  0  0  0 11 23  6 14  4  0  0   0      63.4
+                                                                565 -397.
+ 5  0  5  9  0  5 10  0  7  0  0  7 25  1 10  4  0  1  4  0   0      65.2
+                                                                  0 -0.147
+ 0  0  0  0  0  0  0  0  0  5  0  0  0  0  0  0  0  0  0  0  88     -28.7
+                                                                  0 -0.147
+ 0  0  9  5  0  1  9  0  0  0  0  0 13 13 24  1 18  0  0  0   0      111.
+                                                                  0 -0.147
+23  4  4  0  6  2  0  4  1  8  0  0  5  1  8 10 14  3  0  0   0      26.4
+                                                                  0 -0.147
+ 0  0  0  0  1  0  0  7  0 16  2  0 40  0  0  0  0 27  0  0   0      172.
+                                                                103 -204.
+16  0  0  0  0  3  0  0  0 21  0  0 17  0 25  0 11  0  0  0   0      111.
+                                                                  0 -0.147
+25  0  3 14  0  0  0  0  3  0  0  0  8  7 33  0  0  0  0  0   0      131.
+                                                                  0 -0.147
+ 0  0  7  0  0  0  3  4  3 10  1  0  7  9  0  5  0  0  3  2  39     -74.6
+                                                                  0 -0.147
+ 3  0  0  4 10  6  7  0  1  6  6  0 12  0 23  3  3  9  0  0   0      51.2
+                                                                  0 -0.147
+ 2  5  0  0  8  8  1  2  0  1  1  0 13  7  0 11 17 15  2  0   0      45.4
+                                                                  0 -0.147
+15  0  2  0  0  0  0  0  0 13  0  0 42  0 19  2  0  0  0  0   0      158.
+                                                                  0 -0.147
+ 0  0  0  0 10  0  4  0  0  0  3  0  0  0  0  5  0  6  0  1  64     -52.4
+                                                                  0 -0.147
+13  0  0  0  0  0  1  0  0 35  0  0 20  0 17  1  6  0  0  0   0      117.
+
+Score: 746.402  Columns: 21  Sequences: 93
+
+                  ********.*****.................*..*******
+HHV_6B_p5244  427 RGC.REAQ.L.YYEKRLFALANE........A..CRLNPLR  454 + 6.28
+HHV_6B_p5253  364 SDCVRSVP.V..CEIKPFIDMRVFETETTQNA..RRV.RQR  398 + 6.47
+HHV_6B_q9wt4   78 RMSMFGVT.E.EWE.................G..ASAAPER   97 + 7.32
+EBV_barf1_p0   62 RMHHDVIF.I.EWPFR...............G..FFD.IHR   82 + 15.6
+EBV_bkrf3_p1  120 AELHRSLP.E.FSPPDH..............G..CLDAWA.  141 + 16.1
+EBV_bmrf1_p0  335 SPSPPPPP.R.TPTWE...............S..PAR.PE.  354 + 9.80
+EBV_borf2_p0  439 RLSVTLPG.EGAVGD................G..FSLARLR  460 + 11.1
+EBV_bxlf1_p0   64 VPTHWPPL.M.APTGLS..............G..ERV.PCR   85 + 16.6
+EBV_bblf2_p3   91 LRWERELR.RS.GGLIA..............M..LADAAE.  112 + 7.22
+EBV_bnlf2b_p   29 AKKERVPV.EDRPPTPMPT............S..QRL.IRR   53 + 12.6
+EBV_bslf1_p0  108 LRSLTPLV.E.LLTLSAKKQPQGDAR.....G..RVA.WLR  138 + 11.8
+EBV_bkrf4_p0  132 RPRTRAPP.R..PPAPAPVR...........G..RASAPPR  156 + 15.6
+EBV_ebna6_p0   94 VPP.WLPP.HDITPYT...............ARNIRDAACR  117 + 16.0
+EBV_bvrf1_p0   29 RNSLRVSP.E.ALEL................A..ERE.AER   48 + 9.51
+EBV_bglf4_p0  400 CRPRFEHP.H.LPGLV...............A..ELLADD.  420 + 9.88
+EBV_bblf4_p0  226 LRT.PLYR.RGRIPCI...............V..CVGSPT.  246 + 14.4
+EBV_balf5_p0  236 TRR.FVLD.NDFVTFGWY.............S..CRRAIPR  259 + 18.3
+EBV_bflf2_p0   70 SRH.TRHG.VDRSHF................S..LRD.FFR   89 + 13.8
+EBV_btrf1_p0  197 PPPEPQAT.FDATPY................ARIFYD.IGR  219 + 7.42
+EBV_bhlf1_p0  512 QRTHRRPP.G..CPRSARNP...........G..CPRTWRR  536 + 22.1
+EBV_brrf1_p0   41 CDLPPSHP.L..LT.................A..QRG.LF.   57 + 4.85
+EBV_bllf3_p0  161 IPHHRPTI.FGRSGLAMQ.............G..ILVKPCR  185 + 8.63
+EBV_balf2_db  301 YDS.WPLF.AD.CEGPE..............A..RVAALHR  322 + 18.7
+EBV_bmrf2_p0   43 WQT.HVYR.LGFPT.................A..CLMAVL.   61 + 13.0
+EBV_bglf5_p0   16 SYT.FARF.L.RSPETE..............A..FVRNLDR   37 + 10.4
+EBV_bllf2_p0   99 RDTMRPPI.Y..LPALLANCGPA........G..LLR.AHR  125 + 14.7
+EBV_bmlf1_bs  159 APRVPRAP.R..SPR................A..PRSNRA.  177 + 10.9
+EBV_bnlf2a_p   24 TETRPSHP.C..PEDPDV.............S..RLR.LL.   44 + 5.90
+EBV_bglf3_p0  161 LPWMWALF.Y..GPRSHCEER..........H..CVYAAAR  186 + 14.7
+EBV_balf1_p0  185 YRRLWFAR.L..GG.................M..PRS.LRR  202 + 13.3
+EBV_bhrf1_p0   15 RDS.RVHG.NGTLHPVLEL............A..ARETPLR   39 + 19.9
+KSHV_f5h982_   24 RRCLSSRL.RSVPPGARS.............A..SVSSKHR   48 + 11.7
+KSHV_orf49_q  129 YPH.TAPL.ESEPPT................AD.CTE.WC.  148 + 8.44
+KSHV_f5hid2_  161 GRTTRLLL.CGKTG.................A..FLLKWLR  181 + 17.9
+KSHV_k14_p0c  184 WRTVRLPR.GDNTTPSE..............GI.CLITWG.  207 + 14.1
+KSHV_orf57_q  125 RRPRDRLQ.YGRTTRG...............GQ.CRAAPKR  148 + 19.2
+KSHV_orf61_q  442 LRTVESAR.VG.TTDANRPF...........F..CFEALG.  466 + 11.8
+KSHV_f5hin0_  494 VYR.WVLD.FD.LP.................V..CRD.IDR  511 + 15.9
+KSHV_orf34_q  156 LPLLWLLF.N..GPAS...............F..CRA.DC.  174 + 10.9
+KSHV_dbp_orf  305 YDT.WPIF.E.NCETPD..............A..RLRALE.  325 + 11.7
+KSHV_orf37_q  424 GDALDPHV.E.IPTLLIVTPVY.........F..PRGAKHR  451 + 9.21
+KSHV_f5haw0_  260 RDI.FVPPIFGTPPPE...............A..CPLSYT.  281 + 7.53
+KSHV_f5hf68_  114 ERTRFRIP.V..TPL................ADPCFE.WRR  134 + 14.0
+KSHV_orf18_q  104 RDSLWMHL.NDKVGLLRGL............A..NYL.FHR  128 + 11.9
+KSHV_orf9_q2   30 VPSETRVC.R.LIP.................A..CFQTPGR   49 + 17.9
+KSHV_f5hfa1_  109 PPSLRSIF.R.ELEASVPNFSTPSH......G..CLDSWAR  139 + 16.7
+KSHV_orf74_q  180 CRH.RSRV.VDPVSKQA..............M..CYENAG.  201 + 9.65
+HCMV_b9vxm8_  429 ERPLPVYR.V.HLPNDQHVFCA.........V..ASETWHR  456 + 15.7
+HCMV_p09727_   92 ADRVPTPV.EDVSESLV..............A..KRY.WLR  114 + 14.8
+HCMV_f5he05_  131 LRCVPELR.VDYTS.................S..AYM.WN.  149 + 11.9
+HCMV_f5hb40_   12 ARR.PRAR.RG.GGGGVGSNSSRHS......GK.CRR.QRR   41 + 11.3
+HCMV_p16730_  515 RRAYQEHR.R.RKHLA...............V..QRYAPCR  536 + 11.3
+HCMV_f5hfa5_   81 RPPLTVYP.YG.TSLIRR.............S..ARDAKLR  104 + 17.1
+HCMV_b9vxq2_  206 RRRRRAPK.NDAATP................S..FLR.RH.  225 + 12.0
+HCMV_f5hgg3_  139 ADSLPQLLERGLLHSYFED............V..ERAAQGR  165 + 11.2
+HCMV_f5hdc7_  446 QRCFRMPK.F.FPPP................M..CRA.PY.  464 + 13.1
+HCMV_f5haz3_  422 GRAMPVVR.R.RPPP................M..PRD.DD.  440 + 13.9
+HCMV_f5hg98_  214 LESERRIR.EGKIPMTF..............V..DRDSLR.  236 + 10.7
+HCMV_f5hig1_   51 RLHTFVVR.GDRLPP................A..EVRAVHR   72 + 21.0
+HCMV_p16771_   10 GDI.ASYR.L..SPI................S..KLR.YLR   27 + 3.86
+HCMV_f5h8s6_  192 ARTMHVLFLNDTTPE................G..SYATAER  214 + 14.6
+HCMV_dbp_f5h   62 VRT.PVLC.YD.GGVLTKVTS..........F..CPFALY.   86 + 6.03
+HCMV_f5hg68_  210 RLC.QRLR.I.RLP.................H..RYQ.RLR  227 + 9.31
+HCMV_f5het1_  226 RDHVWSYVGR.VCTFY...............VT.CLM.LF.  247 + 7.50
+HCMV_p16763_  237 GRCLPAALCRG.LP.................V..KYR.THR  256 + 11.0
+HCMV_p16786_  202 VDL.RLPV.L.HPTS................SP.CLA.LLR  221 + 13.5
+HCMV_p08546_  911 TDSVFVRF.RGLTPQ................A..LVA.RG.  930 + 13.0
+HCMV_irs1_p0  248 YRC.NRLG.VG.TPRATLLPQP.........A..LRQTLLR  274 + 12.0
+HCMV_c0h677_   20 PPS.RLPP.L..PG.................H..ARR.PRR   36 + 14.6
+HCMV_f5hen8_   98 GGT.RVPC.VDRWPF................F..PFRALL.  117 + 16.9
+HCMV_p16849_  278 CEHLTLRR.T.IGTL................A..RVV.PH.  296 + 5.60
+HCMV_f5hc97_   50 LQTVRSHC.VSKITFNS..............S..CLY.IT.   71 + 8.45
+HSV_1_p03176  321 SMHVFILD.YDQSPA................G..CRDALL.  341 + 18.0
+HSV_1_p10192  694 VDLYPRPL.V.LPPVDCAH............H..LRE.ILR  717 + 12.5
+HSV_1_p10193  247 RRCLFLPR.LG.TELLQ..............A..ALR.PP.  267 + 15.4
+HSV_1_p10234  240 QPSLRMLH.ADAGPA................A..CYV.LGR  260 + 17.9
+HSV_1_p10226  262 HRT.FSVV.VDDCS.................M..RAV.LRR  280 + 7.24
+HSV_1_p10236  861 ADPRRFHF.H.APPTYLA.............S..PRE.IR.  882 + 11.2
+HSV_1_p10186    6 SRS.PSPR.R.RPS.................S..PRRTPPR   24 + 20.0
+HSV_1_p04294  191 GRHLWRLT.R.RGPPAA..............A..DAVAPR.  212 + 15.5
+HSV_1_p06474  266 APT.DSHI.L..SP.................A..ALAAIE.  282 + 8.85
+HSV_2_p89469  238 QPSLRVLRAAD.GPE................A..CYV.LGR  258 + 18.2
+HSV_2_p89446  322 PMHLFVLD.YDQSPV................G..CRDALLR  343 + 25.9
+VZV_orf18_p0  236 APKTRLVN.VDAITQY...............V..KFS.ADR  257 + 2.32
+VZV_orf2_p09   48 GRTVDLPG.GGTLHITCTKTYVIIGKYSKP.G..ERLSLAR   84 + 8.56
+VZV_dbp_orf2  101 LPS.SAAP.N..LTR................A..CNAARER  119 + 10.5
+HHV_6B_p5253  313 NDW.PIIR.NSETH.................A..ERMAQL.  331 + 6.28
+HSV_1_dbp_ic  504 FDT.RHAC.V.HTTL................M..RLRARH.  522 + 10.5
+HSV_2_p07918   98 GRLRRAPK.V.YCG.................GD.ERD.VLR  117 + 11.0
+HHV_6A_p2741  175 GRS.PLRIDLDHSTV................S..DVLKWL.  195 + 5.02
+HSV_2_p28277  568 QRTLAYGR.LGELT.................A..ELLSLRR  588 + 9.78
+HHV_6B_q9qj4  592 ARPRRVAR.R.LTE.................M..MNDARL.  610 + 11.7
+HSV_2_p89462  150 VPPPPPPP.F.PWGHECC.............A..RRDARG.  172 + 12.1
+
+                  RRTLRVPR  D  P                 A  CR ALLR
+                   PS P L   G  T                 G   L     
+                   D                                       
+
+ A  C  D  E  F  G  H  I  K  L  M  N  P  Q  R  S  T  V  W  Y Del Ins Score
+11  4  0  2  1 10  1  1  0 10  0  1  4  5 19  6  3  8  2  5   0      13.2
+                                                                  0 -0.147
+ 0  0 19  4  0  2  0  0  1  3  4  1 20  2 35  0  0  0  0  2   0      123.
+                                                                  0 -0.147
+ 3  9  0  0  0  0 11  2  2  6  0  0  9  0  8 19 21  0  3  0   0      78.1
+                                                                  0 -0.147
+ 0  0  0  5  1  0  5  0  0 19  5  0  3  0  8  0  4 12  0  2  29     -43.4
+                                                                  0 -0.147
+ 2  0  5  1 12  0  2  0  0  0  0  1 19  2 29  2  7  0 11  0   0      114.
+                                                                  0 -0.147
+ 8  0  0  5  2  1  1  2  0 13  3  0  9  2 12 14  1 19  0  1   0      31.1
+                                                                  0 -0.147
+10  0  0  0  0  1 11  6  0 21  0  0 23  0  6  1  1  7  0  6   0      76.7
+                                                                  0 -0.147
+ 0  5  4  0 10  5  1  4  3  8  0  1 17  2 22  0  3  8  0  0   0      47.1
+                                                                  7 -42.4
+ 3  2  0 11  6  4  3  2  0 12  1  8  0  0 18  0  1 15  0  7   0      41.4
+                                                                  0 -0.147
+ 0  0 24  0  0 19  0  0  0  0  0  0  0  0  0  5  0  0  0  0  45      9.68
+                                                                  0 -0.147
+ 8  0  1  6  4  0  4  3  4  7  0  2  2  2 13  0  5  3  0  3  26     -78.7
+                                                                  0 -0.147
+ 1  7  0  0  0 10  0  5  1 15  0  0 18  0  0 11 16  4  4  1   0      55.0
+                                                                  0 -0.147
+ 0  0  0 11  0 12  6  0  0  0  0  0 39  0  0  5 20  0  0  0   0      150.
+                                                                279 -311.
+34  0  0  0  5 19  4  0  0  0  8  0  0  0  0 14  0  9  0  0   0      113.
+                                                                 13 -63.2
+ 8 29  3  9  6  0  0  2  4  6  1  1  8  3 11  2  0  0  0  0   0      85.4
+                                                                  0 -0.147
+ 5  0  0  0  6  0  0  0  0 19  0  2  3  0 35  3  1 10  0  9   0      98.6
+                                                                  0 -0.147
+12  0 16  9  1  3  0  1  0 10  4  0  0  3 17  5  0  8  0  4   0      34.1
+                                                                  0 -0.147
+30  0  0  0  0  0  0  0  3  0  0  4  0  0  0  7  8  0  0  0  41     -13.5
+                                                                  0 -0.147
+ 8  0  3  0  2  0  0  9  3 20  0  0 17  3 10  0  1  3 12  2   0      62.0
+                                                                  0 -0.147
+ 5  6  5  8  3 10 12  0  1 21  0  1  4  1 11  0  3  0  0  2   0      33.8
+                                                                  0 -0.147
+ 0  0  0  0  0  0  0  0  0  0  0  0  0  0 56  0  0  0  0  0  37      136.
+
+Score: 738.254  Columns: 20  Sequences: 93
+
+                  **...*****.............................................................................................****...*****..................****
+HHV_6B_p5244  298 ADA..VRFLNLKCRINHFDISPMNIFINHKKEIIFDAVLADY.............................................................SLSEI..HPEYNG.................TCAI  352 + 4.04
+HHV_6B_p5253  398 RT...RTTVGSTDGAIGQQRVI.................................................................................SGQN...RGRARGRGRG.............RVPR  434 + 5.90
+HHV_6B_q9wt4   97 RQ...VVFLLSSTGQVLGYEDGVIFYLSPTFSDFWTTAMEFSCQNAILSNFIAQK................................................SRDE...YSDQFQKYF..............TRMR  165 + 2.29
+EBV_barf1_p0   36 RR...VSLGPEIEVSWFKLGPGEEQVLI...........................................................................GRMH...HDVIFIEWPFRGFF.........DIHR   82 + 6.85
+EBV_bkrf3_p1  106 AYG..FPVPP.............................................................................................SLRNI..YAELH..................RSLP  127 + 11.2
+EBV_bmrf1_p0  314 SP...R.VQPLGTGLQQ......................................................................................RPRHT..VSPSPS.................PPPP  341 + 13.2
+EBV_borf2_p0  637 RLDD.R.EALNL...........................................................................................VGGR...VSCLPEALRQ.............RYLR  664 + 10.1
+EBV_bxlf1_p0   78 SG...E.RVPCRTQAAVTSNTGNSP..............................................................................GSRH...TSCPF..................TLPR  111 + 17.0
+EBV_bblf2_p3  123 RD...R.RLLSAARVEDEQGLIFQPLFPAQVVCQSCSGDDGRDQQPPPVDGFGSEMEGEQTCP........................................HAQR...HSESPGQLDVYI...........RTPR  201 + 15.6
+EBV_bnlf2b_p    2 RPG..RPLAGFY...........................................................................................ATLR...RSFRRMSKRSKNKAKKERVPVEDRPPT   42 + 11.3
+EBV_bslf1_p0  531 RLM..RRLGP.............................................................................................VSRA...HPVYFFKS...............ACPP  554 + 19.3
+EBV_bkrf4_p0  132 RP...RTRAPPRPPAPAPVRGRASAPPRPPAPVQQSTKDK...............................................................GPHRPT.RPVLRGPAPR.............RPPP  188 + 22.6
+EBV_ebna6_p0  879 SP...QPRAPI............................................................................................RPIP...TRFPP..................PPMP  899 + 20.0
+EBV_bvrf1_p0  296 RQ...S.IAPLNRQAAYPPGTFADNKIYNLFVGAGLLPTTAALNVPGAA......................................................GRDR...DLVYRIANQIFGE..........DVPP  361 + 12.3
+EBV_bglf4_p0    6 AA...E.LSPTNSS.........................................................................................SSGE...LSVSP..................EPPR   28 + 8.52
+EBV_bblf4_p0    1 MAE..EPRAPEALSSTFMLNMTSD...............................................................................ASVR...RIVRRIG................TLAR   37 + 15.3
+EBV_balf5_p0  237 RR...FVLDNDF...........................................................................................VTFGW..YSCRR..................AIPR  259 + 15.9
+EBV_bflf2_p0   12 RQQ..RPADPALR..........................................................................................RLMHP..HHRNYTASK..............ASAH   40 + 10.5
+EBV_btrf1_p0  193 AP...EPPPPEPQATFDATPYARIFYDIGRQVPKLGNAPAAQVSNVLIAN.....................................................RSHNSL.RLVPNP.................DLLP  255 + 13.0
+EBV_bhlf1_p0  233 RQ...EPRLPQDLAAAQRCPAGPPPTRSGAAAQRTHRRPPGCPRSARNP......................................................GCPR...TWRRRSGAQRG............HPPP  297 + 21.9
+EBV_brrf1_p0  100 RDIA.EVLDHLKTNRDLGLDDRLWALIRKL.........................................................................RQDRH..HASVN..................VLMP  142 + 7.80
+EBV_bllf3_p0   66 RP...V.TSHVGIIDPGYTGELRLILQNQRRYNSTL...................................................................RPSELKIHLAAF..................RYAT  113 + 7.24
+EBV_balf2_db  181 SA...SVRVPLYDKEVFPEG...................................................................................VPQL...RQFYNSDLS..............RCMH  214 + 17.2
+EBV_bmrf2_p0  206 SLK..E.TLHKCPWDLLAISALTVLVVCVMI........................................................................VLHV...HAEVFFGLS..............RYLP  250 + 5.27
+EBV_bglf5_p0    2 ADVD.ELEDPMEEMTSYTFARFL................................................................................RSPET..EAFVRNL................DRPP   39 + 8.84
+EBV_bllf2_p0   42 MQR..RPRPP.............................................................................................VAKR...RRFPRSPQQVER...........PILP   69 + 18.3
+EBV_bmlf1_bs  151 AR...APRAP.............................................................................................RAPR...VPRAP..................RSPR  170 + 18.6
+EBV_bnlf2a_p   23 ST...ETRPSH............................................................................................PCPED..PDVSRL.................RLLL   45 + 3.83
+EBV_bglf3_p0  154 SL...VPEDPLPWMWALFYGPRS................................................................................HCEE...RHCVY..................AAAR  186 + 12.0
+EBV_balf1_p0  148 RL...R.VVLCYTVVFAVRNYLDDHKSAAFVLGAIAHYL................................................................ALYRR..LWFARLGGMP.............RSLR  201 + 8.70
+EBV_bhrf1_p0   15 RD...S.RVHGNGTL........................................................................................HPVL...ELAARE.................TPLR   39 + 13.1
+KSHV_f5h982_   30 RL...RSVPPGARSASVSSKHRNGLRKFISDKVFFSILS................................................................HRHELG.VDFLREM................ETPI   82 + 13.8
+KSHV_orf49_q    1 MT...SRRPLKD...........................................................................................HLFN...HLFRY..................HYPS   22 + 14.4
+KSHV_f5hid2_  292 KL...SVLLLEVNRSVSAEGGESSQKVPDSIPDS.....................................................................RRQP...ELESP..................DSPP  335 + 10.5
+KSHV_k14_p0c  185 RT...V.RLPRGDNTTPSEGICLITWGNESISIPASIQGPLAHDLPAAQGTLAGVAITLVGLF........................................GIFAL..HHCRRKQGG..............ASPT  261 + 12.1
+KSHV_orf57_q   92 RP...RSPSPVNRYGKKIKFGTAGQNT............................................................................RPPP...EKRPR..................RRPR  128 + 15.7
+KSHV_orf61_q  691 RA...RARAPFVDQSQSMSF...................................................................................FLKE...DRVRNA.................SYLR  721 + 10.1
+KSHV_f5hin0_  511 RTF..E.EVHSLCCSLREAILDIIQLLGP..........................................................................VDPRT..HPVYFFKS...............ACPP  553 + 17.2
+KSHV_orf34_q   54 MP...E.VQPICSGL........................................................................................PALR...PDFSNL.................HLPR   78 + 10.2
+KSHV_dbp_orf  168 KL...VPVPSQTTPVHIGEHQAFKIPLYDEDLF......................................................................GPSRAQ.ELCRFYNPDIS............RYLH  218 + 10.6
+KSHV_orf37_q  267 RL...Y.EAPGKLALKDFFYSISKPAVEYVGLGKLP...................................................................SESD...YLVAYDQEWE.............ACPR  316 + 7.44
+KSHV_f5haw0_  189 RD...E.LLHTKAASMLYNTMVEIQEKPSHAEVQALFREAVNIEIRFIQAKAAGVTLVNVVDIRRFLEATAD...............................RILR...DIFVPPIFG..............TPPP  273 + 11.1
+KSHV_f5hf68_  285 AL...R.RDPAVHYCAVGSPGQVWLPNVPNLACEIAKRELCDTLDACAKGILLTSSCNGIFC.........................................VCYHN..GPVHFIGN...............TVPP  359 + 9.00
+KSHV_orf18_q  133 HD...VRIAPENLVDGNFLFNLGSVLPCRLLLAAGYCLAFW..............................................................GSDEHE.RWVRFFAQKLFICYLIVSG....RLMP  199 + 9.54
+KSHV_orf9_q2  237 RR...FVLDHGF...........................................................................................STFGW..YECSN..................PAPR  259 + 13.0
+KSHV_f5hfa1_  210 HP...SPLASL............................................................................................GGRHS..RWPRFQGCNHFNLAN........DYLT  241 + 7.50
+KSHV_orf74_q  183 RS...RVVDPVSKQAMCYENAGNMTADWRLHVRTVSVTAGFLLPLALLILFYALTWCVVRRTKLQARRKVRGVIVAVVLLFFV....................FCFP...YHVLNLLD...............TLLR  278 + 9.75
+HCMV_b9vxm8_  457 SL...FPRDLLRHVPDSRFSDEALTETVWLHDDDVASTSPETQFYYTRHEVFNERLPVFNFVADFDLRLRDGVSGLARHTVFELCRGLRRVWMTVWASLFGYTHPDR...HPVYFFKS...............ACPP  572 + 20.2
+HCMV_p09727_  114 RD...Y.RVPQ............................................................................................RTKL...VLFYFSPCHQCQTYYVECEP...RCLV  148 + 10.7
+HCMV_f5he05_   70 SR...FVFDPKADYGGVGENLYV................................................................................HADD...VEFVPGESLKWNVRNL.......DVMP  113 + 11.3
+HCMV_f5hb40_  347 RL...E.LDPNESPPDLTLSSLTLYQDGILRFNVTCDRTEAPADPVAFRL.....................................................RLRR...ETVRRPFFSD.............APLP  410 + 17.8
+HCMV_p16730_   22 MP...RRVLHVPVHVRACNLTQELSTGEDARFCRP....................................................................RPVN...VERVRAVFAALYR..........ACPI   74 + 12.7
+HCMV_f5hfa5_   32 RTI..V.VAPRRGFLRIPPDGQDVNHVKIVPTTTSSSL.................................................................APPR...DDERR..................PTPP   79 + 15.3
+HCMV_b9vxq2_  206 RR...RRRAPKNDAATPSFL...................................................................................RRHD...VLERFAAAA..............EPLP  239 + 22.2
+HCMV_f5hgg3_   35 MT...SRRAPD............................................................................................GGLNL..DDFMRRQRGRHLDL.........PYPR   65 + 14.3
+HCMV_f5hdc7_  228 RT...EVEPLLML..........................................................................................GSIEGL.RACRPF.................DHMP  253 + 11.6
+HCMV_f5haz3_  404 RR...RPRSLGDGEEEDEGNDG.................................................................................RAMPV..VRRRP..................PPMP  436 + 20.9
+HCMV_f5hg98_  232 RD...SLRANSLAHIQATGAQPSHA..............................................................................PAQR...VLSAP..................PSLP  266 + 11.4
+HCMV_f5hig1_   47 RA...EPRLHTFVV.........................................................................................RGDRLP.PAEVR..................AVHR   72 + 15.8
+HCMV_p16771_   14 SY...R.LSPISKL.........................................................................................RYLR...HTESPKSPKSSI...........AIPR   43 + 11.1
+HCMV_f5h8s6_  180 MT...V.PVPRRYPKGA......................................................................................RTMH...VLFLND.................TTPE  206 + 10.3
+HCMV_dbp_f5h  984 SL...V.TVPVSVEKYAGINNSKEIYQFGQIGYFSGNGVERSLNVSSM.......................................................SGQD...YRFMRQ.................RYLL 1041 + 6.59
+HCMV_f5hg68_  160 SL...YPRPPGSGLAKHPSVSADEELSATLARDIVLVSAITLFFFLLAL......................................................RIPQ...RLCQRLRI...............RLPH  221 + 12.5
+HCMV_f5het1_  223 SD...R.RDHVWSYVGRVCTFY.................................................................................VTCL...MLFVPYYCF..............RVLR  257 + 9.22
+HCMV_p16763_   30 RL...F.RDPLTTYEYLDDC...................................................................................RDDEEFCHQFLR..................AYLT   61 + 16.7
+HCMV_p16786_  171 RL...RLYPPERLHALLDGVTA.................................................................................SLLGDL.HRFLFGVDL..............RLPV  208 + 9.56
+HCMV_p08546_  765 RA...SVRVSVLSELLNKW....................................................................................VSQR...RAV.R..................ECMR  792 + 9.51
+HCMV_irs1_p0  789 RPP..RPPPPKFGDRTAAHLSQNMRDMYLDMCT......................................................................SSGH...RPRPP..................APPR  832 + 20.6
+HCMV_c0h677_  175 RL...QPNVPLV...........................................................................................HPDHRA.ELCRRSRASARG...........RYLR  205 + 15.5
+HCMV_f5hen8_  405 RL...F.LSHVEVQAYFKRLHEQI...............................................................................RLSE...RHRLF..................DLPV  437 + 14.8
+HCMV_p16849_  129 RY...R.VLHK............................................................................................RTYA...RQSYRS.................TYMI  149 + 11.7
+HCMV_f5hc97_    6 RL...S.EPPTLALRLKPYKTAIQQLRSVIR........................................................................ALKENTTVTFLPT.................PSLI   49 + 5.11
+HSV_1_p03176   16 AA...RSRGHNNRRTALRPR...................................................................................RQQEA..TEVRPEQKMP.............TLLR   51 + 11.2
+HSV_1_p10192  353 AR...VVLPPRAWPGVASAAAGCLL..............................................................................PAVR...EAVARW.................HPAT  388 + 10.3
+HSV_1_p10193   43 AEW..VPRVHPKTTIE.......................................................................................RQQHGP.VTFPN..................ASAP   71 + 10.8
+HSV_1_p10234  105 MA...VVVAPKRTREFAP.....................................................................................GTLR...VDVTFLDIL..............ATPP  136 + 17.2
+HSV_1_p10226  441 AA...RPAAPDAR..........................................................................................SGSR...YACYFR.................DLPT  464 + 19.2
+HSV_1_p10236  839 RLLPVFVIPPACKDVPAFVAA..................................................................................HADP...RRFHFH.................APPT  873 + 14.0
+HSV_1_p10186    3 RAC..S.RSP.............................................................................................SPRR...RPSSPRR................TPPR   24 + 18.0
+HSV_1_p04294   32 SPPK.RPRPN.............................................................................................SLPLT..TTFRPL.................PPPP   55 + 13.4
+HSV_1_p06474  219 RD...E.AVHTTASCYIYNNYLGGHAKPPPDRVYGLFRQAVEIEIGFIRSQAPTDSHILSPAALAAIENYVRFSADRLL........................GLIH...MKPLFS.................APPP  307 + 6.79
+HSV_2_p89469  105 LA...VVVAPNGTRGFAP.....................................................................................GALR...VDVTFLDIR..............ATPP  136 + 10.2
+HSV_2_p89446   26 RAA..SRPSHRQGAS........................................................................................GARG...DPELP..................TLLR   51 + 10.7
+VZV_orf18_p0  238 KT...R.LVNVDAITQYVKFSADRLL.............................................................................SAIN...VPKLFN.................TPPP  273 + 6.94
+VZV_orf2_p09  191 SD...RPTLPTLTAQGRPTVSNIRGILKGSP........................................................................RQQPVC.HRVRF..................AEPT  233 + 15.9
+VZV_dbp_orf2  919 AR...RPRDPSSVLHWIRKDVTSAADIETQAKALLEKTENLPELWTTAFTSTHLVRAAMNQRPMVVLGISISKYHGAAGNNRVFQAGNWSGLNGGKNVCPL..FTFD...RTRRFII................ACPR 1031 + 16.6
+HHV_6B_p5253  210 RG...F.FLP.............................................................................................ALSE...TLFYYVFTSWG............TTLR  234 + 9.60
+HSV_1_dbp_ic  487 RY...V.ADSNQTDVPCNLCT..................................................................................FDTR...HACVHT.................TLMR  517 + 6.31
+HSV_2_p07918   99 RL...R.RAPKVYC.........................................................................................GGDE...RDVLRVGPEGFWP..........RRLR  129 + 19.4
+HHV_6A_p2741   23 RG...S.RDHH............................................................................................RDHRD..HREHRET................REPP   45 + 18.3
+HSV_2_p28277   10 RD...V.RAPGPPPQQPGARPA.................................................................................VRFRD..EAFLNF.................TSMH   42 + 17.4
+HHV_6B_q9qj4  564 RQ...S.RALQNGQRRRAPTMVPSSQT............................................................................RRQN...NARPR..................RVAR  599 + 9.95
+HSV_2_p89462  917 RGA..RPFSHFKRSMY.......................................................................................RAGRF..HWERFSN................ASPR  946 + 21.3
+
+                  RL   RPRAP                                                                                             R  R   R FRR                  R PR
+                        V                                                                                                       H V F                  A LP
+                                                                                                                                    P                      
+
+ A  C  D  E  F  G  H  I  K  L  M  N  P  Q  R  S  T  V  W  Y Del Ins Score
+12  0  0  0  0  0  2  0  3  1  8  0  0  0 52 15  0  0  0  0   0      183.
+                                                                  0 -0.147
+12  0 13  1  0  4  0  0  0 21  0  0 12  6  9  1 10  0  0  4   0      45.3
+                                                                 26 -97.0
+ 1  0  0 16  9  0  0  0  0  0  0  0  0  2 31 14  0 17  0  3   0      114.
+                                                                  0 -0.147
+ 1  0  0  0  0  0  0  0  0  3  0  0 24  0  8  4  3 14  0  0  36     -16.8
+                                                                  0 -0.147
+ 4  0  0  7  5  0  0  3  0 15  0  1  5  0 35  0  5 12  0  1   0      83.5
+                                                                  0 -0.147
+21  0 16  0  0  3  0  0  0 13  0  0 15  2  0  9  0 14  0  0   0      71.5
+                                                                  0 -0.147
+ 0  0  0  0  0  2 18  0  0 10  0  5 53  0  0  5  0  0  0  0   0      206.
+                                                                1676 -538.
+ 6  0  0  0  4 16  9  0  0  0  0  0  4  0 29 14  0 11  0  0   0      96.8
+                                                                  0 -0.147
+13  5  4  1  0  8  0  3  0 14  0  0 13  4  8 10  9  0  0  1   0      18.5
+                                                                  0 -0.147
+ 0  1 11  1  7  4  6  4  4  8  4  0  9 11  8  7  1  4  0  3   0      7.78
+                                                                  0 -0.147
+ 3  0  5 17  0  4 11  0  0  5  0  8  7  1 31  0  0  1  0  0   0      94.5
+                                                                 52 -144.
+ 0  0  6  9  0  1 19  0  0  2  2  1  3  0 20  0  6 16  0  8   0      89.0
+                                                                  0 -0.147
+12  0  9  4  0  1  5  2  2 16  0  0 11  3  9  8  6  0  5  0   0      19.6
+                                                                  0 -0.147
+ 2 12  1 12 24  0  0  0  1  0  0  0  3  0 11  4  0 23  0  0   0      110.
+                                                                  0 -0.147
+ 8  0  0  0  0  0  3  1  0 15  2  1  8  2 21  9  2 10  0 10   1      40.0
+                                                                  0 -0.147
+ 0  0  0  0 25  0  2  0  0  0  0 11 20  0 30  0  0  0  0  5   0      175.
+                                                                287 -314.
+22  0 10  4  0  0  4  0  0  0  0  0 10  0 24  1 17  1  0  0   0      98.0
+                                                                  0 -0.147
+ 2 10  0  2  0  0  1  4  0 15  0  0 18  0  4 11  7  7  0 12   0      58.8
+                                                                  0 -0.147
+ 8  0  0  0  0  0  2  0  0 25 12  0 46  0  0  0  0  0  0  0   0      189.
+                                                                  0 -0.147
+ 0  0  0  1  0  0  5  5  0  2  0  0 32  0 35  1  9  3  0  0   0      150.
+
+Score: 725.798  Columns: 20  Sequences: 93
+
+                  ***....**......................................******......******....................***
+HHV_6B_p5244  435 YYEK...RLFALANEA...............................C.RLNP......LRYPFAYRD.................ACC  464 + 10.1
+HHV_6B_p5253  412 QQR....VISGQNRGRA..............................RGRGRG......RV.PRRRNSNLNN.............LRT  445 + 9.39
+HHV_6B_q9wt4  161 FTRM...RHT.....................................P.ISLT......GVLPRRFQKVESG.............ACV  188 + 11.7
+EBV_barf1_p0   64 HHD....VIFIEWPFRGFFDIH.........................RSANTFF.....LVVTAANISHDGNY............LCR  105 + 8.51
+EBV_bkrf3_p1  212 QHP....SPLAQNSTRKSAQQK.........................F.LGNN......HF.VLANNF.................LRE  245 + 12.2
+EBV_bmrf1_p0  326 QRP....RHTVSPS.................................PSPPPP......PR.TPTWESP................ARP  353 + 17.2
+EBV_borf2_p0  761 QMPP...RPMEPAQVAGPVDIMSKG......................PGEGPG......GWCVPGGLE.................VCY  800 + 13.3
+EBV_bxlf1_p0   67 HWP....PL......................................M.APTG......LS.GERV...................PCR   85 + 11.9
+EBV_bblf2_p3  198 RTP....RGDVFTYSTET.............................P.DDPS......PV.PFRDI..................LRP  226 + 14.2
+EBV_bnlf2b_p   33 RVPVED.RPPT....................................P.MPTS......QRLIRRNALGGG..............VRP   62 + 15.0
+EBV_bslf1_p0  396 QATC...RGQWNPKEQ...............................F.LPPTVL....RR.VQRLPVF................LCH  427 + 12.3
+EBV_bkrf4_p0  136 RAPP...RP......................................P.APAP......VR.GRASAP.................PRP  157 + 16.8
+EBV_ebna6_p0  478 HQP....PPVPKPVPVK..............................P.TPPP......SR.RRRG...................ACV  504 + 19.5
+EBV_bvrf1_p0  102 QVR....SPSTGGRSA...............................P.APPS......PS.PAQPF..................TRL  128 + 15.1
+EBV_bglf4_p0  397 FFNC...RPRFEH..................................P.HLPGL.....VAELLADDFFGPD.............GRR  428 + 3.71
+EBV_bblf4_p0  154 YWP....VLSDIAAEFRRTK...........................P.RGLYS.....GVSGPAFEV.................LRD  187 + 9.83
+EBV_balf5_p0  575 FYN....SPVLVVD.................................F.ASLY......PSIIQAHN..................LCY  600 + 21.2
+EBV_bflf2_p0  116 FLPL...SLCTLSPGRCL.............................R.LSPFG.....HSLTLGS...................HCE  146 + 13.0
+EBV_btrf1_p0   17 HLP....SGQIVFHTIHSPTLASALGL....................PGENVPI.....PALFRASGLN................VRE   59 + 8.67
+EBV_bhlf1_p0  390 HRR....PPGCPRSARNPGCPRTWRRRSGAQ................RGHPPP......GA.GQRPSGPTG..............GRP  436 + 15.5
+EBV_brrf1_p0   23 HYPE...VGDVVHLLNTIGVD..........................CDLPPSH.....PLLTAQRGLFL...............ARV   61 + 11.9
+EBV_bllf3_p0  155 TVP....PPSI....................................P.HHRPTIF...GRSGLAMQGILVK.............PCR  185 + 18.1
+EBV_balf2_db  294 ETPA...SLNYDSWPLFAD............................C.EGPE......AR.VAAL...................HRY  323 + 12.2
+EBV_bmrf2_p0  191 RRR....SI......................................F.CARGD.....HS.VASLKETLH..............KCP  215 + 5.91
+EBV_bglf5_p0  381 CSP....RVNIVTAF................................F.RKRS......PL.DPA....................TCT  404 + 9.20
+EBV_bllf2_p0   44 RRP....RPPVAK..................................R.RRFP......RS.PQQV...................ERP   66 + 16.5
+EBV_bmlf1_bs  146 HLP....PGARAP..................................R.APRA......PRVPRAPRS.................PRA  171 + 23.1
+EBV_bnlf2a_p   26 TRP....SHPC....................................P.EDPD......VS.RLRLLLVV...............LCV   50 + 12.8
+EBV_bglf3_p0  274 QYK....RP......................................V.DTYD......PCLILTGEA.................ERY  295 + 7.90
+EBV_balf1_p0  127 HVRLII.SVLRAV..................................YNDHYD......YWSRLRVV..................LCY  155 + 9.86
+EBV_bhrf1_p0   78 HVDLDFNSVFLEI..................................F.HRGD......PSLGRALAWMAWCMH...........ACR  113 + 11.4
+KSHV_f5h982_   30 RLR....SVPPGA..................................RSASVSSK....HRNGLRKFISDKVFFSILS.......HRH   68 + 9.22
+KSHV_orf49_q  128 QYPHTA.PLESEPPTADCTEW..........................C.LSHFVG....ASGRLRSE..................VRD  165 + 5.43
+KSHV_f5hid2_   72 HTEG...SGDVSFS.................................F.RNTSV.....GS.GFTH...................TRE   97 + 4.85
+KSHV_k14_p0c   56 QLPG...PVNVAT..................................YSHSYG......VV.VQTQ...................YRH   80 + 10.7
+KSHV_orf57_q   94 RSP....SPVNRYGKKIKFGTAGQNT.....................R.PPPE......KR.PRRR...................PRD  129 + 15.1
+KSHV_orf61_q  669 HHRERY.RVFLTA..................................FDYCPF......KLLDRAR...................ARA  696 + 12.1
+KSHV_f5hin0_  613 RFP....SIQKKGGP................................FDCGIY......GR.GRSVRLP................HCY  641 + 15.4
+KSHV_orf34_q  215 YGDF...SGTWAAA.................................C.RPPFAT....SR.IQRVVSQMKIIDASDTYISHTCLLCH  260 + 4.20
+KSHV_dbp_orf  176 TTP....VHIGEHQAFKIPL...........................YDEDLFG.....PS.RAQE...................LCR  207 + 10.0
+KSHV_orf37_q   87 FVD....RVFGG...................................V.RLLDV.....ASVYAACSQMNAH.............QRH  116 + 7.94
+KSHV_f5haw0_  263 FVP....PI......................................FGTPPP......EACPLSYTGSFKAVNFF.........ERD  293 + 14.2
+KSHV_f5hf68_  394 HVTC...PLVKLWLGKPVAVGKLE.......................P.HAPS......PR.DFA....................ARC  427 + 13.4
+KSHV_orf18_q  103 YRD....SLW.....................................M.HLNDKVGL..LR.GLANYLF................HRL  129 + 3.56
+KSHV_orf9_q2  576 FYDD...PVLVVD..................................F.ASLY......PSIIQAHN..................LCY  601 + 20.0
+KSHV_f5hfa1_  209 QHP....SPLASLGG................................R.HSRW......PR.FQGCNHFNLANDYLTR.......HRR  245 + 11.1
+KSHV_orf74_q  210 HVRTV..SVTAGFLLPLALLIL.........................F.YALT......WCVVRRTKLQ................ARR  247 + 6.14
+HCMV_b9vxm8_  749 HHP....PHDLPAL.................................P.LSPP......PRVILS....................VRD  772 + 22.4
+HCMV_p09727_   94 RVPT...PVEDVSESLVAKR...........................Y.WLRD......YRVPQRTKLVLFYFS...........PCH  133 + 16.4
+HCMV_f5he05_   96 FVPGE..SLKWNVRNLDVMPI..........................F.ETLA......LRLVLQGDVIW...............LRC  133 + 10.2
+HCMV_f5hb40_  398 TVR....RPFFSDA.................................P.LPYFVP....PRSGAADEGLE...............VRV  428 + 15.6
+HCMV_p16730_   28 HVP....VHVRACNLTQELSTGEDARF....................C.RPRPVNV...ER.VRAVFAALYR.............ACP   73 + 16.2
+HCMV_f5hfa5_   74 RRPT...PPLRPPLT................................V.YPYG......TSLIRRS...................ARD  100 + 11.6
+HCMV_b9vxq2_  411 HLPLK..PVSLDRLREVLQA...........................V.RGRFS.....GREVPAWPASSRTCL...........LCA  452 + 11.5
+HCMV_f5hgg3_   96 QLR....VIGTIGLANL..............................FSWDRS......VAGVAADGSV................LCY  127 + 11.5
+HCMV_f5hdc7_  287 FVP....SGMVLLDKFGVVYLHKIEDSDLYRIADNFHMFLKCGLLKLRGLCRF......DR.GLRG...................ECR  344 + 14.0
+HCMV_f5haz3_  202 HTPG...RHAKTLKLLTSFGCLTD.......................C.WPFE......VA.PAARLA.................ECE  238 + 13.0
+HCMV_f5hg98_   24 QMD....VGGLIQASALGK............................V.ALRYAVRKLMKR.GAR....................LRH   57 + 3.72
+HCMV_f5hig1_   47 RAEP...RLHTFVV.................................RGDRLP......PAEVRAV...................HRA   73 + 13.4
+HCMV_p16771_   28 HTE....SPKSPKSSIAI.............................P.RKRY......KR.YRQI...................SRM   55 + 6.90
+HCMV_f5h8s6_  310 YVR....RVANTITEFFRMGLLKMVF.....................R.HRRF......ERERQRQTRME...............HRH  350 + 20.1
+HCMV_dbp_f5h  790 RVKN...RPIYRAGKGNAGSV..........................F.FRRD......HV.PRRNPAKGCLGFLL.........YRH  831 + 9.78
+HCMV_f5hg68_  206 RIPQ...RLCQRL..................................R.IRLP......HR.YQR....................LRT  228 + 13.3
+HCMV_f5het1_  314 LVE....RCQQS...................................C.HGHFV.....RRLVQALKRAMYSVELA.........VCY  347 + 13.1
+HCMV_p16763_  557 HAN....RCRRKA..................................P.LELG......PAVVAAPGPS................VRY  583 + 12.9
+HCMV_p16786_   77 HVPR...SCVLHLFVTDKR............................F.LNRELG....DRLYQRF...................LRE  109 + 17.3
+HCMV_p08546_  708 YYND...PVAVFD..................................F.ASLY......PSIIMAHN..................LCY  733 + 16.9
+HCMV_irs1_p0  787 QTR....PP......................................R.PPPPKFG...DR.TAAHLSQNMRDMYLDMCTSSG..HRP  825 + 11.3
+HCMV_c0h677_   30 HAR....RPRRKRCLVPEV............................F.CTRDLA....DLCVRRDYEG................LRR   64 + 17.1
+HCMV_f5hen8_  387 FVR....PPSSIRNPSYAAE...........................M.TRLFLS....HVEVQAYFKRLHEQIRLS........ERH  430 + 11.0
+HCMV_p16849_  257 QTPYV..SLMI....................................F.NSYATT....AW.PMQCEHLT...............LRR  285 + 4.07
+HCMV_f5hc97_   26 QLR....SVIRALKENTTVT...........................F.LPTP......SL.ILQTVRS................HCV   58 + 11.6
+HSV_1_p03176  151 HAP....PPALTLIFD...............................R.HPIAA.....LLCYPA....................ARY  177 + 20.2
+HSV_1_p10192  229 LVE....VCEVGLR.................................P.RGHP......QRVTARVLL.................PRD  255 + 9.83
+HSV_1_p10193  513 FLRG...VH......................................FDALRA......QR.DLRE...................LRC  533 + 15.2
+HSV_1_p10234  226 RRPVT..VPANGTTVVQPSL...........................R.MLHA......DA.GPA....................ACY  256 + 10.2
+HSV_1_p10226  418 TAP....PPADPVPLDTEDDSDAADGTAAR.................P.AAPD......ARSGSRY...................ACY  458 + 12.0
+HSV_1_p10236  279 HAP....RPDTVSAASLTSFAAITR......................F.CCTSQY....AR.GAAAAGFPLYV............ERR  322 + 13.4
+HSV_1_p10186    5 CSR....SPS.....................................P.RRRP......SS.PRRTP..................PRD   25 + 15.6
+HSV_1_p04294  145 TFE....RHL.....................................RGLLRG......VRAPLAIGPLW...............ARL  170 + 9.14
+HSV_1_p06474  297 HMK....PL......................................FSAPPPD.....ASFPLSLMSTDKHTNFF.........ECR  328 + 12.2
+HSV_2_p89469  132 RAT....PPTLTEPSSLHR............................F.PQLA......PS.PLAG...................LRE  160 + 11.4
+HSV_2_p89446  152 QAP....PPALTLVFD...............................R.HPIAS.....LLCYPA....................ARY  178 + 18.6
+VZV_orf18_p0  235 HAPKT..RLVNVDAITQYVKFSADRLLSAINVPKL............FNTPPPDS....DF.PLAFMIADKNTNFF.........ERH  294 + 5.30
+VZV_orf2_p09   73 YSK....PGE.....................................R.LSLA......RLIGRAMTPGG...............ART   97 + 7.36
+VZV_dbp_orf2  503 HTR....PV......................................C.AHTTV.....HRLRQRM...................PRF  523 + 17.8
+HHV_6B_p5253   81 FMP....VCFF....................................F.HGTE......QLVGMAEDHGDLIR............LCE  109 + 14.5
+HSV_1_dbp_ic  231 FFN....RPLN....................................R.LLFE......AVVGPAAVA.................LRC  254 + 12.1
+HSV_2_p07918  714 HVD....PVVVFD..................................F.ASLY......PSIIQAHN..................LCF  738 + 20.6
+HHV_6A_p2741   20 EME....RGS.....................................RDHHRD......HR.DHRE...................HRE   40 + 12.6
+HSV_2_p28277   63 QVP....RLQW....................................F.RDVA......ALEVPTGLP.................LRE   86 + 12.9
+HHV_6B_q9qj4  576 RAPTM..VPSSQT..................................R.RQNN......AR.PRRV...................ARR  600 + 12.5
+HSV_2_p89462  915 CVRGA..RPFSHFKRSMY.............................R.AGRF......HWERFSNAS.................PRY  947 + 13.8
+
+                  HVP    RP                                      FG PPP      PRLGRA                    LR 
+                    R    P                                       RD  R        S PLR                     C 
+                         S                                       PS                                       
+
+ A  C  D  E  F  G  H  I  K  L  M  N  P  Q  R  S  T  V  W  Y Del Ins Score
+ 0  3  0  2 13  0 27  0  0  2  0  0  0 17 16  0  6  0  0  7   0      152.
+                                                                  0 -0.147
+12  0  0  0  4  1  5  1  0  9  5  0  0  2  8  4 10 23  2  7   0      46.1
+                                                                  0 -0.147
+ 0  0  8  8  0  0  0  0  4  0  0  5 45  0 20  0  3  0  0  0   0      159.
+                                                                 55 -148.
+ 0  0  0  0  0  0  0  0  0  0  0  0 25  0 30 25  0 13  0  0   0      172.
+                                                                  0 -0.147
+ 0  5  0  0  0 11  9  6  0 15  0  0 31  0  0  0  0 16  0  0   0      116.
+                                                                694 -423.
+ 0  9  0  0 28  0  0  0  0  0  3  0 21  0 23  0  0  5  0  4   0      162.
+                                                                  0 -0.147
+ 0  0  6  0  0  8  0  0  0  0  0  2  0  0  0  6  0  0  0  0  71     -50.6
+                                                                  0 -0.147
+16  4  4  6  1  0 14  2  0 14  2  1  4  0 15  0  4  0  3  3   0      46.8
+                                                                  0 -0.147
+ 4  3  5  1  0 11  4  0  2 10  0  4 23  2  8 13  3  0  0  0   0      37.4
+                                                                  0 -0.147
+ 1  0  0  0  3  1  4  3  0 16  0  4 22  0 22  0  8  3  0  6   0      75.0
+                                                                  0 -0.147
+10  0 11  6 13  9  0  0  0  0  0  2 19  0  0 10  4  0  1  8   0      56.0
+                                                                 57 -151.
+10  0  6  3  0  8 10  0  4  7  0  0 21  4  5  4  1  7  1  2   0      23.8
+                                                                  0 -0.147
+ 9  2  0  0  2  0  0  0  0 10  0  0  0  0 38 19  0  9  4  0   0      117.
+                                                                  0 -0.147
+ 1  5  0  7  1  2  0  5  0 13  0  1  0  0  0  5  0 10  0  1  42     -74.0
+                                                                  0 -0.147
+ 0  0  5  0  2 19  0 10  0  1  0  0 19  0  8  0  6 17  0  6   0      67.4
+                                                                  0 -0.147
+15  0  0  1  5  0  1  0  0 20  3  0 10 16 21  1  0  0  0  0   0      83.7
+                                                                  0 -0.147
+40  0  0  0  0  3  0  0  0  0  0  0  0  8 31  6  5  0  0  0   0      156.
+                                                                397 -353.
+18  0  0  9  0  2 11  0  1 27  0  0 10  1  0  1  3  8  0  2   0      62.1
+                                                                  0 -0.147
+ 0 33  0  0  0  0  0  0  0  0  0  0  0  0 60  0  0  0  0  0   0      337.
+                                                                  0 -0.147
+ 4  5  8 10  2  0 11  0  0  3  1  0  9  0 14  0  4  6  0 16   0      59.6
+

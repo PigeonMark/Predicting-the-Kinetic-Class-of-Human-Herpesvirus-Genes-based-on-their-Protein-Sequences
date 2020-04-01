@@ -1,5 +1,4 @@
 import argparse
-import numpy as np
 from BaseData import BaseData
 from PaperSelection import Selector
 from Counting import Counter
@@ -8,7 +7,8 @@ from FeatureExtraction import FeatureExtraction
 from DebugInfoCollector import DebugInfoCollector
 from DataPlotter import DataPlotter
 from HomologyFilter import HomologyFilter
-from Classification import Classification, ClassificationPlotter
+from Classification import Classification, ClassificationPlotter, PCAPlotter
+from Util import create_fasta
 
 
 def main():
@@ -137,8 +137,11 @@ def main():
             if args.plot:
                 cp = ClassificationPlotter('config/classification_config.json', args.features)
                 cp.plot_all()
-                cp.plot_feature_importance('ML', 'RF')
+
+                pcap = PCAPlotter('config/classification_config.json')
+                pcap.plot(args.features)
 
 
 if __name__ == "__main__":
     main()
+    create_fasta('config/multi_sequence_fasta.json')

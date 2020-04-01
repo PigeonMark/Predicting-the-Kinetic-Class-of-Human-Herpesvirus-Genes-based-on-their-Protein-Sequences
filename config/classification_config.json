@@ -4,11 +4,15 @@
   "input_data_folder": "FeatureExtraction/Output/csv/",
   "output_result_directory": "Classification/Output/raw/",
   "output_bar_plot_directory": "Classification/Output/plots/bar/",
-  "output_fi_plot_directory": "Classification/Output/plots/fi/",
-  "filter_latent": false,
-  "standardization": false,
+  "output_roc_curves_plot_directory": "Classification/Output/plots/roc_curves/",
+  "output_pi_plot_directory": "Classification/Output/plots/pi/",
+  "output_pca_plot_directory": "Classification/Output/plots/pca/",
+  "filter_latent": true,
+  "standardization": true,
   "pca_features": false,
-  "n-pca": [null],
+  "n-pca": [
+    null
+  ],
   "ML-method-options": [
     "1vsA",
     "ML",

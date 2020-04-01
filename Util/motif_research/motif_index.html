@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Create two unequal columns that floats next to each other */
+        .column {
+            float: left;
+            padding: 10px;
+        }
+
+        .left {
+            width: 15%;
+        }
+
+        .right {
+            width: 85%;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Find Motifs</title>
+</head>
+<body>
+<div class="row">
+    <div class="column left">
+<h1>Search Motifs</h1><a id="search_immediate-early" href="#">immediate-early</a><br>
+<a id="search_early" href="#">early</a><br>
+<a id="search_late" href="#">late</a><br>
+<a id="search_latent" href="#">latent</a><br>
+<h1>Find Motifs</h1>
+<h2>immediate-early motifs</h2>
+<a id="find_immediate-early_immediate-early" href="#">immediate-early sequences</a><br>
+<a id="find_immediate-early_early" href="#">early sequences</a><br>
+<a id="find_immediate-early_late" href="#">late sequences</a><br>
+<a id="find_immediate-early_latent" href="#">latent sequences</a><br>
+<h2>early motifs</h2>
+<a id="find_early_immediate-early" href="#">immediate-early sequences</a><br>
+<a id="find_early_early" href="#">early sequences</a><br>
+<a id="find_early_late" href="#">late sequences</a><br>
+<a id="find_early_latent" href="#">latent sequences</a><br>
+<h2>late motifs</h2>
+<a id="find_late_immediate-early" href="#">immediate-early sequences</a><br>
+<a id="find_late_early" href="#">early sequences</a><br>
+<a id="find_late_late" href="#">late sequences</a><br>
+<a id="find_late_latent" href="#">latent sequences</a><br>
+<h2>latent motifs</h2>
+<a id="find_latent_immediate-early" href="#">immediate-early sequences</a><br>
+<a id="find_latent_early" href="#">early sequences</a><br>
+<a id="find_latent_late" href="#">late sequences</a><br>
+<a id="find_latent_latent" href="#">latent sequences</a><br>
+<h1>Compare Motifs</h1>
+<a id="compare_immediate-early" href="#">immediate-early</a><br>
+<a id="compare_early" href="#">early</a><br>
+<a id="compare_late" href="#">late</a><br>
+<a id="compare_latent" href="#">latent</a><br>
+</div>
+    <div id="right-column" class="column right">
+    </div>
+</div>
+</body>
+<script>
+document.getElementById('search_immediate-early').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>Motifs of immediate-early sequences</h1><iframe src="./motifs/immediate-early/meme.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+document.getElementById('search_early').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>Motifs of early sequences</h1><iframe src="./motifs/early/meme.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+document.getElementById('search_late').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>Motifs of late sequences</h1><iframe src="./motifs/late/meme.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+document.getElementById('search_latent').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>Motifs of latent sequences</h1><iframe src="./motifs/latent/meme.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+document.getElementById('find_immediate-early_immediate-early').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>immediate-early motifs found in immediate-early sequences</h1><iframe src="./find_motifs/immediate-early_immediate-early/fimo.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+document.getElementById('find_immediate-early_early').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>immediate-early motifs found in early sequences</h1><iframe src="./find_motifs/immediate-early_early/fimo.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+document.getElementById('find_immediate-early_late').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>immediate-early motifs found in late sequences</h1><iframe src="./find_motifs/immediate-early_late/fimo.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+document.getElementById('find_immediate-early_latent').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>immediate-early motifs found in latent sequences</h1><iframe src="./find_motifs/immediate-early_latent/fimo.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+document.getElementById('find_early_immediate-early').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>early motifs found in immediate-early sequences</h1><iframe src="./find_motifs/early_immediate-early/fimo.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+document.getElementById('find_early_early').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>early motifs found in early sequences</h1><iframe src="./find_motifs/early_early/fimo.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+document.getElementById('find_early_late').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>early motifs found in late sequences</h1><iframe src="./find_motifs/early_late/fimo.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+document.getElementById('find_early_latent').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>early motifs found in latent sequences</h1><iframe src="./find_motifs/early_latent/fimo.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+document.getElementById('find_late_immediate-early').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>late motifs found in immediate-early sequences</h1><iframe src="./find_motifs/late_immediate-early/fimo.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+document.getElementById('find_late_early').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>late motifs found in early sequences</h1><iframe src="./find_motifs/late_early/fimo.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+document.getElementById('find_late_late').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>late motifs found in late sequences</h1><iframe src="./find_motifs/late_late/fimo.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+document.getElementById('find_late_latent').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>late motifs found in latent sequences</h1><iframe src="./find_motifs/late_latent/fimo.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+document.getElementById('find_latent_immediate-early').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>latent motifs found in immediate-early sequences</h1><iframe src="./find_motifs/latent_immediate-early/fimo.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+document.getElementById('find_latent_early').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>latent motifs found in early sequences</h1><iframe src="./find_motifs/latent_early/fimo.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+document.getElementById('find_latent_late').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>latent motifs found in late sequences</h1><iframe src="./find_motifs/latent_late/fimo.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+document.getElementById('find_latent_latent').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>latent motifs found in latent sequences</h1><iframe src="./find_motifs/latent_latent/fimo.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+document.getElementById('compare_immediate-early').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>Compared motifs of immediate-early against known motifs</h1><iframe src="./compare_motifs/immediate-early/tomtom.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+document.getElementById('compare_early').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>Compared motifs of early against known motifs</h1><iframe src="./compare_motifs/early/tomtom.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+document.getElementById('compare_late').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>Compared motifs of late against known motifs</h1><iframe src="./compare_motifs/late/tomtom.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+document.getElementById('compare_latent').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>Compared motifs of latent against known motifs</h1><iframe src="./compare_motifs/latent/tomtom.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+</script>
+</html>
