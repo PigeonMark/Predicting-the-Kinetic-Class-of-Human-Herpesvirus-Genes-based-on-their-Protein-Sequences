@@ -92,7 +92,7 @@ class ClassificationPlotter:
         filename = compose_filename(self.config['output_bar_plot_directory'], self.config['filter_latent'],
                                     self.config['standardization'], n_pca, self.SAVE_TITLE[score_metric], self.name, '')
         plt.savefig(filename)
-        plt.clf()
+        plt.close()
         print()
 
     def plot_roc_class(self, ml_method, classifier, class_, label, ls):
@@ -141,7 +141,7 @@ class ClassificationPlotter:
                                     self.config['standardization'], n_pca, f'ROC_curves_{ml_method}_{classifier}',
                                     self.name, '')
         plt.savefig(filename)
-        plt.clf()
+        plt.close()
 
     def _plot_all(self, n_pca):
         self.plot('ba', n_pca)
@@ -204,4 +204,4 @@ class ClassificationPlotter:
                                     self.config['standardization'], n_pca,
                                     f'permutation_importance_{ml_method}_{classifier}', self.name, '')
         plt.savefig(filename)
-        plt.clf()
+        plt.close()

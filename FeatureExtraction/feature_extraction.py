@@ -3,6 +3,8 @@ Adapted from https://github.com/bittremieux/TCR-Classifier/blob/master/tcr_class
 """
 import json
 import itertools
+import pickle
+
 import numpy as np
 import pandas as pd
 from pyteomics import electrochem, mass, parser
@@ -16,6 +18,7 @@ class FeatureExtraction:
         self.physchem_properties = {}
         self.data_frame = None  # type: pd.DataFrame
         self.output_csv_directory = None
+        self.output_pca_directory = None
         self.feature_possibilities = None
         self.filter_phase = False
         self.standardization = False
@@ -30,6 +33,7 @@ class FeatureExtraction:
         with open(config_filepath) as config_file:
             config = json.load(config_file)
             self.output_csv_directory = config['output_csv_directory']
+            self.output_pca_directory = config['output_pca_directory']
             self.physchem_properties = {'basicity': config['basicity'],
                                         'hydrophobicity': config['hydrophobicity'],
                                         'helicity': config['helicity'],
@@ -116,7 +120,12 @@ class FeatureExtraction:
         columns_to_pca = [col for col in self.data_frame.columns if col not in self.skip_features]
         columns_to_keep = [col for col in self.data_frame.columns if col in self.skip_features]
 
-        new_features = PCA(n_components=n).fit_transform(self.data_frame[columns_to_pca])
+        pca = PCA(n_components=n)
+        pca.fit(self.data_frame[columns_to_pca])
+
+        pickle.dump(pca, open(f"{self.output_pca_directory}{str(n)}-pca.p", 'wb'))
+
+        new_features = pca.transform(self.data_frame[columns_to_pca])
         nf_df = pd.DataFrame(new_features, columns=[f'comp_{i}' for i in range(new_features.shape[1])])
 
         self.data_frame = pd.concat([self.data_frame[columns_to_keep], nf_df], axis=1)

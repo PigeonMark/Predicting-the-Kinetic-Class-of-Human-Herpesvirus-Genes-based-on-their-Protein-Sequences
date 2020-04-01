@@ -140,6 +140,7 @@ def main():
 
                 pcap = PCAPlotter('config/classification_config.json')
                 pcap.plot(args.features)
+                pcap.plot_explained_variance(args.features)
 
 
 if __name__ == "__main__":

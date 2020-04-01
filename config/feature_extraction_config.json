@@ -1,6 +1,7 @@
 {
   "input_csv_file": "HomologyFilter/Output/csv/filtered_features_80.csv",
   "output_csv_directory": "FeatureExtraction/Output/csv/",
+  "output_pca_directory": "FeatureExtraction/Output/pca/",
   "filter_latent": true,
   "standardization": true,
   "pca_features": true,
