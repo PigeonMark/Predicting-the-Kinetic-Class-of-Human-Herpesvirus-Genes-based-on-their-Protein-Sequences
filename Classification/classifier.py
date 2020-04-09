@@ -63,10 +63,17 @@ def add_macro_roc_scores(cv_results, estimator):
     cv_results['roc_auc']['macro'].append(auc(all_fpr, mean_tpr))
 
 
-def add_roc_scores(cv_results, estimator, x_test, y_test):
+def add_roc_pr_scores(cv_results, estimator, x_test, y_test):
     if hasattr(estimator, 'predict_proba'):
         y_score = estimator.predict_proba(x_test)
         y_test_bin = label_binarize(y_test, classes=estimator.classes_)
+
+        for i, class_ in enumerate(estimator.classes_):
+            cv_results['y_real'][class_].append(y_test_bin[:, i])
+            cv_results['y_proba'][class_].append(y_score[:, i])
+
+        cv_results['y_real']['micro'].append(y_test_bin.ravel())
+        cv_results['y_proba']['micro'].append(y_score.ravel())
 
         add_class_roc_scores(cv_results, estimator, y_test_bin, y_score)
         add_micro_roc_scores(cv_results, y_test_bin, y_score)
@@ -84,12 +91,20 @@ def add_feature_permutation_importance(cv_results, estimator, x_train, y_train):
     cv_results['permutation_importance'].append(result['importances_mean'])
 
 
+def add_wrong_classifications(cv_results, estimator, x_test, y_test):
+    predicted = estimator.predict(x_test)
+    for i, y_t in enumerate(y_test):
+        if predicted[i] != y_t:
+            cv_results['wrong_classifications'][y_t][predicted[i]] += 1
+
+
 def cross_validate(estimator, x, y, scoring, cv: ShuffleSplit):
     cv_results = {name: [] for name, _ in scoring.items()}
     cv_results['permutation_importance'] = []
-    cv_results['fpr'] = {class_: [] for class_ in ['early', 'immediate-early', 'late', 'micro', 'macro']}
-    cv_results['tpr'] = {class_: [] for class_ in ['early', 'immediate-early', 'late', 'micro', 'macro']}
-    cv_results['roc_auc'] = {class_: [] for class_ in ['early', 'immediate-early', 'late', 'micro', 'macro']}
+    for metric in ['fpr', 'tpr', 'roc_auc', 'y_real', 'y_proba']:
+        cv_results[metric] = {class_: [] for class_ in ['early', 'immediate-early', 'late', 'micro', 'macro']}
+    cv_results['wrong_classifications'] = {class_: {class_2: 0 for class_2 in ['early', 'immediate-early', 'late']} for
+                                           class_ in ['early', 'immediate-early', 'late']}
 
     widgets = [progressbar.Percentage(), ' done']
     bar = progressbar.ProgressBar(widgets=widgets, max_value=cv.n_splits).start()
@@ -103,7 +118,8 @@ def cross_validate(estimator, x, y, scoring, cv: ShuffleSplit):
 
         estimator.fit(x_train, y_train)
 
-        add_roc_scores(cv_results, estimator, x_test, y_test)
+        add_wrong_classifications(cv_results, estimator, x_test, y_test)
+        add_roc_pr_scores(cv_results, estimator, x_test, y_test)
         add_scorer_scores(cv_results, estimator, scoring, x_test, y_test)
         add_feature_permutation_importance(cv_results, estimator, x_train, y_train)
 
@@ -195,4 +211,5 @@ class Classifier:
             cv_results = cross_validate(self.__create_classifier(), x.values, y.values, create_scorers(), k_fold)
 
         cv_results['features'] = features
+
         return cv_results

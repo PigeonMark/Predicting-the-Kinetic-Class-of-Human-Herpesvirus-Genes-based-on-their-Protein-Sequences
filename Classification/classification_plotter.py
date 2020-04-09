@@ -1,8 +1,12 @@
 import json
 import pickle
 import matplotlib.pyplot as plt
+from matplotlib import cm
+from matplotlib.colors import ListedColormap
+from mpl_toolkits.axes_grid1 import make_axes_locatable
 import numpy as np
-from sklearn.metrics import auc
+import pandas as pd
+from sklearn.metrics import auc, precision_recall_curve, average_precision_score
 
 from Util import compose_filename, compose_configuration
 
@@ -143,6 +147,38 @@ class ClassificationPlotter:
         plt.savefig(filename)
         plt.close()
 
+    def plot_pr_class(self, ml_method, classifier, class_, label, ls):
+        y_real = np.concatenate(self.results[ml_method][classifier]['y_real'][class_])
+        y_proba = np.concatenate(self.results[ml_method][classifier]['y_proba'][class_])
+
+        precision, recall, _ = precision_recall_curve(y_real, y_proba)
+        ap = average_precision_score(y_real, y_proba, average='weighted')
+        plt.plot(recall, precision, ls, lw=2.5, label=r'%s (AP = %0.2f)' % (label, ap))
+
+    def plot_pr(self, ml_method, classifier, n_pca):
+        title = compose_configuration(f'PR curves of {ml_method} {classifier}', self.config['filter_latent'],
+                                      self.config['standardization'], n_pca, self.name)
+        print(f"Plotting {title}")
+        plt.figure(figsize=(8, 6))
+
+        self.plot_pr_class(ml_method, classifier, 'micro', f'micro-average PR curve', ':')
+
+        for class_ in ['early', 'immediate-early', 'late']:
+            self.plot_pr_class(ml_method, classifier, class_, f'Mean PR curve of {class_}', '-')
+
+        plt.legend()
+        plt.title(title)
+        plt.xlim([0.0, 1.0])
+        plt.ylim([0.0, 1.05])
+        plt.xlabel('Recall')
+        plt.ylabel('Precision')
+        plt.tight_layout()
+        filename = compose_filename(self.config['output_pr_curves_plot_directory'], self.config['filter_latent'],
+                                    self.config['standardization'], n_pca, f'PR_curves_{ml_method}_{classifier}',
+                                    self.name, '')
+        plt.savefig(filename)
+        plt.close()
+
     def _plot_all(self, n_pca):
         self.plot('ba', n_pca)
         self.plot('a_ba', n_pca)
@@ -155,6 +191,12 @@ class ClassificationPlotter:
                 if len(result['fpr']['early']) > 0:
                     self.plot_roc(ml_method, classifier, n_pca)
 
+    def _plot_pr(self, n_pca):
+        for ml_method, classifiers in self.results.items():
+            for classifier, result in classifiers.items():
+                if 'y_real' in result and len(result['y_real']['early']) > 0:
+                    self.plot_pr(ml_method, classifier, n_pca)
+
     def plot_all(self):
         if self.config['pca_features'] is True:
             for n in self.config['n-pca']:
@@ -166,7 +208,10 @@ class ClassificationPlotter:
             self.load_results('no-pca')
             self._plot_all('no-pca')
             self._plot_roc('no-pca')
+            self._plot_pr('no-pca')
+            self.pi_corr_matrix()
             self._plot_pi('no-pca')
+            self.plot_wrong_classifications()
 
     def _plot_pi(self, n_pca):
         for ml_method, classifiers in self.results.items():
@@ -204,4 +249,84 @@ class ClassificationPlotter:
                                     self.config['standardization'], n_pca,
                                     f'permutation_importance_{ml_method}_{classifier}', self.name, '')
         plt.savefig(filename)
+        plt.close()
+
+    def pi_corr_matrix(self):
+        features = list(list(self.results.items())[0][1].items())[0][1]['features']
+
+        pi = {f: [] for f in features}
+        for ml_method, classifiers in self.results.items():
+            for classifier, result in classifiers.items():
+                for feature_results in result['permutation_importance']:
+                    for i, feature_result in enumerate(feature_results):
+                        pi[features[i]].append(feature_result)
+
+        df = pd.DataFrame(pi)
+        corr = df.corr()
+        fig = plt.figure(figsize=(12, 10))
+        ax = plt.gca()
+        im = ax.matshow(corr)
+        divider = make_axes_locatable(ax)
+        cax = divider.append_axes("right", size="5%", pad=0.1)
+        cb = fig.colorbar(im, cax=cax)
+
+        ax.set_xticks(range(df.shape[1]))
+        ax.set_xticklabels(df.columns, fontsize=10, rotation=-45, rotation_mode='anchor', ha='right')
+        ax.set_yticks(range(df.shape[1]))
+        ax.set_yticklabels(df.columns, fontsize=10)
+
+        plt.title('Correlation Matrix of permutation importances of all features', y=-0.07, x=-11)
+        fig.tight_layout(pad=2)
+
+        plt.savefig(f"{self.config['output_pi_corr_matrix_plot_directory']}pi_correlation_matrix", dpi=150)
+
+    def plot_wrong_classifications(self):
+        fig = plt.figure(figsize=(14, 5))
+        ax = plt.gca()
+        plt.title('Number of wrong classifications for each classifier\n(p1 -> p2 == a p1 sequence was wrongly classified as a p2 sequence)', wrap=True)
+
+        divider = make_axes_locatable(ax)
+        cax = divider.append_axes("right", size="5%", pad=0.1)
+        x = []
+        y = []
+        z = []
+        ml_methods = list(self.results.keys())
+        classifiers = list(self.results[ml_methods[0]].keys())
+        gap = False
+        for classifier in classifiers:
+            for ml_method in ml_methods:
+                results = self.results[ml_method][classifier]['wrong_classifications']
+                for correct, wrongs in results.items():
+                    for wrong, number in wrongs.items():
+                        if number > 0:
+                            x.append(f'{ml_method} {classifier}')
+                            y.append(f'{correct} -> {wrong}')
+                            z.append(number/200.)
+            if not gap:
+                x.append('')
+                y.append('late -> early')
+                z.append(0)
+                gap = True
+            else:
+                x.append('  ')
+                y.append('late -> early')
+                z.append(0)
+
+
+        viridis_big = cm.get_cmap('Blues', 512)
+        new_cmp = ListedColormap(viridis_big(np.linspace(0.25, 1, 256)))
+
+        im = ax.scatter(x, y, s=[_z*200 for _z in z], c=z, cmap=new_cmp, alpha=1)
+        d = ax.collections[0]
+        offsets = d.get_offsets()
+        for i, (off_x, off_y) in enumerate(offsets):
+            if z[i] > 0:
+                if z[i] > 7:
+                    ax.text(off_x, off_y, round(z[i]), fontsize=np.sqrt(z[i])*7, ha='center', va='center', color='white')
+                else:
+                    ax.text(off_x, off_y, round(z[i]), fontsize=np.sqrt(z[i])*7, ha='center', va='center')
+
+        cb = fig.colorbar(im, cax=cax)
+        plt.tight_layout()
+        plt.savefig('Classification/Output/plots/wrong_classifications/wrong_classifications')
         plt.close()

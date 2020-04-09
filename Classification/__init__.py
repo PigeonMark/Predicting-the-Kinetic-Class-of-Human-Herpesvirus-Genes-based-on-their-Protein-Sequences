@@ -2,3 +2,4 @@ from Classification.classifier import Classifier
 from Classification.classification import Classification
 from Classification.classification_plotter import ClassificationPlotter
 from Classification.pca_plotter import PCAPlotter
+from Classification.scatter_plot_matrix import ScatterPlotMatrixPlotter

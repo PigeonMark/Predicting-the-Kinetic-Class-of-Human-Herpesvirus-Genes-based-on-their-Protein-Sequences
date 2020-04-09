@@ -7,7 +7,7 @@ from FeatureExtraction import FeatureExtraction
 from DebugInfoCollector import DebugInfoCollector
 from DataPlotter import DataPlotter
 from HomologyFilter import HomologyFilter
-from Classification import Classification, ClassificationPlotter, PCAPlotter
+from Classification import Classification, ClassificationPlotter, PCAPlotter, ScatterPlotMatrixPlotter
 from Util import create_fasta
 
 
@@ -141,6 +141,10 @@ def main():
                 pcap = PCAPlotter('config/classification_config.json')
                 pcap.plot(args.features)
                 pcap.plot_explained_variance(args.features)
+
+                spmp = ScatterPlotMatrixPlotter('config/classification_config.json')
+                spmp.plot_scatter_matrix()
+                spmp.plot_correlation_matrix()
 
 
 if __name__ == "__main__":
