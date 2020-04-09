@@ -1,0 +1,13 @@
+Query_ID	Target_ID	Optimal_offset	p-value	E-value	q-value	Overlap	Query_consensus	Target_consensus	Orientation
+SIIQAHNLCY	ELME000079	-6	0.000286227	0.0469413	0.0462969	3	SIIQAHNLCY	NLC	+
+HPVYFFKSAC	ELME000003	0	0.00869687	1.42629	0.373208	4	HPVYFFKSAC	PPLY	+
+HPVYFFKSAC	ELME000198	0	0.00885513	1.45224	0.373208	7	HPVYFFKSAC	LSLLFLK	+
+HPVYFFKSAC	ELME000346	-5	0.00946121	1.55164	0.373208	5	HPVYFFKSAC	FLLALLLALLL	+
+HPVYFFKSAC	ELME000058	0	0.00962878	1.57912	0.373208	5	HPVYFFKSAC	PPLLF	+
+WAIFINNKRC	ELME000100	-7	0.000541137	0.0887464	0.085706	3	WAIFINNKRC	KRL	+
+WAIFINNKRC	ELME000379	-3	0.00111698	0.183185	0.0884546	7	WAIFINNKRC	RILLKRLLALLLLLLR	+
+DGQQIRVFSC	ELME000192	2	0.00222386	0.364713	0.364311	5	DGQQIRVFSC	QLDGLLE	+
+
+# Tomtom (Motif Comparison Tool): Version 5.1.1 compiled on Mar 31 2020 at 14:58:03
+# The format of this file is described at http://meme-suite.org/doc/tomtom-output-format.html.
+# tomtom -oc Util/motif_research_short_motifs/compare_motifs/early Util/motif_research_short_motifs/motifs/early/meme.txt Util/motif_research_short_motifs/motifs/elm2018.meme

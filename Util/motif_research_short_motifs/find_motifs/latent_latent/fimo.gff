@@ -1,0 +1,24 @@
+##gff-version 3
+HHV_6A_q00683_rep_u94	fimo	sequence_motif	62	68	79.1	+	.	Name=IKHCTAC_HHV_6A_q00683_rep_u94+;Alias=MEME-1;ID=IKHCTAC-MEME-1-1-HHV_6A_q00683_rep_u94;pvalue=1.21e-08;qvalue=2.42e-05;sequence=IKWITAC;
+EBV_lmp2_p0c729_p13285_q1hvj2	fimo	sequence_motif	470	476	81.2	+	.	Name=IKHCTAC_EBV_lmp2_p0c729_p13285_q1hvj2+;Alias=MEME-1;ID=IKHCTAC-MEME-1-1-EBV_lmp2_p0c729_p13285_q1hvj2;pvalue=7.64e-09;qvalue=1.9e-05;sequence=IRCCRYC;
+KSHV_f5hic6_virf-3	fimo	sequence_motif	114	120	94.5	+	.	Name=IKHCTAC_KSHV_f5hic6_virf-3+;Alias=MEME-1;ID=IKHCTAC-MEME-1-1-KSHV_f5hic6_virf-3;pvalue=3.52e-10;qvalue=3.51e-06;sequence=VKECWWC;
+KSHV_k15_q9qr69	fimo	sequence_motif	109	115	88.6	+	.	Name=IKHCTAC_KSHV_k15_q9qr69+;Alias=MEME-1;ID=IKHCTAC-MEME-1-1-KSHV_k15_q9qr69;pvalue=1.38e-09;qvalue=6.9e-06;sequence=IKHCTAC;
+HCMV_f5hc71_p17150_ul111a	fimo	sequence_motif	75	81	83.9	+	.	Name=IKHCTAC_HCMV_f5hc71_p17150_ul111a+;Alias=MEME-1;ID=IKHCTAC-MEME-1-1-HCMV_f5hc71_p17150_ul111a;pvalue=4.07e-09;qvalue=1.35e-05;sequence=VKGCWGC;
+EBV_bnlf1_lmp1_p03230_p0c741_p13198_p29362_q1hvb3	fimo	sequence_motif	183	186	64.8	+	.	Name=WMYY_EBV_bnlf1_lmp1_p03230_p0c741_p13198_p29362_q1hvb3+;Alias=MEME-2;ID=WMYY-MEME-2-1-EBV_bnlf1_lmp1_p03230_p0c741_p13198_p29362_q1hvb3;pvalue=3.29e-07;qvalue=0.0033;sequence=WMYY;
+EBV_ebna3_p12977_q3kst2_q69138	fimo	sequence_motif	180	183	59.7	+	.	Name=WMYY_EBV_ebna3_p12977_q3kst2_q69138+;Alias=MEME-2;ID=WMYY-MEME-2-1-EBV_ebna3_p12977_q3kst2_q69138;pvalue=1.07e-06;qvalue=0.00537;sequence=WMYS;
+EBV_ebna3_p12977_q3kst2_q69138	fimo	sequence_motif	734	737	42.8	+	.	Name=WMYY_EBV_ebna3_p12977_q3kst2_q69138+;Alias=MEME-2;ID=WMYY-MEME-2-2-EBV_ebna3_p12977_q3kst2_q69138;pvalue=5.28e-05;qvalue=0.0883;sequence=WMFP;
+EBV_ebna3_p12977_q3kst2_q69138	fimo	sequence_motif	787	790	42.8	+	.	Name=WMYY_EBV_ebna3_p12977_q3kst2_q69138+;Alias=MEME-2;ID=WMYY-MEME-2-3-EBV_ebna3_p12977_q3kst2_q69138;pvalue=5.28e-05;qvalue=0.0883;sequence=WMFQ;
+KSHV_orf72_q77q36	fimo	sequence_motif	57	60	55.5	+	.	Name=WMYY_KSHV_orf72_q77q36+;Alias=MEME-2;ID=WMYY-MEME-2-1-KSHV_orf72_q77q36;pvalue=2.8e-06;qvalue=0.00702;sequence=WMFS;
+HCMV_f5hf62_p69332_p69333_us28	fimo	sequence_motif	89	92	57.2	+	.	Name=WMYY_HCMV_f5hf62_p69332_p69333_us28+;Alias=MEME-2;ID=WMYY-MEME-2-1-HCMV_f5hf62_p69332_p69333_us28;pvalue=1.89e-06;qvalue=0.00631;sequence=WMQY;
+EBV_lmp2_p0c729_p13285_q1hvj2	fimo	sequence_motif	477	480	64.5	+	.	Name=CYYR_EBV_lmp2_p0c729_p13285_q1hvj2+;Alias=MEME-3;ID=CYYR-MEME-3-1-EBV_lmp2_p0c729_p13285_q1hvj2;pvalue=3.52e-07;qvalue=0.00353;sequence=CYYC;
+EBV_lmp2_p0c729_p13285_q1hvj2	fimo	sequence_motif	473	476	43.9	+	.	Name=CYYR_EBV_lmp2_p0c729_p13285_q1hvj2+;Alias=MEME-3;ID=CYYR-MEME-3-2-EBV_lmp2_p0c729_p13285_q1hvj2;pvalue=4.04e-05;qvalue=0.081;sequence=CRYC;
+EBV_lmp2_p0c729_p13285_q1hvj2	fimo	sequence_motif	476	479	43.9	+	.	Name=CYYR_EBV_lmp2_p0c729_p13285_q1hvj2+;Alias=MEME-3;ID=CYYR-MEME-3-3-EBV_lmp2_p0c729_p13285_q1hvj2;pvalue=4.04e-05;qvalue=0.081;sequence=CCYY;
+HCMV_f5haq7_q6swm9_ul135	fimo	sequence_motif	57	60	56.7	+	.	Name=CYYR_HCMV_f5haq7_q6swm9_ul135+;Alias=MEME-3;ID=CYYR-MEME-3-1-HCMV_f5haq7_q6swm9_ul135;pvalue=2.11e-06;qvalue=0.00706;sequence=CCYR;
+HCMV_f5hf62_p69332_p69333_us28	fimo	sequence_motif	207	210	58.1	+	.	Name=CYYR_HCMV_f5hf62_p69332_p69333_us28+;Alias=MEME-3;ID=CYYR-MEME-3-1-HCMV_f5hf62_p69332_p69333_us28;pvalue=1.56e-06;qvalue=0.00706;sequence=CYYR;
+EBV_byrf1_ebna2_p12978_q3ksv2_q69022	fimo	sequence_motif	282	284	42.2	+	.	Name=FYN_EBV_byrf1_ebna2_p12978_q3ksv2_q69022+;Alias=MEME-4;ID=FYN-MEME-4-1-EBV_byrf1_ebna2_p12978_q3ksv2_q69022;pvalue=6.07e-05;qvalue=0.203;sequence=FYN;
+KSHV_orf54_q2hr78	fimo	sequence_motif	202	204	42.2	+	.	Name=FYN_KSHV_orf54_q2hr78+;Alias=MEME-4;ID=FYN-MEME-4-1-KSHV_orf54_q2hr78;pvalue=6.07e-05;qvalue=0.203;sequence=FYN;
+KSHV_orf72_q77q36	fimo	sequence_motif	22	24	42.2	+	.	Name=FYN_KSHV_orf72_q77q36+;Alias=MEME-4;ID=FYN-MEME-4-1-KSHV_orf72_q77q36;pvalue=6.07e-05;qvalue=0.203;sequence=FYN;
+EBV_blrf3_q07286	fimo	sequence_motif	27	36	109	+	.	Name=QVSEGDWENV_EBV_blrf3_q07286+;Alias=MEME-5;ID=QVSEGDWENV-MEME-5-1-EBV_blrf3_q07286;pvalue=1.19e-11;qvalue=3.91e-08;sequence=RASEGDWENV;
+EBV_ebna3_p12977_q3kst2_q69138	fimo	sequence_motif	28	37	120	+	.	Name=QVSEGDWENV_EBV_ebna3_p12977_q3kst2_q69138+;Alias=MEME-5;ID=QVSEGDWENV-MEME-5-1-EBV_ebna3_p12977_q3kst2_q69138;pvalue=1.07e-12;qvalue=1.06e-08;sequence=QVSAGDWENV;
+KSHV_lana1_orf73_q9qr71	fimo	sequence_motif	320	329	99.9	+	.	Name=QVSEGDWENV_KSHV_lana1_orf73_q9qr71+;Alias=MEME-5;ID=QVSEGDWENV-MEME-5-1-KSHV_lana1_orf73_q9qr71;pvalue=1.02e-10;qvalue=2.53e-07;sequence=QVDKDDNDNK;
+KSHV_orf75_q9qr70	fimo	sequence_motif	204	213	110	+	.	Name=QVSEGDWENV_KSHV_orf75_q9qr70+;Alias=MEME-5;ID=QVSEGDWENV-MEME-5-1-KSHV_orf75_q9qr70;pvalue=9.94e-12;qvalue=3.91e-08;sequence=QASTGDNYNV;

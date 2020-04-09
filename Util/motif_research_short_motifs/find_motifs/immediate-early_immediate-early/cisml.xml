@@ -1,0 +1,604 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<!-- Document definition -->
+<!-- http://zlab.bu.edu/~phaverty/SupplementalData/CisML/cisml.dtd -->
+<!DOCTYPE cis-element-search[
+<!ELEMENT cis-element-search (program-name, parameters, (pattern | multi-pattern-scan)*)>
+<!ELEMENT program-name (#PCDATA)>
+<!ELEMENT parameters (
+  pattern-file, 
+  sequence-file, 
+  background-seq-file?,
+  pattern-pvalue-cutoff?,
+  sequence-pvalue-cutoff?,
+  site-pvalue-cutoff?,
+  sequence-filtering,
+  ANY*
+ )>
+<!ELEMENT command-line (#PCDATA)>
+<!ELEMENT pattern-file (#PCDATA)>
+<!ELEMENT sequence-file (#PCDATA)>
+<!ELEMENT background-seq-file (#PCDATA)>
+<!ELEMENT pattern-pvalue-cutoff (#PCDATA)>
+<!ELEMENT sequence-pvalue-cutoff (#PCDATA)>
+<!ELEMENT site-pvalue-cutoff (#PCDATA)>
+<!ELEMENT sequence-filtering EMPTY>
+<!ELEMENT multi-pattern-scan (pattern+, ANY*)>
+<!ELEMENT pattern (scanned-sequence+, ANY*)>
+<!ELEMENT scanned-sequence (matched-element*, ANY*)>
+<!ELEMENT matched-element (sequence)>
+<!ELEMENT sequence (#PCDATA)>
+<!ATTLIST cis-element-search
+xmlns:xsi CDATA #IMPLIED
+xmlns:mem CDATA #IMPLIED
+xsi:schemaLocation CDATA #IMPLIED
+>
+<!ATTLIST sequence-filtering
+on-off CDATA #REQUIRED
+type CDATA #IMPLIED
+>
+<!ATTLIST multi-pattern-scan
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+>
+<!ATTLIST pattern
+accession CDATA #REQUIRED
+name CDATA #REQUIRED
+pvalue CDATA #IMPLIED
+score CDATA #IMPLIED
+db CDATA #IMPLIED
+lsid CDATA #IMPLIED
+>
+<!ATTLIST scanned-sequence
+accession CDATA #REQUIRED
+name CDATA #REQUIRED
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+length CDATA #IMPLIED
+db CDATA #IMPLIED
+lsid CDATA #IMPLIED
+>
+<!ATTLIST matched-element
+start CDATA #REQUIRED
+stop CDATA #REQUIRED
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+clusterid CDATA #IMPLIED
+>
+
+]>
+<cis-element-search
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://zlab.bu.edu/schema/cisml cisml.xsd"
+  xmlns="http://zlab.bu.edu/schema/cisml"
+  xmlns:mem="http://noble.gs.washington.edu/meme"
+>
+<program-name>fimo</program-name>
+<parameters>
+<command-line>fimo -oc Util/motif_research_short_motifs/find_motifs/immediate-early_immediate-early Util/motif_research_short_motifs/motifs/immediate-early/meme.txt Util/multi_sequence_fasta/immediate-early.fasta</command-line>
+<pattern-file>Util/motif_research_short_motifs/motifs/immediate-early/meme.txt</pattern-file>
+<sequence-file>Util/multi_sequence_fasta/immediate-early.fasta</sequence-file>
+<site-pvalue-cutoff>0.0001</site-pvalue-cutoff>
+<sequence-filtering on-off="off"/>
+</parameters>
+<pattern accession="YYKMLIHHNL" name="MEME-1">
+<scanned-sequence accession="HHV_6A_q89882_u95" name="HHV_6A_q89882_u95">
+</scanned-sequence>
+<scanned-sequence accession="HHV_6B_q77pu6_u90" name="HHV_6B_q77pu6_u90">
+<matched-element start="174" stop="183" score="28.5843" pvalue="1.68e-10">
+<sequence>YAKMLSGKNL</sequence>
+<mem:qvalue>6.09e-07</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="HHV_6B_q9qj12_u95" name="HHV_6B_q9qj12_u95">
+</scanned-sequence>
+<scanned-sequence accession="HHV_6B_q9qj47_u17" name="HHV_6B_q9qj47_u17">
+</scanned-sequence>
+<scanned-sequence accession="EBV_bzlf1_p03206_q1hvg1_q3kss8" name="EBV_bzlf1_p03206_q1hvg1_q3kss8">
+</scanned-sequence>
+<scanned-sequence accession="EBV_brlf1_p03209_q1hvg0_q3kss7" name="EBV_brlf1_p03209_q1hvg0_q3kss7">
+</scanned-sequence>
+<scanned-sequence accession="KSHV_f5hde4_orf45" name="KSHV_f5hde4_orf45">
+</scanned-sequence>
+<scanned-sequence accession="KSHV_orf48_q2hr85" name="KSHV_orf48_q2hr85">
+</scanned-sequence>
+<scanned-sequence accession="KSHV_f5hgj3_orf16_vbcl2" name="KSHV_f5hgj3_orf16_vbcl2">
+</scanned-sequence>
+<scanned-sequence accession="KSHV_f5hcv3_orf50" name="KSHV_f5hcv3_orf50">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_f5hay6_p16767_ul36" name="HCMV_f5hay6_p16767_ul36">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_p09695_q6svx2_trs1" name="HCMV_p09695_q6svx2_trs1">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_p16749_q6sw73_ul69" name="HCMV_p16749_q6sw73_ul69">
+<matched-element start="348" stop="357" score="5.53933" pvalue="2.33e-06">
+<sequence>YMKYHHLHGL</sequence>
+<mem:qvalue>0.00724</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="HCMV_p06434_p06435_p19893_q6sw29_q6swp7_ul122" name="HCMV_p06434_p06435_p19893_q6sw29_q6swp7_ul122">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_f5hbc6_p06726_p24429_ul82" name="HCMV_f5hbc6_p06726_p24429_ul82">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_p16778_q6sw94_ul37" name="HCMV_p16778_q6sw94_ul37">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_f7v999_us33a" name="HCMV_f7v999_us33a">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_b9vxd7_f5heu0_p09712_us3" name="HCMV_b9vxd7_f5heu0_p09712_us3">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_f5he12_p16766_ul35" name="HCMV_f5he12_p16766_ul35">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_p16737_ul106" name="HCMV_p16737_ul106">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_f5hcm1_p03169_p13202_ul123" name="HCMV_f5hcm1_p03169_p13202_ul123">
+</scanned-sequence>
+<scanned-sequence accession="HSV_1_icp4_ie175_p08392_rs1" name="HSV_1_icp4_ie175_p08392_rs1">
+</scanned-sequence>
+<scanned-sequence accession="HSV_1_p03170_us12" name="HSV_1_p03170_us12">
+</scanned-sequence>
+<scanned-sequence accession="HSV_1_p10238_p36295_ul54" name="HSV_1_p10238_p36295_ul54">
+<matched-element start="362" stop="371" score="41.6067" pvalue="7.1e-16">
+<sequence>WCKMCIHHNL</sequence>
+<mem:qvalue>7.72e-12</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="HSV_1_icp0_p08393" name="HSV_1_icp0_p08393">
+</scanned-sequence>
+<scanned-sequence accession="HSV_1_icp22_p04485_us1" name="HSV_1_icp22_p04485_us1">
+<matched-element start="284" stop="293" score="-5.26966" pvalue="8.28e-05">
+<sequence>YGPECDLSNL</sequence>
+<mem:qvalue>0.225</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p28276_ul54" name="HSV_2_p28276_ul54">
+<matched-element start="362" stop="371" score="41.6067" pvalue="7.1e-16">
+<sequence>WCKMCIHHNL</sequence>
+<mem:qvalue>7.72e-12</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p14379_p89474_us1" name="HSV_2_p14379_p89474_us1">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p14345_p60504_us12" name="HSV_2_p14345_p60504_us12">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p28284_rl2" name="HSV_2_p28284_rl2">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p28283_rl1" name="HSV_2_p28283_rl1">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_icp4_p90493_rs1" name="HSV_2_icp4_p90493_rs1">
+</scanned-sequence>
+<scanned-sequence accession="HHV_7_p52355_u42" name="HHV_7_p52355_u42">
+<matched-element start="200" stop="209" score="32.618" pvalue="2.39e-11">
+<sequence>YYKYHFVHNL</sequence>
+<mem:qvalue>1.73e-07</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="VZV_orf63_p09255_q77nn7" name="VZV_orf63_p09255_q77nn7">
+</scanned-sequence>
+<scanned-sequence accession="VZV_orf4_p09269_q4jqx1" name="VZV_orf4_p09269_q4jqx1">
+<matched-element start="297" stop="306" score="30.2022" pvalue="8.78e-11">
+<sequence>WIKMLAAKNL</sequence>
+<mem:qvalue>3.82e-07</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="VZV_orf11_p09263_q4jqw4" name="VZV_orf11_p09263_q4jqw4">
+</scanned-sequence>
+<scanned-sequence accession="VZV_orf62_orf71_p09310_q8azm1" name="VZV_orf62_orf71_p09310_q8azm1">
+</scanned-sequence>
+<scanned-sequence accession="HHV_6B_p52539_u42" name="HHV_6B_p52539_u42">
+<matched-element start="192" stop="201" score="31.1685" pvalue="5.6e-11">
+<sequence>YFKFHDLHNL</sequence>
+<mem:qvalue>3.04e-07</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p68335_p68336_ul48" name="HSV_2_p68335_p68336_ul48">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="YVHGKYFYCN" name="MEME-2">
+<scanned-sequence accession="HHV_6A_q89882_u95" name="HHV_6A_q89882_u95">
+</scanned-sequence>
+<scanned-sequence accession="HHV_6B_q77pu6_u90" name="HHV_6B_q77pu6_u90">
+<matched-element start="433" stop="442" score="-5.04301" pvalue="5.9e-05">
+<sequence>DEHGKYSEES</sequence>
+<mem:qvalue>0.32</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="HHV_6B_q9qj12_u95" name="HHV_6B_q9qj12_u95">
+</scanned-sequence>
+<scanned-sequence accession="HHV_6B_q9qj47_u17" name="HHV_6B_q9qj47_u17">
+</scanned-sequence>
+<scanned-sequence accession="EBV_bzlf1_p03206_q1hvg1_q3kss8" name="EBV_bzlf1_p03206_q1hvg1_q3kss8">
+</scanned-sequence>
+<scanned-sequence accession="EBV_brlf1_p03209_q1hvg0_q3kss7" name="EBV_brlf1_p03209_q1hvg0_q3kss7">
+</scanned-sequence>
+<scanned-sequence accession="KSHV_f5hde4_orf45" name="KSHV_f5hde4_orf45">
+</scanned-sequence>
+<scanned-sequence accession="KSHV_orf48_q2hr85" name="KSHV_orf48_q2hr85">
+</scanned-sequence>
+<scanned-sequence accession="KSHV_f5hgj3_orf16_vbcl2" name="KSHV_f5hgj3_orf16_vbcl2">
+</scanned-sequence>
+<scanned-sequence accession="KSHV_f5hcv3_orf50" name="KSHV_f5hcv3_orf50">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_f5hay6_p16767_ul36" name="HCMV_f5hay6_p16767_ul36">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_p09695_q6svx2_trs1" name="HCMV_p09695_q6svx2_trs1">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_p16749_q6sw73_ul69" name="HCMV_p16749_q6sw73_ul69">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_p06434_p06435_p19893_q6sw29_q6swp7_ul122" name="HCMV_p06434_p06435_p19893_q6sw29_q6swp7_ul122">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_f5hbc6_p06726_p24429_ul82" name="HCMV_f5hbc6_p06726_p24429_ul82">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_p16778_q6sw94_ul37" name="HCMV_p16778_q6sw94_ul37">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_f7v999_us33a" name="HCMV_f7v999_us33a">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_b9vxd7_f5heu0_p09712_us3" name="HCMV_b9vxd7_f5heu0_p09712_us3">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_f5he12_p16766_ul35" name="HCMV_f5he12_p16766_ul35">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_p16737_ul106" name="HCMV_p16737_ul106">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_f5hcm1_p03169_p13202_ul123" name="HCMV_f5hcm1_p03169_p13202_ul123">
+</scanned-sequence>
+<scanned-sequence accession="HSV_1_icp4_ie175_p08392_rs1" name="HSV_1_icp4_ie175_p08392_rs1">
+</scanned-sequence>
+<scanned-sequence accession="HSV_1_p03170_us12" name="HSV_1_p03170_us12">
+</scanned-sequence>
+<scanned-sequence accession="HSV_1_p10238_p36295_ul54" name="HSV_1_p10238_p36295_ul54">
+<matched-element start="500" stop="509" score="43.6667" pvalue="6.89e-15">
+<sequence>YVHGKYFYCN</sequence>
+<mem:qvalue>7.49e-11</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="HSV_1_icp0_p08393" name="HSV_1_icp0_p08393">
+</scanned-sequence>
+<scanned-sequence accession="HSV_1_icp22_p04485_us1" name="HSV_1_icp22_p04485_us1">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p28276_ul54" name="HSV_2_p28276_ul54">
+<matched-element start="500" stop="509" score="43.6667" pvalue="6.89e-15">
+<sequence>YVHGKYFYCN</sequence>
+<mem:qvalue>7.49e-11</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p14379_p89474_us1" name="HSV_2_p14379_p89474_us1">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p14345_p60504_us12" name="HSV_2_p14345_p60504_us12">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p28284_rl2" name="HSV_2_p28284_rl2">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p28283_rl1" name="HSV_2_p28283_rl1">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_icp4_p90493_rs1" name="HSV_2_icp4_p90493_rs1">
+</scanned-sequence>
+<scanned-sequence accession="HHV_7_p52355_u42" name="HHV_7_p52355_u42">
+</scanned-sequence>
+<scanned-sequence accession="VZV_orf63_p09255_q77nn7" name="VZV_orf63_p09255_q77nn7">
+</scanned-sequence>
+<scanned-sequence accession="VZV_orf4_p09269_q4jqx1" name="VZV_orf4_p09269_q4jqx1">
+<matched-element start="439" stop="448" score="36.3226" pvalue="5.68e-13">
+<sequence>RPYGKYFKCS</sequence>
+<mem:qvalue>4.12e-09</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="VZV_orf11_p09263_q4jqw4" name="VZV_orf11_p09263_q4jqw4">
+</scanned-sequence>
+<scanned-sequence accession="VZV_orf62_orf71_p09310_q8azm1" name="VZV_orf62_orf71_p09310_q8azm1">
+</scanned-sequence>
+<scanned-sequence accession="HHV_6B_p52539_u42" name="HHV_6B_p52539_u42">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p68335_p68336_ul48" name="HSV_2_p68335_p68336_ul48">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="TAAWAGNWTG" name="MEME-3">
+<scanned-sequence accession="HHV_6A_q89882_u95" name="HHV_6A_q89882_u95">
+</scanned-sequence>
+<scanned-sequence accession="HHV_6B_q77pu6_u90" name="HHV_6B_q77pu6_u90">
+</scanned-sequence>
+<scanned-sequence accession="HHV_6B_q9qj12_u95" name="HHV_6B_q9qj12_u95">
+</scanned-sequence>
+<scanned-sequence accession="HHV_6B_q9qj47_u17" name="HHV_6B_q9qj47_u17">
+</scanned-sequence>
+<scanned-sequence accession="EBV_bzlf1_p03206_q1hvg1_q3kss8" name="EBV_bzlf1_p03206_q1hvg1_q3kss8">
+</scanned-sequence>
+<scanned-sequence accession="EBV_brlf1_p03209_q1hvg0_q3kss7" name="EBV_brlf1_p03209_q1hvg0_q3kss7">
+</scanned-sequence>
+<scanned-sequence accession="KSHV_f5hde4_orf45" name="KSHV_f5hde4_orf45">
+</scanned-sequence>
+<scanned-sequence accession="KSHV_orf48_q2hr85" name="KSHV_orf48_q2hr85">
+</scanned-sequence>
+<scanned-sequence accession="KSHV_f5hgj3_orf16_vbcl2" name="KSHV_f5hgj3_orf16_vbcl2">
+</scanned-sequence>
+<scanned-sequence accession="KSHV_f5hcv3_orf50" name="KSHV_f5hcv3_orf50">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_f5hay6_p16767_ul36" name="HCMV_f5hay6_p16767_ul36">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_p09695_q6svx2_trs1" name="HCMV_p09695_q6svx2_trs1">
+<matched-element start="112" stop="121" score="-5.66292" pvalue="7.34e-05">
+<sequence>RAAFLANSTG</sequence>
+<mem:qvalue>0.387</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="HCMV_p16749_q6sw73_ul69" name="HCMV_p16749_q6sw73_ul69">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_p06434_p06435_p19893_q6sw29_q6swp7_ul122" name="HCMV_p06434_p06435_p19893_q6sw29_q6swp7_ul122">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_f5hbc6_p06726_p24429_ul82" name="HCMV_f5hbc6_p06726_p24429_ul82">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_p16778_q6sw94_ul37" name="HCMV_p16778_q6sw94_ul37">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_f7v999_us33a" name="HCMV_f7v999_us33a">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_b9vxd7_f5heu0_p09712_us3" name="HCMV_b9vxd7_f5heu0_p09712_us3">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_f5he12_p16766_ul35" name="HCMV_f5he12_p16766_ul35">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_p16737_ul106" name="HCMV_p16737_ul106">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_f5hcm1_p03169_p13202_ul123" name="HCMV_f5hcm1_p03169_p13202_ul123">
+</scanned-sequence>
+<scanned-sequence accession="HSV_1_icp4_ie175_p08392_rs1" name="HSV_1_icp4_ie175_p08392_rs1">
+<matched-element start="977" stop="986" score="43.0449" pvalue="7.12e-14">
+<sequence>TAAWAGNWTG</sequence>
+<mem:qvalue>5.01e-10</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="HSV_1_p03170_us12" name="HSV_1_p03170_us12">
+</scanned-sequence>
+<scanned-sequence accession="HSV_1_p10238_p36295_ul54" name="HSV_1_p10238_p36295_ul54">
+</scanned-sequence>
+<scanned-sequence accession="HSV_1_icp0_p08393" name="HSV_1_icp0_p08393">
+</scanned-sequence>
+<scanned-sequence accession="HSV_1_icp22_p04485_us1" name="HSV_1_icp22_p04485_us1">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p28276_ul54" name="HSV_2_p28276_ul54">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p14379_p89474_us1" name="HSV_2_p14379_p89474_us1">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p14345_p60504_us12" name="HSV_2_p14345_p60504_us12">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p28284_rl2" name="HSV_2_p28284_rl2">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p28283_rl1" name="HSV_2_p28283_rl1">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_icp4_p90493_rs1" name="HSV_2_icp4_p90493_rs1">
+<matched-element start="1005" stop="1014" score="43.0449" pvalue="7.12e-14">
+<sequence>TAAWAGNWTG</sequence>
+<mem:qvalue>5.01e-10</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="HHV_7_p52355_u42" name="HHV_7_p52355_u42">
+</scanned-sequence>
+<scanned-sequence accession="VZV_orf63_p09255_q77nn7" name="VZV_orf63_p09255_q77nn7">
+<matched-element start="244" stop="253" score="-6.32584" pvalue="9.59e-05">
+<sequence>TAAKALTALG</sequence>
+<mem:qvalue>0.405</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="VZV_orf4_p09269_q4jqx1" name="VZV_orf4_p09269_q4jqx1">
+</scanned-sequence>
+<scanned-sequence accession="VZV_orf11_p09263_q4jqw4" name="VZV_orf11_p09263_q4jqw4">
+</scanned-sequence>
+<scanned-sequence accession="VZV_orf62_orf71_p09310_q8azm1" name="VZV_orf62_orf71_p09310_q8azm1">
+<matched-element start="896" stop="905" score="43.7528" pvalue="1.67e-14">
+<sequence>THAWAGNWTG</sequence>
+<mem:qvalue>3.53e-10</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="HHV_6B_p52539_u42" name="HHV_6B_p52539_u42">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p68335_p68336_ul48" name="HSV_2_p68335_p68336_ul48">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="FCIPCMKTW" name="MEME-4">
+<scanned-sequence accession="HHV_6A_q89882_u95" name="HHV_6A_q89882_u95">
+</scanned-sequence>
+<scanned-sequence accession="HHV_6B_q77pu6_u90" name="HHV_6B_q77pu6_u90">
+</scanned-sequence>
+<scanned-sequence accession="HHV_6B_q9qj12_u95" name="HHV_6B_q9qj12_u95">
+</scanned-sequence>
+<scanned-sequence accession="HHV_6B_q9qj47_u17" name="HHV_6B_q9qj47_u17">
+</scanned-sequence>
+<scanned-sequence accession="EBV_bzlf1_p03206_q1hvg1_q3kss8" name="EBV_bzlf1_p03206_q1hvg1_q3kss8">
+</scanned-sequence>
+<scanned-sequence accession="EBV_brlf1_p03209_q1hvg0_q3kss7" name="EBV_brlf1_p03209_q1hvg0_q3kss7">
+</scanned-sequence>
+<scanned-sequence accession="KSHV_f5hde4_orf45" name="KSHV_f5hde4_orf45">
+</scanned-sequence>
+<scanned-sequence accession="KSHV_orf48_q2hr85" name="KSHV_orf48_q2hr85">
+<matched-element start="3" stop="11" score="-1.45161" pvalue="4.41e-05">
+<sequence>VCIPIPGIG</sequence>
+<mem:qvalue>0.24</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="KSHV_f5hgj3_orf16_vbcl2" name="KSHV_f5hgj3_orf16_vbcl2">
+</scanned-sequence>
+<scanned-sequence accession="KSHV_f5hcv3_orf50" name="KSHV_f5hcv3_orf50">
+<matched-element start="56" stop="64" score="33.3118" pvalue="4.23e-12">
+<sequence>VCIRIMKEC</sequence>
+<mem:qvalue>3.07e-08</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="HCMV_f5hay6_p16767_ul36" name="HCMV_f5hay6_p16767_ul36">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_p09695_q6svx2_trs1" name="HCMV_p09695_q6svx2_trs1">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_p16749_q6sw73_ul69" name="HCMV_p16749_q6sw73_ul69">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_p06434_p06435_p19893_q6sw29_q6swp7_ul122" name="HCMV_p06434_p06435_p19893_q6sw29_q6swp7_ul122">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_f5hbc6_p06726_p24429_ul82" name="HCMV_f5hbc6_p06726_p24429_ul82">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_p16778_q6sw94_ul37" name="HCMV_p16778_q6sw94_ul37">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_f7v999_us33a" name="HCMV_f7v999_us33a">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_b9vxd7_f5heu0_p09712_us3" name="HCMV_b9vxd7_f5heu0_p09712_us3">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_f5he12_p16766_ul35" name="HCMV_f5he12_p16766_ul35">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_p16737_ul106" name="HCMV_p16737_ul106">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_f5hcm1_p03169_p13202_ul123" name="HCMV_f5hcm1_p03169_p13202_ul123">
+</scanned-sequence>
+<scanned-sequence accession="HSV_1_icp4_ie175_p08392_rs1" name="HSV_1_icp4_ie175_p08392_rs1">
+</scanned-sequence>
+<scanned-sequence accession="HSV_1_p03170_us12" name="HSV_1_p03170_us12">
+</scanned-sequence>
+<scanned-sequence accession="HSV_1_p10238_p36295_ul54" name="HSV_1_p10238_p36295_ul54">
+</scanned-sequence>
+<scanned-sequence accession="HSV_1_icp0_p08393" name="HSV_1_icp0_p08393">
+<matched-element start="138" stop="146" score="41.1398" pvalue="4.05e-14">
+<sequence>FCIPCMKTW</sequence>
+<mem:qvalue>4.41e-10</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="HSV_1_icp22_p04485_us1" name="HSV_1_icp22_p04485_us1">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p28276_ul54" name="HSV_2_p28276_ul54">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p14379_p89474_us1" name="HSV_2_p14379_p89474_us1">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p14345_p60504_us12" name="HSV_2_p14345_p60504_us12">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p28284_rl2" name="HSV_2_p28284_rl2">
+<matched-element start="148" stop="156" score="41.1398" pvalue="4.05e-14">
+<sequence>FCIPCMKTW</sequence>
+<mem:qvalue>4.41e-10</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p28283_rl1" name="HSV_2_p28283_rl1">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_icp4_p90493_rs1" name="HSV_2_icp4_p90493_rs1">
+</scanned-sequence>
+<scanned-sequence accession="HHV_7_p52355_u42" name="HHV_7_p52355_u42">
+</scanned-sequence>
+<scanned-sequence accession="VZV_orf63_p09255_q77nn7" name="VZV_orf63_p09255_q77nn7">
+</scanned-sequence>
+<scanned-sequence accession="VZV_orf4_p09269_q4jqx1" name="VZV_orf4_p09269_q4jqx1">
+</scanned-sequence>
+<scanned-sequence accession="VZV_orf11_p09263_q4jqw4" name="VZV_orf11_p09263_q4jqw4">
+</scanned-sequence>
+<scanned-sequence accession="VZV_orf62_orf71_p09310_q8azm1" name="VZV_orf62_orf71_p09310_q8azm1">
+</scanned-sequence>
+<scanned-sequence accession="HHV_6B_p52539_u42" name="HHV_6B_p52539_u42">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p68335_p68336_ul48" name="HSV_2_p68335_p68336_ul48">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+<pattern accession="WMRQIPDPED" name="MEME-5">
+<scanned-sequence accession="HHV_6A_q89882_u95" name="HHV_6A_q89882_u95">
+<matched-element start="772" stop="781" score="-4.2809" pvalue="3.6e-05">
+<sequence>YRRWIPDPVN</sequence>
+<mem:qvalue>0.101</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="HHV_6B_q77pu6_u90" name="HHV_6B_q77pu6_u90">
+</scanned-sequence>
+<scanned-sequence accession="HHV_6B_q9qj12_u95" name="HHV_6B_q9qj12_u95">
+</scanned-sequence>
+<scanned-sequence accession="HHV_6B_q9qj47_u17" name="HHV_6B_q9qj47_u17">
+</scanned-sequence>
+<scanned-sequence accession="EBV_bzlf1_p03206_q1hvg1_q3kss8" name="EBV_bzlf1_p03206_q1hvg1_q3kss8">
+</scanned-sequence>
+<scanned-sequence accession="EBV_brlf1_p03209_q1hvg0_q3kss7" name="EBV_brlf1_p03209_q1hvg0_q3kss7">
+</scanned-sequence>
+<scanned-sequence accession="KSHV_f5hde4_orf45" name="KSHV_f5hde4_orf45">
+</scanned-sequence>
+<scanned-sequence accession="KSHV_orf48_q2hr85" name="KSHV_orf48_q2hr85">
+</scanned-sequence>
+<scanned-sequence accession="KSHV_f5hgj3_orf16_vbcl2" name="KSHV_f5hgj3_orf16_vbcl2">
+</scanned-sequence>
+<scanned-sequence accession="KSHV_f5hcv3_orf50" name="KSHV_f5hcv3_orf50">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_f5hay6_p16767_ul36" name="HCMV_f5hay6_p16767_ul36">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_p09695_q6svx2_trs1" name="HCMV_p09695_q6svx2_trs1">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_p16749_q6sw73_ul69" name="HCMV_p16749_q6sw73_ul69">
+<matched-element start="725" stop="734" score="-3.53933" pvalue="2.39e-05">
+<sequence>MRCQTPDYED</sequence>
+<mem:qvalue>0.0783</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="HCMV_p06434_p06435_p19893_q6sw29_q6swp7_ul122" name="HCMV_p06434_p06435_p19893_q6sw29_q6swp7_ul122">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_f5hbc6_p06726_p24429_ul82" name="HCMV_f5hbc6_p06726_p24429_ul82">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_p16778_q6sw94_ul37" name="HCMV_p16778_q6sw94_ul37">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_f7v999_us33a" name="HCMV_f7v999_us33a">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_b9vxd7_f5heu0_p09712_us3" name="HCMV_b9vxd7_f5heu0_p09712_us3">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_f5he12_p16766_ul35" name="HCMV_f5he12_p16766_ul35">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_p16737_ul106" name="HCMV_p16737_ul106">
+</scanned-sequence>
+<scanned-sequence accession="HCMV_f5hcm1_p03169_p13202_ul123" name="HCMV_f5hcm1_p03169_p13202_ul123">
+<matched-element start="167" stop="176" score="-10.4045" pvalue="7.28e-05">
+<sequence>WMACIKELHD</sequence>
+<mem:qvalue>0.179</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="HSV_1_icp4_ie175_p08392_rs1" name="HSV_1_icp4_ie175_p08392_rs1">
+<matched-element start="918" stop="927" score="44.8202" pvalue="1.57e-14">
+<sequence>WMRQIPDPED</sequence>
+<mem:qvalue>1.54e-10</mem:qvalue>
+</matched-element>
+<matched-element start="814" stop="823" score="-1.2809" pvalue="3.94e-06">
+<sequence>WRRQPPGPSH</sequence>
+<mem:qvalue>0.0155</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="HSV_1_p03170_us12" name="HSV_1_p03170_us12">
+</scanned-sequence>
+<scanned-sequence accession="HSV_1_p10238_p36295_ul54" name="HSV_1_p10238_p36295_ul54">
+</scanned-sequence>
+<scanned-sequence accession="HSV_1_icp0_p08393" name="HSV_1_icp0_p08393">
+</scanned-sequence>
+<scanned-sequence accession="HSV_1_icp22_p04485_us1" name="HSV_1_icp22_p04485_us1">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p28276_ul54" name="HSV_2_p28276_ul54">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p14379_p89474_us1" name="HSV_2_p14379_p89474_us1">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p14345_p60504_us12" name="HSV_2_p14345_p60504_us12">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p28284_rl2" name="HSV_2_p28284_rl2">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p28283_rl1" name="HSV_2_p28283_rl1">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_icp4_p90493_rs1" name="HSV_2_icp4_p90493_rs1">
+<matched-element start="945" stop="954" score="43.6292" pvalue="3.37e-14">
+<sequence>WMRQVPDPED</sequence>
+<mem:qvalue>2.2e-10</mem:qvalue>
+</matched-element>
+<matched-element start="860" stop="869" score="-1.2809" pvalue="3.94e-06">
+<sequence>WRRQPPGPSH</sequence>
+<mem:qvalue>0.0155</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="HHV_7_p52355_u42" name="HHV_7_p52355_u42">
+</scanned-sequence>
+<scanned-sequence accession="VZV_orf63_p09255_q77nn7" name="VZV_orf63_p09255_q77nn7">
+</scanned-sequence>
+<scanned-sequence accession="VZV_orf4_p09269_q4jqx1" name="VZV_orf4_p09269_q4jqx1">
+</scanned-sequence>
+<scanned-sequence accession="VZV_orf11_p09263_q4jqw4" name="VZV_orf11_p09263_q4jqw4">
+</scanned-sequence>
+<scanned-sequence accession="VZV_orf62_orf71_p09310_q8azm1" name="VZV_orf62_orf71_p09310_q8azm1">
+<matched-element start="833" stop="842" score="44.8202" pvalue="1.57e-14">
+<sequence>WMRQIPDPED</sequence>
+<mem:qvalue>1.54e-10</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="HHV_6B_p52539_u42" name="HHV_6B_p52539_u42">
+</scanned-sequence>
+<scanned-sequence accession="HSV_2_p68335_p68336_ul48" name="HSV_2_p68335_p68336_ul48">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+</cis-element-search>

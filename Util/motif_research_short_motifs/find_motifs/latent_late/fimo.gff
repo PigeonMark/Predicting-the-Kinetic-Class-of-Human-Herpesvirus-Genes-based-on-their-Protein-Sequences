@@ -1,0 +1,26 @@
+##gff-version 3
+EBV_bplf1_p03186_q1hvh9_q3ksu8	fimo	sequence_motif	1001	1007	41.3	+	.	Name=IKHCTAC_EBV_bplf1_p03186_q1hvh9_q3ksu8+;Alias=MEME-1;ID=IKHCTAC-MEME-1-1-EBV_bplf1_p03186_q1hvh9_q3ksu8;pvalue=7.46e-05;qvalue=0.787;sequence=VRRCTAD;
+EBV_bdlf4_p0ck56_p0ck57	fimo	sequence_motif	43	49	51.1	+	.	Name=IKHCTAC_EBV_bdlf4_p0ck56_p0ck57+;Alias=MEME-1;ID=IKHCTAC-MEME-1-1-EBV_bdlf4_p0ck56_p0ck57;pvalue=7.67e-06;qvalue=0.559;sequence=VFACWGC;
+EBV_bbrf1_p03213_q1hvf2_q3ksr9	fimo	sequence_motif	69	75	45.7	+	.	Name=IKHCTAC_EBV_bbrf1_p03213_q1hvf2_q3ksr9+;Alias=MEME-1;ID=IKHCTAC-MEME-1-1-EBV_bbrf1_p03213_q1hvf2_q3ksr9;pvalue=2.67e-05;qvalue=0.787;sequence=ISHCTYD;
+KSHV_f5him6_orf23	fimo	sequence_motif	388	394	41.2	+	.	Name=IKHCTAC_KSHV_f5him6_orf23+;Alias=MEME-1;ID=IKHCTAC-MEME-1-1-KSHV_f5him6_orf23;pvalue=7.56e-05;qvalue=0.787;sequence=QKECTGN;
+HCMV_f5ha93_p16783_ul46	fimo	sequence_motif	68	74	41.6	+	.	Name=IKHCTAC_HCMV_f5ha93_p16783_ul46+;Alias=MEME-1;ID=IKHCTAC-MEME-1-1-HCMV_f5ha93_p16783_ul46;pvalue=6.92e-05;qvalue=0.787;sequence=IRMETGC;
+HCMV_p08318_q6sw99_ul32	fimo	sequence_motif	236	242	42.4	+	.	Name=IKHCTAC_HCMV_p08318_q6sw99_ul32+;Alias=MEME-1;ID=IKHCTAC-MEME-1-1-HCMV_p08318_q6sw99_ul32;pvalue=5.74e-05;qvalue=0.787;sequence=VKELRMC;
+HSV_2_mcp_p89442_ul19	fimo	sequence_motif	823	829	42.8	+	.	Name=IKHCTAC_HSV_2_mcp_p89442_ul19+;Alias=MEME-1;ID=IKHCTAC-MEME-1-1-HSV_2_mcp_p89442_ul19;pvalue=5.23e-05;qvalue=0.787;sequence=GRCCTAG;
+HSV_1_p06436_p06437_p08665_p10211_ul27	fimo	sequence_motif	6	12	40.6	+	.	Name=IKHCTAC_HSV_1_p06436_p06437_p08665_p10211_ul27+;Alias=MEME-1;ID=IKHCTAC-MEME-1-1-HSV_1_p06436_p06437_p08665_p10211_ul27;pvalue=8.7e-05;qvalue=0.792;sequence=ARGCRWF;
+EBV_bdlf2_p03225_p0c742_q3ksq7	fimo	sequence_motif	154	157	43.8	+	.	Name=WMYY_EBV_bdlf2_p03225_p0c742_q3ksq7+;Alias=MEME-2;ID=WMYY-MEME-2-1-EBV_bdlf2_p03225_p0c742_q3ksq7;pvalue=4.18e-05;qvalue=1;sequence=WMKS;
+HSV_1_a1z0q5_p06476_p36318_p57083_q05059_q69091_us6	fimo	sequence_motif	160	163	41.1	+	.	Name=WMYY_HSV_1_a1z0q5_p06476_p36318_p57083_q05059_q69091_us6+;Alias=MEME-2;ID=WMYY-MEME-2-1-HSV_1_a1z0q5_p06476_p36318_p57083_q05059_q69091_us6;pvalue=7.8e-05;qvalue=1;sequence=WNYY;
+EBV_bdlf2_p03225_p0c742_q3ksq7	fimo	sequence_motif	195	198	43.9	+	.	Name=CYYR_EBV_bdlf2_p03225_p0c742_q3ksq7+;Alias=MEME-3;ID=CYYR-MEME-3-1-EBV_bdlf2_p03225_p0c742_q3ksq7;pvalue=4.04e-05;qvalue=0.607;sequence=CCYL;
+EBV_bflf1_p03184	fimo	sequence_motif	122	125	64.5	+	.	Name=CYYR_EBV_bflf1_p03184+;Alias=MEME-3;ID=CYYR-MEME-3-1-EBV_bflf1_p03184;pvalue=3.52e-07;qvalue=0.0264;sequence=CYYC;
+EBV_bzlf2_p03205_p0c6z5_q1hvg2	fimo	sequence_motif	99	102	43.9	+	.	Name=CYYR_EBV_bzlf2_p03205_p0c6z5_q1hvg2+;Alias=MEME-3;ID=CYYR-MEME-3-1-EBV_bzlf2_p03205_p0c6z5_q1hvg2;pvalue=4.04e-05;qvalue=0.607;sequence=CTYC;
+KSHV_f5hi25_orf28	fimo	sequence_motif	43	46	43.9	+	.	Name=CYYR_KSHV_f5hi25_orf28+;Alias=MEME-3;ID=CYYR-MEME-3-1-KSHV_f5hi25_orf28;pvalue=4.04e-05;qvalue=0.607;sequence=CVYC;
+HSV_1_p06485_us2	fimo	sequence_motif	244	247	40.7	+	.	Name=CYYR_HSV_1_p06485_us2+;Alias=MEME-3;ID=CYYR-MEME-3-1-HSV_1_p06485_us2;pvalue=8.59e-05;qvalue=0.921;sequence=CCAC;
+HSV_1_p10188_ul4	fimo	sequence_motif	76	79	41.6	+	.	Name=CYYR_HSV_1_p10188_ul4+;Alias=MEME-3;ID=CYYR-MEME-3-1-HSV_1_p10188_ul4;pvalue=6.97e-05;qvalue=0.871;sequence=CAYR;
+HSV_1_p06482_p10229_p28987_ul45	fimo	sequence_motif	149	152	46.9	+	.	Name=CYYR_HSV_1_p06482_p10229_p28987_ul45+;Alias=MEME-3;ID=CYYR-MEME-3-1-HSV_1_p06482_p10229_p28987_ul45;pvalue=2.02e-05;qvalue=0.607;sequence=CYYP;
+EBV_bbrf2_p0c6z9_p29882_q3ksr8	fimo	sequence_motif	47	49	42.2	+	.	Name=FYN_EBV_bbrf2_p0c6z9_p29882_q3ksr8+;Alias=MEME-4;ID=FYN-MEME-4-1-EBV_bbrf2_p0c6z9_p29882_q3ksr8;pvalue=6.07e-05;qvalue=0.771;sequence=FYN;
+HCMV_f5hb53_p06473_p13201_ul55	fimo	sequence_motif	279	281	42.2	+	.	Name=FYN_HCMV_f5hb53_p06473_p13201_ul55+;Alias=MEME-4;ID=FYN-MEME-4-1-HCMV_f5hb53_p06473_p13201_ul55;pvalue=6.07e-05;qvalue=0.771;sequence=FYN;
+HHV_7_mcp_p52347	fimo	sequence_motif	430	432	42.2	+	.	Name=FYN_HHV_7_mcp_p52347+;Alias=MEME-4;ID=FYN-MEME-4-1-HHV_7_mcp_p52347;pvalue=6.07e-05;qvalue=0.771;sequence=FYN;
+VZV_mcp_p09245	fimo	sequence_motif	459	461	42.2	+	.	Name=FYN_VZV_mcp_p09245+;Alias=MEME-4;ID=FYN-MEME-4-1-VZV_mcp_p09245;pvalue=6.07e-05;qvalue=0.771;sequence=FYN;
+HHV_6B_q9qj36_u33	fimo	sequence_motif	58	60	42.2	+	.	Name=FYN_HHV_6B_q9qj36_u33+;Alias=MEME-4;ID=FYN-MEME-4-1-HHV_6B_q9qj36_u33;pvalue=6.07e-05;qvalue=0.771;sequence=FYN;
+HHV_6A_mcp_p17887_u57	fimo	sequence_motif	960	962	42.2	+	.	Name=FYN_HHV_6A_mcp_p17887_u57+;Alias=MEME-4;ID=FYN-MEME-4-1-HHV_6A_mcp_p17887_u57;pvalue=6.07e-05;qvalue=0.771;sequence=FYN;
+HCMV_p16793_q6sw79_ul52	fimo	sequence_motif	287	296	54.3	+	.	Name=QVSEGDWENV_HCMV_p16793_q6sw79_ul52+;Alias=MEME-5;ID=QVSEGDWENV-MEME-5-1-HCMV_p16793_q6sw79_ul52;pvalue=3.7e-06;qvalue=0.279;sequence=VGDAVDNENV;
+HSV_1_p10191_ul7	fimo	sequence_motif	18	27	43.5	+	.	Name=QVSEGDWENV_HSV_1_p10191_ul7+;Alias=MEME-5;ID=QVSEGDWENV-MEME-5-1-HSV_1_p10191_ul7;pvalue=4.46e-05;qvalue=1;sequence=QAIAGDRSLV;

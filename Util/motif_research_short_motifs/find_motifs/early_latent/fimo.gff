@@ -1,0 +1,15 @@
+##gff-version 3
+KSHV_f5hic6_virf-3	fimo	sequence_motif	480	489	46.4	+	.	Name=SIIQAHNLCY_KSHV_f5hic6_virf-3+;Alias=MEME-1;ID=SIIQAHNLCY-MEME-1-1-KSHV_f5hic6_virf-3;pvalue=2.27e-05;qvalue=0.225;sequence=SGIYVKNLCK;
+KSHV_lana1_orf73_q9qr71	fimo	sequence_motif	595	604	40.4	+	.	Name=DGQQIRVFSC_KSHV_lana1_orf73_q9qr71+;Alias=MEME-5;ID=DGQQIRVFSC-MEME-5-1-KSHV_lana1_orf73_q9qr71;pvalue=9.14e-05;qvalue=0.0681;sequence=DEQQQDEQQQ;
+KSHV_lana1_orf73_q9qr71	fimo	sequence_motif	600	609	40.4	+	.	Name=DGQQIRVFSC_KSHV_lana1_orf73_q9qr71+;Alias=MEME-5;ID=DGQQIRVFSC-MEME-5-2-KSHV_lana1_orf73_q9qr71;pvalue=9.14e-05;qvalue=0.0681;sequence=DEQQQDEQQQ;
+KSHV_lana1_orf73_q9qr71	fimo	sequence_motif	605	614	40.4	+	.	Name=DGQQIRVFSC_KSHV_lana1_orf73_q9qr71+;Alias=MEME-5;ID=DGQQIRVFSC-MEME-5-3-KSHV_lana1_orf73_q9qr71;pvalue=9.14e-05;qvalue=0.0681;sequence=DEQQQDEQQQ;
+KSHV_lana1_orf73_q9qr71	fimo	sequence_motif	610	619	40.4	+	.	Name=DGQQIRVFSC_KSHV_lana1_orf73_q9qr71+;Alias=MEME-5;ID=DGQQIRVFSC-MEME-5-4-KSHV_lana1_orf73_q9qr71;pvalue=9.14e-05;qvalue=0.0681;sequence=DEQQQDEQQQ;
+KSHV_lana1_orf73_q9qr71	fimo	sequence_motif	615	624	40.4	+	.	Name=DGQQIRVFSC_KSHV_lana1_orf73_q9qr71+;Alias=MEME-5;ID=DGQQIRVFSC-MEME-5-5-KSHV_lana1_orf73_q9qr71;pvalue=9.14e-05;qvalue=0.0681;sequence=DEQQQDEQQQ;
+KSHV_lana1_orf73_q9qr71	fimo	sequence_motif	620	629	40.4	+	.	Name=DGQQIRVFSC_KSHV_lana1_orf73_q9qr71+;Alias=MEME-5;ID=DGQQIRVFSC-MEME-5-6-KSHV_lana1_orf73_q9qr71;pvalue=9.14e-05;qvalue=0.0681;sequence=DEQQQDEQQQ;
+KSHV_lana1_orf73_q9qr71	fimo	sequence_motif	625	634	40.4	+	.	Name=DGQQIRVFSC_KSHV_lana1_orf73_q9qr71+;Alias=MEME-5;ID=DGQQIRVFSC-MEME-5-7-KSHV_lana1_orf73_q9qr71;pvalue=9.14e-05;qvalue=0.0681;sequence=DEQQQDEQEQ;
+KSHV_lana1_orf73_q9qr71	fimo	sequence_motif	636	645	40.4	+	.	Name=DGQQIRVFSC_KSHV_lana1_orf73_q9qr71+;Alias=MEME-5;ID=DGQQIRVFSC-MEME-5-8-KSHV_lana1_orf73_q9qr71;pvalue=9.14e-05;qvalue=0.0681;sequence=DEQQQDEQQQ;
+KSHV_lana1_orf73_q9qr71	fimo	sequence_motif	664	673	40.4	+	.	Name=DGQQIRVFSC_KSHV_lana1_orf73_q9qr71+;Alias=MEME-5;ID=DGQQIRVFSC-MEME-5-9-KSHV_lana1_orf73_q9qr71;pvalue=9.14e-05;qvalue=0.0681;sequence=DEQQQDEQQQ;
+KSHV_lana1_orf73_q9qr71	fimo	sequence_motif	669	678	40.4	+	.	Name=DGQQIRVFSC_KSHV_lana1_orf73_q9qr71+;Alias=MEME-5;ID=DGQQIRVFSC-MEME-5-10-KSHV_lana1_orf73_q9qr71;pvalue=9.14e-05;qvalue=0.0681;sequence=DEQQQDEQQQ;
+KSHV_lana1_orf73_q9qr71	fimo	sequence_motif	674	683	40.4	+	.	Name=DGQQIRVFSC_KSHV_lana1_orf73_q9qr71+;Alias=MEME-5;ID=DGQQIRVFSC-MEME-5-11-KSHV_lana1_orf73_q9qr71;pvalue=9.14e-05;qvalue=0.0681;sequence=DEQQQDEQEQ;
+KSHV_lana1_orf73_q9qr71	fimo	sequence_motif	685	694	40.4	+	.	Name=DGQQIRVFSC_KSHV_lana1_orf73_q9qr71+;Alias=MEME-5;ID=DGQQIRVFSC-MEME-5-12-KSHV_lana1_orf73_q9qr71;pvalue=9.14e-05;qvalue=0.0681;sequence=DEQQQDEQQQ;
+KSHV_orf75_q9qr70	fimo	sequence_motif	1003	1012	58.6	+	.	Name=DGQQIRVFSC_KSHV_orf75_q9qr70+;Alias=MEME-5;ID=DGQQIRVFSC-MEME-5-1-KSHV_orf75_q9qr70;pvalue=1.38e-06;qvalue=0.0134;sequence=LGSQLRLFSC;

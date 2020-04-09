@@ -1,0 +1,12 @@
+motif_id	motif_alt_id	sequence_name	start	stop	strand	score	p-value	q-value	matched_sequence
+NPWASQRGS	MEME-1	KSHV_orf54_q2hr78	208	216	+	4.77333	2.07e-06	0.0182	QPWLAQPGS
+HPGFAATVVR	MEME-4	EBV_blrf3_q07286	86	95	+	-3.9375	1.74e-05	0.161	HPGREAILYR
+DMGTKVQDLF	MEME-5	HHV_6A_q00683_rep_u94	125	134	+	-0.8875	2.81e-05	0.278	IRGVLIKDFF
+HGQQAICEII	MEME-2	EBV_ebna3_p12977_q3kst2_q69138	879	888	+	-6.56471	7.09e-05	0.423	GGQDATEVLD
+NPWASQRGS	MEME-1	KSHV_f5hic6_virf-3	426	434	+	-5.94667	7.34e-05	0.268	NPLADISHS
+HGQQAICEII	MEME-2	HHV_6A_q00683_rep_u94	412	421	+	-7.42353	8.61e-05	0.423	HVQIGPCPII
+NPWASQRGS	MEME-1	KSHV_orf75_q9qr70	782	790	+	-6.46667	9.11e-05	0.268	TSWAEVKGS
+
+# FIMO (Find Individual Motif Occurrences): Version 5.1.1 compiled on Mar 31 2020 at 14:57:54
+# The format of this file is described at http://meme-suite.org/doc/fimo-output-format.html.
+# fimo -oc Util/motif_research_short_motifs/find_motifs/late_latent Util/motif_research_short_motifs/motifs/late/meme.txt Util/multi_sequence_fasta/latent.fasta

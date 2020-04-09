@@ -1,0 +1,13 @@
+motif_id	motif_alt_id	sequence_name	start	stop	strand	score	p-value	q-value	matched_sequence
+QVSEGDWENV	MEME-5	HCMV_p06434_p06435_p19893_q6sw29_q6swp7_ul122	68	77	+	6.02247	4.91e-06	0.067	QVTEDCNENP
+QVSEGDWENV	MEME-5	HCMV_p06434_p06435_p19893_q6sw29_q6swp7_ul122	329	338	+	5.57303	6.17e-06	0.067	RISELDNEKV
+QVSEGDWENV	MEME-5	HCMV_f5hcm1_p03169_p13202_ul123	68	77	+	4.08989	1.07e-05	0.0771	RVTEDCNENP
+QVSEGDWENV	MEME-5	KSHV_f5hgj3_orf16_vbcl2	75	84	+	-0.977528	2.94e-05	0.16	QVSGDGNMNW
+FYN	MEME-4	HCMV_f5he12_p16766_ul35	427	429	+	13.8713	6.07e-05	1	FYN
+WMYY	MEME-2	HSV_1_icp0_p08393	146	149	+	8.82927	6.4e-05	1	WMQL
+IKHCTAC	MEME-1	HCMV_f5he12_p16766_ul35	126	132	+	3.76471	7.52e-05	0.986	IRLCRAA
+IKHCTAC	MEME-1	KSHV_orf48_q2hr85	128	134	+	3.22353	9.02e-05	0.986	VEEITHC
+
+# FIMO (Find Individual Motif Occurrences): Version 5.1.1 compiled on Mar 31 2020 at 14:57:54
+# The format of this file is described at http://meme-suite.org/doc/fimo-output-format.html.
+# fimo -oc Util/motif_research_short_motifs/find_motifs/latent_immediate-early Util/motif_research_short_motifs/motifs/latent/meme.txt Util/multi_sequence_fasta/immediate-early.fasta

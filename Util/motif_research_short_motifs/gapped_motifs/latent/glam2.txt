@@ -1,0 +1,692 @@
+GLAM2: Gapped Local Alignment of Motifs
+Version 1056
+
+glam2 -O Util/gapped_motifs/latent p Util/multi_sequence_fasta/latent.fasta
+Sequences: 23
+Greatest sequence length: 1296
+Residue counts: A=668 C=195 D=508 E=670 F=304 G=903 H=250 I=412 K=245 L=998 M=188 N=243 P=961 Q=584 R=663 S=735 T=575 V=635 W=147 Y=215 x=0
+
+Score: 208.310  Columns: 16  Sequences: 19
+
+                  **********.......................................................................................................******
+HHV_6A_q0068   53 DMHSPGAPDIKWITACTKMIDVILNYWNNK...................................................................................TAVPTP   88 + 8.02
+EBV_bkrf1_eb  395 PRRPPPGRRPFFHPVGEADYFEYHQEGGPDGE.................................................................................PDVPPG  432 + 23.9
+EBV_byrf1_eb   75 PPPPPPPPPPPPP....................................................................................................PSPPPP   93 + 30.6
+EBV_blrf3_q0    4 DRPGLPAPDDNIEEVPSTSGVQERASEGDWENVLIEISDSSSEEEAEDAHLDSSQRGKKRKRVDDDAGGSAPA........................................QHVPPP   82 + 11.7
+EBV_bnlf1_lm    6 ERGPPGPRRP.......................................................................................................PRGPPL   21 + 16.7
+EBV_lmp2_p0c   54 EEPPPPYEDPYWGNGDRHSDYQPLGTQDQSLYLGLQHDGND........................................................................GLPPPP  100 + 19.0
+EBV_ebna3_p1  417 PRPPVPKPRPEVPQSDETATSHGSAQVPEPPTIHLAAQGMAYPLHEQHGMAPCPVA.........................................................QAPPTP  478 + 23.2
+EBV_ebna-lp_   11 TRPGPPGIGPEGPLGQLLRR.............................................................................................HRSPSP   36 + 21.9
+KSHV_lana1_o  160 PMRPPPSQQTTPP....................................................................................................HSPTTP  178 + 18.8
+KSHV_f5hic6_  207 DSPGSGDEGPSTRHS..................................................................................................DSQPPP  227 + 14.5
+KSHV_orf54_q  163 ETPGPPEPHVALALGRSGLASRGIVIDVSEWGPRGLQLKFYNYSGQPWLAQPGSRICQIVFVERRHILKGFKKCLRHRKLAPGVRFREARVHFREDTNSVRKH..........THEDNP  271 + 5.01
+KSHV_orf75_q   85 RSPPRGSERVVSFGYGPNIN.............................................................................................HRPTTL  110 + 17.9
+KSHV_k15_q9q  387 PPLPPFFRQPVRLPSHVTDRGRGSQLLNEVELQEVNRDPPNVFGYASILVSGAEE..........................................................SREPSP  447 + 11.6
+KSHV_k12_q77   39 VVPPSGQRGPVAFR...................................................................................................TRVATG   58 + 10.0
+HCMV_f5hf35_   51 TDPPRPRRRPTWMTAVFHVICAVLLTLMIMAIGALIAYLRYYHQDSWRDMLHDLFCGCHYPEKCRRHHERQRSRRRAMDVPDPELGDPARRPLNGAMYYGSGCRFDTVEMVDETRPAPP  169 + 19.9
+HCMV_f5haq7_  158 KPPPPPGRKKRPPTPPVRAPTTRLSS.......................................................................................HRPPTP  189 + 25.3
+HCMV_f5hgq8_   77 DRRYRFSERPDEILVRWEEVSSQCSYASSRITDRRAGSSSSSSVHVANQR...............................................................NSVPPP  132 + 15.8
+HCMV_f5hf62_  327 SRRSSPSRRE.......................................................................................................TSSDTL  342 + 8.63
+HCMV_f5h9n9_   14 PPPPRPSRGVIMISSVSTNDVRRFLLCMRVYSTVAVQGTCTFLLCLGLVLAFPHLKGTVFLCCTGFMPPLSLMVPTICLALLHGKRDEGSF......................TSPPSP  110 + 25.9
+
+                  PRPPPPSRRP                                                                                                       TRPPPP
+                  DPRGRG PG                                                                                                        HSV T 
+                         E                                                                                                               
+
+ A  C  D  E  F  G  H  I  K  L  M  N  P  Q  R  S  T  V  W  Y Del Ins Score
+ 0  0  4  3  0  0  0  0  1  0  0  0  6  0  1  1  2  1  0  0   0      8.37
+                                                                  0 -0.102
+ 0  0  1  1  0  0  0  0  0  0  2  0  4  0  7  2  1  1  0  0   0      8.27
+                                                                  0 -0.102
+ 0  0  0  0  0  1  1  0  0  1  0  0 12  0  4  0  0  0  0  0   0      30.8
+                                                                  0 -0.102
+ 0  0  0  0  0  4  0  0  0  0  0  0 12  0  0  2  0  0  0  1   0      32.6
+                                                                  0 -0.102
+ 0  0  0  0  0  0  0  0  0  1  0  0 10  0  4  3  0  1  0  0   0      24.7
+                                                                  0 -0.102
+ 0  0  0  0  2  5  0  0  0  0  0  0 12  0  0  0  0  0  0  0   0      37.3
+                                                                  0 -0.102
+ 2  0  1  1  1  3  0  0  1  0  0  0  2  1  1  5  0  0  0  1   0     -3.10
+                                                                  0 -0.102
+ 0  0  0  4  0  0  0  1  0  0  0  0  5  1  8  0  0  0  0  0   0      21.0
+                                                                  0 -0.102
+ 0  0  3  0  0  4  1  0  1  0  0  0  1  2  7  0  0  0  0  0   0      13.5
+                                                                  0 -0.102
+ 0  0  1  1  0  0  0  1  1  0  0  0 11  0  0  0  1  3  0  0   0      19.7
+                                                                595 -134.
+ 0  0  1  0  0  1  4  0  0  0  0  1  3  2  0  1  6  0  0  0   0      13.1
+                                                                  0 -0.102
+ 2  0  1  0  0  0  2  0  0  1  0  0  0  0  7  6  0  0  0  0   0      14.3
+                                                                  0 -0.102
+ 0  0  0  2  0  1  0  0  0  0  0  0  8  1  0  2  0  5  0  0   0      15.0
+                                                                  0 -0.102
+ 2  0  2  0  0  0  0  0  0  0  0  0 13  0  0  0  2  0  0  0   0      36.7
+                                                                  0 -0.102
+ 0  0  0  0  0  0  0  0  0  0  0  1  8  0  0  3  7  0  0  0   0      29.4
+                                                                  0 -0.102
+ 0  0  0  0  0  2  0  0  0  3  0  0 14  0  0  0  0  0  0  0   0      41.9
+
+Score: 206.599  Columns: 17  Sequences: 22
+
+                  *********..................********
+HHV_6A_q0068  338 GPPGCGKSMLT................GAILENIP  356 + 6.51
+EBV_bkrf1_eb  392 GSPPRRPPP..................GRRPFFHP  408 + 27.0
+EBV_byrf1_eb   74 PPPPPPPPP..................PPPPPPSP   90 + 34.6
+EBV_blrf3_q0   71 GGSAPAQHV..................PPPQLDHP   87 + 14.2
+EBV_bnlf1_lm    8 GPPGPRRPPR.................GPPLSSSL   25 + 27.0
+EBV_lmp2_p0c   36 GSSGNTPTPPNDEERESNEE.......PPPPYEDP   63 + 12.1
+EBV_ebna3_p1  474 APPTPLPPVSPGDQLPGVFSDGRVACAPVPAPAGP  508 + 18.0
+EBV_ebna-lp_  458 SPSGPLRPR..................PRPPARSL  474 + 19.6
+KSHV_lana1_o   99 PPPALLPPVTTSS..............SPIPPSHP  119 + 28.3
+KSHV_f5hez4_  122 GSRSTPQTFLHWVYCMENLDLL.....GPTDVDAL  151 + 4.68
+KSHV_f5hic6_  347 PPASRRRPVVGEFLWDD..........GPRRHERP  371 + 15.5
+KSHV_orf54_q  148 IPPTTDQPFMIYLGVET..........PGPPEPHV  172 + 15.4
+KSHV_orf75_q  535 PSSTPPSPWLALSD.............GVRVSGHP  556 + 16.6
+KSHV_k15_q9q  384 ISPPPLPPFFRQ...............PVRLPSHV  403 + 25.1
+KSHV_orf72_q    7 PPSGLLDPTLCE...............DRIFYNIL   26 + 10.4
+KSHV_k12_q77   41 PPSGQRGPVA.................FRTRVATG   58 + 4.40
+HCMV_f5ham0_   36 PPCGSGQRVTKVCTDYT..........SVTCTPCP   60 + 0.120
+HCMV_f5hf35_   53 PPRPRRRPT..................WMTAVFHV   69 + 10.9
+HCMV_f5haq7_  206 PPPTKPKPVGWTPPVT...........PRPFPKTP  229 + 22.7
+HCMV_f5hgq8_  114 SSSSSSVHVANQRN.............SVPPPDMA  135 + 3.77
+HCMV_f5hf62_  330 SSPSRRETS..................SDTLSDEV  346 + 5.08
+HCMV_f5h9n9_   13 APPPPRPSR..................GVIMISSV   29 + 16.8
+
+                  PPPGPRPPV                  PPPPP HP
+                  GSSP L                     GVT    V
+                                              R      
+
+ A  C  D  E  F  G  H  I  K  L  M  N  P  Q  R  S  T  V  W  Y Del Ins Score
+ 2  0  0  0  0  6  0  2  0  0  0  0  9  0  0  3  0  0  0  0   0      22.8
+                                                                  0 -0.106
+ 0  0  0  0  0  1  0  0  0  0  0  0 14  0  0  7  0  0  0  0   0      49.8
+                                                                  0 -0.106
+ 1  1  0  0  0  0  0  0  0  0  0  0 11  0  2  7  0  0  0  0   0      31.6
+                                                                  0 -0.106
+ 2  0  0  0  0  7  0  0  0  0  0  0  5  0  0  4  4  0  0  0   0      18.9
+                                                                  0 -0.106
+ 0  1  0  0  0  0  0  0  1  2  0  1  8  1  4  2  2  0  0  0   0      6.68
+                                                                  0 -0.106
+ 1  0  1  0  0  2  0  0  0  5  0  0  4  0  7  1  1  0  0  0   0      7.08
+                                                                  0 -0.106
+ 0  0  1  1  0  1  0  0  2  0  0  0  7  4  4  1  0  1  0  0   0      10.8
+                                                                  0 -0.106
+ 0  0  0  0  0  0  2  0  0  0  0  0 14  0  1  2  3  0  0  0   0      38.0
+                                                                  0 -0.106
+ 0  0  0  0  3  0  0  0  0  0  1  0  4  0  2  1  2  8  1  0   0      11.1
+                                                                 97 -91.0
+ 0  0  1  0  1  7  0  0  0  0  0  0  8  0  0  4  0  0  1  0   0      17.6
+                                                                  0 -0.106
+ 1  0  1  0  0  1  0  0  0  0  1  0  7  0  5  0  0  6  0  0   0      14.1
+                                                                  0 -0.106
+ 0  0  0  0  0  0  0  4  0  0  0  0  9  0  4  0  5  0  0  0   0      29.0
+                                                                  0 -0.106
+ 2  1  1  0  2  0  0  0  0  4  1  0  7  1  2  0  0  1  0  0   0      2.84
+                                                                  0 -0.106
+ 1  0  0  2  1  0  1  1  0  1  0  0  6  0  0  3  1  3  0  2   0      0.987
+                                                                  0 -0.106
+ 2  0  4  2  2  1  0  0  1  0  0  2  3  0  1  4  0  0  0  0   0      2.21
+                                                                  0 -0.106
+ 1  1  1  1  0  1  7  2  0  0  1  0  0  0  1  4  2  0  0  0   0      7.47
+                                                                  0 -0.106
+ 1  0  0  0  0  1  0  0  0  4  0  0 11  0  0  0  0  5  0  0   0      28.4
+
+Score: 201.242  Columns: 20  Sequences: 22
+
+                  *********..............***********
+HHV_6A_q0068  339 PP.GCGKSMLT............GAILENIPLHG  359 + 7.36
+EBV_bkrf1_eb  393 SP.PRRPPP..............GRRPFFHPVGE  411 + 27.2
+EBV_byrf1_eb  202 PP.TPLPPATLTV..........PPRPTR.PTTL  223 + 24.6
+EBV_blrf3_q0   80 PP.PQLDHPGR............EAILYRFPLDL  100 + 19.1
+EBV_bnlf1_lm    9 PPGPRRPPR..............GPPLSS.SLGL   27 + 23.2
+EBV_lmp2_p0c   97 PP.PPYSPRDDSSQHIYEEA...GRGSMN.PVCL  125 + 13.5
+EBV_ebna3_p1   82 PPQPDLPGR..............EAILRRFPLDL  101 + 23.4
+EBV_ebna-lp_  458 SPSGPLRPR..............PRPPAR.SLRE  476 + 20.9
+KSHV_lana1_o  129 SPSPALPPTQSPESS........QRPPLSSPTGR  154 + 21.3
+KSHV_f5hez4_   30 IPQPTLAQLIGALRALKE.....EGRLTF.PLLA   57 + 3.69
+KSHV_f5hic6_  347 PPASRRRPVVGEFLWDDG.....PRRHER.PTTR  374 + 20.0
+KSHV_orf54_q  149 PP.TTDQPFMIYLGVET......PGPPEPHVALA  175 + 4.99
+KSHV_orf75_q   86 SP.PRGSERVVSFGYG.......PNINHR.PTTL  110 + 14.4
+KSHV_k15_q9q  385 SP.PPLPPFFRQ...........PVRLPSHVTDR  406 + 25.4
+KSHV_orf72_q    7 PPSGLLDPTLCEDRIFYNILEIEPRFLTSDSVFG   40 + 13.0
+KSHV_k12_q77   41 PPSGQRGPV...............AFRTR.VATG   58 + 8.29
+HCMV_f5ham0_   36 PPCGSGQRVTKV...........CTDYTS.VTCT   57 + 4.56
+HCMV_f5hf35_   53 PPRPRRRPT..............WMTAVFHVICA   72 + 12.7
+HCMV_f5haq7_  161 PP.PGRKKRP.............PTPPVRAPTTR  180 + 22.8
+HCMV_f5hgq8_  130 PP.PDMAVTAPLT..........DVDLLK.PVTG  151 + 9.04
+HCMV_f5hf62_  330 SS.PSRRET..............SSDTLSDEVCR  348 + 3.02
+HCMV_f5h9n9_   14 PP.PPRPSR..............GVIMIS.SVST   31 + 18.1
+
+                  PPSPPLPPR              PRILTRHPTTL
+                  S QGRR  T              G PP S VL R
+                                           R     V  
+
+ A  C  D  E  F  G  H  I  K  L  M  N  P  Q  R  S  T  V  W  Y Del Ins Score
+ 0  0  0  0  0  0  0  1  0  0  0  0 15  0  0  6  0  0  0  0   0      51.4
+                                                                  0 -0.106
+ 0  0  0  0  0  0  0  0  0  0  0  0 21  0  0  1  0  0  0  0   0      76.0
+                                                                  0 -0.106
+ 1  1  0  0  0  1  0  0  0  0  0  0  0  2  1  4  0  0  0  0  12     -26.4
+                                                                  0 -0.106
+ 0  0  0  0  0  5  0  0  0  0  0  0 14  0  0  1  2  0  0  0   0      42.2
+                                                                  0 -0.106
+ 1  1  2  0  0  1  0  0  0  1  0  0  5  2  5  2  2  0  0  0   0      1.28
+                                                                  0 -0.106
+ 0  0  1  0  0  3  0  0  0  8  1  0  0  0  8  0  0  0  0  1   0      15.8
+                                                                  0 -0.106
+ 2  0  2  0  0  1  0  0  2  0  0  0  7  2  4  2  0  0  0  0   0      10.6
+                                                                  0 -0.106
+ 0  0  0  2  0  1  1  0  1  0  0  0 12  1  1  2  0  1  0  0   0      18.2
+                                                                  0 -0.106
+ 1  0  0  0  2  0  0  0  0  1  1  0  2  0  7  0  5  3  0  0   0      11.0
+                                                                 83 -86.4
+ 0  1  1  3  0  5  0  0  0  0  0  0  8  1  0  1  0  0  1  0   1      3.24
+                                                                  0 -0.106
+ 4  0  0  0  0  2  0  0  0  0  1  1  2  0  6  1  2  3  0  0   0      1.38
+                                                                  0 -0.106
+ 0  0  3  0  2  1  0  5  0  0  0  0  5  0  5  0  1  0  0  0   0      9.45
+                                                                  0 -0.106
+ 1  0  0  0  0  0  1  0  0  8  1  1  6  0  1  1  1  0  0  1   0      6.62
+                                                                  0 -0.106
+ 1  0  0  3  1  0  1  1  0  3  1  0  1  0  1  1  5  2  0  1   0     -3.37
+                                                                  0 -0.106
+ 0  0  0  0  3  0  0  0  1  0  0  2  1  0  8  7  0  0  0  0   0      20.1
+                                                                  0 -0.106
+ 1  0  2  0  2  0  4  1  0  0  0  0  0  0  0  1  0  0  0  0  11     -22.1
+                                                                  0 -0.106
+ 0  0  0  1  0  0  0  0  0  0  0  0 12  0  0  4  0  5  0  0   0      37.0
+                                                                  0 -0.106
+ 2  0  0  0  0  0  0  1  0  6  0  0  0  0  0  0  7  6  0  0   0      25.1
+                                                                  0 -0.106
+ 0  4  3  0  1  3  1  0  0  2  0  0  0  0  1  1  6  0  0  0   0      5.47
+                                                                  0 -0.106
+ 3  0  0  2  0  4  0  0  0  6  0  0  0  0  5  0  2  0  0  0   0      6.63
+
+Score: 198.084  Columns: 19  Sequences: 21
+
+                  *********.....................................**********
+EBV_bkrf1_eb  393 SPPRRPPPGRR...................................PFFHPVGEAD  413 + 29.2
+EBV_byrf1_eb   74 PPPPPPPPPP....................................PPPPPSPPPP   93 + 25.8
+EBV_blrf3_q0   80 PPPQLDHPGREAI.................................LYRFPLDLRR  102 + 19.5
+EBV_bnlf1_lm   10 PGPRRPPRGP....................................PLSSSLGLAL   29 + 16.7
+EBV_lmp2_p0c   56 PPPPYEDPYWGNGDRHSDYQPLGTQDQSLYLGLQHDGNDG......LPPPPYSPRD  105 + 17.9
+EBV_ebna3_p1   83 PQPDLPGREAI...................................LRRFPLDLRT  103 + 21.0
+EBV_ebna-lp_  338 PGPTRPGPPGIGPEGPLGQL..........................LRRHRSPSPT  367 + 19.9
+KSHV_lana1_o   99 PPPALLPPVTTSSSPI..............................PPSHPVSPGT  124 + 27.0
+KSHV_f5hez4_   31 PQPTLAQLIGALRALKEEGRLTFPLLAECLFRAGRRDLLRDLLHLDPRFLERHLAG   86 + 8.26
+KSHV_f5hic6_  347 PPASRRRPVVGEFLWDDG............................PRRHERPTTR  374 + 19.0
+KSHV_orf54_q  148 IPPTTDQPFMIYLGVETPG...........................PPEPHVALAL  176 + 11.0
+KSHV_orf75_q   86 SPPRGSERVVSFGYG...............................PNINHRPTTL  110 + 14.1
+KSHV_k15_q9q  385 SPPPLPPFFRQ...................................PVRLPSHVTD  405 + 17.9
+KSHV_orf72_q    7 PPSGLLDPTLCEDRIFYNI...........................LEIEPRFLTS   35 + 8.40
+KSHV_k12_q77   41 PPSGQRGPV.....................................AFRTRVATGA   59 + 10.7
+HCMV_f5ham0_   36 PPCGSGQRVTKVCTDYTS............................VTCTPCPNGT   63 + 7.37
+HCMV_f5hf35_  131 PDPELGDPARRPLNGAMYYGSGCRFDTVEMVDETRPA.........PPALSSPETG  177 + 8.50
+HCMV_f5haq7_  206 PPPTKPKPVGWTPPVTPRPFPKTPTPQK..................PPRNPRLPRT  243 + 22.4
+HCMV_f5hc71_   35 PQCRPEDYATRLQDLR..............................VTFHRVKPTL   60 + 8.91
+HCMV_f5hf62_  218 SQSRHKGRIVRVLIAVVLVFI.........................IFWLPYHLTL  248 + 10.6
+HCMV_f5h9n9_   14 PPPPRPSRGV....................................IMISSVSTND   33 + 16.6
+
+                  PPPRLPPPV                                     PPRHPVPLTL
+                      R  R                                      L    R P T
+
+ A  C  D  E  F  G  H  I  K  L  M  N  P  Q  R  S  T  V  W  Y Del Ins Score
+ 0  0  0  0  0  0  0  1  0  0  0  0 16  0  0  4  0  0  0  0   0      52.5
+                                                                  0 -0.105
+ 0  0  1  0  0  2  0  0  0  0  0  0 14  4  0  0  0  0  0  0   0      42.2
+                                                                  0 -0.105
+ 1  2  0  0  0  0  0  0  0  0  0  0 15  0  0  3  0  0  0  0   0      45.7
+                                                                  0 -0.105
+ 1  0  1  1  0  3  0  0  0  0  0  0  4  1  5  1  4  0  0  0   0      6.85
+                                                                  0 -0.105
+ 0  0  0  0  0  1  1  0  1  7  0  0  2  1  5  1  1  0  0  1   0      2.21
+                                                                  0 -0.105
+ 1  0  2  2  0  2  0  0  1  2  0  0  8  0  2  1  0  0  0  0   0      6.18
+                                                                  0 -0.105
+ 0  0  4  1  0  4  1  0  1  0  0  0  5  3  1  1  0  0  0  0   0      9.40
+                                                                  0 -0.105
+ 0  0  0  0  1  0  0  0  0  1  0  0 12  0  6  0  0  0  0  1   0      32.9
+                                                                  0 -0.105
+ 2  0  0  1  2  4  0  2  0  0  0  0  2  0  0  0  1  6  0  1   0      1.68
+                                                                209 -111.
+ 1  0  0  0  0  0  0  2  0  5  0  0 11  0  0  0  0  2  0  0   0      27.7
+                                                                  0 -0.105
+ 0  0  0  1  3  0  0  0  0  1  1  1  6  0  4  0  2  1  0  1   0      4.74
+                                                                  0 -0.105
+ 1  1  0  1  3  0  0  3  0  0  0  0  2  0  7  2  0  0  1  0   0      6.02
+                                                                  0 -0.105
+ 0  0  0  1  2  0  5  0  0  4  0  2  3  0  0  2  2  0  0  0   0      6.82
+                                                                  0 -0.105
+ 0  0  0  2  0  0  2  0  0  0  0  0 11  0  3  3  0  0  0  0   0      27.8
+                                                                  0 -0.105
+ 0  1  0  0  0  0  0  0  0  3  0  0  0  0  5  4  0  6  0  2   0      11.5
+                                                                  0 -0.105
+ 2  0  2  0  1  2  3  0  1  1  0  0  6  0  0  3  0  0  0  0   0      3.96
+                                                                  0 -0.105
+ 0  0  0  2  0  0  0  0  0  7  0  1  5  0  0  1  4  1  0  0   0      7.62
+                                                                  0 -0.105
+ 4  0  0  0  0  3  0  0  0  0  0  1  2  0  4  0  7  0  0  0   0      12.4
+                                                                  0 -0.105
+ 1  0  4  0  0  2  0  0  0  5  0  0  1  0  2  1  5  0  0  0   0      3.03
+
+Score: 192.839  Columns: 18  Sequences: 19
+
+                  ************.......................................................................................................******
+HHV_6A_q0068   53 D.MHSPGA.PDIKWITACTKMIDVILNYWNNK...................................................................................TAVPTP   88 + 7.73
+EBV_bkrf1_eb  395 P.RRPPPG.RRPFFHPVGEADYFEYHQEGGPDGE.................................................................................PDVPPG  432 + 23.4
+EBV_byrf1_eb   78 P.PPPPPP.PPP.......................................................................................................PSPPPP   93 + 30.7
+EBV_blrf3_q0    4 D.RPGLPA.PDDNIEEVPSTSGVQERASEGDWENVLIEISDSSSEEEAEDAHLDSSQRGKKRKRVDDDAGGSAPA........................................QHVPPP   82 + 10.8
+EBV_bnlf1_lm    6 E.RGPPGP.RRP.......................................................................................................PRGPPL   21 + 17.0
+EBV_lmp2_p0c   54 E.EPPPPY.EDPYWGNGDRHSDYQPLGTQDQSLYLGLQHDGND........................................................................GLPPPP  100 + 18.9
+EBV_ebna3_p1  417 P.RPPVPK.PRPEVPQSDETATSHGSAQVPEPPTIHLAAQGMAYPLHEQHGMAPCPVA.........................................................QAPPTP  478 + 23.4
+EBV_ebna-lp_  142 PTRPGPPG.IGPEGPLGQLLRR.............................................................................................HRSPSP  168 + 23.3
+KSHV_lana1_o  160 P.MRPPPS.QQTTPP....................................................................................................HSPTTP  178 + 19.5
+KSHV_f5hic6_  207 D.SPGSGD.EGPSTRHS..................................................................................................DSQPPP  227 + 14.7
+KSHV_orf54_q  163 E.TPGPPE.PHVALALGRSGLASRGIVIDVSEWGPRGLQLKFYNYSGQPWLAQPGSRICQIVFVERRHILKGFKKCLRHRKLAPGVRFREARVHFREDTNSVRKH..........THEDNP  271 + 4.45
+KSHV_orf75_q   85 R.SPPRGS.ERVVSFGYGPNIN.............................................................................................HRPTTL  110 + 15.8
+KSHV_k15_q9q  387 P.PLPPFF.RQPVRLPSHVTDRGRGSQLLNEVELQEVNRDPPNVFGYASILVSGAEE..........................................................SREPSP  447 + 11.7
+KSHV_k12_q77   38 SVVPPSGQ.RGPVAFR...................................................................................................TRVATG   58 + 9.95
+HCMV_f5hf35_   50 ETDPPRPR.RRPTWMTAVFHVICAVLLTLMIMAIGALIAYLRYYHQDSWRDMLHDLFCGCHYPEKCRRHHERQRSRRRAMDVPDPELGDPARRPLNGAMYYGSGCRFDTVEMVDETRPAPP  169 + 21.8
+HCMV_f5haq7_  159 P.PPPPGRKKRPPTPPVRAPTTRLSS.........................................................................................HRPPTP  189 + 29.7
+HCMV_f5hgq8_   77 D.RRYRFS.ERPDEILVRWEEVSSQCSYASSRITDRRAGSSSSSSVHVANQR...............................................................NSVPPP  132 + 15.8
+HCMV_f5hf62_  327 S.RRSSPS.RRE.......................................................................................................TSSDTL  342 + 8.98
+HCMV_f5h9n9_   14 P.PPPRPS.RGVIMISSVSTNDVRRFLLCMRVYSTVAVQGTCTFLLCLGLVLAFPHLKGTVFLCCTGFMPPLSLMVPTICLALLHGKRDEGSF......................TSPPSP  110 + 25.7
+
+                  PTRPPPPSKRRP                                                                                                       TRPPPP
+                  DVPRGRG  PG                                                                                                        HSV T 
+                  E        E                                                                                                               
+
+ A  C  D  E  F  G  H  I  K  L  M  N  P  Q  R  S  T  V  W  Y Del Ins Score
+ 0  0  4  4  0  0  0  0  0  0  0  0  8  0  1  2  0  0  0  0   0      21.2
+                                                                  0 -0.102
+ 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  2  1  0  0  16     -18.1
+                                                                  0 -0.102
+ 0  0  1  1  0  0  0  0  0  0  2  0  4  0  7  2  1  1  0  0   0      8.27
+                                                                  0 -0.102
+ 0  0  0  0  0  1  1  0  0  1  0  0 12  0  4  0  0  0  0  0   0      30.8
+                                                                  0 -0.102
+ 0  0  0  0  0  4  0  0  0  0  0  0 12  0  0  2  0  0  0  1   0      32.6
+                                                                  0 -0.102
+ 0  0  0  0  0  0  0  0  0  1  0  0 10  0  4  3  0  1  0  0   0      24.7
+                                                                  0 -0.102
+ 0  0  0  0  2  6  0  0  0  0  0  0 11  0  0  0  0  0  0  0   0      35.4
+                                                                  0 -0.102
+ 2  0  1  1  1  2  0  0  1  0  0  0  2  1  2  5  0  0  0  1   0     -3.44
+                                                                  0 -0.102
+ 0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0  18     -15.0
+                                                                  0 -0.102
+ 0  0  0  4  0  0  0  1  1  0  0  0  5  1  7  0  0  0  0  0   0      18.1
+                                                                  0 -0.102
+ 0  0  3  0  0  4  1  0  0  0  0  0  1  2  8  0  0  0  0  0   0      16.8
+                                                                  0 -0.102
+ 0  0  1  1  0  0  0  1  0  0  0  0 12  0  0  0  1  3  0  0   0      26.2
+                                                                590 -133.
+ 0  0  1  0  0  1  4  0  0  0  0  1  3  2  0  1  6  0  0  0   0      13.1
+                                                                  0 -0.102
+ 2  0  1  0  0  0  2  0  0  1  0  0  0  0  7  6  0  0  0  0   0      14.3
+                                                                  0 -0.102
+ 0  0  0  2  0  1  0  0  0  0  0  0  8  1  0  2  0  5  0  0   0      15.0
+                                                                  0 -0.102
+ 2  0  2  0  0  0  0  0  0  0  0  0 13  0  0  0  2  0  0  0   0      36.7
+                                                                  0 -0.102
+ 0  0  0  0  0  0  0  0  0  0  0  1  8  0  0  3  7  0  0  0   0      29.4
+                                                                  0 -0.102
+ 0  0  0  0  0  2  0  0  0  3  0  0 14  0  0  0  0  0  0  0   0      41.9
+
+Score: 190.128  Columns: 17  Sequences: 22
+
+                  **..******..............*********
+HHV_6A_q0068  339 PPG.CGKS.ML.............TGAILENIP  356 + 7.42
+EBV_bkrf1_eb  393 SP..PRRPPPGR............R.PFFH.PV  409 + 26.8
+EBV_byrf1_eb   76 PP..PPPPPP..............P.PPPPSPP   91 + 30.2
+EBV_blrf3_q0   73 SA..PAQH.V..............P.PPQLDHP   87 + 7.40
+EBV_bnlf1_lm    9 PPG.PRRP.P..............RGPPLSSSL   25 + 21.7
+EBV_lmp2_p0c   99 PPY.SPRDDSSQHIYEEAGRGSMNP.VCLPVIV  129 + 11.0
+EBV_ebna3_p1  475 PP..TPLPPVSPGDQL........PGVFSDGRV  497 + 19.2
+EBV_ebna-lp_  260 SP..SGPR.GDRSEG.........PGPTRPGPP  280 + 19.3
+KSHV_lana1_o   99 PP..PALLPPVTTSS.........S.PIPPSHP  119 + 20.7
+KSHV_f5hic6_  347 PPA.SRRRPVVGEFLWD.......DGPRRHERP  371 + 24.3
+KSHV_orf54_q  149 PPT.TDQP.FMIYLGVET......PGPPEP.HV  172 + 16.2
+KSHV_orf75_q  539 PPS.PWLA.LS.............DGVRVSGHP  556 + 15.5
+KSHV_k15_q9q  385 SP..PPLPPFFRQ...........P.VRLPSHV  403 + 26.1
+KSHV_orf72_q    7 PP..SGLLDPTLCE..........D.RIFYNIL   26 + 8.43
+KSHV_k12_q77   41 PP..SGQR.G..............P.VAFRTRV   55 + 14.4
+HCMV_f5ham0_   36 PPCGSGQR.VTKVCTDYT......S.VTCT.PC   59 + 4.71
+HCMV_f5hf35_   53 PPR.PRRRPTWM............T.AVFHVIC   71 + 16.8
+HCMV_f5haq7_  154 PP..SWKPPPPPGRKK........R.PPTP.PV  174 + 22.4
+HCMV_f5hc71_   35 PQ..CRPEDYATRLQDL.......R.VTFH.RV   56 + 7.69
+HCMV_f5hgq8_  130 PP..PDMA.VTAPLT.........D.VDLLKPV  149 + 7.01
+HCMV_f5hf62_  331 SP..SRRE.TSSDTLSDEVC....R.VSQI.IP  354 + 7.53
+HCMV_f5h9n9_   14 PP..PPRP.S..............RGVIMISSV   29 + 22.6
+
+                  PP  PRRPPP              PGVPFPSPV
+                  S   SGLRDV              R P L  HP
+                       P                         I 
+
+ A  C  D  E  F  G  H  I  K  L  M  N  P  Q  R  S  T  V  W  Y Del Ins Score
+ 0  0  0  0  0  0  0  0  0  0  0  0 17  0  0  5  0  0  0  0   0      61.6
+                                                                  0 -0.106
+ 1  0  0  0  0  0  0  0  0  0  0  0 20  1  0  0  0  0  0  0   0      68.3
+                                                                  9 -33.1
+ 0  2  0  0  0  0  0  0  0  0  0  0 10  0  0  8  2  0  0  0   0      35.3
+                                                                  0 -0.106
+ 2  0  2  0  0  5  0  0  0  0  0  0  5  0  6  0  0  0  2  0   0      14.4
+                                                                  0 -0.106
+ 0  0  0  0  0  0  0  0  2  5  1  0  3  4  7  0  0  0  0  0   0      17.1
+                                                                  0 -0.106
+ 2  0  1  2  0  0  1  0  0  2  0  0  8  0  5  1  0  0  0  0   0      11.0
+                                                                  0 -0.106
+ 0  0  3  0  0  0  0  0  0  0  0  0  8  0  0  0  0  0  0  0  11     -1.65
+                                                                  0 -0.106
+ 0  0  0  0  2  2  0  0  0  1  1  0  6  0  0  2  2  5  0  1   0      4.51
+                                                                 94 -90.1
+ 0  0  4  0  0  0  0  0  0  0  0  0  8  0  6  2  2  0  0  0   0      24.0
+                                                                  0 -0.106
+ 0  0  0  0  0  8  0  0  0  0  0  0  0  0  0  0  0  0  0  0  14     -2.74
+                                                                  0 -0.106
+ 2  0  0  0  0  0  0  0  0  0  0  0  9  0  1  0  0 10  0  0   0      36.1
+                                                                  0 -0.106
+ 1  1  1  0  2  0  0  4  0  0  0  0  5  0  3  1  3  1  0  0   0      1.77
+                                                                  0 -0.106
+ 0  1  0  1  5  0  0  0  0  5  1  0  2  2  2  1  1  1  0  0   0      1.05
+                                                                  0 -0.106
+ 0  0  1  1  0  0  4  2  0  2  0  0  7  0  1  2  1  0  0  1   0      6.31
+                                                                  0 -0.106
+ 0  0  1  1  0  3  0  0  1  0  0  2  0  0  0  5  1  2  0  0   6     -20.0
+                                                                  0 -0.106
+ 0  0  0  0  0  0  5  5  0  0  0  0  6  0  4  2  0  0  0  0   0      23.6
+                                                                  0 -0.106
+ 0  2  0  0  0  0  0  0  0  2  0  0  8  0  0  0  0 10  0  0   0      34.1
+
+Score: 189.540  Columns: 24  Sequences: 16
+
+                  ***********.......................................................................................................................................................................................................................***..........................**********
+EBV_bkrf1_eb  394 PPRRPPPGRRPFFHPVGEADYFEYHQEGGPDGEPDVPPGAIEQGPADDPGEGPSTGPRGQGDGGRRKKGGWFGKHRGQGGSNPKFENIAEGLRALLARSHVERTTDEGTWVAGVFVYGGSKTSLYNLRRGTALAIPQCRLT.....................................................................................PLSRLPFGM....................APGPGPQPGP  553 + 31.2
+EBV_byrf1_eb   72 PPPPPPPPPPPPPPP...................................................................................................................................................................................................................PPS..........................PPPPPPPPPP   99 + 48.6
+EBV_blrf3_q0    5 RPGLPAPD.DNIEEVPSTSGVQERASEGDWENVLIEISDSSSEEEAEDAHLDSSQRGKKRKRVDDDAGGSA...........................................................................................................................................................PAQH.........................VPPPQLDHPG   88 + 10.8
+EBV_bnlf1_lm    9 PPGPRRPPRGPPLSSSLGLALLLLLLALLFWLYIVMSDWTGGALLVLYSFALMLIIIILIIFIFRRDLLCPLGALCILLLMITLLLIALWNLHGQALFLGIVLFIFGCLLVLGIWIYLLEMLWRLGATIWQLLAFFLAFFLDLILLIIALYLQQNWWTLLVDLLWLLLFLAILIWMYYHGQRHSDEHHHDDSLPHPQQATDDSGHESDSNSNEGRHHLLVSGAGDGPPLCSQNLG....................APGGGPDNGP  253 + 25.0
+EBV_lmp2_p0c   10 GAGPPSPGGDPDGYDGGNNSQYPSASGSSGNTPT................................................................................................................................................................................................PPNDEERESN...................EEPPPPYEDP   63 + 26.0
+EBV_ebna3_p1  416 TPRPPVPKPRPEVPQSDETATSHGSAQVPE....................................................................................................................................................................................................PPTIHLAAQGMAYPLHEQHGMAPCPVAQAPPTPLPPVSP  484 + 28.1
+EBV_ebna-lp_  271 GPGPTRPG.PPGIGPEGPLGQLLRRHRSPSPTRGGQEPRRVRRRVLVQQEEEVVSG..........................................................................................................................................................................SPSGPRGDR....................SEGPGPTRPG  344 + 24.1
+KSHV_lana1_o  145 RPPLSSPTGRPDSSTPMRP...............................................................................................................................................................................................................PPSQQTTPPH...................SPTTPPPEPP  183 + 31.7
+KSHV_f5hic6_  148 RRRPRPFVGENSDSSEEDHPAFCDVPVTQTGAESEDSGDEG.........................................................................................................................................................................................PSTRHSASGVQPVDDANAD..........SPGSG.DEGP  216 + 17.0
+KSHV_orf54_q   37 CPILVRPH.EPFIMPTGIHFTRTPSCAFILTGETDKDVFCHTGLIDGGYRGEIQVILLNKRKYPVTLYRGELNICLSAFNYVLPPLRDVSFLTPPMYANDAGFDVMVMHSMVI.................................................................................................................PPTTDQPFMIYLG................VETPGPPEPH  171 + 12.6
+KSHV_orf75_q   84 RRSPPRGSERVVSFGYGPNINHRPTTLSTELGVLLRELGLQEWARVEVGRHLVSKITQTLLEPH..................................................................................................................................................................PPQFIRAFTQNTDLVPYEGLEV.......PEGPQPVARP  179 + 11.6
+KSHV_k15_q9q  386 PPPLPPFFRQPVRLPSHVTDRGRGSQLLNEVELQEVNRD...........................................................................................................................................................................................PPNVFGYASILVSGAEESR..........EPSPQPDQSG  453 + 27.5
+KSHV_k12_q77    2 DRGLTVFV.AVHVPDVLLNGWRWRLGAI......................................................................................................................................................................................................PPLVCLLAISV..................VPPSG.QRGP   48 + 12.8
+HCMV_f5hf35_   50 ETDPPRPRRRPTWMTAVFHVICAVLLTLMIMAIGALIAYLRYYHQDSWRDMLHDLFCGCHYPEKCRRHHERQRSRRRAMDVPDPELGDPARR......................................................................................................................................PLNGAMYYGSGCRFDTVEMVDET......RPAPPALSSP  174 + 8.22
+HCMV_f5haq7_  167 KRPPTPPVRAPTTRLSSHRPPTPIPAPRKNLSTPPTKKTP..........................................................................................................................................................................................PPTKPKPVGWTPPVTPRPF..........PKTPTPQKPP  235 + 28.8
+HCMV_f5h9n9_   13 APPPPRPSRGVIMISSVSTNDVRRFLLCMRVYSTVAVQGTCTFLLCLGLVLAFPHLKGTVFLCCTGFM..............................................................................................................................................................PPLSLMVPTICLALLHGKRDEG.......SFTSP.PSPG  111 + 18.3
+
+                  PPGPPRP RRP                                                                                                                                                                                                                       PPS                          PPGPGPPEPP
+                  RRPL P  G                                                                                                                                                                                                                           T                          SET P D GG
+                                                                                                                                                                                                                                                                                   P       
+
+ A  C  D  E  F  G  H  I  K  L  M  N  P  Q  R  S  T  V  W  Y Del Ins Score
+ 1  1  1  1  0  2  0  0  1  0  0  0  4  0  4  0  1  0  0  0   0      1.11
+                                                                  0 -0.0971
+ 1  0  0  0  0  0  0  0  0  0  0  0 10  0  4  0  1  0  0  0   0      28.6
+                                                                  0 -0.0971
+ 0  0  1  0  0  5  0  1  0  0  0  0  5  0  3  1  0  0  0  0   0      7.28
+                                                                  0 -0.0971
+ 0  0  0  0  0  0  0  0  0  5  0  0 10  0  1  0  0  0  0  0   0      29.4
+                                                                  0 -0.0971
+ 0  0  0  0  0  0  0  0  0  0  0  0  9  0  2  1  3  1  0  0   0      20.0
+                                                                  0 -0.0971
+ 1  0  0  0  0  0  0  0  0  0  0  0  5  0  6  2  0  2  0  0   0      13.5
+                                                                  0 -0.0971
+ 0  0  0  0  3  1  0  0  0  0  0  0 12  0  0  0  0  0  0  0   0      36.4
+                                                                  0 -0.0971
+ 0  0  1  0  1  3  1  0  1  0  0  0  2  0  1  2  1  3  0  0   0     -5.83
+                                                                  0 -0.0971
+ 0  0  0  1  0  3  0  0  0  0  0  0  2  0  6  0  0  0  0  0   4     -5.86
+                                                                  0 -0.0971
+ 2  0  2  2  0  2  0  0  0  0  0  0  2  1  5  0  0  0  0  0   0      5.28
+                                                                  0 -0.0971
+ 0  0  0  0  0  0  0  0  0  0  0  2 11  0  0  0  0  3  0  0   0      32.1
+                                                                901 -128.
+ 0  0  0  0  0  0  0  0  0  0  0  0 15  0  0  1  0  0  0  0   0      51.7
+                                                                  0 -0.0971
+ 1  0  0  0  0  0  0  0  0  2  0  0 12  0  0  1  0  0  0  0   0      33.0
+                                                                  0 -0.0971
+ 0  0  0  0  0  0  0  0  0  3  0  3  0  2  0  4  4  0  0  0   0      8.53
+                                                                183 -90.2
+ 2  0  0  2  0  0  0  0  0  0  0  0  4  0  1  4  0  3  0  0   0      4.16
+                                                                  0 -0.0971
+ 0  0  0  4  1  0  0  0  1  0  0  0 10  0  0  0  0  0  0  0   0      26.6
+                                                                  0 -0.0971
+ 1  0  0  0  0  5  0  0  0  0  0  0  4  0  0  1  5  0  0  0   0      13.2
+                                                                  0 -0.0971
+ 0  0  0  0  0  1  0  0  0  0  0  0 11  0  0  3  1  0  0  0   0      29.9
+                                                                  0 -0.0971
+ 0  0  0  0  0  6  0  0  0  1  0  0  5  3  0  0  1  0  0  0   0      11.4
+                                                                  0 -0.0971
+ 1  0  0  0  0  0  0  0  0  1  0  0 11  0  0  0  0  0  0  0   3      18.3
+                                                                  0 -0.0971
+ 0  0  4  0  0  0  0  0  0  1  0  0  5  3  0  0  1  1  0  1   0      4.86
+                                                                  0 -0.0971
+ 1  0  0  4  0  0  1  0  1  0  0  1  2  1  2  2  0  1  0  0   0     -1.05
+                                                                  0 -0.0971
+ 0  0  1  0  0  4  0  0  0  0  0  0  7  0  1  3  0  0  0  0   0      14.6
+                                                                  0 -0.0971
+ 0  0  0  0  0  4  1  0  0  0  0  0 11  0  0  0  0  0  0  0   0      33.1
+
+Score: 182.928  Columns: 17  Sequences: 21
+
+                  ********.......................................................................*****...****
+HHV_6A_q0068  337 IGPPGCGKSMLTGAILENIPLHGILHGSLNTKNLRAYGQVLVLWWKDISINFDNFNIIKSLLGGQKIIFPINENDHVQIGPCPI...IATS  424 + 6.02
+EBV_bkrf1_eb  397 RPPPGRRPFFHPVGEADYFEYHQEGGPDGEPDVPPGAIEQGPADD..................................PGEGP...STGP  450 + 16.8
+EBV_byrf1_eb   74 PPPPPPPP.......................................................................PPPPP...PPSP   90 + 27.0
+EBV_blrf3_q0   79 VPPPQLDHPGREAILYRFPLDLRRFIQAIGAAATVSFPMAQVCDVCFCPSHNKVSDLLP....................LVSAP...RHAS  146 + 7.68
+EBV_bnlf1_lm    7 RGPPGPRR.......................................................................PPRGP...PLSS   23 + 24.8
+EBV_lmp2_p0c   96 LPPPPYSPRDDSSQHIYEEAGRGSMN.....................................................PVCLPV..IVAP  131 + 23.5
+EBV_ebna3_p1  657 PGVPAMQPQYFDLPLIQPISQGAPVAPLRASM...............................................GPVPP...VPAT  697 + 19.9
+EBV_ebna-lp_   79 PGPPGIGPEGPLGQL................................................................LRRHR...SPSP  102 + 17.1
+KSHV_lana1_o   98 LPPPALLPPVTTSSSPI..............................................................PPSHPV..SPGT  124 + 24.4
+KSHV_f5hez4_  143 LGPTDVDALMSMLRSLSRVDLQRQVQTLMGLHLS.............................................GPSHSQHYRHTP  188 + 9.40
+KSHV_f5hic6_  346 LPPASRRRPVVGEFLWDDG............................................................PRRHE...RPTT  373 + 17.7
+KSHV_orf54_q  148 IPPTTDQPFMIYL..................................................................GVETPG..PPEP  170 + 11.1
+KSHV_orf75_q   77 LGYPHVIRRS.....................................................................PPRGSE..RVVS   96 + 13.4
+KSHV_k15_q9q  384 ISPPPLPPFFRQ...................................................................PVRLP...SHVT  404 + 21.7
+KSHV_orf72_q  205 LVPANVIPQDTHS..................................................................GGVVP...QLAS  226 + 9.64
+KSHV_k12_q77   39 VVPPSGQRG......................................................................PVAFRT..RVAT   57 + 14.4
+HCMV_f5ham0_   17 LGVTKVCQHNEVQLGNECC............................................................PPCGSG..QRVT   45 + 6.36
+HCMV_f5hf35_  135 LGDPARRPLNGAMYYGSGCRFDTVEMVDETRPA..............................................PPALS...SPET  176 + 15.6
+HCMV_f5haq7_  159 PPPPPGRKKR.....................................................................PPTPP...VRAP  177 + 24.6
+HCMV_f5hgq8_  129 VPPPDMAVTAPLTDVDLLK............................................................PVTGSAT.QFTT  158 + 9.66
+HCMV_f5h9n9_   14 PPPPRPSR.......................................................................GVIMIS..SVST   31 + 13.8
+
+                  LPPP  RP                                                                       PPRGP   SPAT
+                  PG     R                                                                       GV  S   R  P
+                                                                                                            S
+
+ A  C  D  E  F  G  H  I  K  L  M  N  P  Q  R  S  T  V  W  Y Del Ins Score
+ 0  0  0  0  0  0  0  3  0  8  0  0  5  0  2  0  0  3  0  0   0      16.6
+                                                                  0 -0.105
+ 0  0  0  0  0  8  0  0  0  0  0  0 10  0  0  1  0  2  0  0   0      33.3
+                                                                  0 -0.105
+ 0  0  1  0  0  0  0  0  0  0  0  0 17  0  0  0  0  2  0  1   0      50.6
+                                                                  0 -0.105
+ 2  0  0  0  0  0  0  0  0  0  0  0 16  0  0  0  3  0  0  0   0      52.2
+                                                                  0 -0.105
+ 3  0  2  0  0  4  1  0  1  0  0  1  4  1  1  2  1  0  0  0   0      1.16
+                                                                  0 -0.105
+ 0  1  1  0  0  2  0  1  0  3  2  0  3  0  3  0  0  4  0  1   0     -1.44
+                                                                  0 -0.105
+ 1  1  2  0  0  2  0  2  0  1  0  0  2  3  5  2  0  0  0  0   0     -3.59
+                                                                  0 -0.105
+ 1  0  0  0  0  0  1  0  2  0  0  0 10  1  5  0  0  1  0  0   0      21.7
+                                                                320 -124.
+ 0  0  0  0  0  6  0  0  0  2  0  0 13  0  0  0  0  0  0  0   0      42.0
+                                                                  0 -0.105
+ 0  0  0  0  0  2  0  0  0  0  0  0 10  0  2  0  0  7  0  0   0      31.1
+                                                                  0 -0.105
+ 2  3  0  2  0  0  0  1  0  0  0  0  1  0  5  3  2  2  0  0   0      1.67
+                                                                  0 -0.105
+ 1  0  0  0  1  5  4  0  0  3  1  0  4  0  0  0  1  1  0  0   0      5.23
+                                                                  0 -0.105
+ 0  0  0  1  0  0  0  2  0  0  0  0 11  0  2  5  0  0  0  0   0      28.0
+                                                                 12 -37.7
+ 0  0  0  0  0  0  0  2  0  0  0  0  3  3  5  6  0  2  0  0   0      9.95
+                                                                  0 -0.105
+ 1  0  0  0  1  0  3  0  0  2  0  0  7  0  2  0  1  4  0  0   0      10.4
+                                                                  0 -0.105
+ 6  0  0  2  0  2  0  0  0  0  0  0  0  0  0  4  4  3  0  0   0      10.1
+                                                                  0 -0.105
+ 0  0  0  0  0  0  0  0  0  0  0  0  7  0  0  5  9  0  0  0   0      37.3
+
+Score: 178.673  Columns: 30  Sequences: 17
+
+                  ****...........****....................*********.................................................................*************
+HHV_6A_q0068   44 SNVSV..........PHFR....................DMHSPGAPDIKWITACTKMIDVIL..................................................NYWNNKTAVPTPA   89 + 12.8
+EBV_bkrf1_eb  393 SPPRR..........PPPGRRP.................FFHPVGEADYFEY.............................................................HQEGGPDGEPDVP  430 + 24.6
+EBV_byrf1_eb   70 PPP............PPPP....................PPPPPPPPP.................................................................PPPSPPPPPPPPP   98 + 39.3
+EBV_blrf3_q0    6 PGL............PAPDD...................NIEEVPSTSGVQERASEGDWENVLIEISDSSSEEEAEDAHLDSSQRGKKRKRVDDDAGGSAP............AQHVPPPQLDHPG   88 + 21.2
+EBV_bnlf1_lm  267 PDNTDDNG.......PHDP....................LPQDPDNTDDNGPQDPDNT.......................................................DDNGPHDPLPHSP  310 + 24.7
+EBV_lmp2_p0c   38 SGNT...........PTPPNDEERE..............SNEEPPPPYEDPYWGNGDRHSDYQPLGTQDQSLYLG......................................LQHDGNDGLPPPP  100 + 24.1
+EBV_ebna3_p1  552 KPVR...........PAPPKI..................AMQGPGETSGIRRAR...........................................................ERWRPAPWTPNPP  589 + 30.8
+EBV_ebna-lp_  206 PGPTR..........PGPPGIGPEGPLGQLLR.......RHRSPSPTRGGQEPRRVRRRVLVQQEEEVVSGSPSGPRGD..................................RSEGPGPTRPGPP  280 + 23.2
+KSHV_lana1_o  105 PPVTTSSS.......PIPPS...................HPVSPGTTDTHSPSPALPPTQSPESSQRPPLSSPTGRPDSSTPMRPPPSQQTT.....................PPHSPTTPPPEPP  183 + 40.4
+KSHV_f5hic6_  196 SGV.Q..........PVDDA...................NADSPGSGDEG...............................................................PSTRHSDSQPPPA  228 + 17.2
+KSHV_orf54_q  119 PPLRDVSF.......LTPPMYANDAGFDVMVMH......SMVIPPTTDQPFMIYL..........................................................GVETPGPPEPHVA  173 + 26.7
+KSHV_orf75_q 1130 SPYTYG.........PTPPQRWAVNLETNVSKLYDSHWLNIQIPQNTKSVFLRVLRGTVLPSWAQGEYLGVRYEQDALEYILRQRGEITLTYHGNAADETLPAR.........HYPRNPTGNSTVA 1237 + 13.5
+KSHV_k15_q9q  385 SPP............PLPPF...................FRQPVRLPSHVTDRGRGSQLLNEVELQEVNRDPPNVFGYASILVSGAE..........................ESREPSPQPDQSG  453 + 14.1
+HCMV_f5hf35_  151 SGCRFDTVEMVDETRPAPP....................ALSSPETGDDSNDDAVAGGGAG....................................................GVTSSATRTTSSN  204 + 8.84
+HCMV_f5haq7_  153 PPPSWK.........PPPPPG..................RKKRPPTPPVRAPTTRL.........................................................SSHRPPTPIPAPR  194 + 31.8
+HCMV_f5hgq8_  123 ANQRNSV........PPPD....................MAVTAPLTDVDLLK............................................................PVTGSATQFTTVA  160 + 12.7
+HCMV_f5h9n9_    2 SPNSEATGTAWA...PPPPRPSRGVI.............MISSVSTNDVRRFLLCMRVYSTVAVQGTCTFLLCLGLVLAFPHLKGTVFLCCTGFMPPLSLMVPTICLALLHGKRDEGSFTSPPSPG  111 + 19.0
+
+                  SPPR           PPPP                      QSPPTTD                                                                 PSEGPPTPPP PP
+                  PGVT                                       VG P                                                                    HR  P    VA
+                     S                                                                                                                   D      
+
+ A  C  D  E  F  G  H  I  K  L  M  N  P  Q  R  S  T  V  W  Y Del Ins Score
+ 1  0  0  0  0  0  0  0  1  0  0  0  7  0  0  8  0  0  0  0   0      25.9
+                                                                  0 -0.0988
+ 0  0  1  0  0  5  0  0  0  0  0  2  9  0  0  0  0  0  0  0   0      25.1
+                                                                  0 -0.0988
+ 0  1  0  0  0  0  0  0  0  2  0  3  5  1  0  0  0  4  0  1   0      4.74
+                                                                  0 -0.0988
+ 0  0  0  0  0  0  0  0  0  0  0  0  0  0  5  3  5  0  0  0   4      1.54
+                                                                 42 -59.0
+ 0  0  0  0  0  0  0  0  0  1  0  0 16  0  0  0  0  0  0  0   0      54.7
+                                                                  0 -0.0988
+ 3  0  0  0  0  1  2  1  0  1  0  0  5  0  0  0  3  1  0  0   0      2.79
+                                                                  0 -0.0988
+ 0  0  2  0  1  0  0  0  0  0  0  0 14  0  0  0  0  0  0  0   0      42.6
+                                                                  0 -0.0988
+ 0  0  3  0  0  1  0  0  0  0  0  0 12  0  1  0  0  0  0  0   0      33.4
+                                                                 71 -70.9
+ 2  0  1  0  2  0  1  0  0  1  2  3  1  0  2  2  0  0  0  0   0     -3.48
+                                                                  0 -0.0988
+ 2  0  0  0  1  0  1  3  1  1  3  1  3  0  1  0  0  0  0  0   0      0.495
+                                                                  0 -0.0988
+ 0  0  1  2  0  0  2  0  1  0  0  0  1  4  1  2  0  3  0  0   0      2.78
+                                                                  0 -0.0988
+ 0  0  1  2  0  1  0  2  0  0  0  0  3  0  1  6  1  0  0  0   0      2.06
+                                                                  0 -0.0988
+ 1  0  0  0  0  0  0  0  0  0  0  0 12  0  0  0  0  4  0  0   0      38.4
+                                                                  0 -0.0988
+ 0  0  1  1  0  5  0  0  0  0  0  0  6  1  1  2  0  0  0  0   0      10.1
+                                                                  0 -0.0988
+ 1  0  0  2  0  0  0  0  0  2  0  2  3  0  0  2  5  0  0  0   0      2.81
+                                                                  0 -0.0988
+ 1  0  0  0  0  2  0  0  0  0  0  1  5  0  0  0  8  0  0  0   0      17.7
+                                                                  0 -0.0988
+ 0  0  9  0  0  0  0  0  1  0  0  0  2  0  1  3  0  0  0  1   0      16.4
+                                                                385 -112.
+ 1  0  1  2  0  2  2  0  0  1  0  1  4  0  2  1  0  0  0  0   0     -0.324
+                                                                  0 -0.0988
+ 0  0  2  0  0  0  0  0  0  0  0  0  2  3  1  4  0  3  0  2   0      2.13
+                                                                  0 -0.0988
+ 0  0  0  4  0  0  4  0  0  0  0  1  2  0  1  0  3  0  2  0   0      10.2
+                                                                  0 -0.0988
+ 0  0  1  1  0  5  0  0  0  0  0  1  0  0  4  3  1  1  0  0   0      4.39
+                                                                  0 -0.0988
+ 0  0  0  0  0  2  1  0  0  0  0  2  9  0  0  3  0  0  0  0   0      19.3
+                                                                  0 -0.0988
+ 3  0  0  0  1  2  1  0  1  0  0  1  5  0  0  2  1  0  0  0   0      0.694
+                                                                  0 -0.0988
+ 0  0  4  0  0  0  0  0  0  0  0  0  6  0  0  0  7  0  0  0   0      26.6
+                                                                  0 -0.0988
+ 1  0  0  0  0  3  0  0  0  0  0  0  5  3  1  2  1  0  1  0   0      3.26
+                                                                  0 -0.0988
+ 0  0  0  2  1  0  0  1  0  3  0  1  4  1  1  0  2  1  0  0   0     -3.35
+                                                                  0 -0.0988
+ 0  0  2  0  0  0  0  0  0  0  0  0 12  0  0  1  2  0  0  0   0      33.4
+                                                                  0 -0.0988
+ 1  0  1  1  0  1  3  0  0  0  0  1  3  1  0  2  3  0  0  0   0      3.18
+                                                                  0 -0.0988
+ 0  0  0  0  0  0  0  0  0  0  0  0 10  0  0  3  0  4  0  0   0      31.1
+                                                                  0 -0.0988
+ 5  0  0  0  0  3  0  0  0  0  0  1  7  0  1  0  0  0  0  0   0      15.0
+
+Score: 168.231  Columns: 20  Sequences: 20
+
+                  *******..........................*****.........********
+HHV_6A_q0068   24 GPMEWEAEIPGISTDFFCKFSN...........VS.VPHFR......DMHSPGAP   60 + 17.5
+EBV_bkrf1_eb  382 RSPSSQSSSS.......................GS.PP.........RRPPPGRR  403 + 23.0
+EBV_byrf1_eb   75 PPPPPPP..........................PP.PP.........PPPSPPPP   93 + 31.3
+EBV_blrf3_q0   53 HLDSSQRGKKRKRVDDDAGGSAPAQH.......VP.PPQL.......DHPGREAI   92 + 15.1
+EBV_bnlf1_lm    1 MEHDLERG.........................PP.GP.........RRPPRGPP   20 + 25.4
+EBV_lmp2_p0c   44 PPNDEERESNEE.....................PP.PPYEDPYWGNGDRHSDYQP   76 + 15.1
+EBV_ebna3_p1  531 QHMPVEP..........................VP.VPTVALERPVYPKPVRPAP  558 + 18.2
+EBV_ebna-lp_  426 RHRSPSPTRGGQEPRRVRRRVLVQQEEEVVSGSPS.GPLR.......PRPRPPAR  472 + 18.5
+KSHV_lana1_o  154 RPDSSTPMR........................PP.PSQQTT.....PPHSPTTP  178 + 22.6
+KSHV_f5hez4_  154 MLRSLSRVDLQRQVQTLMGLHL...........SG.PSH........SQHYRHTP  188 + 6.87
+KSHV_f5hic6_  345 GLPPASRRRPVVGEFLW................DD.GP.........RRHERPTT  373 + 7.99
+KSHV_orf54_q  144 HSMVIPPTTDQPFMIYLGVET............PG.PP.........EPHVALAL  176 + 16.1
+KSHV_orf75_q 1125 GRSESSPYTY.......................GPTPPQ........RWAVNLET 1148 + 8.72
+KSHV_k15_q9q  380 GNNVISP..........................PPLPPFF.......RQPVRLPS  401 + 19.4
+KSHV_k12_q77   24 RLGAIPPLVCLLAISV.................VP.PSGQ.......RGPVAFRT   53 + 9.00
+HCMV_f5hf35_  116 RHHERQRSRRRAMD...................VP.DPELGDPA...RRPLNGAM  147 + 11.5
+HCMV_f5haq7_  153 PPPSWKP..........................PP.PPGRKK.....RPPTPPVR  175 + 27.3
+HCMV_f5hgq8_  113 GSSSSSSVHVANQRNS.................VP.PP.........DMAVTAPL  140 + 13.9
+HCMV_f5hf62_  322 HSMSFSRR.........................SS.PS.........RRETSSDT  341 + 8.73
+HCMV_f5h9n9_    1 MSPNSEATGTAW.....................AP.PP.........PRPSRGVI   24 + 20.0
+
+                  GPPSSSP                          PPLPP         RRPVRGAP
+                  RSM  ER                          VST S         PPHSPPPT
+                   L                                             D       
+
+ A  C  D  E  F  G  H  I  K  L  M  N  P  Q  R  S  T  V  W  Y Del Ins Score
+ 0  0  0  0  0  5  3  0  0  0  3  0  3  1  5  0  0  0  0  0   0      14.2
+                                                                  0 -0.103
+ 0  0  0  1  0  0  3  0  0  4  0  1  5  0  1  5  0  0  0  0   0      8.70
+                                                                  0 -0.103
+ 0  0  2  0  0  1  2  0  0  0  4  2  5  0  2  2  0  0  0  0   0      10.3
+                                                                  0 -0.103
+ 1  0  2  3  0  0  0  0  0  0  0  1  3  0  0  8  0  2  0  0   0      9.52
+                                                                  0 -0.103
+ 1  0  0  1  1  0  0  3  0  2  0  0  2  0  1  6  0  1  2  0   0      1.67
+                                                                  0 -0.103
+ 0  0  0  5  0  0  0  0  1  0  0  0  3  3  0  7  1  0  0  0   0      15.6
+                                                                  0 -0.103
+ 2  0  0  0  0  0  0  0  0  0  0  0  9  0  7  2  0  0  0  0   0      31.1
+                                                                144 -97.1
+ 1  0  1  0  0  2  0  0  0  0  0  0  8  0  0  2  0  6  0  0   0      17.3
+                                                                  0 -0.103
+ 0  0  1  0  0  2  0  0  0  0  0  0 13  0  0  4  0  0  0  0   0      37.5
+                                                                  0 -0.103
+ 0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  1  0  0  0  18     -18.6
+                                                                  0 -0.103
+ 0  0  1  0  0  3  0  0  0  0  0  0 14  0  0  0  0  2  0  0   0      39.6
+                                                                  0 -0.103
+ 0  0  0  0  0  0  0  0  0  0  0  0 16  0  0  4  0  0  0  0   0      56.6
+                                                                 45 -65.8
+ 0  0  4  1  0  0  0  0  0  0  0  0  5  0  9  1  0  0  0  0   0      25.1
+                                                                  0 -0.103
+ 0  0  0  0  0  1  1  0  1  0  2  0  4  2  8  0  0  0  1  0   0      12.2
+                                                                  0 -0.103
+ 2  0  0  1  0  0  6  0  0  0  0  0 11  0  0  0  0  0  0  0   0      41.5
+                                                                  0 -0.103
+ 0  0  0  1  0  1  0  0  0  1  0  0  2  0  1  5  2  6  0  1   0      1.88
+                                                                  0 -0.103
+ 2  0  1  0  0  0  0  0  0  0  0  2  6  0  7  1  1  0  0  0   0      15.6
+                                                                  0 -0.103
+ 1  0  0  1  1  5  1  0  0  3  0  0  5  0  0  1  1  0  0  1   0     -1.07
+                                                                  0 -0.103
+ 6  0  1  1  0  0  0  0  0  0  0  0  4  1  2  0  3  2  0  0   0      4.67
+                                                                  0 -0.103
+ 0  0  0  0  0  0  0  2  0  2  1  0  7  0  3  1  4  0  0  0   0      9.61
+

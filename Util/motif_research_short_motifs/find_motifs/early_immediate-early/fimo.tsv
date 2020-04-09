@@ -1,0 +1,6 @@
+motif_id	motif_alt_id	sequence_name	start	stop	strand	score	p-value	q-value	matched_sequence
+WAIFINNKRC	MEME-3	EBV_brlf1_p03209_q1hvg0_q3kss7	79	88	+	-7.17857	7.99e-05	1	WAILRNNRVR
+
+# FIMO (Find Individual Motif Occurrences): Version 5.1.1 compiled on Mar 31 2020 at 14:57:54
+# The format of this file is described at http://meme-suite.org/doc/fimo-output-format.html.
+# fimo -oc Util/motif_research_short_motifs/find_motifs/early_immediate-early Util/motif_research_short_motifs/motifs/early/meme.txt Util/multi_sequence_fasta/immediate-early.fasta

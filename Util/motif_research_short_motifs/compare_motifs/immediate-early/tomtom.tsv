@@ -1,0 +1,9 @@
+Query_ID	Target_ID	Optimal_offset	p-value	E-value	q-value	Overlap	Query_consensus	Target_consensus	Orientation
+YVHGKYFYCN	ELME000385	-3	0.000318378	0.052214	0.0504599	5	YVHGKYFYCN	GRYFG	+
+WMRQIPDPED	ELME000315	4	0.00127771	0.209544	0.207302	9	WMRQIPDPED	FAFAAAAALPAPD	+
+WMRQIPDPED	ELME000170	2	0.00775517	1.27185	0.461255	2	WMRQIPDPED	FPWM	+
+WMRQIPDPED	ELME000190	-6	0.00852887	1.39873	0.461255	3	WMRQIPDPED	DPF	+
+
+# Tomtom (Motif Comparison Tool): Version 5.1.1 compiled on Mar 31 2020 at 14:58:03
+# The format of this file is described at http://meme-suite.org/doc/tomtom-output-format.html.
+# tomtom -oc Util/motif_research_short_motifs/compare_motifs/immediate-early Util/motif_research_short_motifs/motifs/immediate-early/meme.txt Util/motif_research_short_motifs/motifs/elm2018.meme
