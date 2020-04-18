@@ -1,10 +1,32 @@
 import json
 import pickle
+from operator import add
 
 from Util import compose_filename, compose_configuration
 from sklearn.decomposition import PCA
 import pandas as pd
 import matplotlib.pyplot as plt
+
+
+def _plot_pca_fi_barchart(relative, original_features, pca):
+    plt.figure(figsize=(12, 8))
+    bottom = [0 for _ in original_features]
+    for comp in range(5):
+        y = abs(pca.components_[comp])
+        if relative:
+            y = [el * pca.explained_variance_ratio_[comp] for el in y]
+        plt.bar(original_features, y, bottom=bottom, label=f"Component {comp}")
+        bottom = list(map(add, bottom, y))
+
+    plt.xticks(rotation=45, rotation_mode='anchor', ha='right')
+    plt.ylabel('Feature Importance')
+    plt.xlabel('Feature')
+    if relative:
+        plt.title("PCA feature importance, relative to Explained Variance Ratio of the components", wrap=True)
+    else:
+        plt.title("PCA feature importance", wrap=True)
+    plt.legend()
+    plt.tight_layout()
 
 
 class PCAPlotter:
@@ -26,13 +48,31 @@ class PCAPlotter:
         plt.bar([f"comp {i}" for i, _ in enumerate(y)], y)
 
         for i, v in enumerate(y):
-            plt.text(i, v, str(round(v*100, 2)) + '%', ha='center', va='bottom')
+            plt.text(i, v, str(round(v * 100, 2)) + '%', ha='center', va='bottom')
 
         plt.xticks(rotation=45, rotation_mode='anchor', ha='right')
         plt.xlabel('PCA Component')
         plt.ylabel('Explained Variance Ratio')
         plt.tight_layout()
         plt.savefig(f"{self.config['output_pca_variance_plot_directory']}None-pca_{name}")
+        plt.close()
+
+    def plot_feature_importance(self, name):
+        pca_file = f"{self.config['input_pca_folder']}None-pca.p"
+        pca = pickle.load(open(pca_file, 'rb'))  # type: PCA
+
+        features_file = compose_filename(self.config["input_data_folder"], self.config['filter_latent'],
+                                         self.config['standardization'], 'no-pca', 'features', name, 'csv')
+
+        original_features = pd.read_csv(features_file, index_col=0).columns
+        original_features = [col for col in original_features if col not in self.config['skip-features']]
+
+        _plot_pca_fi_barchart(False, original_features, pca)
+        plt.savefig(f"{self.config['output_pca_variance_plot_directory']}PCA_Features_Importance_{name}")
+        plt.close()
+
+        _plot_pca_fi_barchart(True, original_features, pca)
+        plt.savefig(f"{self.config['output_pca_variance_plot_directory']}PCA_Features_Importance_Relative_to_variance{name}")
         plt.close()
 
     def plot(self, name):

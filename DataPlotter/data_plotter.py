@@ -3,7 +3,7 @@ from Util import ReviewDBReader
 import matplotlib.pyplot as plt
 from operator import add
 
-REVIEW_STATUSES = ["CORRECT", "MODIFIED", "UNCERTAIN", "REVIEW_LATER"]
+REVIEW_STATUSES = ["CORRECT", "MODIFIED", "UNCERTAIN"]
 color_dict = {'green': '#5cb85c', 'blue': '#5bc0de', 'orange': '#f0ad4e', 'red': '#d9534f'}
 color_status_dict = {'CORRECT': color_dict['green'], 'UNCERTAIN': color_dict['orange'], 'MODIFIED': color_dict['red'],
                      'REVIEW_LATER': color_dict['blue']}
@@ -50,7 +50,7 @@ class DataPlotter:
             plt.text(i, v - 4, str(v), color='white', ha='center', va='top')
 
         plt.savefig(f'{self.output_directory_totals}phase.png', dpi=300)
-        plt.clf()
+        plt.close()
 
     def plot_total_status(self):
         result_dict = {}
@@ -61,14 +61,14 @@ class DataPlotter:
 
         plt.bar(range(len(result_dict)), bars, tick_label=[s for s in REVIEW_STATUSES],
                 color=[color_status_dict[s] for s in REVIEW_STATUSES])
-        plt.title('Number of genes per review status (total over all viruses)')
+        plt.title('Total number of genes per review status')
         plt.ylabel('Number of genes')
 
         for i, v in enumerate(bars):
             plt.text(i, v - 4, str(v), color='white', ha='center', va='top')
-
+        plt.tight_layout()
         plt.savefig(f'{self.output_directory_totals}review_status.png', dpi=300)
-        plt.clf()
+        plt.close()
 
     def plot_per_virus_phase(self):
 
@@ -106,7 +106,7 @@ class DataPlotter:
         plt.title('Number of genes per phase per virus')
         plt.ylabel('Number of genes')
         plt.savefig(f'{self.output_directory_per_virus}phase.png', dpi=300)
-        plt.clf()
+        plt.close()
 
     def plot_per_virus_status(self):
 
@@ -140,10 +140,11 @@ class DataPlotter:
 
         plt.xticks(range(len(self.viruses)), [v for v in self.viruses], fontsize=8)
         plt.legend()
-        plt.title('Number of genes per review status per virus')
+        plt.title('Number of genes per review status for each virus')
         plt.ylabel('Number of genes')
+        plt.tight_layout()
         plt.savefig(f'{self.output_directory_per_virus}review_status.png', dpi=300)
-        plt.clf()
+        plt.close()
 
     def plot(self):
         self.plot_total_phase()

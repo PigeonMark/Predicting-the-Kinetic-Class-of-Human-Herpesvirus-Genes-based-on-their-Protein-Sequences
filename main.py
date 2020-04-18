@@ -135,16 +135,17 @@ def main():
                 classification.fit_all()
 
             if args.plot:
-                cp = ClassificationPlotter('config/classification_config.json', args.features)
-                cp.plot_all()
+                # cp = ClassificationPlotter('config/classification_config.json', args.features)
+                # cp.plot_all()
 
                 pcap = PCAPlotter('config/classification_config.json')
-                pcap.plot(args.features)
-                pcap.plot_explained_variance(args.features)
+                # pcap.plot(args.features)
+                # pcap.plot_explained_variance(args.features)
+                pcap.plot_feature_importance(args.features)
 
-                spmp = ScatterPlotMatrixPlotter('config/classification_config.json')
-                spmp.plot_scatter_matrix()
-                spmp.plot_correlation_matrix()
+                # spmp = ScatterPlotMatrixPlotter('config/classification_config.json')
+                # # spmp.plot_scatter_matrix()
+                # spmp.plot_correlation_matrix()
 
 
 if __name__ == "__main__":
