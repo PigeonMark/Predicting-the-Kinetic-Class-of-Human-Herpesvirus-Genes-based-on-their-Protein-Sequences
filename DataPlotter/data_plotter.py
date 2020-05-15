@@ -1,6 +1,7 @@
 import json
 from Util import ReviewDBReader
 import matplotlib.pyplot as plt
+import pandas as pd
 from operator import add
 
 REVIEW_STATUSES = ["CORRECT", "MODIFIED", "UNCERTAIN"]
@@ -18,6 +19,7 @@ class DataPlotter:
         self.viruses = None
         self.output_directory_totals = None
         self.output_directory_per_virus = None
+        self.homology_filter_data = None
 
         self.read_config(config_filepath)
 
@@ -33,21 +35,22 @@ class DataPlotter:
             self.viruses = general_config['viruses']
 
         self.review_db_reader = ReviewDBReader(config['review_db_reader_config'])
+        self.homology_filter_data = pd.read_csv(config['homology_filter_data'])
 
     def plot_total_phase(self):
         result_dict = {}
         for phase in self.phases:
-            result_dict[phase] = self.review_db_reader.get_by('reviewed_phase', phase)
+            result_dict[phase] = self.homology_filter_data[self.homology_filter_data['label'] == phase]
 
         bars = [len(result_dict[p]) for p in self.phases]
 
         plt.bar(range(len(result_dict)), bars,
                 tick_label=[p for p in self.phases], color=[color_phase_dict[p] for p in self.phases])
-        plt.title('Number of genes per phase (total over all viruses)')
+        plt.title('Total number of genes per kinetic class')
         plt.ylabel('Number of genes')
 
         for i, v in enumerate(bars):
-            plt.text(i, v - 4, str(v), color='white', ha='center', va='top')
+            plt.text(i, v - 4, str(v), color='white', ha='center', va='top', fontweight='bold')
 
         plt.savefig(f'{self.output_directory_totals}phase.png', dpi=300)
         plt.close()
@@ -75,10 +78,10 @@ class DataPlotter:
         bar_data = {}
 
         for phase in self.phases:
-            data = self.review_db_reader.get_by('reviewed_phase', phase)
+            data = self.homology_filter_data[self.homology_filter_data['label'] == phase]
             virus_dict = {v: 0 for v in self.viruses}
-            for d in data:
-                virus_dict[d.virus] += 1
+            for i, d in data.iterrows():
+                virus_dict[d['virus']] += 1
 
             bar_data[phase] = [virus_dict[v] for v in self.viruses]
 
@@ -92,18 +95,26 @@ class DataPlotter:
                 bars.append(plt.bar(range(len(self.viruses)), bar_data[phase], bottom=bottom, label=phase,
                                     color=color_phase_dict[phase]))
                 for j, v in enumerate(bar_data[phase]):
-                    if v > 2:
-                        plt.text(j, v + bottom[j] - 0.5, str(v), color='white', ha='center', va='top', fontsize=8)
+                    if v == 3:
+                        plt.text(j, v + bottom[j] - 0.5, str(v), color='white', ha='center', va='top', fontsize=8,
+                                 fontweight='bold')
+                    elif 3 < v:
+                        plt.text(j, v + bottom[j] - 1, str(v), color='white', ha='center', va='top', fontsize=8,
+                                 fontweight='bold')
             else:
                 bars.append(
                     plt.bar(range(len(self.viruses)), bar_data[phase], label=phase, color=color_phase_dict[phase]))
                 for j, v in enumerate(bar_data[phase]):
-                    if v > 2:
-                        plt.text(j, v - 0.5, str(v), color='white', ha='center', va='top', fontsize=8)
+                    if v == 3:
+                        plt.text(j, v - 0.5, str(v), color='white', ha='center', va='top', fontsize=8,
+                                 fontweight='bold')
+                    elif 3 < v:
+                        plt.text(j, v - 1, str(v), color='white', ha='center', va='top', fontsize=8,
+                                 fontweight='bold')
 
         plt.xticks(range(len(self.viruses)), [v for v in self.viruses], fontsize=8)
         plt.legend()
-        plt.title('Number of genes per phase per virus')
+        plt.title('Number of genes per kinetic class for each virus')
         plt.ylabel('Number of genes')
         plt.savefig(f'{self.output_directory_per_virus}phase.png', dpi=300)
         plt.close()

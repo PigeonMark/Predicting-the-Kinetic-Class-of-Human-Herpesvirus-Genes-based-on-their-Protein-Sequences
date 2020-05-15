@@ -57,11 +57,11 @@ class ScatterPlotMatrixPlotter:
         cb = fig.colorbar(im, cax=cax)
 
         ax.set_xticks(range(df.shape[1]))
-        ax.set_xticklabels(df.columns, fontsize=10, rotation=-45, rotation_mode='anchor', ha='right')
+        ax.set_xticklabels(df.columns, fontsize=12, rotation=-45, rotation_mode='anchor', ha='right')
         ax.set_yticks(range(df.shape[1]))
-        ax.set_yticklabels(df.columns, fontsize=10)
+        ax.set_yticklabels(df.columns, fontsize=12)
 
-        plt.title('Correlation Matrix of features', y=-0.07, x=-11)
+        plt.title('Spearman Feature Correlation Matrix', y=-0.07, x=-11, fontsize=20)
         fig.tight_layout(pad=2)
         plt.savefig('Classification/Output/plots/scatter_plot_matrix/correlation_matrix', dpi=150)
 

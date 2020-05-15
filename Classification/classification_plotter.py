@@ -83,9 +83,9 @@ class ClassificationPlotter:
             if len(x) > 0:
                 plt.bar(index + (i * bar_width), y, yerr=error, width=bar_width, label=ml_method, capsize=5)
 
-                # print(f"\t{ml_method}")
-                # for j, mean in enumerate(y):
-                #     print(f"\t\t{x[j]}: {100 * mean:.2f}%")
+                print(f"\t{ml_method}")
+                for j, mean in enumerate(y):
+                    print(f"\t\t{x[j]}: {100 * mean:.2f}% +-{100 * error[j]:.2f}%")
         print(f"Maximum score: {max_configuration[0]}, {max_configuration[1]}: {100 * max_score:.2f}%")
 
         plt.title(title, wrap=True)
@@ -283,7 +283,7 @@ class ClassificationPlotter:
     def plot_wrong_classifications(self):
         fig = plt.figure(figsize=(14, 5))
         ax = plt.gca()
-        plt.title('Number of wrong classifications for each classifier\n(p1 -> p2 == a p1 sequence was wrongly classified as a p2 sequence)', wrap=True)
+        # plt.title('Number of wrong classifications for each classifier\n(p1 -> p2 == a p1 sequence was wrongly classified as a p2 sequence)', wrap=True)
 
         divider = make_axes_locatable(ax)
         cax = divider.append_axes("right", size="5%", pad=0.1)
@@ -297,36 +297,44 @@ class ClassificationPlotter:
             for ml_method in ml_methods:
                 results = self.results[ml_method][classifier]['wrong_classifications']
                 for correct, wrongs in results.items():
+                    if correct == 'immediate-early':
+                        correct = 'IE'
+                    else:
+                        correct = correct.capitalize()
                     for wrong, number in wrongs.items():
+                        if wrong == 'immediate-early':
+                            wrong = 'IE'
+                        else:
+                            wrong = wrong.capitalize()
                         if number > 0:
-                            x.append(f'{ml_method} {classifier}')
-                            y.append(f'{correct} -> {wrong}')
-                            z.append(number/200.)
+                            x.append(f'{ml_method}\n{classifier}')
+                            y.append(f'{correct} ' + r'$\rightarrow$' + f' {wrong}')
+                            z.append(number / 200.)
             if not gap:
                 x.append('')
-                y.append('late -> early')
+                y.append('Late ' + r'$\rightarrow$' + ' Early')
                 z.append(0)
                 gap = True
             else:
                 x.append('  ')
-                y.append('late -> early')
+                y.append('Late ' + r'$\rightarrow$' + ' Early')
                 z.append(0)
-
 
         viridis_big = cm.get_cmap('Blues', 512)
         new_cmp = ListedColormap(viridis_big(np.linspace(0.25, 1, 256)))
 
-        im = ax.scatter(x, y, s=[_z*200 for _z in z], c=z, cmap=new_cmp, alpha=1)
+        im = ax.scatter(x, y, s=[_z * 200 for _z in z], c=z, cmap=new_cmp, alpha=1)
         d = ax.collections[0]
         offsets = d.get_offsets()
         for i, (off_x, off_y) in enumerate(offsets):
             if z[i] > 0:
                 if z[i] > 7:
-                    ax.text(off_x, off_y, round(z[i]), fontsize=np.sqrt(z[i])*7, ha='center', va='center', color='white')
+                    ax.text(off_x, off_y, round(z[i]), fontsize=np.sqrt(z[i]) * 7, ha='center', va='center',
+                            color='white')
                 else:
-                    ax.text(off_x, off_y, round(z[i]), fontsize=np.sqrt(z[i])*7, ha='center', va='center')
+                    ax.text(off_x, off_y, round(z[i]), fontsize=np.sqrt(z[i]) * 7, ha='center', va='center')
 
         cb = fig.colorbar(im, cax=cax)
         plt.tight_layout()
-        plt.savefig('Classification/Output/plots/wrong_classifications/wrong_classifications')
+        plt.savefig('Classification/Output/plots/wrong_classifications/wrong_classifications', dpi=150)
         plt.close()

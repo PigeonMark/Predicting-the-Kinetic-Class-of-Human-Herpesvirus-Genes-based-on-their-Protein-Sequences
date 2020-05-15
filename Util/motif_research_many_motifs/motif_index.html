@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Create two unequal columns that floats next to each other */
+        .column {
+            float: left;
+            padding: 10px;
+        }
+
+        .left {
+            width: 15%;
+        }
+
+        .right {
+            width: 85%;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Find Motifs</title>
+</head>
+<body>
+<div class="row">
+    <div class="column left">
+<h1>Search Motifs</h1><a id="search_immediate-early" href="#">immediate-early</a><br>
+<a id="search_early" href="#">early</a><br>
+<a id="search_late" href="#">late</a><br>
+<a id="search_latent" href="#">latent</a><br>
+</div>
+    <div id="right-column" class="column right">
+    </div>
+</div>
+</body>
+<script>
+document.getElementById('search_immediate-early').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>Motifs of immediate-early sequences</h1><iframe src="./motifs/immediate-early/meme.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+document.getElementById('search_early').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>Motifs of early sequences</h1><iframe src="./motifs/early/meme.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+document.getElementById('search_late').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>Motifs of late sequences</h1><iframe src="./motifs/late/meme.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+document.getElementById('search_latent').onclick = function () {
+	document.getElementById('right-column').innerHTML = '<h1>Motifs of latent sequences</h1><iframe src="./motifs/latent/meme.html" style="position:fixed; width:84%; height:89%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>';
+            };
+</script>
+</html>

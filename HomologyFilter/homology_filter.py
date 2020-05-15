@@ -12,6 +12,8 @@ from time import time
 
 from Util import data_from_protein, print_data_row
 
+color_dict = {'green': '#5cb85c', 'blue': '#5bc0de', 'orange': '#f0ad4e', 'red': '#d9534f'}
+
 
 class HomologyFilter:
     def __init__(self, config_filepath):
@@ -61,24 +63,25 @@ class HomologyFilter:
         self.identities = pickle.load(open(self.identity_file, 'rb'))
 
     def __i_hist(self, inp, bins, title, filename):
-        y, x, patch = plt.hist(inp, bins)
+        y, x, patch = plt.hist(inp, bins, color=color_dict['blue'])
         for i, v in enumerate(y):
-            plt.text((x[i] + x[i + 1]) / 2., v, str(int(v)), color='black', ha='center', va='bottom')
+            plt.text((x[i] + x[i + 1]) / 2., v, str(int(v)), color='black', ha='center', va='bottom', fontweight='bold', fontsize=9)
         plt.xticks(bins)
-        plt.ylabel('Number of pairs')
+        plt.ylabel('Number of sequence pairs')
         plt.xlabel('Identity Score')
         plt.title(title)
+        plt.tight_layout()
         plt.savefig(f'{self.plot_directory}{filename}.png', dpi=300)
         plt.clf()
 
     def identity_histogram(self):
         inp = [v2 for v in self.identities.values() for v2 in v.values()]
         bins = np.arange(0, 1.1, 0.1)
-        self.__i_hist(inp, bins, 'Identity Scores for gene pairs', 'identities_histogram')
+        self.__i_hist(inp, bins, 'Histogram of identity scores', 'identities_histogram')
 
         inp2 = [v for v in inp if v >= 0.3]
         bins2 = bins[3:]
-        self.__i_hist(inp2, bins2, 'Identity Scores (>30%) for gene pairs', 'identities_30_histogram')
+        self.__i_hist(inp2, bins2, 'Histogram of identity scores (>30%)', 'identities_30_histogram')
 
     def calculate_identities(self):
         done = 0

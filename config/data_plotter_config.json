@@ -1,6 +1,7 @@
 {
   "general_config": "config/general.json",
   "review_db_reader_config": "config/review_db_reader_config.json",
+  "homology_filter_data": "HomologyFilter/Output/csv/filtered_features_80.csv",
   "output_directory_totals": "DataPlotter/Output/totals/",
   "output_directory_per_virus": "DataPlotter/Output/per_virus/"
 }
