@@ -12,7 +12,7 @@
   "output_pca_plot_directory": "Classification/Output/plots/pca/",
   "output_pca_variance_plot_directory": "Classification/Output/plots/pca_variance/",
   "filter_latent": true,
-  "standardization": false,
+  "standardization": true,
   "pca_features": false,
   "n-pca": [
     null
