@@ -12,14 +12,14 @@
   "output_pca_plot_directory": "Classification/Output/plots/pca/",
   "output_pca_variance_plot_directory": "Classification/Output/plots/pca_variance/",
   "filter_latent": true,
-  "standardization": true,
+  "standardization": false,
   "pca_features": false,
   "n-pca": [
     null
   ],
   "ML-method-options": [
-    "1vsA",
     "ML",
+    "1vsA",
     "RR"
   ],
   "Classifier-options": [

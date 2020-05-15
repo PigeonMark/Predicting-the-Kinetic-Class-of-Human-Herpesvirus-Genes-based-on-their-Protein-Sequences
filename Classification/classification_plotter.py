@@ -10,6 +10,11 @@ from sklearn.metrics import auc, precision_recall_curve, average_precision_score
 
 from Util import compose_filename, compose_configuration
 
+color_dict = {'green': '#5cb85c', 'blue': '#5bc0de', 'orange': '#f0ad4e', 'red': '#d9534f'}
+color_phase_dict = {'immediate-early': color_dict['blue'], 'early': color_dict['green'], 'late': color_dict['orange'],
+                    'latent': color_dict['red']}
+color_ml_dict = {'ML': color_dict['green'], '1vsA': color_dict['blue'], 'RR': color_dict['orange']}
+
 
 class ClassificationPlotter:
     def __init__(self, config_filepath, name):
@@ -37,10 +42,23 @@ class ClassificationPlotter:
             "roc_auc_ovr": f"ROC_AUC_ovr"
         }
         self.YLABEL = {
-            "ba": 'Accuracy',
-            "a_ba": 'Accuracy',
+            "ba": 'Balanced Accuracy',
+            "a_ba": 'Adjusted Balanced Accuracy',
             "roc_auc_ovo": 'AUC',
             "roc_auc_ovr": 'AUC'
+        }
+
+        self.MULTI_CLASS_NAME = {
+            "1vsA": "OvA",
+            "ML": "Built-in",
+            "RR": "OvO"
+
+        }
+
+        self.CLASSIFIER_NAME = {
+            "KNN": "k-NN",
+            "RF": "RF",
+            "XGBoost": "XGBoost"
         }
 
     def read_config(self, config_filepath):
@@ -64,7 +82,8 @@ class ClassificationPlotter:
         n_groups = len(self.results)
         index = np.arange(n_groups)
 
-        for i, (ml_method, classifier) in enumerate(self.results.items()):
+        for i, ml_method in enumerate(self.config["ML-method-options"]):
+            classifier = self.results[ml_method]
             classifier_tuples = list(classifier.items())
             score_name = self.SCORE_NAME[score_metric]
             x = []
@@ -72,27 +91,29 @@ class ClassificationPlotter:
             error = []
             for cl, res in classifier_tuples:
                 if score_name in res:
-                    x.append(cl)
+                    x.append(self.CLASSIFIER_NAME[cl])
                     score = np.mean(res.get(score_name, None))
                     y.append(score)
                     error.append(np.std(res.get(score_name), None))
                     if score >= max_score:
                         max_score = score
-                        max_configuration = (ml_method, cl)
+                        max_configuration = (self.MULTI_CLASS_NAME[ml_method], self.CLASSIFIER_NAME[cl])
 
             if len(x) > 0:
-                plt.bar(index + (i * bar_width), y, yerr=error, width=bar_width, label=ml_method, capsize=5)
+                plt.bar(index + (i * bar_width), y, yerr=error, width=bar_width, label=self.MULTI_CLASS_NAME[ml_method],
+                        capsize=5, color=color_ml_dict[ml_method])
 
-                print(f"\t{ml_method}")
+                print(f"\t{self.MULTI_CLASS_NAME[ml_method]}")
                 for j, mean in enumerate(y):
                     print(f"\t\t{x[j]}: {100 * mean:.2f}% +-{100 * error[j]:.2f}%")
         print(f"Maximum score: {max_configuration[0]}, {max_configuration[1]}: {100 * max_score:.2f}%")
 
-        plt.title(title, wrap=True)
-        plt.xticks(index + bar_width, list(self.results.values())[0].keys())
+        # plt.title(title, wrap=True)
+        plt.xticks(index + bar_width, [self.CLASSIFIER_NAME[cl] for cl in list(self.results.values())[0].keys()])
         plt.xlabel('Classifier')
         plt.ylabel(self.YLABEL[score_metric])
-        plt.legend(title='Multi-label Method')
+        plt.legend(title='Multi-class Method')
+        plt.tight_layout()
         filename = compose_filename(self.config['output_bar_plot_directory'], self.config['filter_latent'],
                                     self.config['standardization'], n_pca, self.SAVE_TITLE[score_metric], self.name, '')
         plt.savefig(filename)

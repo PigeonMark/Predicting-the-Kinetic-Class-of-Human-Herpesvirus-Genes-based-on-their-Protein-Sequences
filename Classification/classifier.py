@@ -102,9 +102,10 @@ def cross_validate(estimator, x, y, scoring, cv: ShuffleSplit):
     cv_results = {name: [] for name, _ in scoring.items()}
     cv_results['permutation_importance'] = []
     for metric in ['fpr', 'tpr', 'roc_auc', 'y_real', 'y_proba']:
-        cv_results[metric] = {class_: [] for class_ in ['early', 'immediate-early', 'late', 'micro', 'macro']}
-    cv_results['wrong_classifications'] = {class_: {class_2: 0 for class_2 in ['early', 'immediate-early', 'late']} for
-                                           class_ in ['early', 'immediate-early', 'late']}
+        cv_results[metric] = {class_: [] for class_ in ['early', 'immediate-early', 'late', 'latent', 'micro', 'macro']}
+    cv_results['wrong_classifications'] = {
+        class_: {class_2: 0 for class_2 in ['early', 'immediate-early', 'late', 'latent']} for class_ in
+        ['early', 'immediate-early', 'late', 'latent']}
 
     widgets = [progressbar.Percentage(), ' done']
     bar = progressbar.ProgressBar(widgets=widgets, max_value=cv.n_splits).start()
@@ -118,10 +119,10 @@ def cross_validate(estimator, x, y, scoring, cv: ShuffleSplit):
 
         estimator.fit(x_train, y_train)
 
-        add_wrong_classifications(cv_results, estimator, x_test, y_test)
-        add_roc_pr_scores(cv_results, estimator, x_test, y_test)
+        # add_wrong_classifications(cv_results, estimator, x_test, y_test)
+        # add_roc_pr_scores(cv_results, estimator, x_test, y_test)
         add_scorer_scores(cv_results, estimator, scoring, x_test, y_test)
-        add_feature_permutation_importance(cv_results, estimator, x_train, y_train)
+        # add_feature_permutation_importance(cv_results, estimator, x_train, y_train)
 
         i += 1
         bar.update(i)
