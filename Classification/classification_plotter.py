@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import auc, precision_recall_curve, average_precision_score
 
-from Util import compose_filename, compose_configuration
+from Util import compose_filename, compose_configuration, output_filename
 
 color_dict = {'green': '#5cb85c', 'blue': '#5bc0de', 'orange': '#f0ad4e', 'red': '#d9534f'}
 color_phase_dict = {'immediate-early': color_dict['blue'], 'early': color_dict['green'], 'late': color_dict['orange'],
@@ -36,8 +36,8 @@ class ClassificationPlotter:
             "roc_auc_ovr": 'roc_auc_ovr_score'
         }
         self.SAVE_TITLE = {
-            "ba": f"BalancedAccuracy",
-            "a_ba": f"AdjustedBalancedAccuracy",
+            "ba": f"BA",
+            "a_ba": f"ABA",
             "roc_auc_ovo": f"ROC_AUC_ovo",
             "roc_auc_ovr": f"ROC_AUC_ovr"
         }
@@ -47,12 +47,15 @@ class ClassificationPlotter:
             "roc_auc_ovo": 'AUC',
             "roc_auc_ovr": 'AUC'
         }
+        self.YMAX = {
+            "ba": 0.65,
+            "a_ba": 0.45,
+        }
 
         self.MULTI_CLASS_NAME = {
             "1vsA": "OvA",
             "ML": "Built-in",
             "RR": "OvO"
-
         }
 
         self.CLASSIFIER_NAME = {
@@ -109,12 +112,13 @@ class ClassificationPlotter:
         print(f"Maximum score: {max_configuration[0]}, {max_configuration[1]}: {100 * max_score:.2f}%")
 
         # plt.title(title, wrap=True)
+        plt.ylim(top=self.YMAX[score_metric])
         plt.xticks(index + bar_width, [self.CLASSIFIER_NAME[cl] for cl in list(self.results.values())[0].keys()])
         plt.xlabel('Classifier')
         plt.ylabel(self.YLABEL[score_metric])
         plt.legend(title='Multi-class Method')
         plt.tight_layout()
-        filename = compose_filename(self.config['output_bar_plot_directory'], self.config['filter_latent'],
+        filename = output_filename(self.config['output_bar_plot_directory'], self.config['filter_latent'],
                                     self.config['standardization'], n_pca, self.SAVE_TITLE[score_metric], self.name, '')
         plt.savefig(filename)
         plt.close()

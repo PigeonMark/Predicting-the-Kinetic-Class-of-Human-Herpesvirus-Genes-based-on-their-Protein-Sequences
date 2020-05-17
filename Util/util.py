@@ -100,6 +100,24 @@ def print_data_row(row):
     print(to_print)
 
 
+def output_filename(base_dir, filter_latent, standardization, n_pca, module, name, extension):
+    filename = module
+    if filter_latent:
+        base_dir += 'filter_latent/'
+    else:
+        filename += "_with_latent"
+    if standardization:
+        base_dir += 'standardization/'
+    else:
+        filename += "_no_standardization"
+
+    if n_pca != 'no-pca':
+        base_dir += 'pca/'
+        filename += ('_' + str(n_pca) + '-pca')
+
+    return base_dir + filename + '_' + name + '.' + extension
+
+
 def compose_filename(base_dir, filter_latent, standardization, n_pca, module, name, extension):
     if filter_latent:
         base_dir += 'filter_latent/'
