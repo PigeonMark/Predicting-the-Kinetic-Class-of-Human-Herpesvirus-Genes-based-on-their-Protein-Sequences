@@ -10,9 +10,10 @@ from sklearn.metrics import auc, precision_recall_curve, average_precision_score
 
 from Util import compose_filename, compose_configuration, output_filename
 
-color_dict = {'green': '#5cb85c', 'blue': '#5bc0de', 'orange': '#f0ad4e', 'red': '#d9534f'}
+color_dict = {'green': '#5cb85c', 'blue': '#5bc0de', 'orange': '#f0ad4e', 'red': '#d9534f', 'silver': '#c0c0c0',
+              'dimgray': '#696969'}
 color_phase_dict = {'immediate-early': color_dict['blue'], 'early': color_dict['green'], 'late': color_dict['orange'],
-                    'latent': color_dict['red']}
+                    'latent': color_dict['red'], 'micro': color_dict['silver'], 'macro': color_dict['dimgray']}
 color_ml_dict = {'ML': color_dict['green'], '1vsA': color_dict['blue'], 'RR': color_dict['orange']}
 
 
@@ -50,6 +51,8 @@ class ClassificationPlotter:
         self.YMAX = {
             "ba": 0.65,
             "a_ba": 0.45,
+            "roc_auc_ovo": 0.85,
+            "roc_auc_ovr": 0.85
         }
 
         self.MULTI_CLASS_NAME = {
@@ -116,10 +119,10 @@ class ClassificationPlotter:
         plt.xticks(index + bar_width, [self.CLASSIFIER_NAME[cl] for cl in list(self.results.values())[0].keys()])
         plt.xlabel('Classifier')
         plt.ylabel(self.YLABEL[score_metric])
-        plt.legend(title='Multi-class Method')
+        plt.legend(title='Multiclass strategy')
         plt.tight_layout()
         filename = output_filename(self.config['output_bar_plot_directory'], self.config['filter_latent'],
-                                    self.config['standardization'], n_pca, self.SAVE_TITLE[score_metric], self.name, '')
+                                   self.config['standardization'], n_pca, self.SAVE_TITLE[score_metric], self.name, '')
         plt.savefig(filename)
         plt.close()
         print()
@@ -143,20 +146,20 @@ class ClassificationPlotter:
         mean_auc = auc(mean_fpr, mean_tpr)
         std_auc = np.std(aucs)
 
-        plt.plot(mean_fpr, mean_tpr, ls, lw=3, label=r'%s (AUC = %0.2f $\pm$ %0.2f)' % (label, mean_auc, std_auc))
+        plt.plot(mean_fpr, mean_tpr, ls, color=color_phase_dict[class_], lw=3,
+                 label=r'%s (AUC = %0.2f $\pm$ %0.2f)' % (label, mean_auc, std_auc))
 
     def plot_roc(self, ml_method, classifier, n_pca):
         title = compose_configuration(f'ROC curves of {ml_method} {classifier}', self.config['filter_latent'],
                                       self.config['standardization'], n_pca, self.name)
         print(f"Plotting {title}")
 
-        plt.figure(figsize=(8, 6))
+        plt.figure(figsize=(6, 4.5))
 
-        self.plot_roc_class(ml_method, classifier, 'micro', f'micro-average ROC curve', ':')
-        self.plot_roc_class(ml_method, classifier, 'macro', f'macro-average ROC curve', ':')
-
-        for class_ in ['early', 'immediate-early', 'late']:
-            self.plot_roc_class(ml_method, classifier, class_, f'Mean ROC curve of {class_}', '-')
+        for class_ in ['immediate-early', 'early', 'late']:
+            self.plot_roc_class(ml_method, classifier, class_, f'{class_}', '-')
+        self.plot_roc_class(ml_method, classifier, 'micro', f'micro-average', ':')
+        self.plot_roc_class(ml_method, classifier, 'macro', f'macro-average', ':')
 
         plt.plot([0, 1], [0, 1], 'k--')
         plt.xlim([0.0, 1.0])
@@ -164,10 +167,11 @@ class ClassificationPlotter:
         plt.xlabel('False Positive Rate')
         plt.ylabel('True Positive Rate')
         plt.legend()
-        plt.title(title)
+        # plt.title(title)
         plt.tight_layout()
         filename = compose_filename(self.config['output_roc_curves_plot_directory'], self.config['filter_latent'],
-                                    self.config['standardization'], n_pca, f'ROC_curves_{ml_method}_{classifier}',
+                                    self.config['standardization'], n_pca,
+                                    f'ROC_{self.MULTI_CLASS_NAME[ml_method]}_{self.CLASSIFIER_NAME[classifier]}',
                                     self.name, '')
         plt.savefig(filename)
         plt.close()
@@ -178,28 +182,29 @@ class ClassificationPlotter:
 
         precision, recall, _ = precision_recall_curve(y_real, y_proba)
         ap = average_precision_score(y_real, y_proba, average='weighted')
-        plt.plot(recall, precision, ls, lw=2.5, label=r'%s (AP = %0.2f)' % (label, ap))
+        plt.plot(recall, precision, ls, lw=2.5, color=color_phase_dict[class_], label=r'%s (AP = %0.2f)' % (label, ap))
 
     def plot_pr(self, ml_method, classifier, n_pca):
         title = compose_configuration(f'PR curves of {ml_method} {classifier}', self.config['filter_latent'],
                                       self.config['standardization'], n_pca, self.name)
         print(f"Plotting {title}")
-        plt.figure(figsize=(8, 6))
+        plt.figure(figsize=(6, 4.5))
 
-        self.plot_pr_class(ml_method, classifier, 'micro', f'micro-average PR curve', ':')
+        self.plot_pr_class(ml_method, classifier, 'micro', f'micro-average', ':')
 
-        for class_ in ['early', 'immediate-early', 'late']:
-            self.plot_pr_class(ml_method, classifier, class_, f'Mean PR curve of {class_}', '-')
+        for class_ in ['immediate-early', 'early', 'late']:
+            self.plot_pr_class(ml_method, classifier, class_, f'{class_}', '-')
 
         plt.legend()
-        plt.title(title)
+        # plt.title(title)
         plt.xlim([0.0, 1.0])
         plt.ylim([0.0, 1.05])
         plt.xlabel('Recall')
         plt.ylabel('Precision')
         plt.tight_layout()
         filename = compose_filename(self.config['output_pr_curves_plot_directory'], self.config['filter_latent'],
-                                    self.config['standardization'], n_pca, f'PR_curves_{ml_method}_{classifier}',
+                                    self.config['standardization'], n_pca,
+                                    f'PR_{self.MULTI_CLASS_NAME[ml_method]}_{self.CLASSIFIER_NAME[classifier]}',
                                     self.name, '')
         plt.savefig(filename)
         plt.close()

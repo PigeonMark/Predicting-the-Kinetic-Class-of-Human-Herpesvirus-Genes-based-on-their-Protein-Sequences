@@ -11,8 +11,8 @@
   "output_pi_corr_matrix_plot_directory": "Classification/Output/plots/pi_corr_matrix/",
   "output_pca_plot_directory": "Classification/Output/plots/pca/",
   "output_pca_variance_plot_directory": "Classification/Output/plots/pca_variance/",
-  "filter_latent": false,
-  "standardization": false,
+  "filter_latent": true,
+  "standardization": true,
   "pca_features": false,
   "n-pca": [
     null
