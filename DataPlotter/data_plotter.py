@@ -11,6 +11,9 @@ color_status_dict = {'CORRECT': color_dict['green'], 'UNCERTAIN': color_dict['or
 color_phase_dict = {'immediate-early': color_dict['blue'], 'early': color_dict['green'], 'late': color_dict['orange'],
                     'latent': color_dict['red']}
 
+virus_display_name = {"HSV_1": "HSV-1", "HSV_2": "HSV-2", "VZV": "VZV", "EBV": "EBV", "HCMV": "HCMV",
+                      "HHV_6A": "HHV-6A", "HHV_6B": "HHV-6B", "HHV_7": "HHV-7", "KSHV": "KSHV"}
+
 
 class DataPlotter:
     def __init__(self, config_filepath):
@@ -43,16 +46,16 @@ class DataPlotter:
             result_dict[phase] = self.homology_filter_data[self.homology_filter_data['label'] == phase]
 
         bars = [len(result_dict[p]) for p in self.phases]
-
+        plt.figure(figsize=(5, 4))
         plt.bar(range(len(result_dict)), bars,
                 tick_label=[p for p in self.phases], color=[color_phase_dict[p] for p in self.phases])
-        plt.title('Total number of genes per kinetic class')
+        # plt.title('Total number of genes per kinetic class')
         plt.ylabel('Number of genes')
 
         for i, v in enumerate(bars):
             plt.text(i, v - 4, str(v), color='white', ha='center', va='top', fontweight='bold')
-
-        plt.savefig(f'{self.output_directory_totals}phase.png', dpi=300)
+        plt.tight_layout()
+        plt.savefig(f'{self.output_directory_totals}kinetic_class_total.png', dpi=300)
         plt.close()
 
     def plot_total_status(self):
@@ -61,16 +64,16 @@ class DataPlotter:
             result_dict[status] = self.review_db_reader.get_by('review_status', status)
 
         bars = [len(result_dict[s]) for s in REVIEW_STATUSES]
-
+        plt.figure(figsize=(5, 4))
         plt.bar(range(len(result_dict)), bars, tick_label=[s for s in REVIEW_STATUSES],
                 color=[color_status_dict[s] for s in REVIEW_STATUSES])
-        plt.title('Total number of genes per review status')
+        # plt.title('Total number of genes per review status')
         plt.ylabel('Number of genes')
 
         for i, v in enumerate(bars):
-            plt.text(i, v - 4, str(v), color='white', ha='center', va='top')
+            plt.text(i, v - 4, str(v), color='white', ha='center', va='top', fontweight="bold")
         plt.tight_layout()
-        plt.savefig(f'{self.output_directory_totals}review_status.png', dpi=300)
+        plt.savefig(f'{self.output_directory_totals}review_status_total.png', dpi=300)
         plt.close()
 
     def plot_per_virus_phase(self):
@@ -84,7 +87,7 @@ class DataPlotter:
                 virus_dict[d['virus']] += 1
 
             bar_data[phase] = [virus_dict[v] for v in self.viruses]
-
+        plt.figure(figsize=(5.5, 4))
         bars = []
         phases = list(self.phases.keys())
         for i, phase in enumerate(phases):
@@ -96,27 +99,25 @@ class DataPlotter:
                                     color=color_phase_dict[phase]))
                 for j, v in enumerate(bar_data[phase]):
                     if v == 3:
-                        plt.text(j, v + bottom[j] - 0.5, str(v), color='white', ha='center', va='top', fontsize=8,
+                        plt.text(j, v + bottom[j] - 0.5, str(v), color='white', ha='center', va='top',
                                  fontweight='bold')
                     elif 3 < v:
-                        plt.text(j, v + bottom[j] - 1, str(v), color='white', ha='center', va='top', fontsize=8,
-                                 fontweight='bold')
+                        plt.text(j, v + bottom[j] - 1, str(v), color='white', ha='center', va='top', fontweight='bold')
             else:
                 bars.append(
                     plt.bar(range(len(self.viruses)), bar_data[phase], label=phase, color=color_phase_dict[phase]))
                 for j, v in enumerate(bar_data[phase]):
                     if v == 3:
-                        plt.text(j, v - 0.5, str(v), color='white', ha='center', va='top', fontsize=8,
-                                 fontweight='bold')
+                        plt.text(j, v - 0.5, str(v), color='white', ha='center', va='top', fontweight='bold')
                     elif 3 < v:
-                        plt.text(j, v - 1, str(v), color='white', ha='center', va='top', fontsize=8,
-                                 fontweight='bold')
+                        plt.text(j, v - 1, str(v), color='white', ha='center', va='top', fontweight='bold')
 
-        plt.xticks(range(len(self.viruses)), [v for v in self.viruses], fontsize=8)
+        plt.xticks(range(len(self.viruses)), [virus_display_name[v] for v in self.viruses], fontsize=8)
         plt.legend()
-        plt.title('Number of genes per kinetic class for each virus')
+        # plt.title('Number of genes per kinetic class for each virus')
         plt.ylabel('Number of genes')
-        plt.savefig(f'{self.output_directory_per_virus}phase.png', dpi=300)
+        plt.tight_layout()
+        plt.savefig(f'{self.output_directory_per_virus}kinetic_class_per_virus.png', dpi=300)
         plt.close()
 
     def plot_per_virus_status(self):
@@ -131,6 +132,8 @@ class DataPlotter:
 
             bar_data[status] = [virus_dict[v] for v in self.viruses]
 
+        plt.figure(figsize=(5.5, 4))
+
         bars = []
         for i, status in enumerate(REVIEW_STATUSES):
             if len(bars) > 0:
@@ -140,21 +143,22 @@ class DataPlotter:
                 bars.append(plt.bar(range(len(self.viruses)), bar_data[status], bottom=bottom, label=status,
                                     color=color_status_dict[status]))
                 for j, v in enumerate(bar_data[status]):
-                    if v > 6:
-                        plt.text(j, v + bottom[j] - 2.5, str(v), color='white', ha='center', va='top', fontsize=8)
+                    if v > 7:
+                        plt.text(j, v + bottom[j] - 2.5, str(v), color='white', ha='center', va='top',
+                                 fontweight="bold")
             else:
                 bars.append(
                     plt.bar(range(len(self.viruses)), bar_data[status], label=status, color=color_status_dict[status]))
                 for j, v in enumerate(bar_data[status]):
-                    if v > 6:
-                        plt.text(j, v - 2.5, str(v), color='white', ha='center', va='top', fontsize=8)
+                    if v > 7:
+                        plt.text(j, v - 2.5, str(v), color='white', ha='center', va='top', fontweight="bold")
 
-        plt.xticks(range(len(self.viruses)), [v for v in self.viruses], fontsize=8)
+        plt.xticks(range(len(self.viruses)), [virus_display_name[v] for v in self.viruses], fontsize=8)
         plt.legend()
-        plt.title('Number of genes per review status for each virus')
+        # plt.title('Number of genes per review status for each virus')
         plt.ylabel('Number of genes')
         plt.tight_layout()
-        plt.savefig(f'{self.output_directory_per_virus}review_status.png', dpi=300)
+        plt.savefig(f'{self.output_directory_per_virus}review_status_per_virus.png', dpi=300)
         plt.close()
 
     def plot(self):

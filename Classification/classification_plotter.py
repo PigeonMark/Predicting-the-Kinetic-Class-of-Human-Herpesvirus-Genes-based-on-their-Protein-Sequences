@@ -244,10 +244,48 @@ class ClassificationPlotter:
             self.plot_wrong_classifications()
 
     def _plot_pi(self, n_pca):
-        for ml_method, classifiers in self.results.items():
-            for classifier, result in classifiers.items():
-                if len(result['permutation_importance']) > 0:
-                    self.plot_permutation_importance(ml_method, classifier, n_pca)
+        # for ml_method, classifiers in self.results.items():
+        #     for classifier, result in classifiers.items():
+        #         if len(result['permutation_importance']) > 0:
+        #             self.plot_permutation_importance(ml_method, classifier, n_pca)
+        for classifier in ['RF', 'KNN', 'XGBoost']:
+            self.plot_permutation_importance_summary(classifier, 50, n_pca)
+
+    def plot_permutation_importance_summary(self, classifier, max_n, n_pca):
+        title = compose_configuration(f'Summarized Permutation Importances of {classifier}',
+                                      self.config['filter_latent'], self.config['standardization'], n_pca, self.name)
+        print(f"Plotting {title}")
+
+        features = self.results['RR'][classifier]['features']
+
+        perm_imps = []
+        for mc_technique in ['ML', '1vsA', 'RR']:
+            perm_imps.extend(self.results[mc_technique][classifier]['permutation_importance'])
+
+        permutation_importances = {}
+        for i, f in enumerate(features):
+            feature_imps = [perm_imp[i] for perm_imp in perm_imps]
+            permutation_importances[f] = (np.mean(feature_imps), np.std(feature_imps))
+
+        permutation_importances = {
+            k: v for k, v in sorted(permutation_importances.items(), key=lambda item: item[1][0], reverse=True)[:max_n]}
+
+        x_size = len(permutation_importances) / 3.2
+        y_size = x_size / 1.375
+        plt.figure(figsize=(x_size, y_size))
+        plt.bar(permutation_importances.keys(), [val[0] for val in permutation_importances.values()],
+                yerr=[val[1] for val in permutation_importances.values()], width=0.9,
+                error_kw=dict(lw=1, capsize=3, capthick=1))
+        plt.xticks(rotation=45, rotation_mode='anchor', ha='right')
+        plt.ylabel('Permutation Importance')
+        plt.xlabel('Feature')
+        # plt.title(title, wrap=True)
+        plt.tight_layout()
+        filename = compose_filename(self.config['output_pi_plot_directory'], self.config['filter_latent'],
+                                    self.config['standardization'], n_pca,
+                                    f'pi_{classifier}', self.name, '')
+        plt.savefig(filename, dpi=150)
+        plt.close()
 
     def plot_permutation_importance(self, ml_method, classifier, n_pca):
         title = compose_configuration(f'Permutation Importances of {ml_method} {classifier}',
@@ -337,7 +375,7 @@ class ClassificationPlotter:
                         else:
                             wrong = wrong.capitalize()
                         if number > 0:
-                            x.append(f'{ml_method}\n{classifier}')
+                            x.append(f'{self.MULTI_CLASS_NAME[ml_method]}\n{self.CLASSIFIER_NAME[classifier]}')
                             y.append(f'{correct} ' + r'$\rightarrow$' + f' {wrong}')
                             z.append(number / 200.)
             if not gap:

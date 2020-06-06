@@ -48,7 +48,7 @@ class ScatterPlotMatrixPlotter:
         columns = [col for col in df.columns if col not in self.config['skip-features']]
         df = df[columns]
 
-        corr = df.corr(method='spearman').abs()
+        corr = df.corr(method='spearman')
         fig = plt.figure(figsize=(12, 10))
         ax = plt.gca()
         im = ax.matshow(corr)
@@ -61,9 +61,9 @@ class ScatterPlotMatrixPlotter:
         ax.set_yticks(range(df.shape[1]))
         ax.set_yticklabels(df.columns, fontsize=12)
 
-        plt.title('Spearman Feature Correlation Matrix', y=-0.07, x=-11, fontsize=20)
+        # plt.title('Spearman Feature Correlation Matrix', y=-0.07, x=-11, fontsize=20)
         fig.tight_layout(pad=2)
-        plt.savefig('Classification/Output/plots/scatter_plot_matrix/correlation_matrix', dpi=150)
+        plt.savefig('Classification/Output/plots/scatter_plot_matrix/feature_correlation_matrix', dpi=150)
 
     def plot_scatter_matrix(self):
         feature_file = compose_filename(self.config['input_data_folder'], True, False, 'no-pca', 'features', 'original',

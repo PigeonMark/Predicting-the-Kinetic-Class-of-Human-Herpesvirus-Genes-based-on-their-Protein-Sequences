@@ -139,12 +139,12 @@ def main():
                 cp.plot_all()
 
                 pcap = PCAPlotter('config/classification_config.json')
-                # pcap.plot(args.features)
+                pcap.plot(args.features)
                 # pcap.plot_explained_variance(args.features)
-                # pcap.plot_feature_importance(args.features)
+                pcap.plot_feature_importance(args.features)
 
                 # spmp = ScatterPlotMatrixPlotter('config/classification_config.json')
-                # # spmp.plot_scatter_matrix()
+                # spmp.plot_scatter_matrix()
                 # spmp.plot_correlation_matrix()
 
 

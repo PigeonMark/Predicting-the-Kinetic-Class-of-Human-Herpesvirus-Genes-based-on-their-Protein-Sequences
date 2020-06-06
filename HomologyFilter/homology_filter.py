@@ -69,7 +69,7 @@ class HomologyFilter:
         plt.xticks(bins)
         plt.ylabel('Number of sequence pairs')
         plt.xlabel('Identity Score')
-        plt.title(title)
+        # plt.title(title)
         plt.tight_layout()
         plt.savefig(f'{self.plot_directory}{filename}.png', dpi=300)
         plt.clf()
