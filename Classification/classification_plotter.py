@@ -127,7 +127,7 @@ class ClassificationPlotter:
         plt.close()
         print()
 
-    def plot_roc_class(self, ml_method, classifier, class_, label, ls):
+    def plot_roc_class(self, ml_method, classifier, class_, label, ls, color, lw=3):
         _fprs = self.results[ml_method][classifier]['fpr'][class_]
         _tprs = self.results[ml_method][classifier]['tpr'][class_]
         _aucs = self.results[ml_method][classifier]['roc_auc'][class_]
@@ -146,7 +146,7 @@ class ClassificationPlotter:
         mean_auc = auc(mean_fpr, mean_tpr)
         std_auc = np.std(aucs)
 
-        plt.plot(mean_fpr, mean_tpr, ls, color=color_phase_dict[class_], lw=3,
+        plt.plot(mean_fpr, mean_tpr, ls, color=color, lw=lw,
                  label=r'%s (AUC = %0.2f $\pm$ %0.2f)' % (label, mean_auc, std_auc))
 
     def plot_roc(self, ml_method, classifier, n_pca):
@@ -154,12 +154,13 @@ class ClassificationPlotter:
                                       self.config['standardization'], n_pca, self.name)
         print(f"Plotting {title}")
 
-        plt.figure(figsize=(6, 4.5))
+        plt.figure(figsize=(6, 4))
 
+        self.plot_roc_class(ml_method, classifier, 'micro', f'micro-average', ':', color_phase_dict['micro'])
+        self.plot_roc_class(ml_method, classifier, 'macro', f'macro-average', ':', color_phase_dict['macro'])
         for class_ in ['immediate-early', 'early', 'late']:
-            self.plot_roc_class(ml_method, classifier, class_, f'{class_}', '-')
-        self.plot_roc_class(ml_method, classifier, 'micro', f'micro-average', ':')
-        self.plot_roc_class(ml_method, classifier, 'macro', f'macro-average', ':')
+            self.plot_roc_class(ml_method, classifier, class_, f'{class_}', '-', color_phase_dict[class_])
+
 
         plt.plot([0, 1], [0, 1], 'k--')
         plt.xlim([0.0, 1.0])
@@ -173,27 +174,114 @@ class ClassificationPlotter:
                                     self.config['standardization'], n_pca,
                                     f'ROC_{self.MULTI_CLASS_NAME[ml_method]}_{self.CLASSIFIER_NAME[classifier]}',
                                     self.name, '')
-        plt.savefig(filename)
+        plt.savefig(filename, dpi=150)
         plt.close()
 
-    def plot_pr_class(self, ml_method, classifier, class_, label, ls):
+    def plot_average_of_all_roc(self, av_kind):
+        title = compose_configuration(f'Micro and Macro average ROC curves', self.config['filter_latent'],
+                                      self.config['standardization'], 'no-pca', self.name)
+        print(f"Plotting {title}")
+
+        plt.figure(figsize=(6, 4.5))
+
+        for ml_method, classifiers in self.results.items():
+            if ml_method == 'ML':
+                for classifier, result in classifiers.items():
+                    if len(result['fpr']['early']) > 0:
+                        self.plot_roc_class(ml_method, classifier, av_kind,
+                                            f'{self.CLASSIFIER_NAME[classifier]} {av_kind}-average', '-', None, 2)
+
+        plt.plot([0, 1], [0, 1], 'k--')
+        plt.xlim([0.0, 1.0])
+        plt.ylim([0.0, 1.05])
+        plt.xlabel('False Positive Rate')
+        plt.ylabel('True Positive Rate')
+        plt.legend()
+        plt.tight_layout()
+        filename = compose_filename(self.config['output_roc_curves_plot_directory'], self.config['filter_latent'],
+                                    self.config['standardization'], 'no-pca', f'ROC_{av_kind}_average', self.name, '')
+        plt.savefig(filename, dpi=150)
+        plt.close()
+
+    def plot_average_of_all_pr(self, av_kind):
+        title = compose_configuration(f'{av_kind} PR curves', self.config['filter_latent'],
+                                      self.config['standardization'], 'no-pca', self.name)
+        print(f"Plotting {title}")
+
+        plt.figure(figsize=(6, 4.5))
+
+        for ml_method, classifiers in self.results.items():
+            for classifier, result in classifiers.items():
+                if len(result['fpr']['early']) > 0:
+                    if av_kind == 'macro':
+                        self.plot_macro_pr(ml_method, classifier,
+                                           f'{self.MULTI_CLASS_NAME[ml_method]} {self.CLASSIFIER_NAME[classifier]} {av_kind}-average',
+                                           '-', None, 1.5)
+                    else:
+                        self.plot_pr_class(ml_method, classifier, av_kind,
+                                           f'{self.MULTI_CLASS_NAME[ml_method]} {self.CLASSIFIER_NAME[classifier]} {av_kind}-average',
+                                           '-', None, 1.5)
+        plt.legend()
+        plt.xlim([0.0, 1.0])
+        plt.ylim([0.0, 1.05])
+        plt.xlabel('Recall')
+        plt.ylabel('Precision')
+        plt.tight_layout()
+        filename = compose_filename(self.config['output_pr_curves_plot_directory'], self.config['filter_latent'],
+                                    self.config['standardization'], 'no-pca', f'PR_{av_kind}_average', self.name, '')
+        plt.savefig(filename, dpi=150)
+        plt.close()
+
+    def plot_pr_class(self, ml_method, classifier, class_, label, ls, color, lw=2.5):
         y_real = np.concatenate(self.results[ml_method][classifier]['y_real'][class_])
         y_proba = np.concatenate(self.results[ml_method][classifier]['y_proba'][class_])
 
+        aps = []
+        for i, res in enumerate(self.results[ml_method][classifier]['y_real'][class_]):
+            aps.append(average_precision_score(res, self.results[ml_method][classifier]['y_proba'][class_][i]))
+
         precision, recall, _ = precision_recall_curve(y_real, y_proba)
-        ap = average_precision_score(y_real, y_proba, average='weighted')
-        plt.plot(recall, precision, ls, lw=2.5, color=color_phase_dict[class_], label=r'%s (AP = %0.2f)' % (label, ap))
+
+        ap = average_precision_score(y_real, y_proba)
+        plt.plot(recall, precision, ls, lw=lw, color=color,
+                 label=r'%s (AP = %0.2f $\pm$ %0.2f)' % (label, ap, np.std(aps)))
+
+    def plot_macro_pr(self, ml_method, classifier, label, ls, color, lw=2.5):
+        interpolations = []
+        aps = []
+        ap_stds = []
+        for class_ in ['immediate-early', 'early', 'late']:
+            y_real = np.concatenate(self.results[ml_method][classifier]['y_real'][class_])
+            y_proba = np.concatenate(self.results[ml_method][classifier]['y_proba'][class_])
+
+            precision, recall, _ = precision_recall_curve(y_real, y_proba)
+
+            interpolations.append(np.interp(np.linspace(0, 1, 1000), list(reversed(recall)), list(reversed(precision))))
+
+            ap_stdss = []
+            for i, res in enumerate(self.results[ml_method][classifier]['y_real'][class_]):
+                ap_stdss.append(average_precision_score(res, self.results[ml_method][classifier]['y_proba'][class_][i]))
+            ap_stds.append(np.std(ap_stdss))
+
+            aps.append(average_precision_score(y_real, y_proba))
+
+        ap = np.mean(aps)
+        ap_std = np.mean(ap_stds)
+        macro_average = np.mean(interpolations, axis=0)
+        plt.plot(np.linspace(0, 1, 1000), macro_average, ls=ls, lw=lw, color=color,
+                 label=r"%s (AP = %0.2f $\pm$ %0.2f)" % (label, ap, ap_std))
 
     def plot_pr(self, ml_method, classifier, n_pca):
         title = compose_configuration(f'PR curves of {ml_method} {classifier}', self.config['filter_latent'],
                                       self.config['standardization'], n_pca, self.name)
         print(f"Plotting {title}")
-        plt.figure(figsize=(6, 4.5))
+        plt.figure(figsize=(6.5, 4.3333))
 
-        self.plot_pr_class(ml_method, classifier, 'micro', f'micro-average', ':')
+        self.plot_pr_class(ml_method, classifier, 'micro', f'micro-average', ':', color_phase_dict['micro'])
+        self.plot_macro_pr(ml_method, classifier, 'macro-average', ':', color_phase_dict['macro'])
 
         for class_ in ['immediate-early', 'early', 'late']:
-            self.plot_pr_class(ml_method, classifier, class_, f'{class_}', '-')
+            self.plot_pr_class(ml_method, classifier, class_, f'{class_}', '-', color_phase_dict[class_])
 
         plt.legend()
         # plt.title(title)
@@ -206,7 +294,7 @@ class ClassificationPlotter:
                                     self.config['standardization'], n_pca,
                                     f'PR_{self.MULTI_CLASS_NAME[ml_method]}_{self.CLASSIFIER_NAME[classifier]}',
                                     self.name, '')
-        plt.savefig(filename)
+        plt.savefig(filename, dpi=150)
         plt.close()
 
     def _plot_all(self, n_pca):
@@ -221,11 +309,17 @@ class ClassificationPlotter:
                 if len(result['fpr']['early']) > 0:
                     self.plot_roc(ml_method, classifier, n_pca)
 
+        self.plot_average_of_all_roc('micro')
+        self.plot_average_of_all_roc('macro')
+
     def _plot_pr(self, n_pca):
         for ml_method, classifiers in self.results.items():
             for classifier, result in classifiers.items():
                 if 'y_real' in result and len(result['y_real']['early']) > 0:
                     self.plot_pr(ml_method, classifier, n_pca)
+
+        self.plot_average_of_all_pr('micro')
+        self.plot_average_of_all_pr('macro')
 
     def plot_all(self):
         if self.config['pca_features'] is True:
@@ -236,12 +330,12 @@ class ClassificationPlotter:
                 self._plot_pi(n)
         else:
             self.load_results('no-pca')
-            self._plot_all('no-pca')
+            # self._plot_all('no-pca')
             self._plot_roc('no-pca')
             self._plot_pr('no-pca')
-            self.pi_corr_matrix()
-            self._plot_pi('no-pca')
-            self.plot_wrong_classifications()
+            # self.pi_corr_matrix()
+            # self._plot_pi('no-pca')
+            # self.plot_wrong_classifications()
 
     def _plot_pi(self, n_pca):
         # for ml_method, classifiers in self.results.items():
@@ -262,24 +356,23 @@ class ClassificationPlotter:
         for mc_technique in ['ML', '1vsA', 'RR']:
             perm_imps.extend(self.results[mc_technique][classifier]['permutation_importance'])
 
-        permutation_importances = {}
+        boxplot_data = {}
         for i, f in enumerate(features):
             feature_imps = [perm_imp[i] for perm_imp in perm_imps]
-            permutation_importances[f] = (np.mean(feature_imps), np.std(feature_imps))
+            boxplot_data[f] = feature_imps
+        boxplot_data = {k: v for k, v in
+                        sorted(boxplot_data.items(), key=lambda item: np.median(item[1]) + 0.001 * np.mean(item[1]),
+                               reverse=True)}
 
-        permutation_importances = {
-            k: v for k, v in sorted(permutation_importances.items(), key=lambda item: item[1][0], reverse=True)[:max_n]}
+        fig, ax = plt.subplots(figsize=(8.5, 4.5))
+        ax.yaxis.grid(True, linestyle='-', which='major', color='lightgrey', alpha=1)
+        ax.set_axisbelow(True)
+        ax.boxplot(boxplot_data.values(), flierprops=dict(markersize=4, markeredgewidth=0.6))
+        ax.set_xticklabels(boxplot_data.keys())
 
-        x_size = len(permutation_importances) / 3.2
-        y_size = x_size / 1.375
-        plt.figure(figsize=(x_size, y_size))
-        plt.bar(permutation_importances.keys(), [val[0] for val in permutation_importances.values()],
-                yerr=[val[1] for val in permutation_importances.values()], width=0.9,
-                error_kw=dict(lw=1, capsize=3, capthick=1))
         plt.xticks(rotation=45, rotation_mode='anchor', ha='right')
         plt.ylabel('Permutation Importance')
         plt.xlabel('Feature')
-        # plt.title(title, wrap=True)
         plt.tight_layout()
         filename = compose_filename(self.config['output_pi_plot_directory'], self.config['filter_latent'],
                                     self.config['standardization'], n_pca,
@@ -349,6 +442,7 @@ class ClassificationPlotter:
         plt.savefig(f"{self.config['output_pi_corr_matrix_plot_directory']}pi_correlation_matrix", dpi=150)
 
     def plot_wrong_classifications(self):
+        print("Plotting wrong classifications")
         fig = plt.figure(figsize=(14, 5))
         ax = plt.gca()
         # plt.title('Number of wrong classifications for each classifier\n(p1 -> p2 == a p1 sequence was wrongly classified as a p2 sequence)', wrap=True)
@@ -403,6 +497,7 @@ class ClassificationPlotter:
                     ax.text(off_x, off_y, round(z[i]), fontsize=np.sqrt(z[i]) * 7, ha='center', va='center')
 
         cb = fig.colorbar(im, cax=cax)
+        ax.tick_params(axis='both', labelsize=16)
         plt.tight_layout()
         plt.savefig('Classification/Output/plots/wrong_classifications/wrong_classifications', dpi=150)
         plt.close()

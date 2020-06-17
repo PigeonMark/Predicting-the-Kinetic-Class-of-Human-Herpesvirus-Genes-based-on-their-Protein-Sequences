@@ -60,6 +60,22 @@ class Combiner:
                     add_to_near_occ_dict(count, protein, phase, self.combined_counts[virus_name])
                     add_to_near_occ_dict(1, protein, phase, self.paper_counts[virus_name])
 
+    def print_number_of_genes(self):
+        tot = 0
+        for virus_name in self.viruses:
+            all_keys, name_to_headers, header_row = self.keywords[virus_name]
+            g = nx.DiGraph()
+
+            for kw in all_keys:
+                for hdr in name_to_headers[kw]:
+                    if kw != hdr:
+                        g.add_edge(kw, hdr)
+
+            connected_components = list(g.subgraph(c) for c in nx.connected_components(nx.Graph(g)))
+            print(f"{virus_name}: {len(connected_components)}, {len(header_row)}")
+            tot += len(connected_components)
+        print(f"Total: {tot}")
+
     def combine_counts_alternate_names(self, virus_name):
         all_keys, name_to_headers, header_row = self.keywords[virus_name]
         g = nx.DiGraph()

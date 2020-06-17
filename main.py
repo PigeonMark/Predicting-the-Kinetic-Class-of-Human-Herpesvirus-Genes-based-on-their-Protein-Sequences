@@ -29,6 +29,7 @@ def main():
     parser.add_argument('--grid-search', action='store_true')
     parser.add_argument('--plot', action='store_true')
     parser.add_argument('--fit', action='store_true')
+    parser.add_argument('--count-total-number-of-genes', action='store_true')
 
     args = parser.parse_args()
 
@@ -80,6 +81,10 @@ def main():
     if args.extract:
         feature_extractor = FeatureExtraction("config/feature_extraction_config.json")
         feature_extractor.extract(args.features)
+
+    if args.count_total_number_of_genes:
+        combiner = Combiner("config/combiner_config.json")
+        combiner.print_number_of_genes()
 
     if args.classify:
         if args.grid_search:
@@ -138,10 +143,10 @@ def main():
                 cp = ClassificationPlotter('config/classification_config.json', args.features)
                 cp.plot_all()
 
-                pcap = PCAPlotter('config/classification_config.json')
-                pcap.plot(args.features)
-                # pcap.plot_explained_variance(args.features)
-                pcap.plot_feature_importance(args.features)
+                # pcap = PCAPlotter('config/classification_config.json')
+                # pcap.plot(args.features)
+                # # pcap.plot_explained_variance(args.features)
+                # pcap.plot_feature_importance(args.features)
 
                 # spmp = ScatterPlotMatrixPlotter('config/classification_config.json')
                 # spmp.plot_scatter_matrix()
