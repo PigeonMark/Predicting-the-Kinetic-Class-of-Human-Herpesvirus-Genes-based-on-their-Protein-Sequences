@@ -5,7 +5,7 @@ pyteomics==4.2
 requests==2.21.0
 scipy==1.1.0
 SQLAlchemy==1.2.15
-numpy==1.15.4
+numpy==1.22.0
 networkx==2.2
 WTForms==2.2.1
 matplotlib==3.0.2
